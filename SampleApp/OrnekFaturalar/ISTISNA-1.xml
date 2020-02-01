@@ -1,0 +1,225 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Invoice xsi:schemaLocation="urn:oasis:names:specification:ubl:schema:xsd:Invoice-2 ../xsdrt/maindoc/UBL-Invoice-2.1.xsd" xmlns="urn:oasis:names:specification:ubl:schema:xsd:Invoice-2" xmlns:n4="http://www.altova.com/samplexml/other-namespace" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2" xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2" xmlns:ext="urn:oasis:names:specification:ubl:schema:xsd:CommonExtensionComponents-2">
+  <ext:UBLExtensions>
+    <ext:UBLExtension>
+      <ext:ExtensionContent></ext:ExtensionContent>
+    </ext:UBLExtension>
+  </ext:UBLExtensions>
+  <cbc:UBLVersionID>2.1</cbc:UBLVersionID>
+  <cbc:CustomizationID>TR1.2</cbc:CustomizationID>
+  <cbc:ProfileID>TICARIFATURA</cbc:ProfileID>
+  <cbc:ID>BSS2010000028181</cbc:ID>
+  <cbc:CopyIndicator>false</cbc:CopyIndicator>
+  <cbc:UUID>F47AC10B-58CC-4372-A567-0E02B2C3D479</cbc:UUID>
+  <cbc:IssueDate>2010-05-31</cbc:IssueDate>
+  <cbc:InvoiceTypeCode>ISTISNA</cbc:InvoiceTypeCode>
+  <cbc:Note>30m. GALVANİZLİ ve ÖRME GSM KULESİ EKSİK MALEZEMELERİ ÇEKİ LİSTESİNDE SANDIK ve PAKET ADETLERİYLE BİRLİKTE DETAYLANDIRILMIŞTIR.</cbc:Note>
+  <cbc:DocumentCurrencyCode>USD</cbc:DocumentCurrencyCode>
+  <cbc:LineCountNumeric>2</cbc:LineCountNumeric>
+  <cac:DespatchDocumentReference>
+    <cbc:ID>1283</cbc:ID>
+    <cbc:IssueDate>2010-05-31</cbc:IssueDate>
+  </cac:DespatchDocumentReference>
+  <cac:Signature>
+    <cbc:ID schemeID="VKN_TCKN">1288331521</cbc:ID>
+    <cac:SignatoryParty>
+      <cac:PartyIdentification>
+        <cbc:ID schemeID="VKN">1288331521</cbc:ID>
+      </cac:PartyIdentification>
+      <cac:PostalAddress>
+        <cbc:StreetName>Papatya Caddesi Yasemin Sokak</cbc:StreetName>
+        <cbc:BuildingNumber>21</cbc:BuildingNumber>
+        <cbc:CitySubdivisionName>Beşiktaş</cbc:CitySubdivisionName>
+        <cbc:CityName>İstanbul</cbc:CityName>
+        <cbc:PostalZone>34100</cbc:PostalZone>
+        <cac:Country>
+          <cbc:Name>Türkiye</cbc:Name>
+        </cac:Country>
+      </cac:PostalAddress>
+    </cac:SignatoryParty>
+    <cac:DigitalSignatureAttachment>
+      <cac:ExternalReference>
+        <cbc:URI>#Signature</cbc:URI>
+      </cac:ExternalReference>
+    </cac:DigitalSignatureAttachment>
+  </cac:Signature>
+  <cac:AccountingSupplierParty>
+    <cac:Party>
+      <cac:PartyIdentification>
+        <cbc:ID schemeID="VKN">870612534</cbc:ID>
+      </cac:PartyIdentification>
+      <cac:PartyName>
+        <cbc:Name>BSS Boray A.Ş.</cbc:Name>
+      </cac:PartyName>
+      <cac:PostalAddress>
+        <cbc:ID>2806632739</cbc:ID>
+        <cbc:StreetName>10032 sk. AOSB</cbc:StreetName>
+        <cbc:BuildingNumber>18</cbc:BuildingNumber>
+        <cbc:CitySubdivisionName>Çiğli</cbc:CitySubdivisionName>
+        <cbc:CityName>İzmir</cbc:CityName>
+        <cac:Country>
+          <cbc:Name>Türkiye</cbc:Name>
+        </cac:Country>
+      </cac:PostalAddress>
+      <cac:PartyTaxScheme>
+        <cac:TaxScheme>
+          <cbc:Name>Çakabey</cbc:Name>
+        </cac:TaxScheme>
+      </cac:PartyTaxScheme>
+      <cac:PartyLegalEntity>
+        <cac:HeadOfficeParty>
+          <cac:PartyIdentification>
+            <cbc:ID schemeID="VKN">870612534</cbc:ID>
+          </cac:PartyIdentification>
+          <cac:PostalAddress>
+            <cbc:ID>2806632739</cbc:ID>
+            <cbc:StreetName>10032 sk. AOSB</cbc:StreetName>
+            <cbc:BuildingNumber>18</cbc:BuildingNumber>
+            <cbc:CitySubdivisionName>Çiğli</cbc:CitySubdivisionName>
+            <cbc:CityName>İzmir</cbc:CityName>
+            <cac:Country>
+              <cbc:Name>Türkiye</cbc:Name>
+            </cac:Country>
+          </cac:PostalAddress>
+        </cac:HeadOfficeParty>
+      </cac:PartyLegalEntity>
+      <cac:Contact>
+        <cbc:Telephone>(232) 3282464</cbc:Telephone>
+        <cbc:Telefax>(232) 3280110</cbc:Telefax>
+        <cbc:ElectronicMail>aa@aaa.com.tr</cbc:ElectronicMail>
+      </cac:Contact>
+      <cac:AgentParty>
+        <cac:PartyIdentification>
+          <cbc:ID schemeID="VKN">870612534</cbc:ID>
+        </cac:PartyIdentification>
+        <cac:PostalAddress>
+          <cbc:ID>2806632739</cbc:ID>
+          <cbc:StreetName>İvedik OSB, Anadolu Yapı Koop., 22 Cd., 666 Sk.</cbc:StreetName>
+          <cbc:BuildingNumber>92</cbc:BuildingNumber>
+          <cbc:CitySubdivisionName>Ostim</cbc:CitySubdivisionName>
+          <cbc:CityName>Ankara</cbc:CityName>
+          <cac:Country>
+            <cbc:Name>Türkiye</cbc:Name>
+          </cac:Country>
+        </cac:PostalAddress>
+      </cac:AgentParty>
+    </cac:Party>
+  </cac:AccountingSupplierParty>
+  <cac:AccountingCustomerParty>
+    <cac:Party>
+      <cac:PartyIdentification>
+        <cbc:ID/>
+      </cac:PartyIdentification>
+      <cac:PartyName>
+        <cbc:Name>XEZER BSS MMC</cbc:Name>
+      </cac:PartyName>
+      <cac:PostalAddress>
+        <cbc:ID/>
+        <cbc:StreetName>Yasamal Reyonu, Xerabtavi Küçesi, 31</cbc:StreetName>
+        <cbc:CitySubdivisionName/>
+        <cbc:CityName>Bakü</cbc:CityName>
+        <cbc:District>623</cbc:District>
+        <cac:Country>
+          <cbc:Name>Azerbaycan</cbc:Name>
+        </cac:Country>
+      </cac:PostalAddress>
+      <cac:Contact>
+        <cbc:Telephone>0099 (412) 4970218</cbc:Telephone>
+        <cbc:Telefax>0099 (412) 4970219</cbc:Telefax>
+        <cbc:ElectronicMail>aa@aaa.com.tr</cbc:ElectronicMail>
+      </cac:Contact>
+    </cac:Party>
+  </cac:AccountingCustomerParty>
+  <cac:Delivery>
+    <cac:DeliveryAddress>
+      <cbc:ID/>
+      <cbc:CitySubdivisionName/>
+      <cbc:CityName>Bakü</cbc:CityName>
+      <cac:Country>
+        <cbc:Name>Azerbaycan</cbc:Name>
+      </cac:Country>
+    </cac:DeliveryAddress>
+    <cac:CarrierParty>
+      <cac:PartyIdentification>
+        <cbc:ID/>
+      </cac:PartyIdentification>
+      <cac:PartyName>
+        <cbc:Name>İKRA NAKLİYAT</cbc:Name>
+      </cac:PartyName>
+      <cac:PostalAddress>
+        <cbc:ID/>
+        <cbc:CitySubdivisionName/>
+        <cbc:CityName/>
+        <cac:Country>
+          <cbc:Name>Türkiye</cbc:Name>
+        </cac:Country>
+      </cac:PostalAddress>
+    </cac:CarrierParty>
+    <cac:DeliveryTerms>
+      <cbc:ID>CIF</cbc:ID>
+    </cac:DeliveryTerms>
+    <cac:Shipment>
+      <cbc:ID/>
+      <cbc:GrossWeightMeasure unitCode="KGM">14444</cbc:GrossWeightMeasure>
+      <cbc:NetWeightMeasure unitCode="KGM">14414</cbc:NetWeightMeasure>
+      <cbc:TotalTransportHandlingUnitQuantity>21</cbc:TotalTransportHandlingUnitQuantity>
+      <cbc:InsuranceValueAmount currencyID="USD">150</cbc:InsuranceValueAmount>
+      <cbc:DeclaredForCarriageValueAmount currencyID="USD">3900</cbc:DeclaredForCarriageValueAmount>
+    </cac:Shipment>
+  </cac:Delivery>
+  <cac:PaymentMeans>
+    <cbc:PaymentMeansCode>1</cbc:PaymentMeansCode>
+    <cac:PayeeFinancialAccount>
+      <cbc:ID>TR860004600032008000022176</cbc:ID>
+      <cbc:CurrencyCode>USD</cbc:CurrencyCode>
+      <cac:FinancialInstitutionBranch>
+        <cbc:Name>KIBRIS ŞEHİTLERİ</cbc:Name>
+        <cac:FinancialInstitution>
+          <cbc:Name>TÜRKİYE GARANTİ BANKASI A.Ş.</cbc:Name>
+        </cac:FinancialInstitution>
+      </cac:FinancialInstitutionBranch>
+    </cac:PayeeFinancialAccount>
+  </cac:PaymentMeans>
+  <cac:PaymentTerms>
+    <cbc:Note>%50 Peşin, %50 Mal mukabili (Fatura tarihinden itibaren 45 gün sonra)</cbc:Note>
+    <cbc:PaymentDueDate>2010-07-15</cbc:PaymentDueDate>
+  </cac:PaymentTerms>
+  <cac:TaxTotal>
+    <cbc:TaxAmount currencyID="USD">0</cbc:TaxAmount>
+    <cac:TaxSubtotal>
+      <cbc:TaxAmount currencyID="USD">0</cbc:TaxAmount>
+      <cac:TaxCategory>
+        <cbc:TaxExemptionReasonCode>301</cbc:TaxExemptionReasonCode>
+        <cac:TaxScheme/>
+      </cac:TaxCategory>
+    </cac:TaxSubtotal>
+  </cac:TaxTotal>
+  <cac:LegalMonetaryTotal>
+    <cbc:LineExtensionAmount currencyID="USD">22425</cbc:LineExtensionAmount>
+    <cbc:TaxExclusiveAmount currencyID="USD">26475</cbc:TaxExclusiveAmount>
+    <cbc:TaxInclusiveAmount currencyID="USD">26475</cbc:TaxInclusiveAmount>
+    <cbc:PayableAmount currencyID="USD">26475</cbc:PayableAmount>
+  </cac:LegalMonetaryTotal>
+  <cac:InvoiceLine>
+    <cbc:ID>1</cbc:ID>
+    <cbc:InvoicedQuantity>1</cbc:InvoicedQuantity>
+    <cbc:LineExtensionAmount currencyID="USD">20700</cbc:LineExtensionAmount>
+    <cac:Item>
+      <cbc:Name>60M. (160/10M2) KAFES TİPİ GSM ANTEN KULELERİNİN GALVANİZLİ ÇELİK KONSTRÜKSYON MALZEMELERİ</cbc:Name>
+    </cac:Item>
+    <cac:Price>
+      <cbc:PriceAmount currencyID="USD">20700</cbc:PriceAmount>
+    </cac:Price>
+  </cac:InvoiceLine>
+  <cac:InvoiceLine>
+    <cbc:ID>2</cbc:ID>
+    <cbc:InvoicedQuantity>1</cbc:InvoicedQuantity>
+    <cbc:LineExtensionAmount currencyID="USD">1725</cbc:LineExtensionAmount>
+    <cac:Item>
+      <cbc:Name>30M. (160/10M2) GALVANİZLİ ÖRME GSM KULESİ EKSİK MALZEMELERİ</cbc:Name>
+    </cac:Item>
+    <cac:Price>
+      <cbc:PriceAmount currencyID="USD">1725</cbc:PriceAmount>
+    </cac:Price>
+  </cac:InvoiceLine>
+</Invoice>

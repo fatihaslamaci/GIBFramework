@@ -1,0 +1,243 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Invoice xmlns="urn:oasis:names:specification:ubl:schema:xsd:Invoice-2"
+    xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2"
+    xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2"
+    xmlns:ds="http://www.w3.org/2000/09/xmldsig#"
+    xmlns:ext="urn:oasis:names:specification:ubl:schema:xsd:CommonExtensionComponents-2"
+    xmlns:ns8="urn:oasis:names:specification:ubl:schema:xsd:ApplicationResponse-2"
+    xmlns:xades="http://uri.etsi.org/01903/v1.3.2#"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="urn:oasis:names:specification:ubl:schema:xsd:Invoice-2 ../xsdrt/maindoc/UBL-Invoice-2.1.xsd">
+  <ext:UBLExtensions>
+    <ext:UBLExtension>
+      <ext:ExtensionContent></ext:ExtensionContent>
+    </ext:UBLExtension>
+  </ext:UBLExtensions>
+  <cbc:UBLVersionID>2.1</cbc:UBLVersionID>
+  <cbc:CustomizationID>TR1.2</cbc:CustomizationID>
+  <cbc:ProfileID>YOLCUBERABERFATURA</cbc:ProfileID>
+  <cbc:ID>GIB2016000000016</cbc:ID>
+  <cbc:CopyIndicator>false</cbc:CopyIndicator>
+  <cbc:UUID>1063118D-EF14-4E3D-B941-08C8060A040C</cbc:UUID>
+  <cbc:IssueDate>2016-05-11</cbc:IssueDate>
+  <cbc:InvoiceTypeCode>ISTISNA</cbc:InvoiceTypeCode>
+  <cbc:Note>Sicil No: 1 İşletme Merkezi: 1 </cbc:Note>
+  <cbc:DocumentCurrencyCode>TRY</cbc:DocumentCurrencyCode>
+  <cbc:LineCountNumeric>1</cbc:LineCountNumeric>
+  <cac:AdditionalDocumentReference>
+    <cbc:ID>0lio2k1klv1001</cbc:ID>
+    <cbc:IssueDate>2016-05-11</cbc:IssueDate>
+    <cbc:DocumentType>XSLT</cbc:DocumentType>
+    <cac:Attachment>
+      <cbc:EmbeddedDocumentBinaryObject characterSetCode="UTF-8" encodingCode="Base64"
+          filename="GIB2016000000016.xslt" mimeCode="application/xml"></cbc:EmbeddedDocumentBinaryObject>
+    </cac:Attachment>
+  </cac:AdditionalDocumentReference>
+  <cac:Signature>
+    <cbc:ID schemeID="VKN_TCKN">77777777703</cbc:ID>
+    <cac:SignatoryParty>
+      <cac:PartyIdentification>
+        <cbc:ID schemeID="TCKN">77777777703</cbc:ID>
+      </cac:PartyIdentification>
+      <cac:PostalAddress>
+        <cbc:Room/>
+        <cbc:StreetName/>
+        <cbc:BuildingName/>
+        <cbc:BuildingNumber/>
+        <cbc:CitySubdivisionName>-</cbc:CitySubdivisionName>
+        <cbc:CityName>Ankara</cbc:CityName>
+        <cbc:PostalZone/>
+        <cbc:Region/>
+        <cac:Country>
+          <cbc:Name>Türkiye</cbc:Name>
+        </cac:Country>
+      </cac:PostalAddress>
+    </cac:SignatoryParty>
+    <cac:DigitalSignatureAttachment>
+      <cac:ExternalReference>
+        <cbc:URI>#Signature_GIB2016000000016</cbc:URI>
+      </cac:ExternalReference>
+    </cac:DigitalSignatureAttachment>
+  </cac:Signature>
+  <cac:AccountingSupplierParty>
+    <cac:Party>
+      <cbc:WebsiteURI/>
+      <cac:PartyIdentification>
+        <cbc:ID schemeID="TCKN">77777777703</cbc:ID>
+      </cac:PartyIdentification>
+      <cac:PostalAddress>
+        <cbc:Room/>
+        <cbc:StreetName/>
+        <cbc:BuildingName/>
+        <cbc:BuildingNumber/>
+        <cbc:CitySubdivisionName>-</cbc:CitySubdivisionName>
+        <cbc:CityName>Ankara</cbc:CityName>
+        <cbc:PostalZone/>
+        <cbc:Region/>
+        <cac:Country>
+          <cbc:Name>Türkiye</cbc:Name>
+        </cac:Country>
+      </cac:PostalAddress>
+      <cac:PartyTaxScheme>
+        <cac:TaxScheme>
+          <cbc:Name>Kızılbey</cbc:Name>
+        </cac:TaxScheme>
+      </cac:PartyTaxScheme>
+      <cac:Contact>
+        <cbc:Telephone/>
+        <cbc:Telefax/>
+        <cbc:ElectronicMail>arefund@arefund.com.tr</cbc:ElectronicMail>
+      </cac:Contact>
+      <cac:Person>
+        <cbc:FirstName>Tax Free</cbc:FirstName>
+        <cbc:FamilyName>Mükellef</cbc:FamilyName>
+      </cac:Person>
+    </cac:Party>
+  </cac:AccountingSupplierParty>
+  <cac:AccountingCustomerParty>
+    <cac:Party>
+      <cbc:WebsiteURI/>
+      <cac:PartyIdentification>
+        <cbc:ID schemeID="VKN">1460415308</cbc:ID>
+      </cac:PartyIdentification>
+      <cac:PartyName>
+        <cbc:Name>
+          Gümrük ve Ticaret Bakanlığı Gümrükler Genel Müdürlüğü- Bilgi İşlem Dairesi
+          Başkanlığı
+        </cbc:Name>
+      </cac:PartyName>
+      <cac:PostalAddress>
+        <cbc:Room/>
+        <cbc:StreetName/>
+        <cbc:BuildingName/>
+        <cbc:BuildingNumber/>
+        <cbc:CitySubdivisionName> </cbc:CitySubdivisionName>
+        <cbc:CityName>Ankara</cbc:CityName>
+        <cbc:PostalZone/>
+        <cbc:Region/>
+        <cac:Country>
+          <cbc:Name>Türkiye</cbc:Name>
+        </cac:Country>
+      </cac:PostalAddress>
+      <cac:PartyTaxScheme>
+        <cac:TaxScheme>
+          <cbc:Name>Ulus</cbc:Name>
+        </cac:TaxScheme>
+      </cac:PartyTaxScheme>
+      <cac:Contact>
+        <cbc:Telephone/>
+        <cbc:Telefax/>
+        <cbc:ElectronicMail/>
+      </cac:Contact>
+    </cac:Party>
+  </cac:AccountingCustomerParty>
+  <cac:BuyerCustomerParty>
+    <cac:Party>
+      <cac:PartyIdentification>
+        <cbc:ID schemeID="PARTYTYPE">TAXFREE</cbc:ID>
+      </cac:PartyIdentification>
+      <cac:PostalAddress>
+        <cbc:CitySubdivisionName>SubdivisionName</cbc:CitySubdivisionName>
+        <cbc:CityName>Turist Şehri</cbc:CityName>
+        <cac:Country>
+          <cbc:Name>Turistin İkametgah Ülkesi</cbc:Name>
+        </cac:Country>
+      </cac:PostalAddress>
+      <cac:Person>
+        <cbc:FirstName>John</cbc:FirstName>
+        <cbc:FamilyName>Doe</cbc:FamilyName>
+        <cbc:NationalityID>GB</cbc:NationalityID>
+        <cac:FinancialAccount>
+          <cbc:ID>Turist Bank Hesap NO</cbc:ID>
+          <cbc:CurrencyCode>TRY</cbc:CurrencyCode>
+          <cbc:PaymentNote>Ödeme Notu</cbc:PaymentNote>
+          <cac:FinancialInstitutionBranch>
+            <cbc:Name>Turistin İkametgah Ülkesi</cbc:Name>
+            <cac:FinancialInstitution>
+              <cbc:Name>Banka Adı</cbc:Name>
+            </cac:FinancialInstitution>
+          </cac:FinancialInstitutionBranch>
+        </cac:FinancialAccount>
+        <cac:IdentityDocumentReference>
+          <cbc:ID>Pasaport No</cbc:ID>
+          <cbc:IssueDate>2014-01-14</cbc:IssueDate>
+        </cac:IdentityDocumentReference>
+      </cac:Person>
+    </cac:Party>
+  </cac:BuyerCustomerParty>
+  <cac:TaxRepresentativeParty>
+    <cac:PartyIdentification>
+      <cbc:ID schemeID="ARACIKURUMVKN">1111111111</cbc:ID>
+    </cac:PartyIdentification>
+    <cac:PartyIdentification>
+      <cbc:ID schemeID="ARACIKURUMETIKET">urn:mail:yolcuberaberpk@sirketkisaad.com.tr</cbc:ID>
+    </cac:PartyIdentification>
+    <cac:PostalAddress>
+      <cbc:CitySubdivisionName>Aracı Kurum Subdivision</cbc:CitySubdivisionName>
+      <cbc:CityName>Aracı Kurum Şehir</cbc:CityName>
+      <cac:Country>
+        <cbc:Name>Aracı Kurum Ülke</cbc:Name>
+      </cac:Country>
+    </cac:PostalAddress>
+  </cac:TaxRepresentativeParty>
+  <cac:AllowanceCharge>
+    <cbc:ChargeIndicator>false</cbc:ChargeIndicator>
+    <cbc:Amount currencyID="TRY">0.00</cbc:Amount>
+  </cac:AllowanceCharge>
+  <cac:TaxTotal>
+    <cbc:TaxAmount currencyID="TRY">18</cbc:TaxAmount>
+    <cac:TaxSubtotal>
+      <cbc:TaxableAmount currencyID="TRY">100</cbc:TaxableAmount>
+      <cbc:TaxAmount currencyID="TRY">18</cbc:TaxAmount>
+      <cbc:CalculationSequenceNumeric>1</cbc:CalculationSequenceNumeric>
+      <cbc:Percent>18</cbc:Percent>
+      <cac:TaxCategory>
+        <cbc:TaxExemptionReasonCode>501</cbc:TaxExemptionReasonCode>
+        <cbc:TaxExemptionReason>Türkiye'de İkamet Etmeyenlere KDV Hesaplanarak Yapılan Satışlar(Yolcu Beraberi Eşya)</cbc:TaxExemptionReason>
+        <cac:TaxScheme>
+          <cbc:Name>KDV</cbc:Name>
+          <cbc:TaxTypeCode>0015</cbc:TaxTypeCode>
+        </cac:TaxScheme>
+      </cac:TaxCategory>
+    </cac:TaxSubtotal>
+  </cac:TaxTotal>
+  <cac:LegalMonetaryTotal>
+    <cbc:LineExtensionAmount currencyID="TRY">100</cbc:LineExtensionAmount>
+    <cbc:TaxExclusiveAmount currencyID="TRY">100</cbc:TaxExclusiveAmount>
+    <cbc:TaxInclusiveAmount currencyID="TRY">118</cbc:TaxInclusiveAmount>
+    <cbc:AllowanceTotalAmount currencyID="TRY">0</cbc:AllowanceTotalAmount>
+    <cbc:PayableAmount currencyID="TRY">118</cbc:PayableAmount>
+  </cac:LegalMonetaryTotal>
+  <cac:InvoiceLine>
+    <cbc:ID>1</cbc:ID>
+    <cbc:InvoicedQuantity unitCode="C62">1</cbc:InvoicedQuantity>
+    <cbc:LineExtensionAmount currencyID="TRY">100</cbc:LineExtensionAmount>
+    <cac:AllowanceCharge>
+      <cbc:ChargeIndicator>false</cbc:ChargeIndicator>
+      <cbc:MultiplierFactorNumeric>0</cbc:MultiplierFactorNumeric>
+      <cbc:Amount currencyID="TRY">0</cbc:Amount>
+      <cbc:BaseAmount currencyID="TRY">100</cbc:BaseAmount>
+    </cac:AllowanceCharge>
+    <cac:TaxTotal>
+      <cbc:TaxAmount currencyID="TRY">18</cbc:TaxAmount>
+      <cac:TaxSubtotal>
+        <cbc:TaxableAmount currencyID="TRY">100</cbc:TaxableAmount>
+        <cbc:TaxAmount currencyID="TRY">18</cbc:TaxAmount>
+        <cbc:CalculationSequenceNumeric>1</cbc:CalculationSequenceNumeric>
+        <cbc:Percent>18</cbc:Percent>
+        <cac:TaxCategory>
+          <cac:TaxScheme>
+            <cbc:Name>KDV</cbc:Name>
+            <cbc:TaxTypeCode>0015</cbc:TaxTypeCode>
+          </cac:TaxScheme>
+        </cac:TaxCategory>
+      </cac:TaxSubtotal>
+    </cac:TaxTotal>
+    <cac:Item>
+      <cbc:Name>Gömlek</cbc:Name>
+    </cac:Item>
+    <cac:Price>
+      <cbc:PriceAmount currencyID="TRY">100</cbc:PriceAmount>
+    </cac:Price>
+  </cac:InvoiceLine>
+</Invoice>

@@ -1,0 +1,218 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Invoice xsi:schemaLocation="urn:oasis:names:specification:ubl:schema:xsd:Invoice-2 ../xsdrt/maindoc/UBL-Invoice-2.1.xsd" xmlns="urn:oasis:names:specification:ubl:schema:xsd:Invoice-2" xmlns:n4="http://www.altova.com/samplexml/other-namespace" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2" xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2" xmlns:ext="urn:oasis:names:specification:ubl:schema:xsd:CommonExtensionComponents-2">
+  <ext:UBLExtensions>
+    <ext:UBLExtension>
+      <ext:ExtensionContent></ext:ExtensionContent>
+    </ext:UBLExtension>
+  </ext:UBLExtensions>
+  <cbc:UBLVersionID>2.1</cbc:UBLVersionID>
+  <cbc:CustomizationID>TR1.2</cbc:CustomizationID>
+  <cbc:ProfileID>TICARIFATURA</cbc:ProfileID>
+  <cbc:ID>ETU2012000594626</cbc:ID>
+  <cbc:CopyIndicator>false</cbc:CopyIndicator>
+  <cbc:UUID>F47AC10B-58CC-4372-A567-0E02B2C3D479</cbc:UUID>
+  <cbc:IssueDate>2012-06-13</cbc:IssueDate>
+  <cbc:InvoiceTypeCode>SATIS</cbc:InvoiceTypeCode>
+  <cbc:Note>TANI: Z04.5</cbc:Note>
+  <cbc:Note>Tutanak yok. Adli vaka olarak gelmemiş. Malzeme faturaları yok.</cbc:Note>
+  <cbc:DocumentCurrencyCode>TRY</cbc:DocumentCurrencyCode>
+  <cbc:LineCountNumeric>4.0</cbc:LineCountNumeric>
+  <cac:BillingReference>
+    <cac:InvoiceDocumentReference>
+      <cbc:ID>55099162</cbc:ID>
+      <cbc:IssueDate>2012-01-18</cbc:IssueDate>
+    </cac:InvoiceDocumentReference>
+  </cac:BillingReference>
+  <cac:Signature>
+    <cbc:ID schemeID="VKN_TCKN">1288331521</cbc:ID>
+    <cac:SignatoryParty>
+      <cac:PartyIdentification>
+        <cbc:ID schemeID="VKN">1288331521</cbc:ID>
+      </cac:PartyIdentification>
+      <cac:PostalAddress>
+        <cbc:StreetName>Papatya Caddesi Yasemin Sokak</cbc:StreetName>
+        <cbc:BuildingNumber>21</cbc:BuildingNumber>
+        <cbc:CitySubdivisionName>Beşiktaş</cbc:CitySubdivisionName>
+        <cbc:CityName>İstanbul</cbc:CityName>
+        <cbc:PostalZone>34100</cbc:PostalZone>
+        <cac:Country>
+          <cbc:Name>Türkiye</cbc:Name>
+        </cac:Country>
+      </cac:PostalAddress>
+    </cac:SignatoryParty>
+    <cac:DigitalSignatureAttachment>
+      <cac:ExternalReference>
+        <cbc:URI>#Signature</cbc:URI>
+      </cac:ExternalReference>
+    </cac:DigitalSignatureAttachment>
+  </cac:Signature>
+  <cac:AccountingSupplierParty>
+    <cac:Party>
+      <cac:PartyIdentification>
+        <cbc:ID schemeID="VKN">8450309570</cbc:ID>
+      </cac:PartyIdentification>
+      <cac:PartyName>
+        <cbc:Name>Özel TOBB ETÜ Hastanesi</cbc:Name>
+      </cac:PartyName>
+      <cac:PostalAddress>
+        <cbc:ID>2806632739</cbc:ID>
+        <cbc:StreetName>Yaşam Caddesi</cbc:StreetName>
+        <cbc:BuildingNumber>5</cbc:BuildingNumber>
+        <cbc:CitySubdivisionName>Söğütözü</cbc:CitySubdivisionName>
+        <cbc:CityName>Ankara</cbc:CityName>
+        <cbc:PostalZone>06510</cbc:PostalZone>
+        <cac:Country>
+          <cbc:Name>Türkiye</cbc:Name>
+        </cac:Country>
+      </cac:PostalAddress>
+      <cac:PartyTaxScheme>
+        <cac:TaxScheme>
+          <cbc:Name>Maltepe</cbc:Name>
+        </cac:TaxScheme>
+      </cac:PartyTaxScheme>
+      <cac:PartyLegalEntity>
+        <cbc:CompanyID>283943</cbc:CompanyID>
+        <cac:CorporateRegistrationScheme>
+          <cbc:Name>ANKARA TICARET ODASI</cbc:Name>
+          <cac:JurisdictionRegionAddress>
+            <cbc:ID>2806632739</cbc:ID>
+            <cbc:CitySubdivisionName>Söğütözü</cbc:CitySubdivisionName>
+            <cbc:CityName>Ankara</cbc:CityName>
+            <cac:Country>
+              <cbc:Name>Türkiye</cbc:Name>
+            </cac:Country>
+          </cac:JurisdictionRegionAddress>
+        </cac:CorporateRegistrationScheme>
+      </cac:PartyLegalEntity>
+      <cac:Contact>
+        <cbc:Telephone>(312) 2929900</cbc:Telephone>
+        <cbc:Telefax>(312) 2929910</cbc:Telefax>
+        <cbc:ElectronicMail>aa@aaa.com.tr</cbc:ElectronicMail>
+      </cac:Contact>
+      <cac:Person>
+        <cbc:FirstName>Mehmet</cbc:FirstName>
+        <cbc:FamilyName>Doğan</cbc:FamilyName>
+        <cbc:Title>Dr</cbc:Title>
+        <cbc:MiddleName>Zülfü</cbc:MiddleName>
+      </cac:Person>
+    </cac:Party>
+  </cac:AccountingSupplierParty>
+  <cac:AccountingCustomerParty>
+    <cac:Party>
+      <cac:PartyIdentification>
+        <cbc:ID schemeID="VKN">1234567890</cbc:ID>
+      </cac:PartyIdentification>
+      <cac:PartyName>
+        <cbc:Name>SGK</cbc:Name>
+      </cac:PartyName>
+      <cac:PostalAddress>
+        <cbc:ID>1234567890</cbc:ID>
+        <cbc:CitySubdivisionName>Kızılay</cbc:CitySubdivisionName>
+        <cbc:CityName>Ankara</cbc:CityName>
+        <cac:Country>
+          <cbc:Name>Türkiye</cbc:Name>
+        </cac:Country>
+      </cac:PostalAddress>
+    </cac:Party>
+  </cac:AccountingCustomerParty>
+  <cac:BuyerCustomerParty>
+    <cac:Party>
+      <cac:PartyIdentification>
+        <cbc:ID schemeID="TCKN">31465484364</cbc:ID>
+      </cac:PartyIdentification>
+      <cac:PartyIdentification>
+        <cbc:ID schemeID="PROTOCOLNO">68083</cbc:ID>
+      </cac:PartyIdentification>
+      <cac:PostalAddress>
+        <cbc:ID>1234567890</cbc:ID>
+        <cbc:CitySubdivisionName>Söğütözü</cbc:CitySubdivisionName>
+        <cbc:CityName>Ankara</cbc:CityName>
+        <cac:Country>
+          <cbc:Name>Türkiye</cbc:Name>
+        </cac:Country>
+      </cac:PostalAddress>
+      <cac:Person>
+        <cbc:FirstName>Berkan</cbc:FirstName>
+        <cbc:FamilyName>Yılmaz</cbc:FamilyName>
+      </cac:Person>
+    </cac:Party>
+  </cac:BuyerCustomerParty>
+  <cac:PaymentMeans>
+    <cbc:PaymentMeansCode>1</cbc:PaymentMeansCode>
+    <cac:PayeeFinancialAccount>
+      <cbc:ID>TR860004600032008000022176</cbc:ID>
+      <cbc:CurrencyCode>TRY</cbc:CurrencyCode>
+      <cac:FinancialInstitutionBranch>
+        <cbc:Name>Başken Kurumsal Şube</cbc:Name>
+        <cac:FinancialInstitution>
+          <cbc:Name>AKBANK</cbc:Name>
+        </cac:FinancialInstitution>
+      </cac:FinancialInstitutionBranch>
+    </cac:PayeeFinancialAccount>
+  </cac:PaymentMeans>
+  <cac:TaxTotal>
+    <cbc:TaxAmount currencyID="TRY">11.28</cbc:TaxAmount>
+    <cac:TaxSubtotal>
+      <cbc:TaxableAmount currencyID="TRY">141.07</cbc:TaxableAmount>
+      <cbc:TaxAmount currencyID="TRY">11.28</cbc:TaxAmount>
+      <cbc:CalculationSequenceNumeric>1.0</cbc:CalculationSequenceNumeric>
+      <cbc:Percent>8.0</cbc:Percent>
+      <cac:TaxCategory>
+        <cac:TaxScheme>
+          <cbc:Name>Katma Değer Vergisi</cbc:Name>
+          <cbc:TaxTypeCode>0015</cbc:TaxTypeCode>
+        </cac:TaxScheme>
+      </cac:TaxCategory>
+    </cac:TaxSubtotal>
+  </cac:TaxTotal>
+  <cac:LegalMonetaryTotal>
+    <cbc:LineExtensionAmount currencyID="TRY">141.07</cbc:LineExtensionAmount>
+    <cbc:TaxExclusiveAmount currencyID="TRY">141.07</cbc:TaxExclusiveAmount>
+    <cbc:TaxInclusiveAmount currencyID="TRY">152.35</cbc:TaxInclusiveAmount>
+    <cbc:PayableAmount currencyID="TRY">152.35</cbc:PayableAmount>
+  </cac:LegalMonetaryTotal>
+  <cac:InvoiceLine>
+    <cbc:ID>1</cbc:ID>
+    <cbc:InvoicedQuantity>1</cbc:InvoicedQuantity>
+    <cbc:LineExtensionAmount currencyID="TRY">110.0</cbc:LineExtensionAmount>
+    <cac:Item>
+      <cbc:Name>Bilgisayarlı tomografiler</cbc:Name>
+    </cac:Item>
+    <cac:Price>
+      <cbc:PriceAmount currencyID="TRY">110.0</cbc:PriceAmount>
+    </cac:Price>
+  </cac:InvoiceLine>
+  <cac:InvoiceLine>
+    <cbc:ID>2</cbc:ID>
+    <cbc:InvoicedQuantity>1</cbc:InvoicedQuantity>
+    <cbc:LineExtensionAmount currencyID="TRY">15.3</cbc:LineExtensionAmount>
+    <cac:Item>
+      <cbc:Name>Biyokimya</cbc:Name>
+    </cac:Item>
+    <cac:Price>
+      <cbc:PriceAmount currencyID="TRY">15.3</cbc:PriceAmount>
+    </cac:Price>
+  </cac:InvoiceLine>
+  <cac:InvoiceLine>
+    <cbc:ID>3</cbc:ID>
+    <cbc:InvoicedQuantity>1</cbc:InvoicedQuantity>
+    <cbc:LineExtensionAmount currencyID="TRY">0.27</cbc:LineExtensionAmount>
+    <cac:Item>
+      <cbc:Name>Malzemeler</cbc:Name>
+    </cac:Item>
+    <cac:Price>
+      <cbc:PriceAmount currencyID="TRY">0.27</cbc:PriceAmount>
+    </cac:Price>
+  </cac:InvoiceLine>
+  <cac:InvoiceLine>
+    <cbc:ID>4</cbc:ID>
+    <cbc:InvoicedQuantity>1</cbc:InvoicedQuantity>
+    <cbc:LineExtensionAmount currencyID="TRY">15.5</cbc:LineExtensionAmount>
+    <cac:Item>
+      <cbc:Name>Muayene hizmetleri</cbc:Name>
+    </cac:Item>
+    <cac:Price>
+      <cbc:PriceAmount currencyID="TRY">15.5</cbc:PriceAmount>
+    </cac:Price>
+  </cac:InvoiceLine>
+</Invoice>

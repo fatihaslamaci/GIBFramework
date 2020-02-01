@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="urn:un:unece:uncefact:data:specification:CoreComponentTypeSchemaModule:2" elementFormDefault="qualified" targetNamespace="urn:un:unece:uncefact:data:specification:CoreComponentTypeSchemaModule:2" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:complexType name="IdentifierType">
+    <xs:simpleContent>
+      <xs:extension base="xs:normalizedString">
+        <xs:attribute name="schemeID" type="xs:normalizedString" />
+        <xs:attribute name="schemeName" type="xs:string" />
+        <xs:attribute name="schemeAgencyID" type="xs:normalizedString" />
+        <xs:attribute name="schemeAgencyName" type="xs:string" />
+        <xs:attribute name="schemeVersionID" type="xs:normalizedString" />
+        <xs:attribute name="schemeDataURI" type="xs:anyURI" />
+        <xs:attribute name="schemeURI" type="xs:anyURI" />
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="CodeType">
+    <xs:simpleContent>
+      <xs:extension base="xs:normalizedString">
+        <xs:attribute name="listID" type="xs:normalizedString" />
+        <xs:attribute name="listAgencyID" type="xs:normalizedString" />
+        <xs:attribute name="listAgencyName" type="xs:string" />
+        <xs:attribute name="listName" type="xs:string" />
+        <xs:attribute name="listVersionID" type="xs:normalizedString" />
+        <xs:attribute name="name" type="xs:string" />
+        <xs:attribute name="languageID" type="xs:language" />
+        <xs:attribute name="listURI" type="xs:anyURI" />
+        <xs:attribute name="listSchemeURI" type="xs:anyURI" />
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="TextType">
+    <xs:simpleContent>
+      <xs:extension base="xs:string">
+        <xs:attribute name="languageID" type="xs:language" />
+        <xs:attribute name="languageLocaleID" type="xs:normalizedString" />
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="NumericType">
+    <xs:simpleContent>
+      <xs:extension base="xs:decimal">
+        <xs:attribute name="format" type="xs:string" />
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="MeasureType">
+    <xs:simpleContent>
+      <xs:extension base="xs:decimal">
+        <xs:attribute name="unitCode" type="xs:normalizedString" />
+        <xs:attribute name="unitCodeListVersionID" type="xs:normalizedString" />
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="BinaryObjectType">
+    <xs:simpleContent>
+      <xs:extension base="xs:base64Binary">
+        <xs:attribute name="format" type="xs:string" />
+        <xs:attribute name="mimeCode" type="xs:normalizedString" />
+        <xs:attribute name="encodingCode" type="xs:normalizedString" />
+        <xs:attribute name="characterSetCode" type="xs:normalizedString" />
+        <xs:attribute name="uri" type="xs:anyURI" />
+        <xs:attribute name="filename" type="xs:string" />
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="AmountType">
+    <xs:simpleContent>
+      <xs:extension base="xs:decimal">
+        <xs:attribute name="currencyID" type="xs:normalizedString" />
+        <xs:attribute name="currencyCodeListVersionID" type="xs:normalizedString" />
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="QuantityType">
+    <xs:simpleContent>
+      <xs:extension base="xs:decimal">
+        <xs:attribute name="unitCode" type="xs:normalizedString" />
+        <xs:attribute name="unitCodeListID" type="xs:normalizedString" />
+        <xs:attribute name="unitCodeListAgencyID" type="xs:normalizedString" />
+        <xs:attribute name="unitCodeListAgencyName" type="xs:string" />
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+</xs:schema>

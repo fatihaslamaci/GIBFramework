@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Invoice xsi:schemaLocation="urn:oasis:names:specification:ubl:schema:xsd:Invoice-2 ../xsdrt/maindoc/UBL-Invoice-2.1.xsd" xmlns="urn:oasis:names:specification:ubl:schema:xsd:Invoice-2" xmlns:n4="http://www.altova.com/samplexml/other-namespace" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2" xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2" xmlns:ext="urn:oasis:names:specification:ubl:schema:xsd:CommonExtensionComponents-2">
+  <ext:UBLExtensions>
+    <ext:UBLExtension>
+      <ext:ExtensionContent></ext:ExtensionContent>
+    </ext:UBLExtension>
+  </ext:UBLExtensions>
+  <cbc:UBLVersionID>2.1</cbc:UBLVersionID>
+  <cbc:CustomizationID>TR1.2</cbc:CustomizationID>
+  <cbc:ProfileID>TICARIFATURA</cbc:ProfileID>
+  <cbc:ID>SRM2012000086985</cbc:ID>
+  <cbc:CopyIndicator>false</cbc:CopyIndicator>
+  <cbc:UUID>F47AC10B-58CC-4372-A567-0E02B2C3D479</cbc:UUID>
+  <cbc:IssueDate>2012-08-04</cbc:IssueDate>
+  <cbc:IssueTime>07:47:00</cbc:IssueTime>
+  <cbc:InvoiceTypeCode>OZELMATRAH</cbc:InvoiceTypeCode>
+  <cbc:Note>Bakiye=0, Bakiye bilgi amaçlıdır.... KDV K.23. maddesine göre özel matrah şekli uygulanmıştır.</cbc:Note>
+  <cbc:Note>KDV Dahil</cbc:Note>
+  <cbc:DocumentCurrencyCode>TRY</cbc:DocumentCurrencyCode>
+  <cbc:LineCountNumeric>1</cbc:LineCountNumeric>
+  <cac:Signature>
+    <cbc:ID schemeID="VKN_TCKN">1288331521</cbc:ID>
+    <cac:SignatoryParty>
+      <cac:PartyIdentification>
+        <cbc:ID schemeID="VKN">1288331521</cbc:ID>
+      </cac:PartyIdentification>
+      <cac:PostalAddress>
+        <cbc:StreetName>Papatya Caddesi Yasemin Sokak</cbc:StreetName>
+        <cbc:BuildingNumber>21</cbc:BuildingNumber>
+        <cbc:CitySubdivisionName>Beşiktaş</cbc:CitySubdivisionName>
+        <cbc:CityName>İstanbul</cbc:CityName>
+        <cbc:PostalZone>34100</cbc:PostalZone>
+        <cac:Country>
+          <cbc:Name>Türkiye</cbc:Name>
+        </cac:Country>
+      </cac:PostalAddress>
+    </cac:SignatoryParty>
+    <cac:DigitalSignatureAttachment>
+      <cac:ExternalReference>
+        <cbc:URI>#Signature</cbc:URI>
+      </cac:ExternalReference>
+    </cac:DigitalSignatureAttachment>
+  </cac:Signature>
+  <cac:AccountingSupplierParty>
+    <cac:Party>
+      <cac:PartyIdentification>
+        <cbc:ID schemeID="VKN">1888888888</cbc:ID>
+      </cac:PartyIdentification>
+      <cac:PartyName>
+        <cbc:Name>..... Tobacco Exports</cbc:Name>
+      </cac:PartyName>
+      <cac:PostalAddress>
+        <cbc:ID/>
+        <cbc:CitySubdivisionName/>
+        <cbc:CityName>Adana</cbc:CityName>
+        <cac:Country>
+          <cbc:Name>Türkiye</cbc:Name>
+        </cac:Country>
+      </cac:PostalAddress>
+      <cac:PartyTaxScheme>
+        <cac:TaxScheme>
+          <cbc:Name>Büyük Mükellefler</cbc:Name>
+        </cac:TaxScheme>
+      </cac:PartyTaxScheme>
+      <cac:PartyLegalEntity>
+        <cac:HeadOfficeParty>
+          <cac:PartyIdentification>
+            <cbc:ID schemeID="VKN">1888888888</cbc:ID>
+          </cac:PartyIdentification>
+          <cac:PartyName>
+            <cbc:Name>..... Tobacco Exports Merkez</cbc:Name>
+          </cac:PartyName>
+          <cac:PostalAddress>
+            <cbc:ID>2806632739</cbc:ID>
+            <cbc:Room>18</cbc:Room>
+            <cbc:StreetName>... Plaza, Meydan Sokak</cbc:StreetName>
+            <cbc:BlockName>B</cbc:BlockName>
+            <cbc:BuildingNumber>3</cbc:BuildingNumber>
+            <cbc:CitySubdivisionName>Maslak</cbc:CitySubdivisionName>
+            <cbc:CityName>İstanbul</cbc:CityName>
+            <cbc:PostalZone>34398</cbc:PostalZone>
+            <cac:Country>
+              <cbc:Name>Türkiye</cbc:Name>
+            </cac:Country>
+          </cac:PostalAddress>
+          <cac:PartyTaxScheme>
+            <cac:TaxScheme>
+              <cbc:Name>Büyük Mükellefler</cbc:Name>
+            </cac:TaxScheme>
+          </cac:PartyTaxScheme>
+          <cac:PartyLegalEntity>
+            <cbc:CompanyID>455695/403277</cbc:CompanyID>
+            <cac:CorporateRegistrationScheme>
+              <cbc:ID>Ticaret Odası</cbc:ID>
+            </cac:CorporateRegistrationScheme>
+          </cac:PartyLegalEntity>
+          <cac:Contact>
+            <cbc:Telephone>(212) 3678000</cbc:Telephone>
+          </cac:Contact>
+        </cac:HeadOfficeParty>
+      </cac:PartyLegalEntity>
+    </cac:Party>
+  </cac:AccountingSupplierParty>
+  <cac:AccountingCustomerParty>
+    <cac:Party>
+      <cac:PartyIdentification>
+        <cbc:ID schemeID="TCKN">39586528950</cbc:ID>
+      </cac:PartyIdentification>
+      <cac:PartyName>
+        <cbc:Name>KANNAT Bakkaliyesi</cbc:Name>
+      </cac:PartyName>
+      <cac:PostalAddress>
+        <cbc:ID>2806632739</cbc:ID>
+        <cbc:StreetName>34 Sok.</cbc:StreetName>
+        <cbc:BuildingNumber>12</cbc:BuildingNumber>
+        <cbc:CitySubdivisionName>Seyhan</cbc:CitySubdivisionName>
+        <cbc:CityName>Adana</cbc:CityName>
+        <cbc:District>Ziyapaşa Mah.</cbc:District>
+        <cac:Country>
+          <cbc:Name>Türkiye</cbc:Name>
+        </cac:Country>
+      </cac:PostalAddress>
+      <cac:PartyTaxScheme>
+        <cac:TaxScheme>
+          <cbc:Name>Ziyapaşa</cbc:Name>
+        </cac:TaxScheme>
+      </cac:PartyTaxScheme>
+      <cac:PartyLegalEntity>
+        <cbc:CompanyID>01010989P</cbc:CompanyID>
+        <cac:CorporateRegistrationScheme>
+          <cbc:ID>TAPDK</cbc:ID>
+        </cac:CorporateRegistrationScheme>
+      </cac:PartyLegalEntity>
+      <cac:Contact>
+        <cbc:Telephone>(322) 4573244</cbc:Telephone>
+      </cac:Contact>
+      <cac:Person>
+        <cbc:FirstName>Hamza</cbc:FirstName>
+        <cbc:FamilyName>Pekin</cbc:FamilyName>
+      </cac:Person>
+    </cac:Party>
+  </cac:AccountingCustomerParty>
+  <cac:TaxTotal>
+    <cbc:TaxAmount currencyID="TRY">4.01</cbc:TaxAmount>
+    <cac:TaxSubtotal>
+      <cbc:TaxableAmount currencyID="TRY">22.28</cbc:TaxableAmount>
+      <cbc:TaxAmount currencyID="TRY">4.01</cbc:TaxAmount>
+      <cbc:Percent>18</cbc:Percent>
+      <cac:TaxCategory>
+        <cbc:TaxExemptionReasonCode>806</cbc:TaxExemptionReasonCode>
+        <cbc:TaxExemptionReason>Tütün Mamülleri ve Bazı Alkollü İçkiler</cbc:TaxExemptionReason>
+        <cac:TaxScheme>
+          <cbc:Name>KDV</cbc:Name>
+          <cbc:TaxTypeCode>0015</cbc:TaxTypeCode>
+        </cac:TaxScheme>
+      </cac:TaxCategory>
+    </cac:TaxSubtotal>
+  </cac:TaxTotal>
+  <cac:LegalMonetaryTotal>
+    <cbc:LineExtensionAmount currencyID="TRY">24.94</cbc:LineExtensionAmount>
+    <cbc:TaxExclusiveAmount currencyID="TRY">24.94</cbc:TaxExclusiveAmount>
+    <cbc:TaxInclusiveAmount currencyID="TRY">24.94</cbc:TaxInclusiveAmount>
+    <cbc:PayableAmount currencyID="TRY">24.94</cbc:PayableAmount>
+  </cac:LegalMonetaryTotal>
+  <cac:InvoiceLine>
+    <cbc:ID>1</cbc:ID>
+    <cbc:InvoicedQuantity>0.5</cbc:InvoicedQuantity>
+    <cbc:LineExtensionAmount currencyID="TRY">24.94</cbc:LineExtensionAmount>
+    <cac:Item>
+      <cbc:Name>Tekel 2000 uzun mavi kutu</cbc:Name>
+    </cac:Item>
+    <cac:Price>
+      <cbc:PriceAmount currencyID="TRY">49.87</cbc:PriceAmount>
+    </cac:Price>
+  </cac:InvoiceLine>
+</Invoice>
