@@ -14,11 +14,7 @@ namespace GIBInterface
         Dictionary<string, string> Settings { get; set; }
 
     }
-
-    public interface IEFatura
-    {
-
-    }
+    
     public interface IEArsiv
     {
 

@@ -42,6 +42,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="IEFatura.cs" />
     <Compile Include="IGIBData.cs" />
     <Compile Include="EFaturaPaketi\UserListExtended.cs" />
     <Compile Include="EFaturaPaketi\UserList.cs" />

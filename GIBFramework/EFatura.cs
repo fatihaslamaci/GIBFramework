@@ -66,6 +66,27 @@ namespace GIBFramework
             return Data.SQLiteUserFindByUnvan(Unvan);
         }
 
+        public SendResult SendInvoice(SendParameters SendParameters)
+        {
+            SendResult r = new SendResult();
+
+            if (Provider is ILogin)
+            {
+                // TODO Login işlemi gerekiyorsa yapılacak
+            }
+
+            // TODO : Gerekli validasyon işlemleri yapılacak
+            if (true == true)
+            {
+                r = (Provider as IEFatura).SendInvoice(SendParameters);
+            }
+            return r;
+
+
+
+        }
+
+
         private void EgerBugunMukellefListesiOkunmadiIseOku()
         {
             if (Data.BugunMukelefSorgulandi() == false)
@@ -79,6 +100,10 @@ namespace GIBFramework
                 Data.GIBUserListSave(users);
             }
         }
+
+
+
+
 
         public string DefaultSettingsJson()
         {

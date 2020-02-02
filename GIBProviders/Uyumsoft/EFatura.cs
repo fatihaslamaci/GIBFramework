@@ -1,5 +1,6 @@
 ﻿using GIBInterface;
 using GIBInterface.EFaturaPaketi;
+using GIBProviders.ServiceUyumsoft;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -8,6 +9,7 @@ using System.Linq;
 using System.ServiceModel;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Serialization;
 using Tools;
 
 namespace GIBProviders.Uyumsoft
@@ -84,6 +86,38 @@ namespace GIBProviders.Uyumsoft
             }
             return r;
         }
+
+        public SendResult SendInvoice(SendParameters SendParameters)
+        {
+            GIBProviders.ServiceUyumsoft.InvoiceInfo[] InvoiceInfo = new GIBProviders.ServiceUyumsoft.InvoiceInfo[0];
+            var xml = SendParameters.InvoicesInfo[0].Invoices.CreateXml();
+            InvoiceInfo[0].Invoice = UyumsoftInvoiceDeserialize(xml);
+            var response = service.SendInvoice(InvoiceInfo);
+            if (response.IsSucceded)
+            {
+                var a = string.Format("Fatura Gönderildi || GUID:{0} || Number:{1} ", response.Value[0].Id.ToString(), response.Value[0].Number.ToString());
+            }
+            else
+            {
+               //TODO
+            }
+
+            return null;
+        }
+
+        public static GIBProviders.ServiceUyumsoft.InvoiceType UyumsoftInvoiceDeserialize(string xml)
+        {
+            //Bu replace işlemi yapmayınca deserialize olmuyor
+            //xml = xml.Replace("<ext:ExtensionContent/>", "<ext:ExtensionContent></ext:ExtensionContent>");
+
+            XmlSerializer serialize = new XmlSerializer(typeof(GIBProviders.ServiceUyumsoft.InvoiceType));
+            using (var stream = new MemoryStream(Encoding.UTF8.GetBytes(xml)))
+            {
+                stream.Seek(0, SeekOrigin.Begin);
+                return serialize.Deserialize(stream) as GIBProviders.ServiceUyumsoft.InvoiceType;
+            }
+        }
+
 
     }
 }

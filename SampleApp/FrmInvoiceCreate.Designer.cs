@@ -35,13 +35,15 @@
             this.exportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.cbXsltFileName = new System.Windows.Forms.ComboBox();
+            this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.cbFileName = new System.Windows.Forms.ComboBox();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.tbXml = new System.Windows.Forms.TextBox();
             this.webBrowser1 = new System.Windows.Forms.WebBrowser();
-            this.label2 = new System.Windows.Forms.Label();
-            this.cbXsltFileName = new System.Windows.Forms.ComboBox();
+            this.btnGonder = new System.Windows.Forms.Button();
+            this.panel1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
@@ -52,6 +54,7 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.btnGonder);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panel1.Location = new System.Drawing.Point(0, 495);
             this.panel1.Name = "panel1";
@@ -104,6 +107,24 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(950, 49);
             this.panel2.TabIndex = 2;
+            // 
+            // cbXsltFileName
+            // 
+            this.cbXsltFileName.FormattingEnabled = true;
+            this.cbXsltFileName.Location = new System.Drawing.Point(226, 22);
+            this.cbXsltFileName.Name = "cbXsltFileName";
+            this.cbXsltFileName.Size = new System.Drawing.Size(208, 21);
+            this.cbXsltFileName.TabIndex = 3;
+            this.cbXsltFileName.SelectedIndexChanged += new System.EventHandler(this.cbXsltFileName_SelectedIndexChanged);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(223, 6);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(211, 13);
+            this.label2.TabIndex = 2;
+            this.label2.Text = "XSLT dosyası (Gömülü xslt yok ise kullanılır)";
             // 
             // label1
             // 
@@ -162,23 +183,15 @@
             this.webBrowser1.Size = new System.Drawing.Size(473, 422);
             this.webBrowser1.TabIndex = 0;
             // 
-            // label2
+            // btnGonder
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(223, 6);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(211, 13);
-            this.label2.TabIndex = 2;
-            this.label2.Text = "XSLT dosyası (Gömülü xslt yok ise kullanılır)";
-            // 
-            // cbXsltFileName
-            // 
-            this.cbXsltFileName.FormattingEnabled = true;
-            this.cbXsltFileName.Location = new System.Drawing.Point(226, 22);
-            this.cbXsltFileName.Name = "cbXsltFileName";
-            this.cbXsltFileName.Size = new System.Drawing.Size(208, 21);
-            this.cbXsltFileName.TabIndex = 3;
-            this.cbXsltFileName.SelectedIndexChanged += new System.EventHandler(this.cbXsltFileName_SelectedIndexChanged);
+            this.btnGonder.Location = new System.Drawing.Point(15, 19);
+            this.btnGonder.Name = "btnGonder";
+            this.btnGonder.Size = new System.Drawing.Size(127, 41);
+            this.btnGonder.TabIndex = 0;
+            this.btnGonder.Text = "Gönder";
+            this.btnGonder.UseVisualStyleBackColor = true;
+            this.btnGonder.Click += new System.EventHandler(this.btnGonder_Click);
             // 
             // FrmInvoiceCreate
             // 
@@ -194,6 +207,7 @@
             this.Text = "FrmInvoiceCreate";
             this.Load += new System.EventHandler(this.FrmInvoiceCreate_Load);
             this.Shown += new System.EventHandler(this.FrmInvoiceCreate_Shown);
+            this.panel1.ResumeLayout(false);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.panel2.ResumeLayout(false);
@@ -224,5 +238,6 @@
         private System.Windows.Forms.WebBrowser webBrowser1;
         private System.Windows.Forms.ComboBox cbXsltFileName;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Button btnGonder;
     }
 }

@@ -187,6 +187,9 @@ namespace SampleApp
             return results.ToString();
         }
 
-       
+        private void btnGonder_Click(object sender, EventArgs e)
+        {
+            
+        }
     }
 }

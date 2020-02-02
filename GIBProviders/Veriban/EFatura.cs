@@ -99,5 +99,10 @@ namespace GIBProviders.Veriban
         {
             SessionID = Token;
         }
+
+        public SendResult SendInvoice(SendParameters SendParameters)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
