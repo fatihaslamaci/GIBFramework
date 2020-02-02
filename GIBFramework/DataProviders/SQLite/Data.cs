@@ -29,8 +29,8 @@ Delete From GIB_UserList;
 Delete From GIB_Alias; 
 Delete From GIB_SorguZamani; 
 Insert Into GIB_SorguZamani(updateTime) Values(@updateTime);
-";                    
-                           
+";
+
                         cmd.CommandType = CommandType.Text;
                         cmd.Parameters.Clear();
                         cmd.Parameters.Add(new SQLiteParameter("@updateTime", DateTime.Now.Date));
@@ -46,7 +46,7 @@ Insert Into GIB_SorguZamani(updateTime) Values(@updateTime);
                             cmd.Parameters.Add(new SQLiteParameter("@type", user.Type));
                             cmd.Parameters.Add(new SQLiteParameter("@firstCreationTime", user.FirstCreationTime));
                             cmd.Parameters.Add(new SQLiteParameter("@accountType", user.AccountType));
-                            
+
                             cmd.ExecuteNonQuery();
 
                             foreach (var document in user.Documents)
@@ -84,54 +84,60 @@ Insert Into GIB_SorguZamani(updateTime) Values(@updateTime);
         {
             User r = new User();
 
-            var con = NewSQLiteConnection();
-            con.Open();
-            var cmd = new SQLiteCommand(con);
-
-            cmd.CommandText = "Select * from GIB_UserList where identifier=@identifier";
-            cmd.CommandType = CommandType.Text;
-            cmd.Parameters.Add(new SQLiteParameter("@identifier", VergiNo));
-            var reader = cmd.ExecuteReader();
-
-            while (reader.Read())
+            using (SQLiteConnection con = NewSQLiteConnection())
             {
-                r.Identifier = reader["identifier"].ToString();
-                r.Title = reader["title"].ToString();
-                r.Type = (UsrType)reader["type"].AsIntNull();
-                r.FirstCreationTime = reader["firstCreationTime"].AsDateTime().ToString("yyy-MM-ddThh.mm.ss");
-                r.AccountType = (AccType)reader["AccountType"].AsIntNull();
-                r.AccountTypeSpecified = true;
+                con.Open();
+                using (SQLiteCommand cmd = new SQLiteCommand(con))
+                {
 
+                    cmd.CommandText = "Select * from GIB_UserList where identifier=@identifier";
+                    cmd.CommandType = CommandType.Text;
+                    cmd.Parameters.Add(new SQLiteParameter("@identifier", VergiNo));
+                    using (SQLiteDataReader reader = cmd.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            r.Identifier = reader["identifier"].ToString();
+                            r.Title = reader["title"].ToString();
+                            r.Type = (UsrType)reader["type"].AsIntNull();
+                            r.FirstCreationTime = reader["firstCreationTime"].AsDateTime().ToString("yyy-MM-ddThh.mm.ss");
+                            r.AccountType = (AccType)reader["AccountType"].AsIntNull();
+                            r.AccountTypeSpecified = true;
+
+                        }
+                        reader.Close();
+                    }
+
+                    cmd.CommandText = "Select * from GIB_Alias where identifier=@identifier and type=@type ";
+                    cmd.CommandType = CommandType.Text;
+                    cmd.Parameters.Add(new SQLiteParameter("@identifier", VergiNo));
+                    cmd.Parameters.Add(new SQLiteParameter("@type", DocType.Invoice));
+                    using (SQLiteDataReader reader = cmd.ExecuteReader())
+                    {
+
+                        DocumentType doc1 = new DocumentType();
+                        doc1.type = DocType.Invoice;
+                        doc1.typeSpecified = true;
+                        List<AliasType> aliasList = new List<AliasType>();
+
+                        while (reader.Read())
+                        {
+                            var alias = new AliasType();
+                            alias.Name = new string[1];
+                            alias.Name[0] = reader["name"].ToString();
+                            alias.CreationTime = reader["creationTime"].AsDateTime().ToString("yyy-MM-ddThh.mm.ss");
+                            alias.DeletionTime = reader["deletionTime"].AsDateTime().ToString("yyy-MM-ddThh.mm.ss");
+                            aliasList.Add(alias);
+                        }
+                        doc1.Alias = aliasList.ToArray();
+                        r.Documents = new DocumentType[1];
+                        r.Documents[0] = doc1;
+                        reader.Close();
+
+                    }
+                }
+                con.Close();
             }
-            reader.Close();
-
-            
-            cmd.CommandText = "Select * from GIB_Alias where identifier=@identifier and type=@type ";
-            cmd.CommandType = CommandType.Text;
-            cmd.Parameters.Add(new SQLiteParameter("@identifier", VergiNo));
-            cmd.Parameters.Add(new SQLiteParameter("@type", DocType.Invoice));
-            reader = cmd.ExecuteReader();
-
-            DocumentType doc1 = new DocumentType();
-            doc1.type = DocType.Invoice;
-            doc1.typeSpecified = true;
-            List<AliasType> aliasList = new List<AliasType>();
-            
-            while (reader.Read())
-            {
-                var alias = new AliasType();
-                alias.Name = new string[1];
-                alias.Name[0]= reader["name"].ToString();
-                alias.CreationTime= reader["creationTime"].AsDateTime().ToString("yyy-MM-ddThh.mm.ss");
-                alias.DeletionTime= reader["deletionTime"].AsDateTime().ToString("yyy-MM-ddThh.mm.ss");
-                aliasList.Add(alias);
-            }
-            doc1.Alias = aliasList.ToArray();
-            r.Documents = new DocumentType[1];
-            r.Documents[0] = doc1;
-            reader.Close();
-
-            con.Close();
 
             return r;
         }
@@ -139,11 +145,13 @@ Insert Into GIB_SorguZamani(updateTime) Values(@updateTime);
         public List<User> SQLiteUserFindByUnvan(string Unvan)
         {
             List<User> r = new List<User>();
-            var con = NewSQLiteConnection();
-            con.Open();
-            var cmd = new SQLiteCommand(con);
+            using (SQLiteConnection con = NewSQLiteConnection())
+            {
+                con.Open();
+                using (SQLiteCommand cmd = new SQLiteCommand(con))
+                {
 
-            cmd.CommandText = @"
+                    cmd.CommandText = @"
 select
    GIB_UserList.identifier userIdentifier
   ,GIB_UserList.title userTitle
@@ -161,33 +169,37 @@ from GIB_UserList left join GIB_Alias On GIB_UserList.identifier = GIB_Alias.ide
 where GIB_UserList.title LIKE @title
 ";
 
-            cmd.CommandType = CommandType.Text;
-            cmd.Parameters.Add(new SQLiteParameter("@title", Unvan+"%"));
-            var reader = cmd.ExecuteReader();
+                    cmd.CommandType = CommandType.Text;
+                    cmd.Parameters.Add(new SQLiteParameter("@title", Unvan + "%"));
+                    using (SQLiteDataReader reader = cmd.ExecuteReader())
+                    {
 
-            string Identifier = "";
-            while (reader.Read())
-            {
-                if (Identifier != reader["userIdentifier"].ToString())
-                {
-                    Identifier = reader["userIdentifier"].ToString();
-                    User user = new User();
-                    user.Identifier = reader["userIdentifier"].ToString();
-                    user.Title = reader["userTitle"].ToString();
-                    user.Type = (UsrType)reader["userType"].AsIntNull();
-                    user.FirstCreationTime = reader["userFirstCreationTime"].AsDateTime().ToString("yyy-MM-ddThh.mm.ss");
-                    user.AccountType = (AccType)reader["userAccountType"].AsIntNull();
-                    user.AccountTypeSpecified = true;
-                    r.Add(user);
-                }
-                else
-                {
-                    //TODO : Aliasların eklenmesi yapılacak.
-                }
+                        string Identifier = "";
+                        while (reader.Read())
+                        {
+                            if (Identifier != reader["userIdentifier"].ToString())
+                            {
+                                Identifier = reader["userIdentifier"].ToString();
+                                User user = new User();
+                                user.Identifier = reader["userIdentifier"].ToString();
+                                user.Title = reader["userTitle"].ToString();
+                                user.Type = (UsrType)reader["userType"].AsIntNull();
+                                user.FirstCreationTime = reader["userFirstCreationTime"].AsDateTime().ToString("yyy-MM-ddThh.mm.ss");
+                                user.AccountType = (AccType)reader["userAccountType"].AsIntNull();
+                                user.AccountTypeSpecified = true;
+                                r.Add(user);
+                            }
+                            else
+                            {
+                                //TODO : Aliasların eklenmesi yapılacak.
+                            }
 
+                        }
+                        reader.Close();
+                    }
+                }
+                con.Close();
             }
-            reader.Close();
-            con.Close();
 
             return r;
 
@@ -198,25 +210,29 @@ where GIB_UserList.title LIKE @title
         {
             var r = false;
 
-            var con = NewSQLiteConnection();
-            con.Open();
-            var cmd = new SQLiteCommand(con);
-
-            cmd.CommandText = "Select * from GIB_SorguZamani where updateTime=@updateTime Limit 1";
-            cmd.CommandType = CommandType.Text;
-            cmd.Parameters.Add(new SQLiteParameter("@updateTime", DateTime.Now.Date));
-            var reader = cmd.ExecuteReader();
-
-            while (reader.Read())
+            using (SQLiteConnection con = NewSQLiteConnection())
             {
-                r = true;
-            }
-            reader.Close();
-            con.Close();
+                con.Open();
+                using (SQLiteCommand cmd = new SQLiteCommand(con))
+                {
 
+                    cmd.CommandText = "Select * from GIB_SorguZamani where updateTime=@updateTime Limit 1";
+                    cmd.CommandType = CommandType.Text;
+                    cmd.Parameters.Add(new SQLiteParameter("@updateTime", DateTime.Now.Date));
+                    using (SQLiteDataReader reader = cmd.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            r = true;
+                        }
+                        reader.Close();
+                    }
+                }
+                con.Close();
+            }
             return r;
         }
 
-       
+
     }
 }
