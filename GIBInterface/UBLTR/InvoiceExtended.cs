@@ -50,7 +50,6 @@ namespace GIBInterface.UBLTR
         }
         public String CreateXml()
         {
-
             XmlSerializer serializer = new XmlSerializer(typeof(InvoiceType));
             using (MemoryStream mstr = new MemoryStream())
             {
@@ -58,7 +57,5 @@ namespace GIBInterface.UBLTR
                 return Encoding.UTF8.GetString(mstr.ToArray());
             }
         }
-
     }
-
 }

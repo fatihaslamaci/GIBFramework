@@ -89,8 +89,9 @@ namespace GIBProviders.Uyumsoft
 
         public SendResult SendInvoice(SendParameters SendParameters)
         {
-            GIBProviders.ServiceUyumsoft.InvoiceInfo[] InvoiceInfo = new GIBProviders.ServiceUyumsoft.InvoiceInfo[0];
+            GIBProviders.ServiceUyumsoft.InvoiceInfo[] InvoiceInfo = new GIBProviders.ServiceUyumsoft.InvoiceInfo[1];
             var xml = SendParameters.InvoicesInfo[0].Invoices.CreateXml();
+            InvoiceInfo[0] = new ServiceUyumsoft.InvoiceInfo();
             InvoiceInfo[0].Invoice = UyumsoftInvoiceDeserialize(xml);
             var response = service.SendInvoice(InvoiceInfo);
             if (response.IsSucceded)
@@ -108,8 +109,30 @@ namespace GIBProviders.Uyumsoft
         public static GIBProviders.ServiceUyumsoft.InvoiceType UyumsoftInvoiceDeserialize(string xml)
         {
             //Bu replace işlemi yapmayınca deserialize olmuyor
-            //xml = xml.Replace("<ext:ExtensionContent/>", "<ext:ExtensionContent></ext:ExtensionContent>");
+            xml = xml.Replace("<ext:ExtensionContent/>", "<ext:ExtensionContent></ext:ExtensionContent>");
 
+            xml = xml.Replace("<Invoice ", "<InvoiceType ");
+            xml = xml.Replace("</Invoice>", "</InvoiceType>");
+
+            var lines = xml.Split(new string[] { System.Environment.NewLine }, StringSplitOptions.None);
+            StringBuilder sb = new StringBuilder();
+            {
+                string s = "<InvoiceType xmlns:ubltr=\"urn:oasis:names:specification:ubl:schema:xsd:TurkishCustomizationExtensionComponents\" xmlns:cctc=\"urn:un:unece:uncefact:documentation:2\" xmlns:cbc=\"urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2\" xmlns:cac=\"urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2\" xmlns:qdt=\"urn:oasis:names:specification:ubl:schema:xsd:QualifiedDatatypes-2\" xmlns:ds=\"http://www.w3.org/2000/09/xmldsig#\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:ext=\"urn:oasis:names:specification:ubl:schema:xsd:CommonExtensionComponents-2\" xmlns:xades=\"http://uri.etsi.org/01903/v1.3.2#\" xmlns:udt=\"urn:un:unece:uncefact:data:specification:UnqualifiedDataTypesSchemaModule:2\">";
+                int i = 0;
+                foreach (var item in lines)
+                {
+                    i++;
+                    if (i == 2)
+                    {
+                        sb.Append(s);
+                    }
+                    else if (i > 7)
+                    {
+                        sb.Append(item);
+                    }
+                }
+                xml = sb.ToString();
+            }
             XmlSerializer serialize = new XmlSerializer(typeof(GIBProviders.ServiceUyumsoft.InvoiceType));
             using (var stream = new MemoryStream(Encoding.UTF8.GetBytes(xml)))
             {

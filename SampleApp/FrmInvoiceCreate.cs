@@ -189,7 +189,27 @@ namespace SampleApp
 
         private void btnGonder_Click(object sender, EventArgs e)
         {
-            
+            GIBInterface.SendParameters prm = new GIBInterface.SendParameters();
+            prm.InvoicesInfo = new List<GIBInterface.InvoiceInfo>();
+
+            var User = EFatura.MukellefBilgisi("1111111104");
+
+
+            GIBInterface.InvoiceInfo item = new GIBInterface.InvoiceInfo();
+            item.Customer = new GIBInterface.CustomerInfo();
+            item.Customer.Alias = User.Documents[0].Alias[0].Name[0];
+            item.Customer.VknTckn = invoice.AccountingCustomerParty.Party.PartyIdentification[0].ID.Value;
+            item.Customer.Title = invoice.AccountingCustomerParty.Party.PartyName.Name.Value;
+
+
+            item.Invoices = invoice;
+
+            prm.InvoicesInfo.Add(item);
+
+
+            EFatura.SendInvoice(prm);
+
+
         }
     }
 }
