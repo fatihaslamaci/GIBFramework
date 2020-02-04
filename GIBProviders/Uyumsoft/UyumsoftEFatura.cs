@@ -89,28 +89,47 @@ namespace GIBProviders.Uyumsoft
 
         public SendResult SendInvoice(SendParameters SendParameters)
         {
-            GIBProviders.ServiceUyumsoft.InvoiceInfo[] InvoiceInfo = new GIBProviders.ServiceUyumsoft.InvoiceInfo[1];
-            var xml = SendParameters.InvoicesInfo[0].Invoices.CreateXml();
-            InvoiceInfo[0] = new ServiceUyumsoft.InvoiceInfo();
-            InvoiceInfo[0].Invoice = UyumsoftInvoiceDeserialize(xml);
+            SendResult r = new SendResult();
+            GIBProviders.ServiceUyumsoft.InvoiceInfo[] InvoiceInfo = new GIBProviders.ServiceUyumsoft.InvoiceInfo[SendParameters.InvoicesInfo.Count];
+
+            int i = 0;
+            foreach (var item in SendParameters.InvoicesInfo)
+            {
+                var xml = item.Invoices.CreateXml();
+                InvoiceInfo[i] = new ServiceUyumsoft.InvoiceInfo();
+                InvoiceInfo[i].Invoice = UyumsoftInvoiceDeserialize(xml);
+                InvoiceInfo[i].LocalDocumentId = item.LocalDocumentId;
+                InvoiceInfo[i].TargetCustomer = new ServiceUyumsoft.CustomerInfo()
+                {
+                    VknTckn = item.Customer.VknTckn,
+                    Alias = item.Customer.Alias,
+                    Title = item.Customer.Title
+                };
+
+
+
+                i++;
+            }
             var response = service.SendInvoice(InvoiceInfo);
+            r.Message = response.Message;
+            r.IsSucceded = response.IsSucceded;
             if (response.IsSucceded)
             {
-                var a = string.Format("Fatura Gönderildi || GUID:{0} || Number:{1} ", response.Value[0].Id.ToString(), response.Value[0].Number.ToString());
-            }
-            else
-            {
-               //TODO
+                r.ResultInvoices = new List<ResultInvoice>();
+                foreach (var item in response.Value)
+                {
+                    ResultInvoice ri = new ResultInvoice();
+                    ri.FaturaNo = item.Number;
+                    ri.ETN = item.Id;
+                    r.ResultInvoices.Add(ri);
+                }
             }
 
-            return null;
+            return r;
         }
 
         public static GIBProviders.ServiceUyumsoft.InvoiceType UyumsoftInvoiceDeserialize(string xml)
         {
-            //Bu replace işlemi yapmayınca deserialize olmuyor
-            xml = xml.Replace("<ext:ExtensionContent/>", "<ext:ExtensionContent></ext:ExtensionContent>");
-
             xml = xml.Replace("<Invoice ", "<InvoiceType ");
             xml = xml.Replace("</Invoice>", "</InvoiceType>");
 

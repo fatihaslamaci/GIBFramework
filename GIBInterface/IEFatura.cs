@@ -33,12 +33,22 @@ namespace GIBInterface
 
     public class SendParameters
     {
-        
+
         public List<InvoiceInfo> InvoicesInfo { get; set; }
-}
+    }
 
     public class SendResult
     {
-
+        public bool IsSucceded { get; set; }
+        public string Message { get; set; }
+        public List<ResultInvoice> ResultInvoices { get; set; }
     }
+
+    public class ResultInvoice
+    {
+        public string ETN { get; set; }
+        public string FaturaNo { get; set; }
+    }
+
+
 }
