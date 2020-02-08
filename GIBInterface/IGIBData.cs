@@ -13,7 +13,8 @@ namespace GIBInterface
         bool BugunMukelefSorgulandi();
         User SQLiteUserFind(string VergiNo);
         List<User> SQLiteUserFindByUnvan(string Unvan);
-
+        SendParameters SendInvoiceInsert(SendParameters sendParameters);
+        void SendInvoiceUpdate(SendParameters sendParameters, SendResult r);
     }
 
 }

@@ -233,6 +233,75 @@ where GIB_UserList.title LIKE @title
             return r;
         }
 
+        public SendParameters SendInvoiceInsert(SendParameters sendParameters)
+        {
+            using (SQLiteConnection con = NewSQLiteConnection())
+            {
+                con.Open();
+                using (SQLiteTransaction tr = con.BeginTransaction())
+                {
+                    using (SQLiteCommand cmd = con.CreateCommand())
+                    {
+                        cmd.Transaction = tr;
+                        cmd.CommandText = "Insert Into GIB_Invoices(ETN,invoiceXML) Values (@ETN, @invoiceXML); SELECT last_insert_rowid()";
+                        cmd.CommandType = CommandType.Text;
+                        foreach (var item in sendParameters.InvoicesInfo)
+                        {
+                            cmd.Parameters.Clear();
+                            cmd.Parameters.Add(new SQLiteParameter("@ETN", item.Invoices.UUID.Value));
+                            cmd.Parameters.Add(new SQLiteParameter("@invoiceXML", item.Invoices.CreateXml()));
+                            item.RecordId = Convert.ToInt64(cmd.ExecuteScalar());
+                        }
+                    }
+                    tr.Commit();
+                }
+                con.Close();
+            }
 
+            return sendParameters;
+
+        }
+
+        public void SendInvoiceUpdate(SendParameters sendParameters, SendResult r)
+        {
+            using (SQLiteConnection con = NewSQLiteConnection())
+            {
+                con.Open();
+                using (SQLiteTransaction tr = con.BeginTransaction())
+                {
+                    using (SQLiteCommand cmd = con.CreateCommand())
+                    {
+                        if (r.IsSucceded == false)
+                        {
+                            
+                            cmd.Transaction = tr;
+                            cmd.CommandText = @"
+Update GIB_Invoices set 
+ send_isSucceded=@send_isSucceded 
+,send_Message=@send_Message
+,send_Error=@send_Error
+,send_ErrorDetail=@send_ErrorDetail
+where id=@id";
+                            cmd.CommandType = CommandType.Text;
+                            foreach (var item in sendParameters.InvoicesInfo)
+                            {
+                                cmd.Parameters.Clear();
+                                cmd.Parameters.Add(new SQLiteParameter("@id", item.RecordId));
+                                cmd.Parameters.Add(new SQLiteParameter("@send_isSucceded", r.IsSucceded));
+                                cmd.Parameters.Add(new SQLiteParameter("@send_Message", r.Message));
+                                cmd.Parameters.Add(new SQLiteParameter("@send_Error", r.Error));
+                                cmd.Parameters.Add(new SQLiteParameter("@send_ErrorDetail", r.ErrorDetail));
+
+
+                                cmd.ExecuteNonQuery();
+                            }
+                        }
+
+                    }
+                    tr.Commit();
+                }
+                con.Close();
+            }
+        }
     }
 }

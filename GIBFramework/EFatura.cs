@@ -15,15 +15,16 @@ namespace GIBFramework
     {
         public IGIBData Data { get; }
         public IEFatura Provider { get; }
-        
-        
 
-        public string SettingsJson { 
+
+
+        public string SettingsJson
+        {
             get
             {
                 if (Provider is ISettings)
                 {
-                    return JsonConvert.SerializeObject((Provider as ISettings).Settings,Formatting.Indented);
+                    return JsonConvert.SerializeObject((Provider as ISettings).Settings, Formatting.Indented);
                 }
                 else
                 {
@@ -36,8 +37,8 @@ namespace GIBFramework
                 {
                     (Provider as ISettings).Settings = JsonConvert.DeserializeObject<Dictionary<string, string>>(value);
                 }
-            } 
-        
+            }
+
         }
 
         public EFatura(IEFatura Provider, IGIBData Data)
@@ -69,23 +70,36 @@ namespace GIBFramework
         public SendResult SendInvoice(SendParameters SendParameters)
         {
             SendResult r = new SendResult();
-
-            if (Provider is ILogin)
+            SendParameters = Data.SendInvoiceInsert(SendParameters);
+            try
             {
-                // TODO Login işlemi gerekiyorsa yapılacak
+                if (Provider is ILogin)
+                {
+                    // TODO Login işlemi gerekiyorsa yapılacak
+                }
+
+                // TODO : Gerekli validasyon işlemleri yapılacak
+                if (true == true)
+                {
+                    r = (Provider as IEFatura).SendInvoice(SendParameters);
+                }
             }
-
-            // TODO : Gerekli validasyon işlemleri yapılacak
-            if (true == true)
+            catch (Exception ex)
             {
-                r = (Provider as IEFatura).SendInvoice(SendParameters);
+                r.Error = ex.Message;
+                r.ErrorDetail += (ex.StackTrace + "\n\r");
+                if (ex.InnerException != null)
+                {
+                    r.ErrorDetail += ("\n\r");
+                    r.ErrorDetail += ("InnerException: \n\r");
+                    r.ErrorDetail += (ex.InnerException.Message + "\n\r");
+                    r.ErrorDetail += (ex.InnerException.StackTrace + "\n\r");
+                }
+                Data.SendInvoiceUpdate(SendParameters, r);
             }
             return r;
 
-
-
         }
-
 
         private void EgerBugunMukellefListesiOkunmadiIseOku()
         {

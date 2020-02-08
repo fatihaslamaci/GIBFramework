@@ -7,32 +7,37 @@ using System.Threading.Tasks;
 
 namespace GIBFramework.DataProviders.SQLite
 {
+
+
     public partial class Data
     {
         public string SQLiteFileName { get; set; }
         public Data()
         {
             SQLiteFileName = "TestDB.sqlite3";
-            SQLiteDbInit();
-        }
-        internal void SQLiteDbInit()
-        {
-            if (!System.IO.File.Exists(SQLiteFileName))
-            {
-                SQLiteConnection con;
-                SQLiteConnection.CreateFile(SQLiteFileName);
 
-        string sql = @"CREATE TABLE GIB_UserList(
+            SQLiteTools.Service sqlservice = new SQLiteTools.Service(SQLiteFileName);
+            sqlservice.CreateOrAlterDB(GetSchema());
+
+        }
+        public SQLiteConnection NewSQLiteConnection()
+        {
+            return new SQLiteConnection("Data Source=" + SQLiteFileName + ";Version=3;");
+        }
+        internal string GetSchema()
+        {
+
+            return @"
+CREATE TABLE IF NOT EXISTS GIB_UserList (
                             identifier        TEXT PRIMARY KEY,
                             title             TEXT,
                             type              INTEGER,
                             firstCreationTime DATETIME,
                             accountType       INTEGER
-                        );
+);
 
-                        --CREATE INDEX ix_GIB_UserList_title ON GIB_UserList(title);
                             
-                        CREATE TABLE GIB_Alias(
+CREATE TABLE IF NOT EXISTS GIB_Alias (
                             id                INTEGER PRIMARY KEY,
                             identifier        TEXT,
                             type              INTEGER,
@@ -40,25 +45,29 @@ namespace GIBFramework.DataProviders.SQLite
                             creationTime      DATETIME,     
                             deletionTime      DATETIME,
                             FOREIGN KEY(identifier) REFERENCES GIB_UserList(identifier)
-                        );
+);
 
-                        CREATE TABLE GIB_SorguZamani(
+
+CREATE TABLE IF NOT EXISTS GIB_SorguZamani (
                             updateTime        DATETIME  
-                        );
+);
+
+CREATE TABLE IF NOT EXISTS GIB_Invoices (
+                            id               INTEGER PRIMARY KEY,
+                            ETN              TEXT,
+                            invoiceXML       TEXT,
+                            send_isSucceded  BOOLEAN,
+                            send_Message     TEXT,
+                            send_Error       TEXT,
+                            send_ErrorDetail TEXT
+                            
+);
+
+
 
 ";
-                con = NewSQLiteConnection();
-                con.Open();
-                var cmd = new SQLiteCommand(sql, con);
-                cmd.ExecuteNonQuery();
-                con.Close();
-            }
-        }
-        private SQLiteConnection NewSQLiteConnection()
-        {
-            return new SQLiteConnection("Data Source=" + SQLiteFileName + ";Version=3;");
-        }
 
+        }
 
     }
 }

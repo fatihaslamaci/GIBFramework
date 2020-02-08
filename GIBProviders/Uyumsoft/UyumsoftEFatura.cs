@@ -91,7 +91,7 @@ namespace GIBProviders.Uyumsoft
         {
             SendResult r = new SendResult();
             GIBProviders.ServiceUyumsoft.InvoiceInfo[] InvoiceInfo = new GIBProviders.ServiceUyumsoft.InvoiceInfo[SendParameters.InvoicesInfo.Count];
-
+            
             int i = 0;
             foreach (var item in SendParameters.InvoicesInfo)
             {
@@ -123,6 +123,10 @@ namespace GIBProviders.Uyumsoft
                     ri.ETN = item.Id;
                     r.ResultInvoices.Add(ri);
                 }
+            }
+            else
+            {
+                throw new Exception("hata testi");
             }
 
             return r;
