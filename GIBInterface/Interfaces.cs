@@ -15,6 +15,12 @@ namespace GIBInterface
 
     }
     
+
+    public interface IManipulatedInvoice
+    {
+        GIBInterface.UBLTR.InvoiceType Manipulated(GIBInterface.UBLTR.InvoiceType invoice);
+    }
+
     public interface IEArsiv
     {
 

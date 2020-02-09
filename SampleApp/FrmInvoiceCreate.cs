@@ -40,7 +40,9 @@ namespace SampleApp
                 XML = System.IO.File.ReadAllText(value, UTF8Encoding.UTF8);
                 tbXml.Text = XML;
                 invoice = InvoiceType.Create(XML);
-                ShowInvoice(invoice);
+
+
+                ShowInvoice(EFatura.ManipulatedInvoice(invoice));
             }
             _sampleFileName = value;
         }

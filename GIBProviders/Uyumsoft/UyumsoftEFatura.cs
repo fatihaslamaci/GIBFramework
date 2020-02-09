@@ -14,7 +14,7 @@ using Tools;
 
 namespace GIBProviders.Uyumsoft
 {
-    public class EFatura : IEFatura, IMukellefListesi, ISettings
+    public class EFatura : IEFatura, IMukellefListesi, ISettings, IManipulatedInvoice
     {
         internal ServiceUyumsoft.IntegrationClient _service;
 
@@ -73,6 +73,9 @@ namespace GIBProviders.Uyumsoft
                 {"Password","Şifreyi Buraya Giriniz"},
                 {"Uri","https://efatura-test.uyumsoft.com.tr/services/Integration" },
 
+                {"VergiNumarasi","Buraya Gönderimi yapan firmanın Vergi numarasını yazınız"},
+
+
             };
         }
 
@@ -126,7 +129,7 @@ namespace GIBProviders.Uyumsoft
             }
             else
             {
-                throw new Exception("hata testi");
+                //throw new Exception("hata testi");
             }
 
             return r;
@@ -164,6 +167,13 @@ namespace GIBProviders.Uyumsoft
             }
         }
 
-
+        public GIBInterface.UBLTR.InvoiceType Manipulated(GIBInterface.UBLTR.InvoiceType invoice)
+        {
+            
+            string xml = invoice.CreateXml();
+            GIBInterface.UBLTR.InvoiceType r = GIBInterface.UBLTR.InvoiceType.Create(xml);
+            r.AccountingSupplierParty.Party.PartyIdentification[0].ID.Value= Settings["VergiNumarasi"];
+            return r;
+        }
     }
 }

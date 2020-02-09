@@ -67,9 +67,32 @@ namespace GIBFramework
             return Data.SQLiteUserFindByUnvan(Unvan);
         }
 
+
+        public GIBInterface.UBLTR.InvoiceType ManipulatedInvoice(GIBInterface.UBLTR.InvoiceType invoice)
+        {
+            if (Provider is IManipulatedInvoice)
+            {
+                return (Provider as IManipulatedInvoice).Manipulated(invoice);
+            }
+            else
+            {
+                return invoice;
+            }
+        }
+
         public SendResult SendInvoice(SendParameters SendParameters)
         {
             SendResult r = new SendResult();
+
+            if (Provider is IManipulatedInvoice)
+            {
+                foreach (var item in SendParameters.InvoicesInfo)
+                {
+                    item.Invoices = (Provider as IManipulatedInvoice).Manipulated(item.Invoices);
+                }
+            }
+
+
             SendParameters = Data.SendInvoiceInsert(SendParameters);
             try
             {
@@ -82,6 +105,7 @@ namespace GIBFramework
                 if (true == true)
                 {
                     r = (Provider as IEFatura).SendInvoice(SendParameters);
+                    Data.SendInvoiceUpdate(SendParameters, r);
                 }
             }
             catch (Exception ex)
