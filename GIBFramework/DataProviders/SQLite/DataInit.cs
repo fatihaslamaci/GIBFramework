@@ -59,7 +59,9 @@ CREATE TABLE IF NOT EXISTS GIB_Invoices (
                             send_isSucceded  BOOLEAN,
                             send_Message     TEXT,
                             send_Error       TEXT,
-                            send_ErrorDetail TEXT
+                            send_ErrorDetail TEXT,
+                            send_returnETN        TEXT,
+                            send_returnFaturaNo   TEXT
                             
 );
 

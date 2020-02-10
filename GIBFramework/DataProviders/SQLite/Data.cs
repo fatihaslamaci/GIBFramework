@@ -264,6 +264,18 @@ where GIB_UserList.title LIKE @title
 
         public void SendInvoiceUpdate(SendParameters sendParameters, SendResult r)
         {
+            if (r.IsSucceded == false)
+            {
+                HataYaz(sendParameters, r);
+            }
+            else
+            {
+                BasariYaz(sendParameters, r);
+            }
+        }
+
+        private void HataYaz(SendParameters sendParameters, SendResult r)
+        {
             using (SQLiteConnection con = NewSQLiteConnection())
             {
                 con.Open();
@@ -271,31 +283,73 @@ where GIB_UserList.title LIKE @title
                 {
                     using (SQLiteCommand cmd = con.CreateCommand())
                     {
-                        if (r.IsSucceded == false)
-                        {
-                            
-                            cmd.Transaction = tr;
-                            cmd.CommandText = @"
+
+
+                        cmd.Transaction = tr;
+                        cmd.CommandText = @"
 Update GIB_Invoices set 
  send_isSucceded=@send_isSucceded 
 ,send_Message=@send_Message
 ,send_Error=@send_Error
 ,send_ErrorDetail=@send_ErrorDetail
 where id=@id";
-                            cmd.CommandType = CommandType.Text;
-                            foreach (var item in sendParameters.InvoicesInfo)
-                            {
-                                cmd.Parameters.Clear();
-                                cmd.Parameters.Add(new SQLiteParameter("@id", item.RecordId));
-                                cmd.Parameters.Add(new SQLiteParameter("@send_isSucceded", r.IsSucceded));
-                                cmd.Parameters.Add(new SQLiteParameter("@send_Message", r.Message));
-                                cmd.Parameters.Add(new SQLiteParameter("@send_Error", r.Error));
-                                cmd.Parameters.Add(new SQLiteParameter("@send_ErrorDetail", r.ErrorDetail));
+                        cmd.CommandType = CommandType.Text;
+                        foreach (var item in sendParameters.InvoicesInfo)
+                        {
+                            cmd.Parameters.Clear();
+                            cmd.Parameters.Add(new SQLiteParameter("@id", item.RecordId));
+                            cmd.Parameters.Add(new SQLiteParameter("@send_isSucceded", r.IsSucceded));
+                            cmd.Parameters.Add(new SQLiteParameter("@send_Message", r.Message));
+                            cmd.Parameters.Add(new SQLiteParameter("@send_Error", r.Error));
+                            cmd.Parameters.Add(new SQLiteParameter("@send_ErrorDetail", r.ErrorDetail));
 
-
-                                cmd.ExecuteNonQuery();
-                            }
+                            cmd.ExecuteNonQuery();
                         }
+
+
+                    }
+                    tr.Commit();
+                }
+                con.Close();
+            }
+        }
+
+        private void BasariYaz(SendParameters sendParameters, SendResult r)
+        {
+            using (SQLiteConnection con = NewSQLiteConnection())
+            {
+                con.Open();
+                using (SQLiteTransaction tr = con.BeginTransaction())
+                {
+                    using (SQLiteCommand cmd = con.CreateCommand())
+                    {
+
+
+                        cmd.Transaction = tr;
+                        cmd.CommandText = @"
+Update GIB_Invoices set 
+ send_isSucceded=@send_isSucceded 
+,send_Message=@send_Message
+,send_returnETN        = @send_returnETN
+,send_returnFaturaNo   = @send_returnFaturaNo
+
+where id=@id";
+                        cmd.CommandType = CommandType.Text;
+                        foreach (var item in r.ResultInvoices)
+                        {
+                            var invoice = sendParameters.InvoicesInfo.Find(x => x.LocalDocumentId == item.FaturaNo);
+
+                            cmd.Parameters.Clear();
+                            cmd.Parameters.Add(new SQLiteParameter("@id", invoice.RecordId));
+                            cmd.Parameters.Add(new SQLiteParameter("@send_isSucceded", r.IsSucceded));
+                            cmd.Parameters.Add(new SQLiteParameter("@send_Message", r.Message));
+
+                            cmd.Parameters.Add(new SQLiteParameter("@send_returnETN", item.ETN ));
+                            cmd.Parameters.Add(new SQLiteParameter("@send_returnFaturaNo",item.FaturaNo));
+
+                            cmd.ExecuteNonQuery();
+                        }
+
 
                     }
                     tr.Commit();

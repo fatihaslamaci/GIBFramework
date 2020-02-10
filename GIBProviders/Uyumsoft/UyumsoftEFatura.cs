@@ -102,6 +102,7 @@ namespace GIBProviders.Uyumsoft
                 InvoiceInfo[i] = new ServiceUyumsoft.InvoiceInfo();
                 InvoiceInfo[i].Invoice = UyumsoftInvoiceDeserialize(xml);
                 InvoiceInfo[i].LocalDocumentId = item.LocalDocumentId;
+                InvoiceInfo[i].Scenario = InvoiceScenarioChoosen.eInvoice;
                 InvoiceInfo[i].TargetCustomer = new ServiceUyumsoft.CustomerInfo()
                 {
                     VknTckn = item.Customer.VknTckn,

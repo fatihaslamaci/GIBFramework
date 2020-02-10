@@ -204,6 +204,11 @@ namespace SampleApp
             item.Customer.Title = invoice.AccountingCustomerParty.Party.PartyName.Name.Value;
 
 
+            invoice.UUID.Value = Guid.NewGuid().ToString();
+            invoice.ID.Value = "BFY2020000000001";
+            item.LocalDocumentId = "BFY2020000000001";
+            
+
             item.Invoices = invoice;
 
             prm.InvoicesInfo.Add(item);
