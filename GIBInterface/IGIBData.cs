@@ -15,6 +15,11 @@ namespace GIBInterface
         List<User> SQLiteUserFindByUnvan(string Unvan);
         SendParameters SendInvoiceInsert(SendParameters sendParameters);
         void SendInvoiceUpdate(SendParameters sendParameters, SendResult r);
+
+        List<SendInvoiceData> SendInvoiceList(SendInvoiceListDataFind val);
+
+
+
     }
 
 }

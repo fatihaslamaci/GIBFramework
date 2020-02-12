@@ -77,4 +77,22 @@ namespace GIBInterface
     }
 
 
+
+    public class SendInvoiceListDataFind
+    {
+    }
+
+    public class SendInvoiceData
+    {
+        public int Id { get; set; }
+        public string ETN { get; set; }
+        public string InvoiceXML { get; set; }
+        public bool Send_isSucceded { get; set; }
+        public string Send_Message { get; set; }
+        public string Send_Error { get; set; }
+        public string Send_ErrorDetail { get; set; }
+        public string Send_returnETN { get; set; }
+        public string Send_returnFaturaNo { get; set; }
+    }
+
 }

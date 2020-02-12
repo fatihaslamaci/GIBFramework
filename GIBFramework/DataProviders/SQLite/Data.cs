@@ -357,5 +357,60 @@ where id=@id";
                 con.Close();
             }
         }
+
+        public List<SendInvoiceData> SendInvoiceList(SendInvoiceListDataFind val)
+        {
+
+            List<SendInvoiceData> r = new List<SendInvoiceData>();
+            using (SQLiteConnection con = NewSQLiteConnection())
+            {
+                con.Open();
+                using (SQLiteCommand cmd = new SQLiteCommand(con))
+                {
+
+                    cmd.CommandText = @"
+select  
+ id               
+,ETN              
+,invoiceXML       
+,send_isSucceded  
+,send_Message     
+,send_Error       
+,send_ErrorDetail 
+,send_returnETN     
+,send_returnFaturaNo
+from GIB_Invoices where 1=1 ";
+                    cmd.CommandType = CommandType.Text;
+                    cmd.Parameters.Add(new SQLiteParameter("@title", 1));
+
+                    using (SQLiteDataReader reader = cmd.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            SendInvoiceData sendInvoiceData = new SendInvoiceData();
+                                sendInvoiceData.Id                  = (int)reader["id"];
+                                sendInvoiceData.ETN                 = reader["ETN"].ToString();
+                                sendInvoiceData.InvoiceXML          = reader["invoiceXML"].ToString();
+                                sendInvoiceData.Send_isSucceded     = (bool)reader["send_isSucceded"];
+                                sendInvoiceData.Send_Message        = reader["send_Message"].ToString();
+                                sendInvoiceData.Send_Error          = reader["send_Error"].ToString();
+                                sendInvoiceData.Send_ErrorDetail    = reader["send_ErrorDetail"].ToString();
+                                sendInvoiceData.Send_returnETN      = reader["send_returnETN"].ToString();
+                                sendInvoiceData.Send_returnFaturaNo = reader["send_returnFaturaNo"].ToString();
+                            r.Add(sendInvoiceData);
+                        }
+                        reader.Close();
+                    }
+                }
+                con.Close();
+            }
+
+            return r;
+
+
+        }
+
     }
+
+    
 }
