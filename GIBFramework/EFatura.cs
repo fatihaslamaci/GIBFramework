@@ -13,7 +13,7 @@ namespace GIBFramework
 
     public class EFatura
     {
-        public IGIBData Data { get; }
+        private IGIBData Data { get; }
         public IEFatura Provider { get; }
 
 
@@ -80,6 +80,12 @@ namespace GIBFramework
             }
         }
 
+        public List<SendInvoiceData> SendInvoiceList(SendInvoiceListDataFind val)
+        {
+
+            return Data.SendInvoiceList(val,Provider.ProviderId());
+        }
+
         public SendResult SendInvoice(SendParameters SendParameters)
         {
             SendResult r = new SendResult();
@@ -93,7 +99,9 @@ namespace GIBFramework
             }
 
 
-            SendParameters = Data.SendInvoiceInsert(SendParameters);
+            
+
+            SendParameters = Data.SendInvoiceInsert(SendParameters, Provider.ProviderId());
             try
             {
                 if (Provider is ILogin)
@@ -104,7 +112,7 @@ namespace GIBFramework
                 // TODO : Gerekli validasyon işlemleri yapılacak
                 if (true == true)
                 {
-                    r = (Provider as IEFatura).SendInvoice(SendParameters);
+                    r = Provider.SendInvoice(SendParameters);
                     Data.SendInvoiceUpdate(SendParameters, r);
                 }
             }

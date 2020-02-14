@@ -10,6 +10,7 @@ namespace GIBInterface
 
     public interface IEFatura
     {
+        string ProviderId();
         SendResult SendInvoice(SendParameters SendParameters);
     }
 
@@ -57,7 +58,6 @@ namespace GIBInterface
 
     public class SendParameters
     {
-
         public List<InvoiceInfo> InvoicesInfo { get; set; }
     }
 
@@ -93,6 +93,7 @@ namespace GIBInterface
         public string Send_ErrorDetail { get; set; }
         public string Send_returnETN { get; set; }
         public string Send_returnFaturaNo { get; set; }
+        
     }
 
 }

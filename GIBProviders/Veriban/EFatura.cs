@@ -104,5 +104,10 @@ namespace GIBProviders.Veriban
         {
             throw new NotImplementedException();
         }
+
+        public string ProviderId()
+        {
+            return "Veriban";
+        }
     }
 }

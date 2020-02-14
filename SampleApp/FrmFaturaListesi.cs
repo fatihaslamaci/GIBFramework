@@ -39,7 +39,7 @@ namespace SampleApp
         private void FrmFaturaListesi_Shown(object sender, EventArgs e)
         {
             GIBInterface.SendInvoiceListDataFind val = new GIBInterface.SendInvoiceListDataFind();
-            foreach (var item in EFatura.Data.SendInvoiceList(val))
+            foreach (var item in EFatura.SendInvoiceList(val))
             {
                 var row = new DataGridViewRow();
                 row.CreateCells(dataGridView1);

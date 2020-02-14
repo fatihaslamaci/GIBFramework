@@ -176,5 +176,10 @@ namespace GIBProviders.Uyumsoft
             r.AccountingSupplierParty.Party.PartyIdentification[0].ID.Value= Settings["VergiNumarasi"];
             return r;
         }
+
+        public string ProviderId()
+        {
+            return "Uyumsoft";
+        }
     }
 }

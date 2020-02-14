@@ -233,7 +233,7 @@ where GIB_UserList.title LIKE @title
             return r;
         }
 
-        public SendParameters SendInvoiceInsert(SendParameters sendParameters)
+        public SendParameters SendInvoiceInsert(SendParameters sendParameters, string providerId)
         {
             using (SQLiteConnection con = NewSQLiteConnection())
             {
@@ -243,12 +243,14 @@ where GIB_UserList.title LIKE @title
                     using (SQLiteCommand cmd = con.CreateCommand())
                     {
                         cmd.Transaction = tr;
-                        cmd.CommandText = "Insert Into GIB_Invoices(ETN,invoiceXML) Values (@ETN, @invoiceXML); SELECT last_insert_rowid()";
+                        cmd.CommandText = "Insert Into GIB_Invoices(ETN,invoiceXML,providerId) Values (@ETN, @invoiceXML,@providerId); SELECT last_insert_rowid()";
                         cmd.CommandType = CommandType.Text;
                         foreach (var item in sendParameters.InvoicesInfo)
                         {
                             cmd.Parameters.Clear();
                             cmd.Parameters.Add(new SQLiteParameter("@ETN", item.Invoices.UUID.Value));
+                            cmd.Parameters.Add(new SQLiteParameter("@providerId", providerId));
+
                             cmd.Parameters.Add(new SQLiteParameter("@invoiceXML", item.Invoices.CreateXml()));
                             item.RecordId = Convert.ToInt64(cmd.ExecuteScalar());
                         }
@@ -344,8 +346,8 @@ where id=@id";
                             cmd.Parameters.Add(new SQLiteParameter("@send_isSucceded", r.IsSucceded));
                             cmd.Parameters.Add(new SQLiteParameter("@send_Message", r.Message));
 
-                            cmd.Parameters.Add(new SQLiteParameter("@send_returnETN", item.ETN ));
-                            cmd.Parameters.Add(new SQLiteParameter("@send_returnFaturaNo",item.FaturaNo));
+                            cmd.Parameters.Add(new SQLiteParameter("@send_returnETN", item.ETN));
+                            cmd.Parameters.Add(new SQLiteParameter("@send_returnFaturaNo", item.FaturaNo));
 
                             cmd.ExecuteNonQuery();
                         }
@@ -358,7 +360,7 @@ where id=@id";
             }
         }
 
-        public List<SendInvoiceData> SendInvoiceList(SendInvoiceListDataFind val)
+        public List<SendInvoiceData> SendInvoiceList(SendInvoiceListDataFind val, string providerId)
         {
 
             List<SendInvoiceData> r = new List<SendInvoiceData>();
@@ -370,7 +372,8 @@ where id=@id";
 
                     cmd.CommandText = @"
 select  
- id               
+ id
+,providerId
 ,ETN              
 ,invoiceXML       
 ,send_isSucceded  
@@ -379,24 +382,24 @@ select
 ,send_ErrorDetail 
 ,send_returnETN     
 ,send_returnFaturaNo
-from GIB_Invoices where 1=1 ";
+from GIB_Invoices where providerId=@providerId ";
                     cmd.CommandType = CommandType.Text;
-                    cmd.Parameters.Add(new SQLiteParameter("@title", 1));
+                    cmd.Parameters.Add(new SQLiteParameter("@providerId", providerId));
 
                     using (SQLiteDataReader reader = cmd.ExecuteReader())
                     {
                         while (reader.Read())
                         {
                             SendInvoiceData sendInvoiceData = new SendInvoiceData();
-                                sendInvoiceData.Id                  = Convert.ToInt32(reader["id"]);
-                                sendInvoiceData.ETN                 = reader["ETN"].ToString();
-                                sendInvoiceData.InvoiceXML          = reader["invoiceXML"].ToString();
-                                sendInvoiceData.Send_isSucceded     = ToBoolean(reader["send_isSucceded"]);
-                                sendInvoiceData.Send_Message        = reader["send_Message"].ToString();
-                                sendInvoiceData.Send_Error          = reader["send_Error"].ToString();
-                                sendInvoiceData.Send_ErrorDetail    = reader["send_ErrorDetail"].ToString();
-                                sendInvoiceData.Send_returnETN      = reader["send_returnETN"].ToString();
-                                sendInvoiceData.Send_returnFaturaNo = reader["send_returnFaturaNo"].ToString();
+                            sendInvoiceData.Id = Convert.ToInt32(reader["id"]);
+                            sendInvoiceData.ETN = reader["ETN"].ToString();
+                            sendInvoiceData.InvoiceXML = reader["invoiceXML"].ToString();
+                            sendInvoiceData.Send_isSucceded = ToBoolean(reader["send_isSucceded"]);
+                            sendInvoiceData.Send_Message = reader["send_Message"].ToString();
+                            sendInvoiceData.Send_Error = reader["send_Error"].ToString();
+                            sendInvoiceData.Send_ErrorDetail = reader["send_ErrorDetail"].ToString();
+                            sendInvoiceData.Send_returnETN = reader["send_returnETN"].ToString();
+                            sendInvoiceData.Send_returnFaturaNo = reader["send_returnFaturaNo"].ToString();
                             r.Add(sendInvoiceData);
                         }
                         reader.Close();
@@ -412,7 +415,7 @@ from GIB_Invoices where 1=1 ";
 
         private bool ToBoolean(object v)
         {
-            if(v==DBNull.Value)
+            if (v == DBNull.Value)
             {
                 return false;
             }
@@ -421,9 +424,11 @@ from GIB_Invoices where 1=1 ";
                 return Convert.ToBoolean(v);
             }
         }
+
+       
     }
 
 
 
-    
+
 }
