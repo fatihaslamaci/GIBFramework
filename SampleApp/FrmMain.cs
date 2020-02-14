@@ -49,5 +49,12 @@ namespace SampleApp
             frm.EFatura = EFatura;
             frm.Show();
         }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            FrmFaturaListesi frm = new FrmFaturaListesi();
+            frm.EFatura = EFatura;
+            frm.ShowDialog();
+        }
     }
 }

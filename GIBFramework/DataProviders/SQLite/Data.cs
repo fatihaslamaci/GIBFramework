@@ -388,10 +388,10 @@ from GIB_Invoices where 1=1 ";
                         while (reader.Read())
                         {
                             SendInvoiceData sendInvoiceData = new SendInvoiceData();
-                                sendInvoiceData.Id                  = (int)reader["id"];
+                                sendInvoiceData.Id                  = Convert.ToInt32(reader["id"]);
                                 sendInvoiceData.ETN                 = reader["ETN"].ToString();
                                 sendInvoiceData.InvoiceXML          = reader["invoiceXML"].ToString();
-                                sendInvoiceData.Send_isSucceded     = (bool)reader["send_isSucceded"];
+                                sendInvoiceData.Send_isSucceded     = ToBoolean(reader["send_isSucceded"]);
                                 sendInvoiceData.Send_Message        = reader["send_Message"].ToString();
                                 sendInvoiceData.Send_Error          = reader["send_Error"].ToString();
                                 sendInvoiceData.Send_ErrorDetail    = reader["send_ErrorDetail"].ToString();
@@ -410,7 +410,20 @@ from GIB_Invoices where 1=1 ";
 
         }
 
+        private bool ToBoolean(object v)
+        {
+            if(v==DBNull.Value)
+            {
+                return false;
+            }
+            else
+            {
+                return Convert.ToBoolean(v);
+            }
+        }
     }
+
+
 
     
 }

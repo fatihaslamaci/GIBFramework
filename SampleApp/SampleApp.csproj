@@ -61,6 +61,12 @@
     <Compile Include="AliciSaticiViewer.Designer.cs">
       <DependentUpon>AliciSaticiViewer.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmFaturaListesi.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmFaturaListesi.Designer.cs">
+      <DependentUpon>FrmFaturaListesi.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmInvoiceCreate.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -89,6 +95,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="AliciSaticiViewer.resx">
       <DependentUpon>AliciSaticiViewer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmFaturaListesi.resx">
+      <DependentUpon>FrmFaturaListesi.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmInvoiceCreate.resx">
       <DependentUpon>FrmInvoiceCreate.cs</DependentUpon>
