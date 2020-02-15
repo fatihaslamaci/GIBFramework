@@ -382,7 +382,8 @@ select
 ,send_ErrorDetail 
 ,send_returnETN     
 ,send_returnFaturaNo
-from GIB_Invoices where providerId=@providerId ";
+from GIB_Invoices where providerId=@providerId 
+";
                     cmd.CommandType = CommandType.Text;
                     cmd.Parameters.Add(new SQLiteParameter("@providerId", providerId));
 

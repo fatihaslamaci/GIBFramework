@@ -20,7 +20,8 @@ namespace SampleApp
 
             dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            
+            dataGridView1.DoubleClick += dataGridView1_DoubleClick;
+
             dataGridView1.Columns.Add("id"                 ,"id"                   );//0
             dataGridView1.Columns.Add("ETN"                ,"ETN"                  );//1
             dataGridView1.Columns.Add("send_isSucceded"    ,"send_isSucceded"      );//2
@@ -54,6 +55,25 @@ namespace SampleApp
                 row.Tag = item;
                 dataGridView1.Rows.Add(row);
             } 
+        }
+
+        private void dataGridView1_DoubleClick(object sender, EventArgs e)
+        {
+            DataGridView dgv = sender as DataGridView;
+            if (dgv != null && dgv.SelectedRows.Count > 0)
+            {
+                DataGridViewRow row = dgv.SelectedRows[0];
+                if (row != null || row.Cells[0].Value != null)
+                {
+                    GIBInterface.SendInvoiceData sendInvoiceData = (GIBInterface.SendInvoiceData)row.Tag;
+
+                    FrmInvoiceViewer frm = new FrmInvoiceViewer();
+                    frm.EFatura = EFatura;
+                    frm.Invoice = GIBInterface.UBLTR.InvoiceType.Create(sendInvoiceData.InvoiceXML);
+                    if (frm.ShowDialog() == DialogResult.OK)
+                    {
+                    }
+            }
         }
     }
 }

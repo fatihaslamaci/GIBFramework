@@ -73,6 +73,12 @@
     <Compile Include="FrmInvoiceCreate.Designer.cs">
       <DependentUpon>FrmInvoiceCreate.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmInvoiceViewer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmInvoiceViewer.Designer.cs">
+      <DependentUpon>FrmInvoiceViewer.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmMain.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -101,6 +107,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FrmInvoiceCreate.resx">
       <DependentUpon>FrmInvoiceCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmInvoiceViewer.resx">
+      <DependentUpon>FrmInvoiceViewer.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmMain.resx">
       <DependentUpon>FrmMain.cs</DependentUpon>

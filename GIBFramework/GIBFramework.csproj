@@ -68,6 +68,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="InvoiceTransform.cs" />
     <Compile Include="DataProviders\SQLite\DataInit.cs" />
     <Compile Include="DataProviders\SQLite\Data.cs" />
     <Compile Include="DataProviders\SQLite\SQLiteTools.cs" />
