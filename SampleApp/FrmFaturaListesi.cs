@@ -22,14 +22,14 @@ namespace SampleApp
             dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dataGridView1.DoubleClick += dataGridView1_DoubleClick;
 
-            dataGridView1.Columns.Add("id"                 ,"id"                   );//0
-            dataGridView1.Columns.Add("ETN"                ,"ETN"                  );//1
-            dataGridView1.Columns.Add("send_isSucceded"    ,"send_isSucceded"      );//2
-            dataGridView1.Columns.Add("send_Message"       ,"send_Message"         );//3
-            dataGridView1.Columns.Add("send_Error"         ,"send_Error"           );//4
-            dataGridView1.Columns.Add("send_ErrorDetail"   ,"send_ErrorDetail"     );//5
-            dataGridView1.Columns.Add("send_returnETN"     ,"send_returnETN"       );//6
-            dataGridView1.Columns.Add("send_returnFaturaNo","send_returnFaturaNo");//7
+            dataGridView1.Columns.Add("id", "id");//0
+            dataGridView1.Columns.Add("ETN", "ETN");//1
+            dataGridView1.Columns.Add("send_isSucceded", "send_isSucceded");//2
+            dataGridView1.Columns.Add("send_Message", "send_Message");//3
+            dataGridView1.Columns.Add("send_Error", "send_Error");//4
+            dataGridView1.Columns.Add("send_ErrorDetail", "send_ErrorDetail");//5
+            dataGridView1.Columns.Add("send_returnETN", "send_returnETN");//6
+            dataGridView1.Columns.Add("send_returnFaturaNo", "send_returnFaturaNo");//7
 
             dataGridView1.Columns[0].Width = 30;
             dataGridView1.Columns[2].Width = 60;
@@ -54,7 +54,7 @@ namespace SampleApp
                 row.Cells[7].Value = item.Send_returnFaturaNo;
                 row.Tag = item;
                 dataGridView1.Rows.Add(row);
-            } 
+            }
         }
 
         private void dataGridView1_DoubleClick(object sender, EventArgs e)
@@ -73,6 +73,31 @@ namespace SampleApp
                     if (frm.ShowDialog() == DialogResult.OK)
                     {
                     }
+                }
+            }
+        }
+
+        private void btnDurumSorgula_Click(object sender, EventArgs e)
+        {
+            var dgv = dataGridView1;
+            if (dgv != null && dgv.SelectedRows.Count > 0)
+            {
+
+
+                List<GIBInterface.InvoiceStatusParameters> val = new List<GIBInterface.InvoiceStatusParameters>();
+                foreach (DataGridViewRow item in dgv.SelectedRows)
+                {
+                    GIBInterface.SendInvoiceData sendInvoiceData = (GIBInterface.SendInvoiceData)item.Tag;
+
+                    GIBInterface.InvoiceStatusParameters rr = new GIBInterface.InvoiceStatusParameters();
+
+                    rr.InvoiceUUID = new Guid(sendInvoiceData.ETN);
+
+                    val.Add(rr);
+                }
+
+                EFatura.FaturaDurumSorgula(val);
+
             }
         }
     }

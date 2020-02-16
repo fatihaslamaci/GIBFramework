@@ -30,15 +30,18 @@
         {
             this.panel1 = new System.Windows.Forms.Panel();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.btnDurumSorgula = new System.Windows.Forms.Button();
+            this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.btnDurumSorgula);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(860, 97);
+            this.panel1.Size = new System.Drawing.Size(860, 48);
             this.panel1.TabIndex = 0;
             // 
             // dataGridView1
@@ -47,10 +50,20 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(12, 103);
+            this.dataGridView1.Location = new System.Drawing.Point(12, 54);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(836, 359);
+            this.dataGridView1.Size = new System.Drawing.Size(836, 408);
             this.dataGridView1.TabIndex = 1;
+            // 
+            // btnDurumSorgula
+            // 
+            this.btnDurumSorgula.Location = new System.Drawing.Point(12, 12);
+            this.btnDurumSorgula.Name = "btnDurumSorgula";
+            this.btnDurumSorgula.Size = new System.Drawing.Size(240, 23);
+            this.btnDurumSorgula.TabIndex = 0;
+            this.btnDurumSorgula.Text = "Seçilen Faturaların Durumunu Sorgula";
+            this.btnDurumSorgula.UseVisualStyleBackColor = true;
+            this.btnDurumSorgula.Click += new System.EventHandler(this.btnDurumSorgula_Click);
             // 
             // FrmFaturaListesi
             // 
@@ -62,6 +75,7 @@
             this.Name = "FrmFaturaListesi";
             this.Text = "FrmFaturaListesi";
             this.Shown += new System.EventHandler(this.FrmFaturaListesi_Shown);
+            this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
 
@@ -71,5 +85,6 @@
 
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.Button btnDurumSorgula;
     }
 }

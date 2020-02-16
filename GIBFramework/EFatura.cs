@@ -133,6 +133,21 @@ namespace GIBFramework
 
         }
 
+        public List<InvoiceStatusResponse> FaturaDurumSorgula(List<InvoiceStatusParameters> SendParameters)
+        {
+            List<InvoiceStatusResponse> r = new List<InvoiceStatusResponse>();
+
+            if (Provider is IFaturaDurumuSorgula)
+            {
+                r = (Provider as IFaturaDurumuSorgula).InvoiceStatus(SendParameters);
+            }
+
+            return r;
+
+            
+        }
+
+
         private void EgerBugunMukellefListesiOkunmadiIseOku()
         {
             if (Data.BugunMukelefSorgulandi() == false)
