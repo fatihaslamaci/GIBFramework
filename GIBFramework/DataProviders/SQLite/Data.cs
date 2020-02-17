@@ -360,6 +360,43 @@ where id=@id";
             }
         }
 
+
+        public void DurumSorgulamaYaz(List<QueryStatusResponse> val)
+        {
+            using (SQLiteConnection con = NewSQLiteConnection())
+            {
+                con.Open();
+                using (SQLiteTransaction tr = con.BeginTransaction())
+                {
+                    using (SQLiteCommand cmd = con.CreateCommand())
+                    {
+
+                        cmd.Transaction = tr;
+                        cmd.CommandText = @"
+Update GIB_Invoices set 
+ query_Status  = @query_Status 
+,query_Message = @query_Message
+where ETN=@ETN";
+                        cmd.CommandType = CommandType.Text;
+
+                        foreach (var item in val)
+                        {
+                            cmd.Parameters.Clear();
+                            cmd.Parameters.Add(new SQLiteParameter("@ETN", item.InvoiceUUID.ToString()));
+                            cmd.Parameters.Add(new SQLiteParameter("@query_Status", (int)item.InvoiceStatus));
+                            cmd.Parameters.Add(new SQLiteParameter("@query_Message", item.Message));
+                            cmd.ExecuteNonQuery();
+                        }
+                        
+
+                    }
+                    tr.Commit();
+                }
+                con.Close();
+            }
+        }
+
+
         public List<SendInvoiceData> SendInvoiceList(SendInvoiceListDataFind val, string providerId)
         {
 
@@ -382,6 +419,9 @@ select
 ,send_ErrorDetail 
 ,send_returnETN     
 ,send_returnFaturaNo
+,query_Status
+,query_Message
+
 from GIB_Invoices where providerId=@providerId 
 ";
                     cmd.CommandType = CommandType.Text;
@@ -401,6 +441,10 @@ from GIB_Invoices where providerId=@providerId
                             sendInvoiceData.Send_ErrorDetail = reader["send_ErrorDetail"].ToString();
                             sendInvoiceData.Send_returnETN = reader["send_returnETN"].ToString();
                             sendInvoiceData.Send_returnFaturaNo = reader["send_returnFaturaNo"].ToString();
+
+                            sendInvoiceData.Query_Status = ToInt(reader["query_Status"]);
+                            sendInvoiceData.Query_Message = reader["query_Message"].ToString();
+
                             r.Add(sendInvoiceData);
                         }
                         reader.Close();
@@ -426,7 +470,18 @@ from GIB_Invoices where providerId=@providerId
             }
         }
 
-       
+        private int ToInt(object v)
+        {
+            if (v == DBNull.Value)
+            {
+                return 0;
+            }
+            else
+            {
+                return Convert.ToInt32(v);
+            }
+        }
+
     }
 
 

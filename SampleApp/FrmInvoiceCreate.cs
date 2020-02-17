@@ -99,8 +99,8 @@ namespace SampleApp
 
 
             invoice.UUID.Value = Guid.NewGuid().ToString();
-            invoice.ID.Value = "BFF2020000000001";
-            item.LocalDocumentId = "BFF2020000000001";
+            invoice.ID.Value = "BFF2020000000003";
+            item.LocalDocumentId = "BFF2020000000003";
 
             item.Invoices = invoice;
 

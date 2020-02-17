@@ -30,6 +30,9 @@ namespace SampleApp
             dataGridView1.Columns.Add("send_ErrorDetail", "send_ErrorDetail");//5
             dataGridView1.Columns.Add("send_returnETN", "send_returnETN");//6
             dataGridView1.Columns.Add("send_returnFaturaNo", "send_returnFaturaNo");//7
+            dataGridView1.Columns.Add("query_Status", "query_Status");//8
+            dataGridView1.Columns.Add("query_Message", "query_Message");//9
+
 
             dataGridView1.Columns[0].Width = 30;
             dataGridView1.Columns[2].Width = 60;
@@ -52,6 +55,10 @@ namespace SampleApp
                 row.Cells[5].Value = item.Send_ErrorDetail;
                 row.Cells[6].Value = item.Send_returnETN;
                 row.Cells[7].Value = item.Send_returnFaturaNo;
+
+                row.Cells[8].Value = item.Query_Status;
+                row.Cells[9].Value = item.Query_Message;
+
                 row.Tag = item;
                 dataGridView1.Rows.Add(row);
             }
@@ -84,12 +91,12 @@ namespace SampleApp
             {
 
 
-                List<GIBInterface.InvoiceStatusParameters> val = new List<GIBInterface.InvoiceStatusParameters>();
+                List<GIBInterface.QueryStatusParameters> val = new List<GIBInterface.QueryStatusParameters>();
                 foreach (DataGridViewRow item in dgv.SelectedRows)
                 {
                     GIBInterface.SendInvoiceData sendInvoiceData = (GIBInterface.SendInvoiceData)item.Tag;
 
-                    GIBInterface.InvoiceStatusParameters rr = new GIBInterface.InvoiceStatusParameters();
+                    GIBInterface.QueryStatusParameters rr = new GIBInterface.QueryStatusParameters();
 
                     rr.InvoiceUUID = new Guid(sendInvoiceData.ETN);
 

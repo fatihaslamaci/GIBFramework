@@ -18,6 +18,8 @@ namespace GIBInterface
 
         List<SendInvoiceData> SendInvoiceList(SendInvoiceListDataFind val, string providerId);
 
+        void DurumSorgulamaYaz(List<QueryStatusResponse> val);
+
 
 
     }

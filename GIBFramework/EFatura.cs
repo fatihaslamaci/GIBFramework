@@ -133,18 +133,16 @@ namespace GIBFramework
 
         }
 
-        public List<InvoiceStatusResponse> FaturaDurumSorgula(List<InvoiceStatusParameters> SendParameters)
+        public List<QueryStatusResponse> FaturaDurumSorgula(List<QueryStatusParameters> SendParameters)
         {
-            List<InvoiceStatusResponse> r = new List<InvoiceStatusResponse>();
+            List<QueryStatusResponse> r = new List<QueryStatusResponse>();
 
             if (Provider is IFaturaDurumuSorgula)
             {
                 r = (Provider as IFaturaDurumuSorgula).InvoiceStatus(SendParameters);
+                Data.DurumSorgulamaYaz(r);
             }
-
             return r;
-
-            
         }
 
 

@@ -6,9 +6,9 @@ namespace GIBProviders.Uyumsoft
 {
     public partial class EFatura : IFaturaDurumuSorgula
     {
-        public List<InvoiceStatusResponse> InvoiceStatus(List<InvoiceStatusParameters> SendParameters)
+        public List<QueryStatusResponse> InvoiceStatus(List<QueryStatusParameters> SendParameters)
         {
-            List<InvoiceStatusResponse> r = new List<InvoiceStatusResponse>();
+            List<QueryStatusResponse> r = new List<QueryStatusResponse>();
             var response = new GIBProviders.ServiceUyumsoft.InvoiceStatusResponse();
             List<string> guid = new List<string>();
 
@@ -22,9 +22,31 @@ namespace GIBProviders.Uyumsoft
                
                 foreach (var item in response.Value)
                 {
-                    InvoiceStatusResponse rr = new InvoiceStatusResponse();
-                    rr.InvoiceStatus = new InvoiceStatus();
-                    rr.InvoiceStatus = GIBInterface.InvoiceStatus.IslemDevamEdiyor;
+                    QueryStatusResponse rr = new QueryStatusResponse();
+                    rr.InvoiceUUID = new Guid(item.InvoiceId);
+                    rr.Message = item.Message;
+
+                    if (item.Status == ServiceUyumsoft.InvoiceStatus.Approved)
+                    {
+                        rr.InvoiceStatus = GIBInterface.QueryStatus.BasariliSonuclandi;
+                    }
+                    else if(item.Status == ServiceUyumsoft.InvoiceStatus.Declined)
+                    {
+                        rr.InvoiceStatus = QueryStatus.BasarisizSonuclandi;
+                    }
+                    else if (item.Status == ServiceUyumsoft.InvoiceStatus.Canceled)
+                    {
+                        rr.InvoiceStatus = QueryStatus.BasarisizSonuclandi;
+                    }
+                    else if (item.Status == ServiceUyumsoft.InvoiceStatus.Error)
+                    {
+                        rr.InvoiceStatus = QueryStatus.BasarisizSonuclandi;
+                    }
+                    else
+                    {
+                        rr.InvoiceStatus = QueryStatus.IslemDevamEdiyor;
+                    }
+
                     r.Add(rr);
                 }
             }

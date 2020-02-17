@@ -16,22 +16,24 @@ namespace GIBInterface
 
     public interface IFaturaDurumuSorgula
     {
-        List<InvoiceStatusResponse> InvoiceStatus(List<InvoiceStatusParameters> SendParameters);
+        List<QueryStatusResponse> InvoiceStatus(List<QueryStatusParameters> SendParameters);
     }
 
-    public class InvoiceStatusParameters
+    public class QueryStatusParameters
     {
         public Guid InvoiceUUID { get; set; }
     }
 
-    public class InvoiceStatusResponse
+    public class QueryStatusResponse
     {
-        public InvoiceStatus InvoiceStatus { get; set; }
+        public Guid InvoiceUUID { get; set; }
+        public QueryStatus InvoiceStatus { get; set; }
+        public string Message { get; set; }
 
     }
 
 
-    public enum InvoiceStatus
+    public enum QueryStatus
     {
         IslemDevamEdiyor=0,
         BasariliSonuclandi=1,
@@ -93,7 +95,8 @@ namespace GIBInterface
         public string Send_ErrorDetail { get; set; }
         public string Send_returnETN { get; set; }
         public string Send_returnFaturaNo { get; set; }
-        
+        public int Query_Status { get; set; }
+        public string Query_Message { get; set; }
     }
 
 }

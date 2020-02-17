@@ -53,17 +53,21 @@ CREATE TABLE IF NOT EXISTS GIB_SorguZamani (
 );
 
 CREATE TABLE IF NOT EXISTS GIB_Invoices (
-                            id               INTEGER PRIMARY KEY,
-                            providerId       TEXT,
-                            ETN              TEXT,
-                            invoiceXML       TEXT,
-                            send_isSucceded  BOOLEAN,
-                            send_Message     TEXT,
-                            send_Error       TEXT,
-                            send_ErrorDetail TEXT,
-                            send_returnETN        TEXT,
-                            send_returnFaturaNo   TEXT
-                            
+                            id                      INTEGER PRIMARY KEY,
+                            providerId              TEXT,
+                            ETN                     TEXT,
+                            invoiceXML              TEXT,
+                            send_isSucceded         BOOLEAN,
+                            send_Message            TEXT,
+                            send_Error              TEXT,
+                            send_ErrorDetail        TEXT,
+                            send_returnETN          TEXT,
+                            send_returnFaturaNo     TEXT,
+
+                            query_Status            INTEGER,
+                            query_Message           TEXT
+                           
+                        
 );
 
 
