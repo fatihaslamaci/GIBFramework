@@ -361,7 +361,7 @@ where id=@id";
         }
 
 
-        public void DurumSorgulamaYaz(List<QueryStatusResponse> val)
+        public void DurumSorgulamaYaz(List<QueryStatusResponseData> val)
         {
             using (SQLiteConnection con = NewSQLiteConnection())
             {
@@ -376,13 +376,13 @@ where id=@id";
 Update GIB_Invoices set 
  query_Status  = @query_Status 
 ,query_Message = @query_Message
-where ETN=@ETN";
+where id=@id";
                         cmd.CommandType = CommandType.Text;
 
                         foreach (var item in val)
                         {
                             cmd.Parameters.Clear();
-                            cmd.Parameters.Add(new SQLiteParameter("@ETN", item.InvoiceUUID.ToString()));
+                            cmd.Parameters.Add(new SQLiteParameter("@id", item.RecordId));
                             cmd.Parameters.Add(new SQLiteParameter("@query_Status", (int)item.InvoiceStatus));
                             cmd.Parameters.Add(new SQLiteParameter("@query_Message", item.Message));
                             cmd.ExecuteNonQuery();

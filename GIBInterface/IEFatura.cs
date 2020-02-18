@@ -21,6 +21,7 @@ namespace GIBInterface
 
     public class QueryStatusParameters
     {
+        public long RecordId { get; set; } // Database Kayıt ID si
         public Guid InvoiceUUID { get; set; }
     }
 
@@ -31,6 +32,14 @@ namespace GIBInterface
         public string Message { get; set; }
 
     }
+
+
+    public class QueryStatusResponseData: QueryStatusResponse
+    {
+        public long RecordId { get; set; }
+
+    }
+
 
 
     public enum QueryStatus

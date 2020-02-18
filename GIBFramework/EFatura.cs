@@ -133,13 +133,37 @@ namespace GIBFramework
 
         }
 
-        public List<QueryStatusResponse> FaturaDurumSorgula(List<QueryStatusParameters> SendParameters)
+        public List<QueryStatusResponseData> FaturaDurumSorgula(List<QueryStatusParameters> SendParameters)
         {
-            List<QueryStatusResponse> r = new List<QueryStatusResponse>();
+            List<QueryStatusResponseData> r = new List<QueryStatusResponseData>();
 
             if (Provider is IFaturaDurumuSorgula)
             {
-                r = (Provider as IFaturaDurumuSorgula).InvoiceStatus(SendParameters);
+                var invoiceStatus  = (Provider as IFaturaDurumuSorgula).InvoiceStatus(SendParameters);
+
+                foreach (var item in SendParameters)
+                {
+                    QueryStatusResponseData statusData = new QueryStatusResponseData();
+
+                    statusData.RecordId = item.RecordId;
+                    statusData.InvoiceUUID = item.InvoiceUUID;
+
+                    var findSatus = invoiceStatus.Find(x => x.InvoiceUUID == item.InvoiceUUID);
+
+                    if (findSatus !=null)
+                    {
+                        statusData.InvoiceStatus = findSatus.InvoiceStatus;
+                        statusData.Message = findSatus.Message;
+                    }
+                    else
+                    {
+                        statusData.Message = "Fatura Bulunamadı";
+                        statusData.InvoiceStatus = QueryStatus.BasarisizSonuclandi;
+                    }
+
+                    r.Add(statusData);
+                }
+                
                 Data.DurumSorgulamaYaz(r);
             }
             return r;

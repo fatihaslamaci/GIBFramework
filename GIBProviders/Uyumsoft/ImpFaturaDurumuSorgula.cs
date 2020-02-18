@@ -52,8 +52,7 @@ namespace GIBProviders.Uyumsoft
             }
             catch (Exception ex)
             {
-                //MessageBox.Show(ex.Message, "Hata");
-                //lblInvoiceStatus.Text = "Durum bilgisi alınamadı";
+                //TODO
                 throw ex;  
             }
 

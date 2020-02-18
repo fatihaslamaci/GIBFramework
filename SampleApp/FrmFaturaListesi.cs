@@ -99,6 +99,7 @@ namespace SampleApp
                     GIBInterface.QueryStatusParameters rr = new GIBInterface.QueryStatusParameters();
 
                     rr.InvoiceUUID = new Guid(sendInvoiceData.ETN);
+                    rr.RecordId = sendInvoiceData.Id;
 
                     val.Add(rr);
                 }
