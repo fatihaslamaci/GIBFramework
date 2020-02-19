@@ -54,6 +54,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Connected Services\ServiceLogo\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
     <Compile Include="Connected Services\ServiceUyumsoft\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -64,6 +69,10 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
+    <Compile Include="Logo\ImpEFatura.cs" />
+    <Compile Include="Logo\ImpLogin.cs" />
+    <Compile Include="Logo\ImpSettings.cs" />
+    <Compile Include="Logo\LogoEFatura.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Uyumsoft\ImpEFatura.cs" />
     <Compile Include="Uyumsoft\ImpFaturaDurumuSorgula.cs" />
@@ -90,6 +99,106 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
+    <None Include="Connected Services\ServiceLogo\GIBProviders.ServiceLogo.AppRespStatus.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceLogo\GIBProviders.ServiceLogo.Document.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceLogo\GIBProviders.ServiceLogo.DocumentStatusType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceLogo\GIBProviders.ServiceLogo.DocumentType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceLogo\GIBProviders.ServiceLogo.eFaturaWebServiceResultType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceLogo\GIBProviders.ServiceLogo.ElementType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceLogo\GIBProviders.ServiceLogo.getApplicationResponseResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceLogo\GIBProviders.ServiceLogo.getAppRespStatusResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceLogo\GIBProviders.ServiceLogo.getApprovalFlowListResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceLogo\GIBProviders.ServiceLogo.getApprovalFlowResResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceLogo\GIBProviders.ServiceLogo.GetDocumentDataResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceLogo\GIBProviders.ServiceLogo.GetDocumentListResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceLogo\GIBProviders.ServiceLogo.GetDocumentResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceLogo\GIBProviders.ServiceLogo.getDocumentStatusExResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceLogo\GIBProviders.ServiceLogo.getDocumentStatusResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceLogo\GIBProviders.ServiceLogo.GetDocumentStatusResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceLogo\GIBProviders.ServiceLogo.getEArchiveInvoicePdfDataResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceLogo\GIBProviders.ServiceLogo.getEArchiveXsltResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceLogo\GIBProviders.ServiceLogo.getInvoiceResponseDataResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceLogo\GIBProviders.ServiceLogo.getInvoiceStatusResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceLogo\GIBProviders.ServiceLogo.InvoiceStatus.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceLogo\GIBProviders.ServiceLogo.LoginResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceLogo\GIBProviders.ServiceLogo.receiveApplicationResponseResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceLogo\GIBProviders.ServiceLogo.receiveDocumentResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceLogo\GIBProviders.ServiceLogo.receiveInvoiceResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceLogo\GIBProviders.ServiceLogo.SendDocumentResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceLogo\PostBoxService.wsdl" />
+    <None Include="Connected Services\ServiceLogo\PostBoxService.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\ServiceLogo\PostBoxService1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\ServiceLogo\PostBoxService2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\ServiceLogo\PostBoxService3.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\ServiceLogo\PostBoxService4.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\ServiceLogo\PostBoxService5.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\ServiceLogo\PostBoxService6.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Connected Services\ServiceUyumsoft\GIBProviders.ServiceUyumsoft.ByteArrayResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
@@ -249,6 +358,7 @@
     <None Include="Properties\DataSources\System.Xml.XmlNode.datasource" />
   </ItemGroup>
   <ItemGroup>
+    <WCFMetadataStorage Include="Connected Services\ServiceLogo\" />
     <WCFMetadataStorage Include="Connected Services\ServiceUyumsoft\" />
     <WCFMetadataStorage Include="Connected Services\ServiceVeriban\" />
   </ItemGroup>
@@ -275,6 +385,18 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Connected Services\ServiceUyumsoft\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\ServiceLogo\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\ServiceLogo\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\ServiceLogo\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>

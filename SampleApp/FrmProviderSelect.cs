@@ -29,7 +29,7 @@ namespace SampleApp
             cbProviders.Items.Add("Uyumsoft");
             cbProviders.Items.Add("Veriban");
             cbProviders.Items.Add("Logo");
-            cbProviders.Items.Add("EFinans");
+            
         }
 
         private void cbProviders_SelectedIndexChanged(object sender, EventArgs e)
@@ -48,14 +48,9 @@ namespace SampleApp
                     }
                     if (cbProviders.SelectedItem.ToString() == "Logo")
                     {
-                        //TODO : Logo create edilecek
-                        AktiveProvider = null;
+                        AktiveProvider = new GIBProviders.Logo.EFatura(); ;
                     }
-                    if (cbProviders.SelectedItem.ToString() == "EFinans")
-                    {
-                        //TODO : EFinans create edilecek
-                        AktiveProvider = null;
-                    }
+                  
 
 
                     EFatura = new GIBFramework.EFatura(AktiveProvider);

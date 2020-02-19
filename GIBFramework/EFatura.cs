@@ -41,6 +41,8 @@ namespace GIBFramework
 
         }
 
+        public bool isLogin { get; private set; }
+
         public EFatura(IEFatura Provider, IGIBData Data)
         {
             this.Data = Data;
@@ -174,10 +176,13 @@ namespace GIBFramework
         {
             if (Data.BugunMukelefSorgulandi() == false)
             {
-                //if (isLogin == false)
-                //{
-                //    isLogin = LoginHazirla();
-                //}
+                if (isLogin == false)
+                {
+                    if (Provider is ILogin)
+                    {
+                        isLogin = (Provider as ILogin).Login();
+                    }
+                }
 
                 var users = (Provider as IMukellefListesi).GetUserList();
                 Data.GIBUserListSave(users);
