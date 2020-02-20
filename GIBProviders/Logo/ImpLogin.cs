@@ -10,6 +10,7 @@ namespace GIBProviders.Logo
     public partial class EFatura : ILogin
     {
         internal string SessionID = "";
+        internal ServiceLogo.LoginType loginType = new ServiceLogo.LoginType();
 
         public int ExpirationTimeMinute()
         {
