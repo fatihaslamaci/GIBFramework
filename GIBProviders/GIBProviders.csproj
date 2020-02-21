@@ -69,7 +69,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
-    <Compile Include="Logo\Class1.cs" />
+    <Compile Include="Logo\UserList.cs" />
     <Compile Include="Logo\ImpEFatura.cs" />
     <Compile Include="Logo\ImpLogin.cs" />
     <Compile Include="Logo\ImpMukellefListesi.cs" />
