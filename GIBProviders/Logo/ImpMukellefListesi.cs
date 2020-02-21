@@ -18,48 +18,38 @@ namespace GIBProviders.Logo
 
             var list = service.getUserList(loginType, ServiceLogo.UserListType.PKLIST);
 
-
-
             UserList rr;
-
             using (Stream stream2 = new MemoryStream(ZipHelper.UnzipToStream(list.binaryData.Value)))
             {
                 rr = Tools.XmlSerialization.XMLDeserializeStream<UserList>(stream2);
             }
-
-
             List<GIBInterface.EFaturaPaketi.User> users = new List<User>();
 
-
-            //TODO: map işlemi daha sonra düzenlenecek.
-
-            foreach (var item in rr.User)
+            foreach (var Grupitem in rr.User.GroupBy(x=>x.Identifier))
             {
                 GIBInterface.EFaturaPaketi.User user = new User();
-
-                user.Identifier = item.Identifier;
-                user.Title = item.Title;
-                user.FirstCreationTime = item.FirstCreationTime.ToString("yyyy-MM-dd");
-
-
+                user.Identifier = Grupitem.Key; //Identifier;
+                var grup = Grupitem.First();
+                user.Title = grup.Title;
+                user.FirstCreationTime = grup.FirstCreationTime.ToString("yyyy-MM-dd");
                 user.Documents = new DocumentType[1];
                 user.Documents[0] = new DocumentType();
-                user.Documents[0].Alias = new AliasType[1];
-                user.Documents[0].Alias[0] = new AliasType();
-                user.Documents[0].Alias[0].Name = new string[1];
-                user.Documents[0].Alias[0].Name[0] = item.Alias;
+                user.Documents[0].type = DocType.Invoice;
+                user.Documents[0].Alias = new AliasType[Grupitem.Count()];
 
-
-
-
+                int i = 0;
+                foreach (var item in Grupitem)
+                {
+                    user.Documents[0].Alias[i] = new AliasType();
+                    user.Documents[0].Alias[i].Name = new string[1];
+                    user.Documents[0].Alias[i].CreationTime = item.AliasCreationTime.ToString("yyyy-MM-dd");
+                    user.Documents[0].Alias[i].Name[0] = item.Alias;
+                    i++;
+                }
                 users.Add(user);
             }
-
             r.User = users.ToArray();
-
             return r;
         }
-
-        
     }
 }
