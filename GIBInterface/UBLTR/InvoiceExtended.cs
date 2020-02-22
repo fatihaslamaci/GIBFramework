@@ -57,5 +57,16 @@ namespace GIBInterface.UBLTR
                 return Encoding.UTF8.GetString(mstr.ToArray());
             }
         }
+
+        public byte[] CreateBytes()
+        {
+            XmlSerializer serializer = new XmlSerializer(typeof(InvoiceType));
+            using (MemoryStream mstr = new MemoryStream())
+            {
+                serializer.Serialize(mstr, this, InvoiceNamespaces);
+                return mstr.ToArray();
+            }
+        }
+
     }
 }
