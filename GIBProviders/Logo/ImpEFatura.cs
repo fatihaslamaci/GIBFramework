@@ -23,40 +23,47 @@ namespace GIBProviders.Logo
 
         public SendResult SendInvoice(SendParameters SendParameters)
         {
-
             SendResult r = new SendResult();
 
-            var DocType =  GetDoc(Guid.NewGuid(), SendParameters);
-
-
-            if (service.sendInvoice(DocType, "urn:mail:defaultpk@arkel.com.tr", SessionID))
+            var grup = SendParameters.InvoicesInfo.GroupBy(x => new { x.Customer.VknTckn, x.Customer.Alias});
+            foreach (var item in grup)
             {
-                r.IsSucceded = true;
-                r.ResultInvoices = new List<ResultInvoice>();
-                foreach (var item in SendParameters.InvoicesInfo)
+
+                var Invoices = item.ToList();
+                var DocType = GetDoc(Guid.NewGuid(), Invoices);
+
+                if (service.sendInvoice(DocType, item.Key.Alias , SessionID))
                 {
-                    ResultInvoice rr = new ResultInvoice();
-                    rr.ETN = item.Invoices.UUID.Value;
-                    rr.FaturaNo = item.Invoices.ID.Value;
-                    r.ResultInvoices.Add(rr);
+                    r.IsSucceded = true;
+                    r.ResultInvoices = new List<ResultInvoice>();
+                    foreach (var invoice in Invoices)
+                    {
+                        ResultInvoice rr = new ResultInvoice();
+                        rr.ETN = invoice.Invoices.UUID.Value;
+                        rr.FaturaNo = invoice.Invoices.ID.Value;
+                        r.ResultInvoices.Add(rr);
+                    }
                 }
-
+                else
+                {
+                    r.IsSucceded = false;
+                    r.ResultInvoices = new List<ResultInvoice>();
+                    foreach (var invoice in Invoices)
+                    {
+                        ResultInvoice rr = new ResultInvoice();
+                        r.ResultInvoices.Add(rr);
+                    }
+                }
             }
-            else
-            {
-
-            }
-
-
+    
             return r;
-
         }
 
-        public ServiceLogo.DocumentType GetDoc(Guid ZarfId, SendParameters SendParameters)
+        public ServiceLogo.DocumentType GetDoc(Guid ZarfId, List<InvoiceInfo> InvoicesInfo)
         {
             ServiceLogo.DocumentType DocType = new ServiceLogo.DocumentType();
 
-            var zip = compressed(SendParameters);
+            var zip = compressed(InvoicesInfo);
             
             //TODO :buradaki file name için DB de Zarf ID oluşturulacak. henüz yapılmadı.
             DocType.fileName = ZarfId + ".zip";
@@ -84,13 +91,13 @@ namespace GIBProviders.Logo
         }
 
 
-        public byte[] compressed(SendParameters SendParameters)
+        public byte[] compressed(List<InvoiceInfo> InvoicesInfo)
         {
             using (var compressedFileStream = new MemoryStream())
             {
                 using (var zipArchive = new ZipArchive(compressedFileStream, ZipArchiveMode.Create, false))
                 {
-                    foreach (var invoice in SendParameters.InvoicesInfo)
+                    foreach (var invoice in InvoicesInfo)
                     {
                         var zipEntry = zipArchive.CreateEntry(invoice.Invoices.UUID.Value + ".xml");
                         byte[] bytes = invoice.Invoices.CreateBytes();

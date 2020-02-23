@@ -48,7 +48,7 @@ namespace SampleApp
                     }
                     if (cbProviders.SelectedItem.ToString() == "Logo")
                     {
-                        AktiveProvider = new GIBProviders.Logo.EFatura(); ;
+                        AktiveProvider = new GIBProviders.Logo.EFatura();
                     }
                   
 

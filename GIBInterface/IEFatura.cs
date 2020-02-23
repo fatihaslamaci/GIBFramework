@@ -64,6 +64,8 @@ namespace GIBInterface
         public string LocalDocumentId { get; set; }
         public CustomerInfo Customer { get; set; }
         public UBLTR.InvoiceType Invoices { get; set; }
+
+        public string AliciPostaKutusuEtiketi { get; set; }
     }
 
 
