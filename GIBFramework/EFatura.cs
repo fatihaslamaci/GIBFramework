@@ -92,6 +92,8 @@ namespace GIBFramework
         {
             SendResult r = new SendResult();
 
+            Login();
+
             if (Provider is IManipulatedInvoice)
             {
                 foreach (var item in SendParameters.InvoicesInfo)
@@ -99,7 +101,6 @@ namespace GIBFramework
                     item.Invoices = (Provider as IManipulatedInvoice).Manipulated(item.Invoices);
                 }
             }
-
 
             
 
@@ -141,6 +142,7 @@ namespace GIBFramework
 
             if (Provider is IFaturaDurumuSorgula)
             {
+                Login();
                 var invoiceStatus  = (Provider as IFaturaDurumuSorgula).InvoiceStatus(SendParameters);
 
                 foreach (var item in SendParameters)
@@ -176,19 +178,24 @@ namespace GIBFramework
         {
             if (Data.BugunMukelefSorgulandi() == false)
             {
-                if (isLogin == false)
-                {
-                    if (Provider is ILogin)
-                    {
-                        isLogin = (Provider as ILogin).Login();
-                    }
-                }
-
+                Login();
                 var users = (Provider as IMukellefListesi).GetUserList();
                 Data.GIBUserListSave(users);
             }
         }
 
+
+        private void Login()
+        {
+            if (isLogin == false)
+            {
+                if (Provider is ILogin)
+                {
+                    isLogin = (Provider as ILogin).Login();
+                }
+            }
+
+        }
 
 
 

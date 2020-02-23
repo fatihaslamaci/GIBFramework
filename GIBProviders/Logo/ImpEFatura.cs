@@ -7,6 +7,7 @@ using System.IO.Compression;
 using System.Linq;
 using System.Runtime.Serialization;
 using System.Runtime.Serialization.Formatters.Binary;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Serialization;
@@ -23,29 +24,63 @@ namespace GIBProviders.Logo
         public SendResult SendInvoice(SendParameters SendParameters)
         {
 
-            GetDoc(SendParameters);
+            SendResult r = new SendResult();
+
+            var DocType =  GetDoc(Guid.NewGuid(), SendParameters);
 
 
+            if (service.sendInvoice(DocType, "urn:mail:defaultpk@arkel.com.tr", SessionID))
+            {
+                r.IsSucceded = true;
+                r.ResultInvoices = new List<ResultInvoice>();
+                foreach (var item in SendParameters.InvoicesInfo)
+                {
+                    ResultInvoice rr = new ResultInvoice();
+                    rr.ETN = item.Invoices.UUID.Value;
+                    rr.FaturaNo = item.Invoices.ID.Value;
+                    r.ResultInvoices.Add(rr);
+                }
 
-            throw new NotImplementedException();
+            }
+            else
+            {
+
+            }
+
+
+            return r;
 
         }
 
-        public ServiceLogo.DocumentType GetDoc(SendParameters SendParameters)
+        public ServiceLogo.DocumentType GetDoc(Guid ZarfId, SendParameters SendParameters)
         {
             ServiceLogo.DocumentType DocType = new ServiceLogo.DocumentType();
 
             var zip = compressed(SendParameters);
             
             //TODO :buradaki file name için DB de Zarf ID oluşturulacak. henüz yapılmadı.
-            DocType.fileName = Guid.NewGuid() + ".zip";
+            DocType.fileName = ZarfId + ".zip";
             DocType.binaryData = new ServiceLogo.base64BinaryData();
             DocType.binaryData.Value = zip;
-            //TODO : hash işlemi yapılacak
-            //DocType.hash = ;
-
+            DocType.hash = GetMd5Hash(zip) ;
 
             return DocType;
+        }
+
+
+        static string GetMd5Hash(byte[] input)
+        {
+            using (MD5 md5Hash = MD5.Create())
+            {
+
+                byte[] data = md5Hash.ComputeHash(input);
+                StringBuilder sBuilder = new StringBuilder();
+                for (int i = 0; i < data.Length; i++)
+                {
+                    sBuilder.Append(data[i].ToString("x2"));
+                }
+                return sBuilder.ToString();
+            }
         }
 
 
