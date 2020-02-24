@@ -1,5 +1,7 @@
 # GIBFramework
 
+WARNING: Henüz erken geliştirme aşamasındadır. 
+
 Çalıştığım firmada e fatura ve e arşiv entegrasyonu için azımsanmayacak kadar mesai harcadım.  
 Her entegrator firma için farklı kodlama yapmak gerekiyor ve bu işlem oldukça iş gücü kaybına sebep olmakta. 
 Aynı iş gücü kaybının diğer yazılım firmalarının da harcadığı göz önüne alındığında, 
