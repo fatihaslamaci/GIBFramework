@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SampleApp", "SampleApp\Samp
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tools", "Tools\Tools.csproj", "{10A25B0B-C48D-43BA-A6C1-4BE1613DC896}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GIBFrameworkTest", "GIBFrameworkTest\GIBFrameworkTest.csproj", "{28E39995-529C-45A3-857C-82181CF6EFCD}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{10A25B0B-C48D-43BA-A6C1-4BE1613DC896}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{10A25B0B-C48D-43BA-A6C1-4BE1613DC896}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{10A25B0B-C48D-43BA-A6C1-4BE1613DC896}.Release|Any CPU.Build.0 = Release|Any CPU
+		{28E39995-529C-45A3-857C-82181CF6EFCD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{28E39995-529C-45A3-857C-82181CF6EFCD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{28E39995-529C-45A3-857C-82181CF6EFCD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{28E39995-529C-45A3-857C-82181CF6EFCD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

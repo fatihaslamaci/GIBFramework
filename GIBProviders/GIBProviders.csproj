@@ -81,6 +81,8 @@
     <Compile Include="Uyumsoft\ImpManipulatedInvoice.cs" />
     <Compile Include="Uyumsoft\ImpSettings.cs" />
     <Compile Include="Uyumsoft\ImpMukellefListesi.cs" />
+    <Compile Include="Uyumsoft\ImpUyumsoftService.cs" />
+    <Compile Include="Uyumsoft\IUyumsoftService.cs" />
     <Compile Include="Uyumsoft\UyumsoftEFatura.cs" />
     <Compile Include="Veriban\EArsiv.cs" />
     <Compile Include="Veriban\EFatura.cs" />

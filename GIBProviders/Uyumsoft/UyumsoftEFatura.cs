@@ -5,9 +5,21 @@ namespace GIBProviders.Uyumsoft
 {
     public partial class EFatura
     {
-        internal ServiceUyumsoft.IntegrationClient _service;
 
+
+
+        internal IUyumsoftService service;
+        public EFatura(IUyumsoftService service)
+        {
+            this.service = service;
+        }
+
+        public EFatura()
+        {
+            service = new ImpUyumsoftService(this);
+        }
       
+        /*
         private ServiceUyumsoft.IntegrationClient service
         {
             get
@@ -39,6 +51,7 @@ namespace GIBProviders.Uyumsoft
             }
 
         }
+        */
        
     }
 }
