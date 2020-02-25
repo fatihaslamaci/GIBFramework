@@ -17,7 +17,11 @@ namespace GIBFrameworkTest.Uyumsoft
             GIBProviders.Uyumsoft.IUyumsoftService mockUyumsoftService = new MockUyumsoftService();
             GIBInterface.IEFatura provider =  new GIBProviders.Uyumsoft.EFatura(mockUyumsoftService);
             GIBFramework.EFatura eFatura = new GIBFramework.EFatura(provider);
-            var user = eFatura.MukellefBilgisi("1111111111");
+            var user = eFatura.MukellefBilgisi("6130438766");
+            Assert.IsNotNull(user, "Mükellef Bulunamadı");
+
+            user = eFatura.MukellefBilgisi("1111111111");
+            Assert.IsNull(user, "Mükellef olmaması gerekirdi");
 
 
         }

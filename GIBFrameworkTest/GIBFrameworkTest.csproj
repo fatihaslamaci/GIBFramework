@@ -71,6 +71,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+    <None Include="Uyumsoft\MockData\UserPkList.zip">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\GIBFramework\GIBFramework.csproj">
@@ -85,7 +88,12 @@
       <Project>{009a3339-1bc5-4b69-9a35-fccee9da474b}</Project>
       <Name>GIBProviders</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Tools\Tools.csproj">
+      <Project>{10a25b0b-c48d-43ba-a6c1-4be1613dc896}</Project>
+      <Name>Tools</Name>
+    </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

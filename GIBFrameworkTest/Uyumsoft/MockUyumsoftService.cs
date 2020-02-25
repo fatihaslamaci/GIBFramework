@@ -11,7 +11,13 @@ namespace GIBFrameworkTest.Uyumsoft
     {
         public ByteArrayResponse GetSystemUsersCompressedList(AliasType type)
         {
-            throw new NotImplementedException();
+            ByteArrayResponse r = new ByteArrayResponse();
+
+            r.IsSucceded = true;
+            r.Value = System.IO.File.ReadAllBytes(".\\Uyumsoft\\MockData\\UserPkList.zip");
+            return r;
+
+
         }
 
         public InvoiceStatusResponse QueryOutboxInvoiceStatus(string[] invoiceIds)

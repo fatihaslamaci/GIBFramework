@@ -82,7 +82,7 @@ Insert Into GIB_SorguZamani(updateTime) Values(@updateTime);
 
         public User SQLiteUserFind(string VergiNo)
         {
-            User r = new User();
+            User r = null;
 
             using (SQLiteConnection con = NewSQLiteConnection())
             {
@@ -97,6 +97,7 @@ Insert Into GIB_SorguZamani(updateTime) Values(@updateTime);
                     {
                         while (reader.Read())
                         {
+                            r = new User();
                             r.Identifier = reader["identifier"].ToString();
                             r.Title = reader["title"].ToString();
                             r.Type = (UsrType)reader["type"].AsIntNull();
@@ -108,32 +109,34 @@ Insert Into GIB_SorguZamani(updateTime) Values(@updateTime);
                         reader.Close();
                     }
 
-                    cmd.CommandText = "Select * from GIB_Alias where identifier=@identifier and type=@type ";
-                    cmd.CommandType = CommandType.Text;
-                    cmd.Parameters.Add(new SQLiteParameter("@identifier", VergiNo));
-                    cmd.Parameters.Add(new SQLiteParameter("@type", DocType.Invoice));
-                    using (SQLiteDataReader reader = cmd.ExecuteReader())
+                    if (r != null)
                     {
-
-                        DocumentType doc1 = new DocumentType();
-                        doc1.type = DocType.Invoice;
-                        doc1.typeSpecified = true;
-                        List<AliasType> aliasList = new List<AliasType>();
-
-                        while (reader.Read())
+                        cmd.CommandText = "Select * from GIB_Alias where identifier=@identifier and type=@type ";
+                        cmd.CommandType = CommandType.Text;
+                        cmd.Parameters.Add(new SQLiteParameter("@identifier", VergiNo));
+                        cmd.Parameters.Add(new SQLiteParameter("@type", DocType.Invoice));
+                        using (SQLiteDataReader reader = cmd.ExecuteReader())
                         {
-                            var alias = new AliasType();
-                            alias.Name = new string[1];
-                            alias.Name[0] = reader["name"].ToString();
-                            alias.CreationTime = reader["creationTime"].AsDateTime().ToString("yyy-MM-ddThh.mm.ss");
-                            alias.DeletionTime = reader["deletionTime"].AsDateTime().ToString("yyy-MM-ddThh.mm.ss");
-                            aliasList.Add(alias);
-                        }
-                        doc1.Alias = aliasList.ToArray();
-                        r.Documents = new DocumentType[1];
-                        r.Documents[0] = doc1;
-                        reader.Close();
 
+                            DocumentType doc1 = new DocumentType();
+                            doc1.type = DocType.Invoice;
+                            doc1.typeSpecified = true;
+                            List<AliasType> aliasList = new List<AliasType>();
+
+                            while (reader.Read())
+                            {
+                                var alias = new AliasType();
+                                alias.Name = new string[1];
+                                alias.Name[0] = reader["name"].ToString();
+                                alias.CreationTime = reader["creationTime"].AsDateTime().ToString("yyy-MM-ddThh.mm.ss");
+                                alias.DeletionTime = reader["deletionTime"].AsDateTime().ToString("yyy-MM-ddThh.mm.ss");
+                                aliasList.Add(alias);
+                            }
+                            doc1.Alias = aliasList.ToArray();
+                            r.Documents = new DocumentType[1];
+                            r.Documents[0] = doc1;
+                            reader.Close();
+                        }
                     }
                 }
                 con.Close();
