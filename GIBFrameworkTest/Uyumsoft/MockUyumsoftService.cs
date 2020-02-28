@@ -32,14 +32,15 @@ namespace GIBFrameworkTest.Uyumsoft
             InvoiceIdentitiesResponse r = new InvoiceIdentitiesResponse();
             r.IsSucceded = true;
             r.Value = new InvoiceIdentity[invoices.Count()];
+            
 
             int i = 0;
 
             foreach (var item in invoices)
             {
+                r.Value[i] = new InvoiceIdentity();
                 r.Value[i].Id = item.Invoice.UUID.Value;
                 r.Value[i].Number = item.Invoice.ID.Value;
-
                 i++;
             }
 

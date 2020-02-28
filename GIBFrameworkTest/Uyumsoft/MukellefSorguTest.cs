@@ -8,10 +8,6 @@ namespace GIBFrameworkTest.Uyumsoft
     [TestClass]
     public class MukellefSorguTest
     {
-
-       
-
-
         [TestMethod]
         public void TestMukellefBilgisi()
         {
@@ -22,7 +18,6 @@ namespace GIBFrameworkTest.Uyumsoft
             Assert.IsNotNull(user, "Mükellef Bulunamadı");
             user = eFatura.MukellefBilgisi("1111111111");
             Assert.IsNull(user, "Mükellef olmaması gerekirdi");
-
         }
 
         [TestMethod]
@@ -34,10 +29,14 @@ namespace GIBFrameworkTest.Uyumsoft
 
             GIBInterface.SendParameters val = new GIBInterface.SendParameters();
             val.InvoicesInfo = CreateInvoiceInfoList();
-            
-
 
             GIBInterface.SendResult response = eFatura.SendInvoice(val);
+
+            Assert.AreEqual(response.IsSucceded, true, "Fatura başarısız oldu");
+            Assert.AreEqual(response.ResultInvoices.Count, 2, "Fatura sayısı 2 olmalı");
+
+            
+
         }
 
         private List<GIBInterface.InvoiceInfo> CreateInvoiceInfoList()
@@ -45,30 +44,31 @@ namespace GIBFrameworkTest.Uyumsoft
 
             List<GIBInterface.InvoiceInfo> r = new List<GIBInterface.InvoiceInfo>();
 
-            r.Add(CreateInvoice());
+            r.Add(CreateInvoice(".\\OrnekFaturalar\\02-TicariFaturaOrnegi.xml","TST2020000000001"));
+            r.Add(CreateInvoice(".\\OrnekFaturalar\\02-TicariFaturaOrnegi.xml", "TST2020000000002"));
 
 
             return r;
         }
 
-        private GIBInterface.InvoiceInfo CreateInvoice()
+        private GIBInterface.InvoiceInfo CreateInvoice(string FileName, string FaturaNo)
         {
             GIBInterface.InvoiceInfo r = new GIBInterface.InvoiceInfo();
 
             r.AliciPostaKutusuEtiketi = "gp";
             r.Customer = new GIBInterface.CustomerInfo();
-            r.Invoices = CreateInvoice2();
-            r.LocalDocumentId = Guid.NewGuid().ToString();
-  
+            r.Invoices = LoadInvoiceXML(FileName, FaturaNo);
+            r.LocalDocumentId = FaturaNo;
+
+
             return r;
         }
 
-        private GIBInterface.UBLTR.InvoiceType CreateInvoice2()
+        private GIBInterface.UBLTR.InvoiceType LoadInvoiceXML(string FileName, string FaturaNo)
         {
-            GIBInterface.UBLTR.InvoiceType r = new GIBInterface.UBLTR.InvoiceType();
-            r.ID = new GIBInterface.UBLTR.IDType();
-            r.ID.Value = "TST2020000000001";
-            r.UUID = new GIBInterface.UBLTR.UUIDType();
+            var xml = System.IO.File.ReadAllText(FileName);
+            var r = GIBInterface.UBLTR.InvoiceType.Create(xml);
+            r.ID.Value = FaturaNo;
             r.UUID.Value = Guid.NewGuid().ToString();
             return r;
         }
