@@ -2,21 +2,19 @@
 using GIBInterface.EFaturaPaketi;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.ServiceModel;
 using System.ServiceModel.Channels;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace GIBProviders.Veriban
 {
     public class EFatura : IEFatura, ISettings, IMukellefListesi, ILogin
     {
         private ServiceVeriban.TransferDocumentServiceClient _service;
-        private ServiceVeriban.TransferDocumentServiceClient service {
+        private ServiceVeriban.TransferDocumentServiceClient service
+        {
             get
             {
-                if (_service==null)
+                if (_service == null)
                 {
                     var Uri = Settings["Uri"];
                     var encoding = new MtomMessageEncodingBindingElement();
@@ -28,13 +26,14 @@ namespace GIBProviders.Veriban
                 }
                 return _service;
             }
-                
+
         }
 
         internal string SessionID = "";
 
         Dictionary<string, string> _Settings;
-        public Dictionary<string, string> Settings {
+        public Dictionary<string, string> Settings
+        {
             get
             {
                 if (_Settings == null)
@@ -65,7 +64,7 @@ namespace GIBProviders.Veriban
 
         public Dictionary<string, string> DefaultSettings()
         {
-            return  new Dictionary<string, string>()
+            return new Dictionary<string, string>()
             {
                 {"UserName","Kullanıcı Adını Buraya Giriniz"},
                 {"Password","Şifreyi Buraya Giriniz"},

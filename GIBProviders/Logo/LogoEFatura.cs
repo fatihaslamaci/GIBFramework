@@ -1,12 +1,11 @@
-﻿using System;
-using System.ServiceModel;
+﻿using System.ServiceModel;
 
 namespace GIBProviders.Logo
 {
     public partial class EFatura
     {
         internal ServiceLogo.PostBoxServiceClient _service;
-        
+
 
 
         private ServiceLogo.PostBoxServiceClient service
@@ -32,7 +31,7 @@ namespace GIBProviders.Logo
 
                     _service = new ServiceLogo.PostBoxServiceClient(binding, endpoint);
 
-                    
+
                 }
                 return _service;
             }

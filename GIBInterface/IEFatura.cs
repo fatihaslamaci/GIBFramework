@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace GIBInterface
 {
@@ -34,7 +31,7 @@ namespace GIBInterface
     }
 
 
-    public class QueryStatusResponseData: QueryStatusResponse
+    public class QueryStatusResponseData : QueryStatusResponse
     {
         public long RecordId { get; set; }
 
@@ -44,9 +41,9 @@ namespace GIBInterface
 
     public enum QueryStatus
     {
-        IslemDevamEdiyor=0,
-        BasariliSonuclandi=1,
-        BasarisizSonuclandi=2
+        IslemDevamEdiyor = 0,
+        BasariliSonuclandi = 1,
+        BasarisizSonuclandi = 2
     }
 
     public class CustomerInfo

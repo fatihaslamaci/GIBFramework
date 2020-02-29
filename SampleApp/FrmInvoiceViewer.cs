@@ -1,14 +1,7 @@
 ﻿using GIBFramework;
-using GIBInterface;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.IO;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace SampleApp
@@ -18,7 +11,7 @@ namespace SampleApp
         public EFatura EFatura { get; set; }
 
         private string XsltFileDir = ".\\xslt";
-        
+
         private string _xsltFileName;
         private string XsltFileName { get { return GetXsltFileName(); } set { SetXsltFileName(value); } }
 

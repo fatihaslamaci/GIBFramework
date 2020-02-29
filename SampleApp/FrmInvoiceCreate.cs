@@ -1,16 +1,9 @@
 ﻿using GIBInterface.UBLTR;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.IO;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Xml;
-using System.Xml.Xsl;
 
 namespace SampleApp
 {
@@ -43,7 +36,7 @@ namespace SampleApp
             return _sampleFileName;
         }
 
-      
+
         public FrmInvoiceCreate()
         {
             InitializeComponent();
@@ -61,7 +54,7 @@ namespace SampleApp
                 cbFileName.Items.AddRange(d.GetFiles("*.xml"));
                 cbFileName.SelectedIndex = 0;
             }
-            
+
         }
 
         private void cbFileName_SelectedIndexChanged(object sender, EventArgs e)
@@ -72,7 +65,7 @@ namespace SampleApp
             }
         }
 
-     
+
 
         public void ShowInvoice(InvoiceType invoice)
         {
@@ -110,12 +103,12 @@ namespace SampleApp
             FrmInvoiceViewer frm = new FrmInvoiceViewer();
             frm.EFatura = EFatura;
             frm.Invoice = item.Invoices;
-            if (frm.ShowDialog()== DialogResult.OK)
+            if (frm.ShowDialog() == DialogResult.OK)
             {
                 var rslt = EFatura.SendInvoice(prm);
-                if(string.IsNullOrWhiteSpace(rslt.Message))
+                if (string.IsNullOrWhiteSpace(rslt.Message))
                 {
-                    if(rslt.IsSucceded)
+                    if (rslt.IsSucceded)
                     {
                         MessageBox.Show("Başarılı");
                     }
@@ -128,7 +121,7 @@ namespace SampleApp
                 {
                     MessageBox.Show(rslt.Message);
                 }
-                
+
             }
 
         }

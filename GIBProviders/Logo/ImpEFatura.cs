@@ -1,16 +1,11 @@
 ﻿using GIBInterface;
-using GIBInterface.UBLTR;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.IO.Compression;
 using System.Linq;
-using System.Runtime.Serialization;
-using System.Runtime.Serialization.Formatters.Binary;
 using System.Security.Cryptography;
 using System.Text;
-using System.Threading.Tasks;
-using System.Xml.Serialization;
 
 namespace GIBProviders.Logo
 {
@@ -25,14 +20,14 @@ namespace GIBProviders.Logo
         {
             SendResult r = new SendResult();
 
-            var grup = SendParameters.InvoicesInfo.GroupBy(x => new { x.Customer.VknTckn, x.Customer.Alias});
+            var grup = SendParameters.InvoicesInfo.GroupBy(x => new { x.Customer.VknTckn, x.Customer.Alias });
             foreach (var item in grup)
             {
 
                 var Invoices = item.ToList();
                 var DocType = GetDoc(Guid.NewGuid(), Invoices);
 
-                if (service.sendInvoice(DocType, item.Key.Alias , SessionID))
+                if (service.sendInvoice(DocType, item.Key.Alias, SessionID))
                 {
                     r.IsSucceded = true;
                     r.ResultInvoices = new List<ResultInvoice>();
@@ -55,7 +50,7 @@ namespace GIBProviders.Logo
                     }
                 }
             }
-    
+
             return r;
         }
 
@@ -64,12 +59,12 @@ namespace GIBProviders.Logo
             ServiceLogo.DocumentType DocType = new ServiceLogo.DocumentType();
 
             var zip = compressed(InvoicesInfo);
-            
+
             //TODO :buradaki file name için DB de Zarf ID oluşturulacak. henüz yapılmadı.
             DocType.fileName = ZarfId + ".zip";
             DocType.binaryData = new ServiceLogo.base64BinaryData();
             DocType.binaryData.Value = zip;
-            DocType.hash = GetMd5Hash(zip) ;
+            DocType.hash = GetMd5Hash(zip);
 
             return DocType;
         }

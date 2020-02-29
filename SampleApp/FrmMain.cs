@@ -1,12 +1,4 @@
-﻿using GIBInterface;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System;
 using System.Windows.Forms;
 
 namespace SampleApp
@@ -14,7 +6,7 @@ namespace SampleApp
     public partial class FrmMain : Form
     {
 
-        private GIBFramework.EFatura EFatura { get; set;}
+        private GIBFramework.EFatura EFatura { get; set; }
 
         public FrmMain()
         {
@@ -27,7 +19,7 @@ namespace SampleApp
             if (frm.ShowDialog() == DialogResult.OK)
             {
                 EFatura = frm.EFatura;
-              
+
             }
             else
             {

@@ -1,9 +1,5 @@
 ﻿using GIBProviders.ServiceUyumsoft;
-using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace GIBFrameworkTest.Uyumsoft
 {
@@ -45,7 +41,7 @@ namespace GIBFrameworkTest.Uyumsoft
             InvoiceIdentitiesResponse r = new InvoiceIdentitiesResponse();
             r.IsSucceded = true;
             r.Value = new InvoiceIdentity[invoices.Count()];
-            
+
 
             int i = 0;
 

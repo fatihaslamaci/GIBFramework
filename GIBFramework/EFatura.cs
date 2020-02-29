@@ -3,9 +3,6 @@ using GIBInterface.EFaturaPaketi;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace GIBFramework
 {
@@ -85,7 +82,7 @@ namespace GIBFramework
         public List<SendInvoiceData> SendInvoiceList(SendInvoiceListDataFind val)
         {
 
-            return Data.SendInvoiceList(val,Provider.ProviderId());
+            return Data.SendInvoiceList(val, Provider.ProviderId());
         }
 
         public SendResult SendInvoice(SendParameters SendParameters)
@@ -102,7 +99,7 @@ namespace GIBFramework
                 }
             }
 
-            
+
 
             SendParameters = Data.SendInvoiceInsert(SendParameters, Provider.ProviderId());
             try
@@ -143,7 +140,7 @@ namespace GIBFramework
             if (Provider is IFaturaDurumuSorgula)
             {
                 Login();
-                var invoiceStatus  = (Provider as IFaturaDurumuSorgula).InvoiceStatus(SendParameters);
+                var invoiceStatus = (Provider as IFaturaDurumuSorgula).InvoiceStatus(SendParameters);
 
                 foreach (var item in SendParameters)
                 {
@@ -154,7 +151,7 @@ namespace GIBFramework
 
                     var findSatus = invoiceStatus.Find(x => x.InvoiceUUID == item.InvoiceUUID);
 
-                    if (findSatus !=null)
+                    if (findSatus != null)
                     {
                         statusData.InvoiceStatus = findSatus.InvoiceStatus;
                         statusData.Message = findSatus.Message;
@@ -167,7 +164,7 @@ namespace GIBFramework
 
                     r.Add(statusData);
                 }
-                
+
                 Data.DurumSorgulamaYaz(r);
             }
             return r;

@@ -19,7 +19,7 @@ namespace GIBProviders.Uyumsoft
             try
             {
                 response = service.QueryOutboxInvoiceStatus(guid.ToArray());
-               
+
                 foreach (var item in response.Value)
                 {
                     QueryStatusResponse rr = new QueryStatusResponse();
@@ -30,7 +30,7 @@ namespace GIBProviders.Uyumsoft
                     {
                         rr.InvoiceStatus = GIBInterface.QueryStatus.BasariliSonuclandi;
                     }
-                    else if(item.Status == ServiceUyumsoft.InvoiceStatus.Declined)
+                    else if (item.Status == ServiceUyumsoft.InvoiceStatus.Declined)
                     {
                         rr.InvoiceStatus = QueryStatus.BasarisizSonuclandi;
                     }
@@ -53,7 +53,7 @@ namespace GIBProviders.Uyumsoft
             catch (Exception ex)
             {
                 //TODO
-                throw ex;  
+                throw ex;
             }
 
             return r;

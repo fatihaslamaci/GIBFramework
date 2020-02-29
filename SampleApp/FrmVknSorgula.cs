@@ -1,11 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace SampleApp
@@ -21,7 +14,7 @@ namespace SampleApp
         private void btnSorgula_Click(object sender, EventArgs e)
         {
             var User = EFatura.MukellefBilgisi(txbVknTckn.Text);
-            txbSonuc.Text = Newtonsoft.Json.JsonConvert.SerializeObject(User,Newtonsoft.Json.Formatting.Indented);
+            txbSonuc.Text = Newtonsoft.Json.JsonConvert.SerializeObject(User, Newtonsoft.Json.Formatting.Indented);
 
         }
 

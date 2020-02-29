@@ -1,7 +1,6 @@
-﻿using System;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System;
 using System.Collections.Generic;
-using GIBProviders.ServiceUyumsoft;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace GIBFrameworkTest.Uyumsoft
 {
@@ -12,7 +11,7 @@ namespace GIBFrameworkTest.Uyumsoft
         public void TestMukellefBilgisi()
         {
             GIBProviders.Uyumsoft.IUyumsoftService mockUyumsoftService = new MockUyumsoftService();
-            GIBInterface.IEFatura provider =  new GIBProviders.Uyumsoft.EFatura(mockUyumsoftService);
+            GIBInterface.IEFatura provider = new GIBProviders.Uyumsoft.EFatura(mockUyumsoftService);
             GIBFramework.EFatura eFatura = new GIBFramework.EFatura(provider);
             var user = eFatura.MukellefBilgisi("6130438766");
             Assert.IsNotNull(user, "Mükellef Bulunamadı");
@@ -49,7 +48,7 @@ namespace GIBFrameworkTest.Uyumsoft
             List<GIBInterface.QueryStatusParameters> val = new List<GIBInterface.QueryStatusParameters>();
 
 
-            
+
 
             {
                 GIBInterface.QueryStatusParameters item = new GIBInterface.QueryStatusParameters();
@@ -80,7 +79,7 @@ namespace GIBFrameworkTest.Uyumsoft
 
             List<GIBInterface.InvoiceInfo> r = new List<GIBInterface.InvoiceInfo>();
 
-            r.Add(CreateInvoice(".\\OrnekFaturalar\\02-TicariFaturaOrnegi.xml","TST2020000000001"));
+            r.Add(CreateInvoice(".\\OrnekFaturalar\\02-TicariFaturaOrnegi.xml", "TST2020000000001"));
             r.Add(CreateInvoice(".\\OrnekFaturalar\\02-TicariFaturaOrnegi.xml", "TST2020000000002"));
 
 

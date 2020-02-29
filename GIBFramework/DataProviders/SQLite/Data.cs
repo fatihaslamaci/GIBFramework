@@ -1,13 +1,10 @@
-﻿using GIBInterface;
+﻿using GIBFramework.SQLiteTools;
+using GIBInterface;
 using GIBInterface.EFaturaPaketi;
 using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SQLite;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using GIBFramework.SQLiteTools;
 
 namespace GIBFramework.DataProviders.SQLite
 {
@@ -390,7 +387,7 @@ where id=@id";
                             cmd.Parameters.Add(new SQLiteParameter("@query_Message", item.Message));
                             cmd.ExecuteNonQuery();
                         }
-                        
+
 
                     }
                     tr.Commit();

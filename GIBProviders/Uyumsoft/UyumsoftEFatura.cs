@@ -1,7 +1,4 @@
-﻿using System.ServiceModel;
-
-
-namespace GIBProviders.Uyumsoft
+﻿namespace GIBProviders.Uyumsoft
 {
     public partial class EFatura
     {
@@ -18,7 +15,7 @@ namespace GIBProviders.Uyumsoft
         {
             service = new ImpUyumsoftService(this);
         }
-      
+
         /*
         private ServiceUyumsoft.IntegrationClient service
         {
@@ -52,6 +49,6 @@ namespace GIBProviders.Uyumsoft
 
         }
         */
-       
+
     }
 }

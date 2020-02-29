@@ -1,11 +1,8 @@
 ﻿using GIBInterface;
 using GIBInterface.EFaturaPaketi;
-using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Tools;
 
 namespace GIBProviders.Logo
@@ -25,7 +22,7 @@ namespace GIBProviders.Logo
             }
             List<GIBInterface.EFaturaPaketi.User> users = new List<User>();
 
-            foreach (var Grupitem in rr.User.GroupBy(x=>x.Identifier))
+            foreach (var Grupitem in rr.User.GroupBy(x => x.Identifier))
             {
                 GIBInterface.EFaturaPaketi.User user = new User();
                 user.Identifier = Grupitem.Key; //Identifier;

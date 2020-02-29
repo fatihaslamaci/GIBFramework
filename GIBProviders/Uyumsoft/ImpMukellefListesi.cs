@@ -5,7 +5,7 @@ using Tools;
 
 namespace GIBProviders.Uyumsoft
 {
-    public partial class EFatura: IMukellefListesi
+    public partial class EFatura : IMukellefListesi
     {
         public UserList GetUserList()
         {

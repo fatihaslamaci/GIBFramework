@@ -1,10 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
+﻿using System.IO;
 using System.IO.Compression;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace Tools
 {
@@ -40,7 +37,7 @@ namespace Tools
 
         public static byte[] UnzipToStream(byte[] zippedBuffer)
         {
-            
+
             using (var zippedStream = new MemoryStream(zippedBuffer))
             {
                 using (var archive = new ZipArchive(zippedStream))

@@ -1,12 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Drawing;
-using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
+﻿using System.Windows.Forms;
 
 namespace SampleApp
 {
@@ -14,9 +6,10 @@ namespace SampleApp
     {
 
         private AliciSatici _AliciSatici;
-        public AliciSatici AliciSatici { 
-            get { return GetAliciSatici(); } 
-            set { SetAliciSatici(value); } 
+        public AliciSatici AliciSatici
+        {
+            get { return GetAliciSatici(); }
+            set { SetAliciSatici(value); }
         }
 
         private AliciSatici GetAliciSatici()
@@ -26,14 +19,14 @@ namespace SampleApp
         private void SetAliciSatici(AliciSatici AliciSatici)
         {
 
-            if (AliciSatici!=null)
+            if (AliciSatici != null)
             {
-                if (AliciSatici.Party!=null)
+                if (AliciSatici.Party != null)
                 {
-                    
-                    if(AliciSatici.Party.PartyName!=null)
+
+                    if (AliciSatici.Party.PartyName != null)
                     {
-                        if (AliciSatici.Party.PartyName.Name!=null)
+                        if (AliciSatici.Party.PartyName.Name != null)
                         {
                             txtGondericiUnvan.Text = AliciSatici.Party.PartyName.Name.Value;
                         }

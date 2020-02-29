@@ -1,11 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Net;
-using System.Text;
-using System.Threading.Tasks;
-using Newtonsoft.Json;
 
 namespace GIBProviders.Veriban
 {
@@ -24,11 +19,11 @@ namespace GIBProviders.Veriban
         public static GIBInterface.EFaturaPaketi.UserList GetUserList(FtpInfo ftpInfo, string TempFolder)
         {
             GIBInterface.EFaturaPaketi.UserList r = null;
-            string FileName = TempFolder+GetFileName(DateTime.Now);
+            string FileName = TempFolder + GetFileName(DateTime.Now);
 
             if (File.Exists(FileName) == false)
             {
-                DownloadFtpUserList(ftpInfo,FileName);
+                DownloadFtpUserList(ftpInfo, FileName);
                 for (int i = 1; i < 12; i++)
                 {
                     try
@@ -42,7 +37,7 @@ namespace GIBProviders.Veriban
             }
             var s = System.IO.File.ReadAllText(FileName, System.Text.Encoding.UTF8);
 
-            r= Tools.XmlSerialization.XMLDeserialize<GIBInterface.EFaturaPaketi.UserList>(s);
+            r = Tools.XmlSerialization.XMLDeserialize<GIBInterface.EFaturaPaketi.UserList>(s);
 
             return r;
         }
@@ -50,7 +45,7 @@ namespace GIBProviders.Veriban
         {
             using (WebClient client = new WebClient())
             {
-                client.Credentials = new NetworkCredential(ftpInfo.UserName , ftpInfo.Password);
+                client.Credentials = new NetworkCredential(ftpInfo.UserName, ftpInfo.Password);
                 client.DownloadFile(ftpInfo.Adress, FileName);
             }
         }

@@ -1,14 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
+﻿using GIBInterface;
+using System;
 using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using GIBInterface;
-using Newtonsoft.Json;
 
 namespace SampleApp
 {
@@ -29,7 +22,7 @@ namespace SampleApp
             cbProviders.Items.Add("Uyumsoft");
             cbProviders.Items.Add("Veriban");
             cbProviders.Items.Add("Logo");
-            
+
         }
 
         private void cbProviders_SelectedIndexChanged(object sender, EventArgs e)
@@ -50,7 +43,7 @@ namespace SampleApp
                     {
                         AktiveProvider = new GIBProviders.Logo.EFatura();
                     }
-                  
+
 
 
                     EFatura = new GIBFramework.EFatura(AktiveProvider);
