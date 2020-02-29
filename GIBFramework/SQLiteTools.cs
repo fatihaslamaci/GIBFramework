@@ -36,11 +36,15 @@ namespace GIBFramework.SQLiteTools
                 SQLiteConnection.CreateFile(dbFileName);
             }
 
-            SQLiteConnection con = NewSQLiteConnection();
-            con.Open();
-            var cmd = new SQLiteCommand(dbSchema, con);
-            cmd.ExecuteNonQuery();
-            con.Close();
+            using (SQLiteConnection con = NewSQLiteConnection())
+            {
+                con.Open();
+                using (SQLiteCommand cmd = new SQLiteCommand(dbSchema, con))
+                {
+                    cmd.ExecuteNonQuery();
+                }
+                con.Close();
+            }
             AlterDb(dbSchema);
 
         }
@@ -86,13 +90,17 @@ namespace GIBFramework.SQLiteTools
 
         private void addColumn(string tableName, string satir)
         {
-            var con = NewSQLiteConnection();
-            con.Open();
-            var cmd = new SQLiteCommand(con);
-            cmd.CommandText = "ALTER TABLE " + tableName + " ADD COLUMN " + satir;
-            cmd.CommandType = CommandType.Text;
-            cmd.ExecuteNonQuery();
-            con.Close();
+            using (SQLiteConnection con = NewSQLiteConnection())
+            {
+                con.Open();
+                using (SQLiteCommand cmd = new SQLiteCommand(con))
+                {
+                    cmd.CommandText = $"ALTER TABLE {tableName} ADD COLUMN {satir}";
+                    cmd.CommandType = CommandType.Text;
+                    cmd.ExecuteNonQuery();
+                }
+                con.Close();
+            }
         }
 
         private string GetFieldName(string satir)
@@ -105,25 +113,29 @@ namespace GIBFramework.SQLiteTools
         private List<TableProp> GetTableProp(string tableName)
         {
             List<TableProp> r = new List<TableProp>();
-            var con = NewSQLiteConnection();
-            con.Open();
-            var cmd = new SQLiteCommand(con);
-            cmd.CommandText = "PRAGMA TABLE_INFO(" + tableName + ")";
-            cmd.CommandType = CommandType.Text;
-            var reader = cmd.ExecuteReader();
-            while (reader.Read())
+            using (SQLiteConnection con = NewSQLiteConnection())
             {
-                TableProp tableProp = new TableProp();
-                //tableProp.Cid= reader["Cid"].ToString();
-                tableProp.Name = reader["Name"].ToString();
-                //tableProp.Type = reader["Type"].ToString();
-                //tableProp.Notnull = reader["Notnull"].ToString();
-                //tableProp.Dflt_value = reader["Dflt_value"].ToString();
-                //tableProp.Pk = reader["Pk"].ToString();
-                r.Add(tableProp);
+                con.Open();
+                using (SQLiteCommand cmd = new SQLiteCommand(con))
+                {
+                    cmd.CommandText = $"PRAGMA TABLE_INFO({tableName})";
+                    cmd.CommandType = CommandType.Text;
+                    using (SQLiteDataReader reader = cmd.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            TableProp tableProp = new TableProp();
+                            //tableProp.Cid= reader["Cid"].ToString();
+                            tableProp.Name = reader["Name"].ToString();
+                            //tableProp.Type = reader["Type"].ToString();
+                            //tableProp.Notnull = reader["Notnull"].ToString();
+                            //tableProp.Dflt_value = reader["Dflt_value"].ToString();
+                            //tableProp.Pk = reader["Pk"].ToString();
+                            r.Add(tableProp);
+                        }
+                    }
+                }
             }
-            reader.Close();
-            con.Close();
             return r;
         }
 

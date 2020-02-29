@@ -14,7 +14,8 @@ namespace Tools
             {
                 _xmlserializer.Serialize(stream, value);
                 xmlString = Encoding.UTF8.GetString(stream.ToArray());
-                stream.Close();
+                //stream.Close();
+                //stream.Dispose();
             }
             return xmlString;
         }
@@ -25,7 +26,7 @@ namespace Tools
             T obj;
             using (StringReader SR = new StringReader(XMLString))
             {
-                using (System.Xml.XmlReader XR = new System.Xml.XmlTextReader(SR))
+                using (System.Xml.XmlReader XR = GetXR(SR))
                 {
                     obj = (T)MyDeserializer.Deserialize(XR);
                 }
@@ -33,15 +34,32 @@ namespace Tools
             return obj;
         }
 
+        private static System.Xml.XmlReader GetXR(StringReader SR)
+        {
+            System.Xml.XmlReaderSettings settings = new System.Xml.XmlReaderSettings() { XmlResolver = null };
+            return System.Xml.XmlReader.Create(SR, settings);
+        }
+
+
+
         public static T XMLDeserializeStream<T>(Stream XML)
         {
             XmlSerializer MyDeserializer = new XmlSerializer(typeof(T));
             T obj;
-            using (System.Xml.XmlReader XR = new System.Xml.XmlTextReader(XML))
+            //using (System.Xml.XmlReader XR = new System.Xml.XmlTextReader(XML))
+            using (System.Xml.XmlReader XR = GetXR1(XML))
             {
                 obj = (T)MyDeserializer.Deserialize(XR);
             }
             return obj;
+        }
+
+        private static System.Xml.XmlReader GetXR1(Stream XML)
+        {
+            System.Xml.XmlReaderSettings settings = new System.Xml.XmlReaderSettings() { XmlResolver = null };
+            return System.Xml.XmlReader.Create(XML, settings);
+
+            //return new System.Xml.XmlTextReader(XML);
         }
     }
 }

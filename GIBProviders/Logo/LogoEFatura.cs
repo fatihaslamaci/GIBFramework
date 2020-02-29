@@ -1,12 +1,28 @@
-﻿using System.ServiceModel;
+﻿using System;
+using System.ServiceModel;
 
 namespace GIBProviders.Logo
 {
-    public partial class EFatura
+    public partial class EFatura : IDisposable
     {
         internal ServiceLogo.PostBoxServiceClient _service;
 
+        protected virtual void Dispose(bool disposing)
+        {
+            if (disposing)
+            {
+                if (_service != null)
+                {
+                    _service.Close();
+                }
+            }
+        }
 
+        public void Dispose()
+        {
+            Dispose(true);
+            GC.SuppressFinalize(this);
+        }
 
         private ServiceLogo.PostBoxServiceClient service
         {

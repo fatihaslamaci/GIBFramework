@@ -20,37 +20,39 @@ namespace GIBProviders.Logo
         {
             SendResult r = new SendResult();
 
-            var grup = SendParameters.InvoicesInfo.GroupBy(x => new { x.Customer.VknTckn, x.Customer.Alias });
-            foreach (var item in grup)
+            if (SendParameters != null)
             {
-
-                var Invoices = item.ToList();
-                var DocType = GetDoc(Guid.NewGuid(), Invoices);
-
-                if (service.sendInvoice(DocType, item.Key.Alias, SessionID))
+                var grup = SendParameters.InvoicesInfo.GroupBy(x => new { x.Customer.VknTckn, x.Customer.Alias });
+                foreach (var item in grup)
                 {
-                    r.IsSucceded = true;
-                    r.ResultInvoices = new List<ResultInvoice>();
-                    foreach (var invoice in Invoices)
+
+                    var Invoices = item.ToList();
+                    var DocType = GetDoc(Guid.NewGuid(), Invoices);
+
+                    if (service.sendInvoice(DocType, item.Key.Alias, SessionID))
                     {
-                        ResultInvoice rr = new ResultInvoice();
-                        rr.ETN = invoice.Invoices.UUID.Value;
-                        rr.FaturaNo = invoice.Invoices.ID.Value;
-                        r.ResultInvoices.Add(rr);
+                        r.IsSucceded = true;
+                        r.ResultInvoices = new List<ResultInvoice>();
+                        foreach (var invoice in Invoices)
+                        {
+                            var rr = new ResultInvoice();
+                            rr.ETN = invoice.Invoices.UUID.Value;
+                            rr.FaturaNo = invoice.Invoices.ID.Value;
+                            r.ResultInvoices.Add(rr);
+                        }
                     }
-                }
-                else
-                {
-                    r.IsSucceded = false;
-                    r.ResultInvoices = new List<ResultInvoice>();
-                    foreach (var invoice in Invoices)
+                    else
                     {
-                        ResultInvoice rr = new ResultInvoice();
-                        r.ResultInvoices.Add(rr);
+                        r.IsSucceded = false;
+                        r.ResultInvoices = new List<ResultInvoice>();
+                        foreach (var invoice in Invoices)
+                        {
+                            ResultInvoice rr = new ResultInvoice();
+                            r.ResultInvoices.Add(rr);
+                        }
                     }
                 }
             }
-
             return r;
         }
 
@@ -72,14 +74,16 @@ namespace GIBProviders.Logo
 
         static string GetMd5Hash(byte[] input)
         {
+#pragma warning disable CA5351 // Do Not Use Broken Cryptographic Algorithms
             using (MD5 md5Hash = MD5.Create())
+#pragma warning restore CA5351 // Do Not Use Broken Cryptographic Algorithms
             {
 
                 byte[] data = md5Hash.ComputeHash(input);
                 StringBuilder sBuilder = new StringBuilder();
                 for (int i = 0; i < data.Length; i++)
                 {
-                    sBuilder.Append(data[i].ToString("x2"));
+                    _ = sBuilder.Append(data[i].ToString("x2"));
                 }
                 return sBuilder.ToString();
             }
@@ -88,25 +92,31 @@ namespace GIBProviders.Logo
 
         public byte[] compressed(List<InvoiceInfo> InvoicesInfo)
         {
-            using (var compressedFileStream = new MemoryStream())
+            byte[] r = null;
+            if (InvoicesInfo != null)
             {
-                using (var zipArchive = new ZipArchive(compressedFileStream, ZipArchiveMode.Create, false))
+                using (var compressedFileStream = new MemoryStream())
                 {
-                    foreach (var invoice in InvoicesInfo)
+                    using (var zipArchive = new ZipArchive(compressedFileStream, ZipArchiveMode.Create, false))
                     {
-                        var zipEntry = zipArchive.CreateEntry(invoice.Invoices.UUID.Value + ".xml");
-                        byte[] bytes = invoice.Invoices.CreateBytes();
-                        using (MemoryStream originalFileStream = new MemoryStream(bytes))
+                        foreach (var invoice in InvoicesInfo)
                         {
-                            using (var zipEntryStream = zipEntry.Open())
+                            var zipEntry = zipArchive.CreateEntry(invoice.Invoices.UUID.Value + ".xml");
+                            byte[] bytes = invoice.Invoices.CreateBytes();
+                            using (MemoryStream originalFileStream = new MemoryStream(bytes))
                             {
-                                originalFileStream.CopyTo(zipEntryStream);
+                                using (var zipEntryStream = zipEntry.Open())
+                                {
+                                    originalFileStream.CopyTo(zipEntryStream);
+
+                                }
                             }
                         }
+                        r = compressedFileStream.ToArray();
                     }
                 }
-                return compressedFileStream.ToArray();
             }
+            return r;
         }
 
 

@@ -8,7 +8,6 @@ namespace GIBProviders.Uyumsoft
 
         internal ServiceUyumsoft.IntegrationClient _service;
 
-
         private ServiceUyumsoft.IntegrationClient service
         {
             get
@@ -63,5 +62,7 @@ namespace GIBProviders.Uyumsoft
         {
             return service.SendInvoice(invoices);
         }
+
+
     }
 }
