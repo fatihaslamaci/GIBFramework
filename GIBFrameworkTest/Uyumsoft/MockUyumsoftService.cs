@@ -22,9 +22,22 @@ namespace GIBFrameworkTest.Uyumsoft
 
         public InvoiceStatusResponse QueryOutboxInvoiceStatus(string[] invoiceIds)
         {
+            InvoiceStatusResponse r = new InvoiceStatusResponse();
 
+            r.IsSucceded = true;
+            r.Value = new InvoiceStatusInfo[invoiceIds.Count()];
 
-            throw new NotImplementedException();
+            int i = 0;
+            foreach (var item in invoiceIds)
+            {
+                r.Value[i] = new InvoiceStatusInfo();
+                r.Value[i].InvoiceId = item;
+                r.Value[i].Status = InvoiceStatus.Approved;
+                r.Value[i].StatusCode = 1000;
+                i++;
+            }
+
+            return r;
         }
 
         public InvoiceIdentitiesResponse SendInvoice(InvoiceInfo[] invoices)

@@ -35,9 +35,45 @@ namespace GIBFrameworkTest.Uyumsoft
             Assert.AreEqual(response.IsSucceded, true, "Fatura başarısız oldu");
             Assert.AreEqual(response.ResultInvoices.Count, 2, "Fatura sayısı 2 olmalı");
 
+        }
+
+
+        [TestMethod]
+        public void TestDurumSorgula()
+        {
+            GIBProviders.Uyumsoft.IUyumsoftService mockUyumsoftService = new MockUyumsoftService();
+            GIBInterface.IEFatura provider = new GIBProviders.Uyumsoft.EFatura(mockUyumsoftService);
+            GIBFramework.EFatura eFatura = new GIBFramework.EFatura(provider);
+
+
+            List<GIBInterface.QueryStatusParameters> val = new List<GIBInterface.QueryStatusParameters>();
+
+
             
 
+            {
+                GIBInterface.QueryStatusParameters item = new GIBInterface.QueryStatusParameters();
+                item.RecordId = 0;
+                item.InvoiceUUID = Guid.NewGuid();
+                val.Add(item);
+            }
+
+            {
+                GIBInterface.QueryStatusParameters item = new GIBInterface.QueryStatusParameters();
+                item.RecordId = 0;
+                item.InvoiceUUID = Guid.NewGuid();
+                val.Add(item);
+            }
+
+            var res = eFatura.FaturaDurumSorgula(val);
+
+
+            Assert.AreEqual(res.Count, 2, "2 fatura dönmeli");
+            Assert.AreEqual(res[0].InvoiceStatus, GIBInterface.QueryStatus.BasariliSonuclandi);
+            Assert.AreEqual(res[1].InvoiceStatus, GIBInterface.QueryStatus.BasariliSonuclandi);
+
         }
+
 
         private List<GIBInterface.InvoiceInfo> CreateInvoiceInfoList()
         {
