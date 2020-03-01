@@ -83,7 +83,9 @@ namespace GIBProviders.Logo
                 StringBuilder sBuilder = new StringBuilder();
                 for (int i = 0; i < data.Length; i++)
                 {
+#pragma warning disable CA1305 // Specify IFormatProvider
                     _ = sBuilder.Append(data[i].ToString("x2"));
+#pragma warning restore CA1305 // Specify IFormatProvider
                 }
                 return sBuilder.ToString();
             }
