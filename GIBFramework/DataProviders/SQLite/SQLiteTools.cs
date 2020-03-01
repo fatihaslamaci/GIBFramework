@@ -36,7 +36,9 @@ namespace GIBFramework.DataProviders.SQLiteTools
             using (SQLiteConnection con = NewSQLiteConnection())
             {
                 con.Open();
+#pragma warning disable CA2100 // Review SQL queries for security vulnerabilities
                 using (SQLiteCommand cmd = new SQLiteCommand(dbSchema, con))
+#pragma warning restore CA2100 // Review SQL queries for security vulnerabilities
                 {
                     cmd.ExecuteNonQuery();
                 }
@@ -91,7 +93,9 @@ namespace GIBFramework.DataProviders.SQLiteTools
                 con.Open();
                 using (SQLiteCommand cmd = new SQLiteCommand(con))
                 {
+#pragma warning disable CA2100 // Review SQL queries for security vulnerabilities
                     cmd.CommandText = "ALTER TABLE " + tableName + " ADD COLUMN " + satir;
+#pragma warning restore CA2100 // Review SQL queries for security vulnerabilities
                     cmd.CommandType = CommandType.Text;
                     cmd.ExecuteNonQuery();
                 }
@@ -114,7 +118,9 @@ namespace GIBFramework.DataProviders.SQLiteTools
                 con.Open();
                 using (SQLiteCommand cmd = new SQLiteCommand(con))
                 {
-                    cmd.CommandText = "PRAGMA TABLE_INFO(" + tableName + ")";
+#pragma warning disable CA2100 // Review SQL queries for security vulnerabilities
+                    cmd.CommandText = $"PRAGMA TABLE_INFO({tableName})";
+#pragma warning restore CA2100 // Review SQL queries for security vulnerabilities
                     cmd.CommandType = CommandType.Text;
                     using (SQLiteDataReader reader = cmd.ExecuteReader())
                     {

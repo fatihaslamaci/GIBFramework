@@ -7,9 +7,28 @@ using System.ServiceModel.Channels;
 
 namespace GIBProviders.Veriban
 {
-    public class EFatura : IEFatura, ISettings, IMukellefListesi, ILogin
+    public class EFatura : IEFatura, ISettings, IMukellefListesi, ILogin, IDisposable
     {
         private ServiceVeriban.TransferDocumentServiceClient _service;
+
+        protected virtual void Dispose(bool disposing)
+        {
+            if (disposing)
+            {
+                if (_service != null)
+                {
+                    _service.Close();
+                }
+            }
+        }
+
+        public void Dispose()
+        {
+            Dispose(true);
+            GC.SuppressFinalize(this);
+        }
+
+
         private ServiceVeriban.TransferDocumentServiceClient service
         {
             get

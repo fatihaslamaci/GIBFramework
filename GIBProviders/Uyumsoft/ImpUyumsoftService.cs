@@ -1,12 +1,30 @@
 ﻿using GIBProviders.ServiceUyumsoft;
+using System;
 using System.ServiceModel;
 
 namespace GIBProviders.Uyumsoft
 {
-    public class ImpUyumsoftService : IUyumsoftService
+    public class ImpUyumsoftService : IUyumsoftService, IDisposable
     {
 
         internal ServiceUyumsoft.IntegrationClient _service;
+
+        protected virtual void Dispose(bool disposing)
+        {
+            if (disposing)
+            {
+                if (_service != null)
+                {
+                    _service.Close();
+                }
+            }
+        }
+
+        public void Dispose()
+        {
+            Dispose(true);
+            GC.SuppressFinalize(this);
+        }
 
         private ServiceUyumsoft.IntegrationClient service
         {
