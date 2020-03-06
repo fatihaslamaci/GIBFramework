@@ -9,6 +9,7 @@ namespace Tools
     {
         public static string Unzip(byte[] zippedBuffer)
         {
+            string r = string.Empty;
             using (var zippedStream = new MemoryStream(zippedBuffer))
             {
                 using (var archive = new ZipArchive(zippedStream))
@@ -24,20 +25,19 @@ namespace Tools
                                 unzippedEntryStream.CopyTo(ms);
                                 var unzippedArray = ms.ToArray();
 
-                                return Encoding.Default.GetString(unzippedArray);
+                                r = Encoding.Default.GetString(unzippedArray);
                             }
                         }
                     }
-
-                    return null;
                 }
             }
+            return r;
         }
 
 
         public static byte[] UnzipToStream(byte[] zippedBuffer)
         {
-
+            byte[] r=null;
             using (var zippedStream = new MemoryStream(zippedBuffer))
             {
                 using (var archive = new ZipArchive(zippedStream))
@@ -51,14 +51,13 @@ namespace Tools
                             using (var ms = new MemoryStream())
                             {
                                 unzippedEntryStream.CopyTo(ms);
-                                return ms.ToArray();
+                                r = ms.ToArray();
                             }
                         }
                     }
-
-                    return null;
                 }
             }
+            return r;
         }
     }
 }
