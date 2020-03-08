@@ -109,6 +109,7 @@
     <Compile Include="FrmVknSorgula.Designer.cs">
       <DependentUpon>FrmVknSorgula.cs</DependentUpon>
     </Compile>
+    <Compile Include="MyDataLayer\MyDataLayer.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="AliciSaticiViewer.resx">

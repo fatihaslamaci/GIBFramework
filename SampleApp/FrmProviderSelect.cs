@@ -9,6 +9,9 @@ namespace SampleApp
     {
         public GIBFramework.EFatura EFatura { get; set; }
 
+        public GIBInterface.IGIBData dataLayer { get; set; } 
+        
+
 
         private IEFatura AktiveProvider { get; set; }
 
@@ -44,9 +47,9 @@ namespace SampleApp
                         AktiveProvider = new GIBProviders.Logo.EFatura();
                     }
 
+     
+                    EFatura = new GIBFramework.EFatura(AktiveProvider, dataLayer);
 
-
-                    EFatura = new GIBFramework.EFatura(AktiveProvider);
 
                     if (System.IO.File.Exists(GetSettingsFileName()))
                     {

@@ -7,6 +7,7 @@ namespace SampleApp
     {
 
         private GIBFramework.EFatura EFatura { get; set; }
+        private MyDataLayer.MyDataLayer myDataLayer { get; set; }
 
         public FrmMain()
         {
@@ -14,16 +15,20 @@ namespace SampleApp
         }
         private void FrmMain_Load(object sender, EventArgs e)
         {
-            FrmProviderSelect frm = new FrmProviderSelect();
-            frm.EFatura = EFatura;
-            if (frm.ShowDialog() == DialogResult.OK)
-            {
-                EFatura = frm.EFatura;
+            myDataLayer = new MyDataLayer.MyDataLayer();
 
-            }
-            else
+            using (FrmProviderSelect frm = new FrmProviderSelect())
             {
-                Close();
+                frm.EFatura = EFatura;
+                frm.dataLayer = myDataLayer;
+                if (frm.ShowDialog() == DialogResult.OK)
+                {
+                    EFatura = frm.EFatura;
+                }
+                else
+                {
+                    Close();
+                }
             }
         }
 
