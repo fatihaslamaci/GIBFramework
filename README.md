@@ -15,3 +15,5 @@ Yani yazılım firmaları her entegrator için ayrı ayrı kodlama yapmak yerine
 Eğer entegratör firmalar kendi servisleri için Provider yazarlarsa zahmetsizce entegrasyon sağlanmış olacak bu sayede yazılım hatalarından dolayı entegratör firmanın verdiği destek sayılarıda azalacak. (Şuan için belli başlı birkaç entegratör için Provider ları ben kodlayacağım)
 
 Proje C# ile yazılmakta. başarılı olması durumunda Java içinde kodlamayı düşünüyorum.
+
+Projeyi destekliyorsanız lütfen Yıldız vermeyi unutmayınız.
