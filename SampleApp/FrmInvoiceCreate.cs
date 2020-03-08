@@ -128,7 +128,6 @@ namespace SampleApp
             dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dataGridView1.DoubleClick += dataGridView1_DoubleClick;
 
-
             AddColumn(dataGridView1, "Aciklama", "Aciklama", 0);
             AddColumn(dataGridView1, "Miktar", "Miktar", 80);
             AddColumn(dataGridView1, "BirimFiyat", "BirimFiyat", 80);
@@ -156,7 +155,25 @@ namespace SampleApp
         private void dataGridView1_DoubleClick(object sender, EventArgs e)
         {
 
+            if (dataGridView1.SelectedRows.Count > 0)
+            {
+                DataGridViewRow row = dataGridView1.SelectedRows[0];
+                if (row != null)
+                {
+                    var r = (row.Tag as InvoiceLineType);
+                    using (FrmInvoiceLineViewer frm = new FrmInvoiceLineViewer())
+                    {
+                        frm.InvoiceLine = r;
+                        if (frm.ShowDialog() == DialogResult.OK)
+                        {
 
+                        }
+                    }
+                }
+            }
+
+
+           
         }
 
         private void FrmInvoiceCreate_Load(object sender, EventArgs e)
