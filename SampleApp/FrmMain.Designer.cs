@@ -72,7 +72,7 @@
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.Name = "FrmMain";
-            this.Text = "GIB Freamwork Sample 1.1";
+            this.Text = "GIB Framework Sample 1.1";
             this.Load += new System.EventHandler(this.FrmMain_Load);
             this.ResumeLayout(false);
 

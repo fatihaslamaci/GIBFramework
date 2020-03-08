@@ -24,9 +24,12 @@ namespace SampleApp
             {
                 _sampleFileName = value;
                 XML = System.IO.File.ReadAllText(value, UTF8Encoding.UTF8);
-                tbXml.Text = XML;
+                //tbXml.Text = XML;
                 invoice = InvoiceType.Create(XML);
-                ShowInvoice(EFatura.ManipulatedInvoice(invoice));
+                invoice = EFatura.ManipulatedInvoice(invoice);
+                GridDoldur(invoice);
+
+
             }
             _sampleFileName = value;
         }
@@ -37,9 +40,68 @@ namespace SampleApp
         }
 
 
+        private void GridDoldur(InvoiceType invocice)
+        {
+            dataGridView1.Rows.Clear();
+
+            if ((invoice!=null) && (invoice.InvoiceLine!=null))
+            {
+               
+                    dataGridView1.Visible = false;
+                    dataGridView1.Rows.Clear();
+                    foreach (var item in invoice.InvoiceLine)
+                    {
+                        var row = new DataGridViewRow();
+                        row.CreateCells(dataGridView1);
+                        row.Cells[0].Value = item.Item.Name.Value;
+                        row.Cells[1].Value = item.Price.PriceAmount.Value;
+                  
+
+                    row.Tag = item;
+                        dataGridView1.Rows.Add(row);
+
+                    }
+                    dataGridView1.Visible = true;
+            }
+        }
+
+
         public FrmInvoiceCreate()
         {
             InitializeComponent();
+            dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dataGridView1.DoubleClick += dataGridView1_DoubleClick;
+
+
+            AddColumn(dataGridView1,"Aciklama", "Aciklama",0);
+            AddColumn(dataGridView1,"Miktar", "Miktar",80);
+            AddColumn(dataGridView1,"BirimFiyat", "BirimFiyat",80);
+            AddColumn(dataGridView1,"IskontoOran", "IskontoOran",80);
+            AddColumn(dataGridView1,"IskontoTutar", "IskontoTutar",80);
+            AddColumn(dataGridView1,"KdvOran", "KdvOran",80);
+            AddColumn(dataGridView1,"KdvTutar", "KdvTutar",80);
+            AddColumn(dataGridView1,"MalHizmetTutar", "MalHizmetTutar",80);
+
+        }
+
+        private int AddColumn(DataGridView dataGridView,string name,string text, int width)
+        {
+            int r = 0;
+            r = dataGridView.Columns.Add(name,text);
+            if (width > 0)
+            {
+                dataGridView.Columns[r].Width = width;
+            }
+
+            return r;
+        }
+
+
+        private void dataGridView1_DoubleClick(object sender, EventArgs e)
+        {
+           
+
         }
 
         private void FrmInvoiceCreate_Load(object sender, EventArgs e)
@@ -67,11 +129,7 @@ namespace SampleApp
 
 
 
-        public void ShowInvoice(InvoiceType invoice)
-        {
-            //GIBFramework.InvoiceTransform it = new GIBFramework.InvoiceTransform();
-            //webBrowser1.DocumentText = it.InvoiceToHTML(invoice,this.xslt);
-        }
+       
 
         private void btnGonder_Click(object sender, EventArgs e)
         {
