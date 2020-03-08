@@ -44,24 +44,32 @@ namespace SampleApp
         {
             dataGridView1.Rows.Clear();
 
-            if ((invoice!=null) && (invoice.InvoiceLine!=null))
+            if ((invoice != null) && (invoice.InvoiceLine != null))
             {
-               
-                    dataGridView1.Visible = false;
-                    dataGridView1.Rows.Clear();
-                    foreach (var item in invoice.InvoiceLine)
-                    {
-                        var row = new DataGridViewRow();
-                        row.CreateCells(dataGridView1);
-                        row.Cells[0].Value = item.Item.Name.Value;
-                        row.Cells[1].Value = item.Price.PriceAmount.Value;
-                  
+
+                dataGridView1.Visible = false;
+                dataGridView1.Rows.Clear();
+                foreach (var item in invoice.InvoiceLine)
+                {
+                    var row = new DataGridViewRow();
+                    row.CreateCells(dataGridView1);
+                    row.Cells[0].Value = item.Item.Name.Value;
+                    row.Cells[1].Value = item.InvoicedQuantity.Value;
+                    row.Cells[2].Value = item.Price.PriceAmount.Value;
+                    row.Cells[3].Value = item.AllowanceCharge[0].MultiplierFactorNumeric.Value;
+                    row.Cells[4].Value = item.AllowanceCharge[0].Amount.Value;
+                    row.Cells[5].Value = item.TaxTotal.TaxSubtotal[0].Percent.Value;
+                    row.Cells[6].Value = item.TaxTotal.TaxAmount.Value;
+                    row.Cells[7].Value = item.LineExtensionAmount.Value;
+
+
+
 
                     row.Tag = item;
-                        dataGridView1.Rows.Add(row);
+                    dataGridView1.Rows.Add(row);
 
-                    }
-                    dataGridView1.Visible = true;
+                }
+                dataGridView1.Visible = true;
             }
         }
 
@@ -74,21 +82,21 @@ namespace SampleApp
             dataGridView1.DoubleClick += dataGridView1_DoubleClick;
 
 
-            AddColumn(dataGridView1,"Aciklama", "Aciklama",0);
-            AddColumn(dataGridView1,"Miktar", "Miktar",80);
-            AddColumn(dataGridView1,"BirimFiyat", "BirimFiyat",80);
-            AddColumn(dataGridView1,"IskontoOran", "IskontoOran",80);
-            AddColumn(dataGridView1,"IskontoTutar", "IskontoTutar",80);
-            AddColumn(dataGridView1,"KdvOran", "KdvOran",80);
-            AddColumn(dataGridView1,"KdvTutar", "KdvTutar",80);
-            AddColumn(dataGridView1,"MalHizmetTutar", "MalHizmetTutar",80);
+            AddColumn(dataGridView1, "Aciklama", "Aciklama", 0);
+            AddColumn(dataGridView1, "Miktar", "Miktar", 80);
+            AddColumn(dataGridView1, "BirimFiyat", "BirimFiyat", 80);
+            AddColumn(dataGridView1, "IskontoOran", "IskontoOran", 80);
+            AddColumn(dataGridView1, "IskontoTutar", "IskontoTutar", 80);
+            AddColumn(dataGridView1, "KdvOran", "KdvOran", 80);
+            AddColumn(dataGridView1, "KdvTutar", "KdvTutar", 80);
+            AddColumn(dataGridView1, "MalHizmetTutar", "MalHizmetTutar", 80);
 
         }
 
-        private int AddColumn(DataGridView dataGridView,string name,string text, int width)
+        private int AddColumn(DataGridView dataGridView, string name, string text, int width)
         {
             int r = 0;
-            r = dataGridView.Columns.Add(name,text);
+            r = dataGridView.Columns.Add(name, text);
             if (width > 0)
             {
                 dataGridView.Columns[r].Width = width;
@@ -100,7 +108,7 @@ namespace SampleApp
 
         private void dataGridView1_DoubleClick(object sender, EventArgs e)
         {
-           
+
 
         }
 
@@ -129,18 +137,18 @@ namespace SampleApp
 
 
 
-       
+
 
         private void btnGonder_Click(object sender, EventArgs e)
         {
-                        
-            
+
+
             GIBInterface.SendParameters prm = new GIBInterface.SendParameters();
             prm.InvoicesInfo = new List<GIBInterface.InvoiceInfo>();
 
             var User = EFatura.MukellefBilgisi(txbVKN.Text);
 
-            if (User==null)
+            if (User == null)
             {
                 MessageBox.Show("Girdiğiniz VKN/TCKN için Mükellef bulunamadı: " + txbVKN.Text);
                 return;
@@ -148,7 +156,7 @@ namespace SampleApp
 
 
             invoice.AccountingCustomerParty.Party.PartyIdentification[0].ID.Value = User.Identifier;
-            
+
             if (User.Identifier.Length == 11)//TCKN
             {
                 invoice.AccountingCustomerParty.Party.Person = new PersonType();
@@ -220,9 +228,9 @@ namespace SampleApp
             using (FrmMukellefAra frm = new FrmMukellefAra())
             {
                 frm.EFatura = EFatura;
-                if (frm.ShowDialog()== DialogResult.OK)
+                if (frm.ShowDialog() == DialogResult.OK)
                 {
-                    txbVKN.Text = frm.SelectedUser.Identifier;   
+                    txbVKN.Text = frm.SelectedUser.Identifier;
                 }
             }
 
