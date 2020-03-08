@@ -49,7 +49,7 @@ namespace GIBFramework
         private static byte[] XSLT_EmbeddedDocumentBinaryObject(InvoiceType invoice)
         {
             byte[] r = null;
-            if ((invoice.AdditionalDocumentReference != null) && (invoice.AdditionalDocumentReference.Count() > 0))
+            if ((invoice.AdditionalDocumentReference != null) && (invoice.AdditionalDocumentReference.Length > 0))
             {
                 DocumentReferenceType doc = invoice.AdditionalDocumentReference[0];
                 AttachmentType attacment = doc.Attachment;

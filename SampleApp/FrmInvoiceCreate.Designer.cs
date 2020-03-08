@@ -36,11 +36,12 @@
             this.exportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.txbVKN = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.cbFileName = new System.Windows.Forms.ComboBox();
             this.tbXml = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.txbVKN = new System.Windows.Forms.TextBox();
+            this.btnMukellefAra = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -102,6 +103,7 @@
             // 
             // panel2
             // 
+            this.panel2.Controls.Add(this.btnMukellefAra);
             this.panel2.Controls.Add(this.txbVKN);
             this.panel2.Controls.Add(this.label2);
             this.panel2.Controls.Add(this.label1);
@@ -111,6 +113,22 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(950, 49);
             this.panel2.TabIndex = 2;
+            // 
+            // txbVKN
+            // 
+            this.txbVKN.Location = new System.Drawing.Point(272, 22);
+            this.txbVKN.Name = "txbVKN";
+            this.txbVKN.Size = new System.Drawing.Size(264, 20);
+            this.txbVKN.TabIndex = 3;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(269, 6);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(29, 13);
+            this.label2.TabIndex = 2;
+            this.label2.Text = "VKN";
             // 
             // label1
             // 
@@ -142,21 +160,15 @@
             this.tbXml.TabIndex = 0;
             this.tbXml.WordWrap = false;
             // 
-            // label2
+            // btnMukellefAra
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(269, 6);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(29, 13);
-            this.label2.TabIndex = 2;
-            this.label2.Text = "VKN";
-            // 
-            // txbVKN
-            // 
-            this.txbVKN.Location = new System.Drawing.Point(272, 22);
-            this.txbVKN.Name = "txbVKN";
-            this.txbVKN.Size = new System.Drawing.Size(264, 20);
-            this.txbVKN.TabIndex = 3;
+            this.btnMukellefAra.Location = new System.Drawing.Point(542, 20);
+            this.btnMukellefAra.Name = "btnMukellefAra";
+            this.btnMukellefAra.Size = new System.Drawing.Size(28, 23);
+            this.btnMukellefAra.TabIndex = 4;
+            this.btnMukellefAra.Text = "...";
+            this.btnMukellefAra.UseVisualStyleBackColor = true;
+            this.btnMukellefAra.Click += new System.EventHandler(this.btnMukellefAra_Click);
             // 
             // FrmInvoiceCreate
             // 
@@ -197,5 +209,6 @@
         private System.Windows.Forms.Button btnGonder;
         private System.Windows.Forms.TextBox txbVKN;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Button btnMukellefAra;
     }
 }

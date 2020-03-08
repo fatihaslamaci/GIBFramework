@@ -235,6 +235,11 @@ where GIB_UserList.title LIKE @title
 
         public SendParameters SendInvoiceInsert(SendParameters sendParameters, string providerId)
         {
+            if (sendParameters == null)
+            {
+                return null;
+            }
+
             using (SQLiteConnection con = NewSQLiteConnection())
             {
                 con.Open();
@@ -266,13 +271,18 @@ where GIB_UserList.title LIKE @title
 
         public void SendInvoiceUpdate(SendParameters sendParameters, SendResult r)
         {
-            if (r.IsSucceded == false)
+
+            if ((sendParameters != null) || (r != null))
             {
-                HataYaz(sendParameters, r);
-            }
-            else
-            {
-                BasariYaz(sendParameters, r);
+
+                if (r.IsSucceded == false)
+                {
+                    HataYaz(sendParameters, r);
+                }
+                else
+                {
+                    BasariYaz(sendParameters, r);
+                }
             }
         }
 

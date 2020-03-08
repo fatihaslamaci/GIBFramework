@@ -91,6 +91,12 @@
     <Compile Include="FrmMain.Designer.cs">
       <DependentUpon>FrmMain.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmMukellefAra.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmMukellefAra.Designer.cs">
+      <DependentUpon>FrmMukellefAra.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmProviderSelect.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -119,6 +125,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FrmMain.resx">
       <DependentUpon>FrmMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmMukellefAra.resx">
+      <DependentUpon>FrmMukellefAra.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmProviderSelect.resx">
       <DependentUpon>FrmProviderSelect.cs</DependentUpon>

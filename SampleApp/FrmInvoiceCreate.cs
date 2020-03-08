@@ -125,5 +125,18 @@ namespace SampleApp
             }
 
         }
+
+        private void btnMukellefAra_Click(object sender, EventArgs e)
+        {
+            using (FrmMukellefAra frm = new FrmMukellefAra())
+            {
+                frm.EFatura = EFatura;
+                if (frm.ShowDialog()== DialogResult.OK)
+                {
+                    txbVKN.Text = frm.SelectedUser.Identifier;   
+                }
+            }
+
+        }
     }
 }

@@ -21,7 +21,7 @@ namespace GIBFrameworkTest.Uyumsoft
             InvoiceStatusResponse r = new InvoiceStatusResponse();
 
             r.IsSucceded = true;
-            r.Value = new InvoiceStatusInfo[invoiceIds.Count()];
+            r.Value = new InvoiceStatusInfo[invoiceIds.Length];
 
             int i = 0;
             foreach (var item in invoiceIds)
@@ -40,7 +40,7 @@ namespace GIBFrameworkTest.Uyumsoft
         {
             InvoiceIdentitiesResponse r = new InvoiceIdentitiesResponse();
             r.IsSucceded = true;
-            r.Value = new InvoiceIdentity[invoices.Count()];
+            r.Value = new InvoiceIdentity[invoices.Length];
 
 
             int i = 0;
