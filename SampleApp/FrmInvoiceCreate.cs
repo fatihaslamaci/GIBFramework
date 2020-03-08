@@ -75,20 +75,51 @@ namespace SampleApp
 
         private void btnGonder_Click(object sender, EventArgs e)
         {
+                        
+            
             GIBInterface.SendParameters prm = new GIBInterface.SendParameters();
             prm.InvoicesInfo = new List<GIBInterface.InvoiceInfo>();
 
             var User = EFatura.MukellefBilgisi(txbVKN.Text);
 
+            if (User==null)
+            {
+                MessageBox.Show("Girdiğiniz VKN/TCKN için Mükellef bulunamadı: " + txbVKN.Text);
+                return;
+            }
+
+
             invoice.AccountingCustomerParty.Party.PartyIdentification[0].ID.Value = User.Identifier;
-            invoice.AccountingCustomerParty.Party.PartyName.Name.Value = User.Title;
+            
+            if (User.Identifier.Length == 11)//TCKN
+            {
+                invoice.AccountingCustomerParty.Party.Person = new PersonType();
+                invoice.AccountingCustomerParty.Party.Person.FirstName = new FirstNameType();
+                invoice.AccountingCustomerParty.Party.Person.FirstName.Value = User.Title.Split(' ')[0];
+
+                invoice.AccountingCustomerParty.Party.Person.FamilyName = new FamilyNameType();
+                invoice.AccountingCustomerParty.Party.Person.FamilyName.Value = User.Title.Split(' ')[1];
+                invoice.AccountingCustomerParty.Party.PartyIdentification[0].ID.schemeID = "TCKN";
+
+            }
+            else//VKN
+            {
+                invoice.AccountingCustomerParty.Party.PartyName = new PartyNameType();
+                invoice.AccountingCustomerParty.Party.PartyName.Name = new NameType1();
+                invoice.AccountingCustomerParty.Party.PartyName.Name.Value = User.Title;
+                invoice.AccountingCustomerParty.Party.PartyIdentification[0].ID.schemeID = "VKN";
+            }
+
+
+
+
             invoice.IssueDate.Value = DateTime.Now.Date;
 
             GIBInterface.InvoiceInfo item = new GIBInterface.InvoiceInfo();
             item.Customer = new GIBInterface.CustomerInfo();
             item.Customer.Alias = User.Documents[0].Alias[0].Name[0];
-            item.Customer.VknTckn = invoice.AccountingCustomerParty.Party.PartyIdentification[0].ID.Value;
-            item.Customer.Title = invoice.AccountingCustomerParty.Party.PartyName.Name.Value;
+            item.Customer.VknTckn = User.Identifier;
+            item.Customer.Title = User.Title;
 
 
             invoice.UUID.Value = Guid.NewGuid().ToString();
