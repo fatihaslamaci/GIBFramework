@@ -53,23 +53,70 @@ namespace SampleApp
                 {
                     var row = new DataGridViewRow();
                     row.CreateCells(dataGridView1);
-                    row.Cells[0].Value = item.Item.Name.Value;
-                    row.Cells[1].Value = item.InvoicedQuantity.Value;
-                    row.Cells[2].Value = item.Price.PriceAmount.Value;
-                    row.Cells[3].Value = item.AllowanceCharge[0].MultiplierFactorNumeric.Value;
-                    row.Cells[4].Value = item.AllowanceCharge[0].Amount.Value;
-                    row.Cells[5].Value = item.TaxTotal.TaxSubtotal[0].Percent.Value;
-                    row.Cells[6].Value = item.TaxTotal.TaxAmount.Value;
-                    row.Cells[7].Value = item.LineExtensionAmount.Value;
-
-
-
+                    row.Cells[0].Value = item.Item.Name.Value; //Aciklama
+                    row.Cells[1].Value = item.InvoicedQuantity.Value;//Miktar
+                    row.Cells[2].Value = item.Price.PriceAmount.Value;//Birim Fiyat
+                    row.Cells[3].Value = GetIskontoOran(item.AllowanceCharge);//Iskonto Oran
+                    row.Cells[4].Value = GetIskontoTutar(item.AllowanceCharge);//Iskonto Tutar
+                    row.Cells[5].Value = GetKdvOran(item.TaxTotal);//KDV Oran
+                    row.Cells[6].Value = GetKdvTutar(item.TaxTotal);//KDV Tutar
+                    row.Cells[7].Value = item.LineExtensionAmount.Value;//Mal Hizmet Tutarı
 
                     row.Tag = item;
                     dataGridView1.Rows.Add(row);
 
                 }
                 dataGridView1.Visible = true;
+            }
+        }
+
+
+        private static decimal GetKdvOran(TaxTotalType TaxTotal)
+        {
+            if (TaxTotal != null)
+            {
+                return TaxTotal.TaxSubtotal[0].Percent.Value;
+            }
+            else
+            {
+                return 0;
+            }
+        }
+
+        private static decimal GetKdvTutar(TaxTotalType TaxTotal)
+        {
+            if (TaxTotal != null)
+            {
+                return TaxTotal.TaxAmount.Value;
+            }
+            else
+            {
+                return 0;
+            }
+        }
+
+        private static decimal GetIskontoOran(AllowanceChargeType[] allowanceCharge)
+        {
+            if ((allowanceCharge != null) && (allowanceCharge.Length > 0))
+            {
+                return allowanceCharge[0].MultiplierFactorNumeric.Value;
+            }
+            else
+            {
+                return 0;
+            }
+        }
+
+
+        private static decimal GetIskontoTutar(AllowanceChargeType[] allowanceCharge)
+        {
+            if ((allowanceCharge != null) && (allowanceCharge.Length > 0))
+            {
+                return allowanceCharge[0].Amount.Value;
+            }
+            else
+            {
+                return 0;
             }
         }
 
