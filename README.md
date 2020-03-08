@@ -12,6 +12,6 @@ Gelen verileri hedef entegrator ün talep ettiği verilere çevirecek.
 Entegratorden gelen veriler ise standart bir yapıya dönüştürülecek. 
 Yani yazılım firmaları her entegrator için ayrı ayrı kodlama yapmak yerine sadece arayüze veri gönderip almaları yeterli olacak. 
 
-Eğer entegratör firmalar kendi servisleri için Provider yazarlarsa zahmetsizce entegrasyon sağlanmış olacak bu sayede yazılım hatalarından dolayı entegratör firmanın verdiği destek sayılarıda azalacak.
+Eğer entegratör firmalar kendi servisleri için Provider yazarlarsa zahmetsizce entegrasyon sağlanmış olacak bu sayede yazılım hatalarından dolayı entegratör firmanın verdiği destek sayılarıda azalacak. (Şuan için belli başlı birkaç entegratör için Provider ları ben kodlayacağım)
 
 Proje C# ile yazılmakta. başarılı olması durumunda Java içinde kodlamayı düşünüyorum.
