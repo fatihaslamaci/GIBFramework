@@ -24,6 +24,65 @@ namespace SampleApp
             txtMarka.Text = InvoiceLine.Item.BrandName != null ? InvoiceLine.Item.BrandName.Value : "";
             txtModel.Text = InvoiceLine.Item.ModelName != null ? InvoiceLine.Item.ModelName.Value : "";
             txtAciklama.Text = InvoiceLine.Item.Description != null ? InvoiceLine.Item.Description.Value : "";
+
+            txtAliciKodu.Text = GetItemIdentification(InvoiceLine.Item.BuyersItemIdentification);
+            txtUreticiKodu.Text = GetItemIdentification(InvoiceLine.Item.ManufacturersItemIdentification);
+            txtSaticiKodu.Text = GetItemIdentification(InvoiceLine.Item.SellersItemIdentification);
+
+            txtSatirNotu.Text = GetSatirNotu(InvoiceLine.Note);
+
+            GetIskonto(InvoiceLine.AllowanceCharge);
+
+
+
+        }
+
+        private void GetIskonto(AllowanceChargeType[] allowanceCharge)
+        {
+
+            txtIskontoOrani.Text = "0";
+            txtIskontoTutar.Text = "0";
+
+            if((allowanceCharge!=null)&&(allowanceCharge.Length>0))
+            {
+                if(allowanceCharge[0]!=null)
+                {
+                    if(allowanceCharge[0].MultiplierFactorNumeric != null)
+                    {
+                        txtIskontoOrani.Text = (allowanceCharge[0].MultiplierFactorNumeric.Value * 100).ToString();
+                    }
+                    if (allowanceCharge[0].Amount != null)
+                    {
+                        txtIskontoTutar.Text = (allowanceCharge[0].Amount.Value ).ToString();
+                    }
+                }
+
+            }
+
+
+        }
+
+        private string GetSatirNotu(NoteType[] note)
+        {
+            string r = "";
+            if ((note != null)&&(note.Length>0))
+            {
+                r = note[0].Value;
+            }
+            return r;
+        }
+
+        private string GetItemIdentification(ItemIdentificationType ItemIdentification)
+        {
+            string r = "";
+            if (ItemIdentification!=null)
+            {
+                if (ItemIdentification.ID!=null)
+                {
+                    r = ItemIdentification.ID.Value;
+                }
+            }
+            return r;
         }
 
         private InvoiceLineType GetInvoiceLine()
@@ -96,6 +155,16 @@ namespace SampleApp
             };
 
             return r;
+        }
+
+        private void FrmInvoiceLineViewer_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnIptal_Click(object sender, EventArgs e)
+        {
+            DialogResult = DialogResult.Cancel;
         }
     }
 }
