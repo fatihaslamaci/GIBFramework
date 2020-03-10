@@ -49,7 +49,7 @@
             this.label44 = new System.Windows.Forms.Label();
             this.txtSatirNotu = new System.Windows.Forms.TextBox();
             this.label23 = new System.Windows.Forms.Label();
-            this.txtBirim1 = new System.Windows.Forms.TextBox();
+            this.txtBirim = new System.Windows.Forms.TextBox();
             this.label24 = new System.Windows.Forms.Label();
             this.txtFiyat = new System.Windows.Forms.TextBox();
             this.txtAciklama = new System.Windows.Forms.TextBox();
@@ -246,13 +246,13 @@
             this.label23.TabIndex = 121;
             this.label23.Text = "Ürün Adı";
             // 
-            // txtBirim1
+            // txtBirim
             // 
-            this.txtBirim1.Location = new System.Drawing.Point(101, 129);
-            this.txtBirim1.Name = "txtBirim1";
-            this.txtBirim1.Size = new System.Drawing.Size(80, 20);
-            this.txtBirim1.TabIndex = 136;
-            this.txtBirim1.Text = "Adet";
+            this.txtBirim.Location = new System.Drawing.Point(101, 129);
+            this.txtBirim.Name = "txtBirim";
+            this.txtBirim.Size = new System.Drawing.Size(80, 20);
+            this.txtBirim.TabIndex = 136;
+            this.txtBirim.Text = "Adet";
             // 
             // label24
             // 
@@ -388,7 +388,7 @@
             this.Controls.Add(this.label44);
             this.Controls.Add(this.txtSatirNotu);
             this.Controls.Add(this.label23);
-            this.Controls.Add(this.txtBirim1);
+            this.Controls.Add(this.txtBirim);
             this.Controls.Add(this.label24);
             this.Controls.Add(this.txtFiyat);
             this.Controls.Add(this.txtAciklama);
@@ -433,7 +433,7 @@
         private System.Windows.Forms.Label label44;
         private System.Windows.Forms.TextBox txtSatirNotu;
         private System.Windows.Forms.Label label23;
-        private System.Windows.Forms.TextBox txtBirim1;
+        private System.Windows.Forms.TextBox txtBirim;
         private System.Windows.Forms.Label label24;
         private System.Windows.Forms.TextBox txtFiyat;
         private System.Windows.Forms.TextBox txtAciklama;

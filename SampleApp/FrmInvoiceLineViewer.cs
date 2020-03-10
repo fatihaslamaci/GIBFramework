@@ -32,9 +32,32 @@ namespace SampleApp
             txtSatirNotu.Text = GetSatirNotu(InvoiceLine.Note);
 
             GetIskonto(InvoiceLine.AllowanceCharge);
+            txtFiyat.Text = GetAmountType(InvoiceLine.Price.PriceAmount);
+            txtMiktar.Text = InvoiceLine.InvoicedQuantity.Value.ToString();
+            txtBirim.Text = InvoiceLine.InvoicedQuantity.unitCode;
+            GetKDV(InvoiceLine.TaxTotal);
+            txtToplamTutar.Text = InvoiceLine.LineExtensionAmount.Value.ToString();
+        }
 
+        private void GetKDV(TaxTotalType taxTotal)
+        {
+            if (taxTotal!=null)
+            {
+                txtKdvTutar.Text = taxTotal.TaxAmount.Value.ToString();
+                txtKdvOrani.Text = taxTotal.TaxSubtotal[0].Percent.Value.ToString();
+            }
+        }
 
-
+        private string GetAmountType(AmountType1 Amount)
+        {
+            if (Amount!=null)
+            {
+                return Amount.Value.ToString();
+            }
+            else
+            {
+                return "";
+            }
         }
 
         private void GetIskonto(AllowanceChargeType[] allowanceCharge)
