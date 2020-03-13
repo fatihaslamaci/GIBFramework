@@ -152,29 +152,7 @@ namespace SampleApp
         }
 
 
-        private void dataGridView1_DoubleClick(object sender, EventArgs e)
-        {
-
-            if (dataGridView1.SelectedRows.Count > 0)
-            {
-                DataGridViewRow row = dataGridView1.SelectedRows[0];
-                if (row != null)
-                {
-                    var r = (row.Tag as InvoiceLineType);
-                    using (FrmInvoiceLineViewer frm = new FrmInvoiceLineViewer())
-                    {
-                        frm.InvoiceLine = r;
-                        if (frm.ShowDialog() == DialogResult.OK)
-                        {
-
-                        }
-                    }
-                }
-            }
-
-
-           
-        }
+       
 
         private void FrmInvoiceCreate_Load(object sender, EventArgs e)
         {
@@ -298,6 +276,45 @@ namespace SampleApp
                 }
             }
 
+        }
+
+
+        private void dataGridView1_DoubleClick(object sender, EventArgs e)
+        {
+
+            if (dataGridView1.SelectedRows.Count > 0)
+            {
+                DataGridViewRow row = dataGridView1.SelectedRows[0];
+                if (row != null)
+                {
+                    var r = (row.Tag as InvoiceLineType);
+                    using (FrmInvoiceLineViewer frm = new FrmInvoiceLineViewer())
+                    {
+                        frm.InvoiceLine = r;
+                        if (frm.ShowDialog() == DialogResult.OK)
+                        {
+                            
+                            GridDoldur(invoice);
+                        }
+                    }
+                }
+            }
+        }
+        private void btnYeniSatir_Click(object sender, EventArgs e)
+        {
+            using (FrmInvoiceLineViewer frm = new FrmInvoiceLineViewer())
+            {
+                frm.InvoiceLine = null;
+                List<InvoiceLineType> l = new List<InvoiceLineType>();
+                l.AddRange(invoice.InvoiceLine);
+                if (frm.ShowDialog() == DialogResult.OK)
+                {
+
+                    l.Add(frm.InvoiceLine);
+                    invoice.InvoiceLine = l.ToArray();
+                    GridDoldur(invoice);
+                }
+            }
         }
     }
 }

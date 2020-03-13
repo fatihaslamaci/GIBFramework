@@ -96,6 +96,7 @@
             this.btnTamam.TabIndex = 2;
             this.btnTamam.Text = "Tamam";
             this.btnTamam.UseVisualStyleBackColor = true;
+            this.btnTamam.Click += new System.EventHandler(this.btnTamam_Click);
             // 
             // txtIskontoTutar
             // 
@@ -137,6 +138,8 @@
             this.txtMiktar.Name = "txtMiktar";
             this.txtMiktar.Size = new System.Drawing.Size(80, 20);
             this.txtMiktar.TabIndex = 133;
+            this.txtMiktar.Text = "1";
+            this.txtMiktar.TextChanged += new System.EventHandler(this.Texts_Changed);
             // 
             // txtModel
             // 
@@ -160,6 +163,8 @@
             this.txtIskontoOrani.Name = "txtIskontoOrani";
             this.txtIskontoOrani.Size = new System.Drawing.Size(80, 20);
             this.txtIskontoOrani.TabIndex = 138;
+            this.txtIskontoOrani.Text = "0";
+            this.txtIskontoOrani.TextChanged += new System.EventHandler(this.Texts_Changed);
             // 
             // label22
             // 
@@ -269,6 +274,8 @@
             this.txtFiyat.Name = "txtFiyat";
             this.txtFiyat.Size = new System.Drawing.Size(80, 20);
             this.txtFiyat.TabIndex = 135;
+            this.txtFiyat.Text = "1";
+            this.txtFiyat.TextChanged += new System.EventHandler(this.Texts_Changed);
             // 
             // txtAciklama
             // 
@@ -318,7 +325,9 @@
             this.txtKdvOrani.Name = "txtKdvOrani";
             this.txtKdvOrani.Size = new System.Drawing.Size(80, 20);
             this.txtKdvOrani.TabIndex = 140;
+            this.txtKdvOrani.Text = "18";
             this.txtKdvOrani.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtKdvOrani.TextChanged += new System.EventHandler(this.Texts_Changed);
             // 
             // label30
             // 

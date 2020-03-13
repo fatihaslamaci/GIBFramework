@@ -42,6 +42,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.cbFileName = new System.Windows.Forms.ComboBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.btnYeniSatir = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -104,6 +105,7 @@
             // 
             // panel2
             // 
+            this.panel2.Controls.Add(this.btnYeniSatir);
             this.panel2.Controls.Add(this.btnMukellefAra);
             this.panel2.Controls.Add(this.txbVKN);
             this.panel2.Controls.Add(this.label2);
@@ -170,6 +172,16 @@
             this.dataGridView1.Size = new System.Drawing.Size(926, 384);
             this.dataGridView1.TabIndex = 3;
             // 
+            // btnYeniSatir
+            // 
+            this.btnYeniSatir.Location = new System.Drawing.Point(621, 19);
+            this.btnYeniSatir.Name = "btnYeniSatir";
+            this.btnYeniSatir.Size = new System.Drawing.Size(75, 23);
+            this.btnYeniSatir.TabIndex = 5;
+            this.btnYeniSatir.Text = "Yeni Satir...";
+            this.btnYeniSatir.UseVisualStyleBackColor = true;
+            this.btnYeniSatir.Click += new System.EventHandler(this.btnYeniSatir_Click);
+            // 
             // FrmInvoiceCreate
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -211,5 +223,6 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button btnMukellefAra;
         private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.Button btnYeniSatir;
     }
 }

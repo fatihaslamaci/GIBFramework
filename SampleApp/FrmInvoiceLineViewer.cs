@@ -14,33 +14,41 @@ namespace SampleApp
     public partial class FrmInvoiceLineViewer : Form
     {
 
+        private InvoiceLineType _InvoiceLine;
         public InvoiceLineType InvoiceLine { set { SetInvoiceLine(value); } get { return GetInvoiceLine(); } }
 
 
 
         private void SetInvoiceLine(InvoiceLineType InvoiceLine)
         {
-            txtUrunAdi.Text = InvoiceLine.Item != null ? InvoiceLine.Item.Name.Value : "";
-            txtMarka.Text = InvoiceLine.Item.BrandName != null ? InvoiceLine.Item.BrandName.Value : "";
-            txtModel.Text = InvoiceLine.Item.ModelName != null ? InvoiceLine.Item.ModelName.Value : "";
-            txtAciklama.Text = InvoiceLine.Item.Description != null ? InvoiceLine.Item.Description.Value : "";
+            _InvoiceLine = InvoiceLine;
+            if (InvoiceLine != null)
+            {
+                txtUrunAdi.Text = InvoiceLine.Item != null ? InvoiceLine.Item.Name.Value : "";
+                txtMarka.Text = InvoiceLine.Item.BrandName != null ? InvoiceLine.Item.BrandName.Value : "";
+                txtModel.Text = InvoiceLine.Item.ModelName != null ? InvoiceLine.Item.ModelName.Value : "";
+                txtAciklama.Text = InvoiceLine.Item.Description != null ? InvoiceLine.Item.Description.Value : "";
 
-            txtAliciKodu.Text = GetItemIdentification(InvoiceLine.Item.BuyersItemIdentification);
-            txtUreticiKodu.Text = GetItemIdentification(InvoiceLine.Item.ManufacturersItemIdentification);
-            txtSaticiKodu.Text = GetItemIdentification(InvoiceLine.Item.SellersItemIdentification);
+                txtAliciKodu.Text = GetItemIdentification(InvoiceLine.Item.BuyersItemIdentification);
+                txtUreticiKodu.Text = GetItemIdentification(InvoiceLine.Item.ManufacturersItemIdentification);
+                txtSaticiKodu.Text = GetItemIdentification(InvoiceLine.Item.SellersItemIdentification);
 
-            txtSatirNotu.Text = GetSatirNotu(InvoiceLine.Note);
+                txtSatirNotu.Text = GetSatirNotu(InvoiceLine.Note);
 
-            GetIskonto(InvoiceLine.AllowanceCharge);
-            txtFiyat.Text = GetAmountType(InvoiceLine.Price.PriceAmount);
-            txtMiktar.Text = InvoiceLine.InvoicedQuantity.Value.ToString();
-            txtBirim.Text = InvoiceLine.InvoicedQuantity.unitCode;
-            GetKDV(InvoiceLine.TaxTotal);
-            txtToplamTutar.Text = InvoiceLine.LineExtensionAmount.Value.ToString();
+                GetIskonto(InvoiceLine.AllowanceCharge);
+                txtFiyat.Text = GetAmountType(InvoiceLine.Price.PriceAmount);
+                txtMiktar.Text = InvoiceLine.InvoicedQuantity.Value.ToString();
+                txtBirim.Text = InvoiceLine.InvoicedQuantity.unitCode;
+                GetKDV(InvoiceLine.TaxTotal);
+                txtToplamTutar.Text = InvoiceLine.LineExtensionAmount.Value.ToString();
+            }
         }
 
         private void GetKDV(TaxTotalType taxTotal)
         {
+            txtKdvTutar.Text = "";
+            txtKdvOrani.Text = "";
+
             if (taxTotal!=null)
             {
                 txtKdvTutar.Text = taxTotal.TaxAmount.Value.ToString();
@@ -111,7 +119,7 @@ namespace SampleApp
         private InvoiceLineType GetInvoiceLine()
         {
 
-            return null;
+            return _InvoiceLine;
         }
 
 
@@ -120,29 +128,24 @@ namespace SampleApp
             InitializeComponent();
         }
 
-        private void SatirDoldur()
+        private InvoiceLineType SatirDoldur()
         {
+
+            if (_InvoiceLine==null)
+            {
+                _InvoiceLine = new InvoiceLineType();
+            }
 
             var line = new InvoiceLineType
             {
                 //Ürün Açıklamaları
-                Item = new ItemType
-                {
-                    Name = new NameType1 { Value = txtUrunAdi.Text },
-                    BrandName = new BrandNameType { Value = txtMarka.Text },
-                    BuyersItemIdentification = new ItemIdentificationType { ID = new IDType { Value = txtAliciKodu.Text } },
-                    ModelName = new ModelNameType { Value = txtModel.Text },
-                    Description = new DescriptionType { Value = txtAciklama.Text },
-                    ManufacturersItemIdentification = new ItemIdentificationType { ID = new IDType { Value = txtUreticiKodu.Text } },
-                    SellersItemIdentification = new ItemIdentificationType { ID = new IDType { Value = txtSaticiKodu.Text } },
-
-                },
+                Item = CreateItemType(_InvoiceLine.Item),
 
                 AllowanceCharge = GetIskonto(),
                 //Birim Fiyat
                 Price = new PriceType { PriceAmount = new PriceAmountType { Value = Convert.ToDecimal(txtFiyat.Text), currencyID = "TRL" } },
                 //Miktar
-                InvoicedQuantity = new InvoicedQuantityType { unitCode = "NIU", Value = Convert.ToDecimal(txtMiktar.Text) }, //NIU =Adet
+                InvoicedQuantity = new InvoicedQuantityType { unitCode = txtBirim.Text, Value = Convert.ToDecimal(txtMiktar.Text) }, //NIU =Adet
                 //Not
                 Note = new NoteType[] { new NoteType { Value = txtSatirNotu.Text } },
                 // KDV ve Diğer Vergiler
@@ -163,6 +166,8 @@ namespace SampleApp
                 ID = new IDType { Value = "1" },
                 LineExtensionAmount = new LineExtensionAmountType { Value = Convert.ToDecimal(txtToplamTutar.Text), currencyID = "TRL" }
             };
+
+            return line;
 
         }
 
@@ -189,5 +194,84 @@ namespace SampleApp
         {
             DialogResult = DialogResult.Cancel;
         }
+
+        private void btnTamam_Click(object sender, EventArgs e)
+        {
+            _InvoiceLine = SatirDoldur();
+
+            DialogResult = DialogResult.OK;
+
+        }
+
+        public ItemType CreateItemType(ItemType Item)
+        {
+
+            if (Item == null)
+            {
+                Item = new ItemType();
+            }
+
+            Item.Name = CreateTextType<NameType1>(txtUrunAdi.Text);
+            Item.BrandName = CreateTextType<BrandNameType>(txtMarka.Text);
+            Item.ModelName = CreateTextType<ModelNameType>(txtModel.Text);
+            Item.Description = CreateTextType<DescriptionType>(txtAciklama.Text);
+            Item.ManufacturersItemIdentification = CreateItemIdentificationType(txtUreticiKodu.Text);
+            Item.SellersItemIdentification = CreateItemIdentificationType(txtSaticiKodu.Text);
+            Item.BuyersItemIdentification = CreateItemIdentificationType(txtAliciKodu.Text);
+
+            return Item;
+        }
+
+
+        public static ItemIdentificationType CreateItemIdentificationType(string text)
+        {
+
+            if (string.IsNullOrWhiteSpace(text) == false)
+            {
+                return new ItemIdentificationType { ID = new IDType { Value = text } };
+            }
+            else
+            {
+                return null;
+            }
+        }
+        public static T CreateTextType<T>(string text)
+        {
+            
+            if (string.IsNullOrWhiteSpace(text) == false)
+            {
+                var obj = (T)Activator.CreateInstance(typeof(T));
+                if(obj is TextType)
+                {
+                    (obj as TextType).Value = text;
+                }
+                return obj;
+            }else
+            {
+                return default(T);
+            }
+
+            
+        }
+
+
+
+        void Texts_Changed(object sender, EventArgs e)
+        {
+            try
+            {
+                txtToplamTutar.Text = (Convert.ToDecimal(txtMiktar.Text) * Convert.ToDecimal(txtFiyat.Text) * ((100 - Convert.ToDecimal(txtIskontoOrani.Text)) / 100) * ((Convert.ToDecimal(txtKdvOrani.Text) + 100) / 100)).ToString();
+                txtKdvTutar.Text = (Convert.ToDecimal(txtMiktar.Text) * Convert.ToDecimal(txtFiyat.Text) * ((100 - Convert.ToDecimal(txtIskontoOrani.Text)) / 100) * (Convert.ToDecimal(txtKdvOrani.Text) / 100)).ToString();
+                txtIskontoTutar.Text = (Convert.ToDecimal(txtMiktar.Text) * Convert.ToDecimal(txtFiyat.Text) * (Convert.ToDecimal(txtIskontoOrani.Text) / 100)).ToString();
+            }
+            catch (Exception)
+            {
+
+                return;
+            }
+
+        }
+
+
     }
 }
