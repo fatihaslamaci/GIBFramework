@@ -39,9 +39,13 @@
             this.tabPageTxt = new System.Windows.Forms.TabPage();
             this.panel2 = new System.Windows.Forms.Panel();
             this.btnOk = new System.Windows.Forms.Button();
+            this.webBrowserXML = new System.Windows.Forms.WebBrowser();
+            this.txbUBLText = new System.Windows.Forms.TextBox();
             this.panel1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPageHTML.SuspendLayout();
+            this.tabPageXML.SuspendLayout();
+            this.tabPageTxt.SuspendLayout();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -113,25 +117,27 @@
             this.webBrowserHTML.MinimumSize = new System.Drawing.Size(20, 20);
             this.webBrowserHTML.Name = "webBrowserHTML";
             this.webBrowserHTML.ScriptErrorsSuppressed = true;
-            this.webBrowserHTML.Size = new System.Drawing.Size(786, 334);
+            this.webBrowserHTML.Size = new System.Drawing.Size(786, 292);
             this.webBrowserHTML.TabIndex = 1;
             // 
             // tabPageXML
             // 
+            this.tabPageXML.Controls.Add(this.webBrowserXML);
             this.tabPageXML.Location = new System.Drawing.Point(4, 22);
             this.tabPageXML.Name = "tabPageXML";
             this.tabPageXML.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageXML.Size = new System.Drawing.Size(768, 300);
+            this.tabPageXML.Size = new System.Drawing.Size(792, 346);
             this.tabPageXML.TabIndex = 1;
             this.tabPageXML.Text = "XML";
             this.tabPageXML.UseVisualStyleBackColor = true;
             // 
             // tabPageTxt
             // 
+            this.tabPageTxt.Controls.Add(this.txbUBLText);
             this.tabPageTxt.Location = new System.Drawing.Point(4, 22);
             this.tabPageTxt.Name = "tabPageTxt";
             this.tabPageTxt.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageTxt.Size = new System.Drawing.Size(768, 300);
+            this.tabPageTxt.Size = new System.Drawing.Size(792, 346);
             this.tabPageTxt.TabIndex = 2;
             this.tabPageTxt.Text = "TXT";
             this.tabPageTxt.UseVisualStyleBackColor = true;
@@ -155,6 +161,30 @@
             this.btnOk.UseVisualStyleBackColor = true;
             this.btnOk.Click += new System.EventHandler(this.btnOk_Click);
             // 
+            // webBrowserXML
+            // 
+            this.webBrowserXML.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.webBrowserXML.Location = new System.Drawing.Point(3, 6);
+            this.webBrowserXML.MinimumSize = new System.Drawing.Size(20, 20);
+            this.webBrowserXML.Name = "webBrowserXML";
+            this.webBrowserXML.ScriptErrorsSuppressed = true;
+            this.webBrowserXML.Size = new System.Drawing.Size(786, 292);
+            this.webBrowserXML.TabIndex = 2;
+            // 
+            // txbUBLText
+            // 
+            this.txbUBLText.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txbUBLText.Location = new System.Drawing.Point(8, 6);
+            this.txbUBLText.Multiline = true;
+            this.txbUBLText.Name = "txbUBLText";
+            this.txbUBLText.ScrollBars = System.Windows.Forms.ScrollBars.Both;
+            this.txbUBLText.Size = new System.Drawing.Size(776, 292);
+            this.txbUBLText.TabIndex = 0;
+            // 
             // FrmInvoiceViewer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -173,6 +203,9 @@
             this.panel1.PerformLayout();
             this.tabControl1.ResumeLayout(false);
             this.tabPageHTML.ResumeLayout(false);
+            this.tabPageXML.ResumeLayout(false);
+            this.tabPageTxt.ResumeLayout(false);
+            this.tabPageTxt.PerformLayout();
             this.panel2.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -192,5 +225,7 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Button btnOk;
+        private System.Windows.Forms.WebBrowser webBrowserXML;
+        private System.Windows.Forms.TextBox txbUBLText;
     }
 }

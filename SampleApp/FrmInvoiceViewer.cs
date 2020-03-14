@@ -38,6 +38,8 @@ namespace SampleApp
         {
             GIBFramework.InvoiceTransform it = new GIBFramework.InvoiceTransform();
             webBrowserHTML.DocumentText = it.InvoiceToHTML(Invoice, xslt);
+            webBrowserXML.DocumentText = Invoice.CreateXml();
+            txbUBLText.Text = Invoice.CreateXml();
         }
 
         private string GetXsltFileName()

@@ -312,6 +312,16 @@ namespace SampleApp
 
                     l.Add(frm.InvoiceLine);
                     invoice.InvoiceLine = l.ToArray();
+
+                    //Sıra Numarası veriyoruz 
+                    int i = 0;
+                    foreach (var item in invoice.InvoiceLine)
+                    {
+                        i++;
+                        item.ID = new IDType();
+                        item.ID.Value = i.ToString();
+                    }
+
                     GridDoldur(invoice);
                 }
             }
