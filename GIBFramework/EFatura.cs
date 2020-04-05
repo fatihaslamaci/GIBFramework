@@ -171,13 +171,20 @@ namespace GIBFramework
         }
 
 
+        private static readonly object LockBugunMukelefSorgulandi = new object();
         private void EgerBugunMukellefListesiOkunmadiIseOku()
         {
             if (Data.BugunMukelefSorgulandi() == false)
             {
-                Login();
-                var users = (Provider as IMukellefListesi).GetUserList();
-                Data.GIBUserListSave(users);
+                lock (LockBugunMukelefSorgulandi)
+                {
+                    if (Data.BugunMukelefSorgulandi() == false)
+                    {
+                        Login();
+                        var users = (Provider as IMukellefListesi).GetUserList();
+                        Data.GIBUserListSave(users);
+                    }
+                }
             }
         }
 

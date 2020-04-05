@@ -8,6 +8,11 @@ namespace GIBProviders.Uyumsoft
     {
         public List<QueryStatusResponse> InvoiceStatus(List<QueryStatusParameters> SendParameters)
         {
+            if (SendParameters is null)
+            {
+                return null;
+            }
+
             List<QueryStatusResponse> r = new List<QueryStatusResponse>();
             var response = new GIBProviders.ServiceUyumsoft.InvoiceStatusResponse();
             List<string> guid = new List<string>();

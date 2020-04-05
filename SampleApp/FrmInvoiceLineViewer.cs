@@ -141,7 +141,7 @@ namespace SampleApp
                 //Ürün Açıklamaları
                 Item = CreateItemType(_InvoiceLine.Item),
 
-                AllowanceCharge = GetIskonto(),
+                AllowanceCharge = CreateAllowanceCharge(_InvoiceLine.AllowanceCharge),
                 //Birim Fiyat
                 Price = new PriceType { PriceAmount = new PriceAmountType { Value = Convert.ToDecimal(txtFiyat.Text), currencyID = "TRL" } },
                 //Miktar
@@ -171,19 +171,9 @@ namespace SampleApp
 
         }
 
-        private AllowanceChargeType[] GetIskonto()
-        {
-            AllowanceChargeType[] r = new AllowanceChargeType[1];
+       
 
-            r[0] = new AllowanceChargeType
-            {
-                ChargeIndicator = new ChargeIndicatorType { Value = true },
-                MultiplierFactorNumeric = new MultiplierFactorNumericType { Value = Convert.ToDecimal(txtIskontoOrani.Text) / 100 },
-                Amount = new AmountType2 { Value = Convert.ToDecimal(txtIskontoOrani.Text), currencyID = "TRL" },
-            };
-
-            return r;
-        }
+       
 
         private void FrmInvoiceLineViewer_Load(object sender, EventArgs e)
         {
@@ -201,6 +191,21 @@ namespace SampleApp
 
             DialogResult = DialogResult.OK;
 
+        }
+
+
+        private AllowanceChargeType[] CreateAllowanceCharge(AllowanceChargeType[] allowanceCharge)
+        {
+            AllowanceChargeType[] r = new AllowanceChargeType[1];
+
+            r[0] = new AllowanceChargeType
+            {
+                ChargeIndicator = new ChargeIndicatorType { Value = true },
+                MultiplierFactorNumeric = new MultiplierFactorNumericType { Value = Convert.ToDecimal(txtIskontoOrani.Text) / 100 },
+                Amount = new AmountType2 { Value = Convert.ToDecimal(txtIskontoOrani.Text), currencyID = "TRL" },
+            };
+
+            return r;
         }
 
         public ItemType CreateItemType(ItemType Item)
