@@ -195,7 +195,27 @@ namespace GIBFramework
             {
                 if (Provider is ILogin)
                 {
-                    isLogin = (Provider as ILogin).Login();
+                    var ILogin = (Provider as ILogin);
+
+                    var token = Data.GetToken(ILogin.TokenId());
+
+                    if ((token!=null)&&(string.IsNullOrEmpty(token.Token)==false))
+                    {
+                        ILogin.LoadToken(token.Token);
+                        isLogin = true;
+                    }
+                    else
+                    {
+                        isLogin = ILogin.Login();
+                        if (isLogin)
+                        {
+                            token.TokenId = ILogin.TokenId();
+                            token.Token = ILogin.Token();
+                            token.CreationTime = DateTime.Now;
+                            token.Id = Data.InsertToken(token);
+                        }
+                    }
+
                 }
             }
 

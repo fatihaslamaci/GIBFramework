@@ -33,6 +33,7 @@ namespace GIBInterface
         int ExpirationTimeMinute();
         string Token();
         void LoadToken(string Token);
+        string TokenId();
     }
 
 

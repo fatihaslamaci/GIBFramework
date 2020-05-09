@@ -127,5 +127,11 @@ namespace GIBProviders.Veriban
         {
             return "Veriban";
         }
+
+        public string TokenId()
+        {
+            //TODO :Token ID yi md5 yapılacak, ve sondaki saat silinecek
+            return "Veriban_" + Settings["UserName"] + "_" + Settings["Password"]+"_"+DateTime.Now.ToString("yyyy-HH-dd hh:mm"); ;
+        }
     }
 }

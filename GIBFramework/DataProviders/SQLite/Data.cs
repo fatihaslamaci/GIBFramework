@@ -468,6 +468,84 @@ from GIB_Invoices where providerId=@providerId
 
         }
 
+
+        public TokenType GetToken(string TokenId)
+        {
+            TokenType r = new TokenType();
+            using (SQLiteConnection con = NewSQLiteConnection())
+            {
+                con.Open();
+                using (SQLiteCommand cmd = new SQLiteCommand(con))
+                {
+
+                    cmd.CommandText = @"
+select  
+id          
+,tokenId     
+,token       
+,creationTime
+
+from GIB_Token where tokenId=@tokenId 
+";
+                    cmd.CommandType = CommandType.Text;
+                    cmd.Parameters.Add(new SQLiteParameter("@tokenId", TokenId));
+
+                    using (SQLiteDataReader reader = cmd.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            
+                            r.Id = Convert.ToInt32(reader["id"]);
+                            r.TokenId = reader["tokenId"].ToString();
+                            r.Token = reader["token"].ToString();
+                            r.CreationTime = reader["creationTime"].AsDateTime();
+                            
+                        }
+                        reader.Close();
+                    }
+                }
+                con.Close();
+            }
+
+            return r;
+        }
+
+
+        public int InsertToken(TokenType val)
+        {
+            if (val == null)
+            {
+                return 0;
+            }
+
+            int r = 0;
+
+            using (SQLiteConnection con = NewSQLiteConnection())
+            {
+                con.Open();
+                using (SQLiteTransaction tr = con.BeginTransaction())
+                {
+                    using (SQLiteCommand cmd = con.CreateCommand())
+                    {
+                        cmd.Transaction = tr;
+                        cmd.CommandText = "Insert Into GIB_Token(tokenId,token,creationTime) Values (@tokenId,@token,@creationTime); SELECT last_insert_rowid()";
+                        cmd.CommandType = CommandType.Text;
+                            
+                        cmd.Parameters.Clear();
+                        cmd.Parameters.Add(new SQLiteParameter("@tokenId", val.TokenId));
+                        cmd.Parameters.Add(new SQLiteParameter("@token", val.Token));
+                        cmd.Parameters.Add(new SQLiteParameter("@creationTime", val.CreationTime));
+                        r = Convert.ToInt32(cmd.ExecuteScalar());
+                    }
+                    tr.Commit();
+                }
+                con.Close();
+            }
+
+            return r;
+
+        }
+
         private bool ToBoolean(object v)
         {
             if (v == DBNull.Value)
@@ -492,6 +570,7 @@ from GIB_Invoices where providerId=@providerId
             }
         }
 
+       
     }
 
 

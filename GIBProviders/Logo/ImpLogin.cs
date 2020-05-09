@@ -1,4 +1,5 @@
 ﻿using GIBInterface;
+using System;
 
 namespace GIBProviders.Logo
 {
@@ -29,6 +30,12 @@ namespace GIBProviders.Logo
         public string Token()
         {
             return SessionID;
+        }
+
+        public string TokenId()
+        {
+            //TODO :Token ID yi md5 yapılacak, ve sondaki saat silinecek
+            return "Logo_" + Settings["UserName"] + "_" + Settings["Password"] + "_" + DateTime.Now.ToString("yyyy-HH-dd hh:mm");
         }
     }
 }

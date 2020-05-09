@@ -43,6 +43,7 @@ CREATE TABLE IF NOT EXISTS GIB_Alias (
 );
 
 
+
 CREATE TABLE IF NOT EXISTS GIB_SorguZamani (
                             updateTime        DATETIME  
 );
@@ -65,7 +66,14 @@ CREATE TABLE IF NOT EXISTS GIB_Invoices (
                         
 );
 
+CREATE TABLE IF NOT EXISTS GIB_Token (
+                            id                      INTEGER PRIMARY KEY,
+                            tokenId                 TEXT,
+                            token                   TEXT,
+                            creationTime            DATETIME
+);
 
+CREATE UNIQUE INDEX IF NOT EXISTS idx_GIB_Token_tokenId ON GIB_Token(tokenId);
 
 ";
 

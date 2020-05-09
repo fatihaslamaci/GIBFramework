@@ -1,4 +1,5 @@
 ﻿using GIBInterface.EFaturaPaketi;
+using System;
 using System.Collections.Generic;
 
 namespace GIBInterface
@@ -16,8 +17,18 @@ namespace GIBInterface
 
         void DurumSorgulamaYaz(List<QueryStatusResponseData> val);
 
-
+        TokenType GetToken(string TokenId);
+        int InsertToken(TokenType val);
 
     }
+
+    public class TokenType
+    {
+      public int Id { get; set; }
+      public string TokenId { get; set; }
+      public string Token { get; set; }
+      public DateTime CreationTime { get; set; }
+}
+
 
 }

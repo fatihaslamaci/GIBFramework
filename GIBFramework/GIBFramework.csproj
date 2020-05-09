@@ -71,7 +71,6 @@
     <Compile Include="InvoiceTransform.cs" />
     <Compile Include="DataProviders\SQLite\DataInit.cs" />
     <Compile Include="DataProviders\SQLite\Data.cs" />
-    <Compile Include="DataProviders\SQLite\SQLiteTools.cs" />
     <Compile Include="EFatura.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SQLiteTools.cs" />
