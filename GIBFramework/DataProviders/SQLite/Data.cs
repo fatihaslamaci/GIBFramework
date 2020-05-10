@@ -206,7 +206,7 @@ where GIB_UserList.title LIKE @title
         }
 
 
-        public bool BugunMukelefSorgulandi()
+        public bool BugunMukellefSorgulandi()
         {
             var r = false;
 

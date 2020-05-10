@@ -7,7 +7,7 @@ namespace GIBInterface
     public interface IGIBData
     {
         void GIBUserListSave(EFaturaPaketi.UserList userList);
-        bool BugunMukelefSorgulandi();
+        bool BugunMukellefSorgulandi();
         User SQLiteUserFind(string VergiNo);
         List<User> SQLiteUserFindByUnvan(string Unvan);
         SendParameters SendInvoiceInsert(SendParameters sendParameters, string providerId);

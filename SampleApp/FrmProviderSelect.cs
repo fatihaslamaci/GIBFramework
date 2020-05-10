@@ -22,6 +22,7 @@ namespace SampleApp
 
         private void FrmProviderSelect_Shown(object sender, EventArgs e)
         {
+            cbProviders.Items.Add("Sahte Entegrator");
             cbProviders.Items.Add("Uyumsoft");
             cbProviders.Items.Add("Veriban");
             cbProviders.Items.Add("Logo");
@@ -34,6 +35,11 @@ namespace SampleApp
             {
                 if (cbProviders.SelectedItem != null)
                 {
+                    if (cbProviders.SelectedItem.ToString() == "Sahte Entegrator")
+                    {
+                        AktiveProvider = new GIBProviders.SahteEntegrator.EFatura();
+                    }
+
                     if (cbProviders.SelectedItem.ToString() == "Uyumsoft")
                     {
                         AktiveProvider = new GIBProviders.Uyumsoft.EFatura();

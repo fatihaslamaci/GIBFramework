@@ -174,11 +174,11 @@ namespace GIBFramework
         private static readonly object LockBugunMukelefSorgulandi = new object();
         private void EgerBugunMukellefListesiOkunmadiIseOku()
         {
-            if (Data.BugunMukelefSorgulandi() == false)
+            if (Data.BugunMukellefSorgulandi() == false)
             {
                 lock (LockBugunMukelefSorgulandi)
                 {
-                    if (Data.BugunMukelefSorgulandi() == false)
+                    if (Data.BugunMukellefSorgulandi() == false)
                     {
                         Login();
                         var users = (Provider as IMukellefListesi).GetUserList();
