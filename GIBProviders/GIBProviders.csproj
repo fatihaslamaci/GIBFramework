@@ -85,7 +85,9 @@
     <Compile Include="Logo\LogoEFatura.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SahteEntegrator\ImpEFatura.cs" />
+    <Compile Include="SahteEntegrator\ImpLogin.cs" />
     <Compile Include="SahteEntegrator\ImpMukellefListesi.cs" />
+    <Compile Include="SahteEntegrator\ImpSettings.cs" />
     <Compile Include="Uyumsoft\ImpEFatura.cs" />
     <Compile Include="Uyumsoft\ImpFaturaDurumuSorgula.cs" />
     <Compile Include="Uyumsoft\ImpManipulatedInvoice.cs" />

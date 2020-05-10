@@ -35,7 +35,7 @@ namespace GIBProviders.Logo
         public string TokenId()
         {
             //TODO :Token ID yi md5 yapılacak, ve sondaki saat silinecek
-            return "Logo_" + Settings["UserName"] + "_" + Settings["Password"] + "_" + DateTime.Now.ToString("yyyy-HH-dd hh:mm");
+            return "Logo_" + Settings["UserName"] + "_" + Settings["Password"] + "_" + DateTime.Now.ToString("yyyy-MM-dd hh:mm");
         }
     }
 }

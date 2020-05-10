@@ -20,23 +20,15 @@ namespace SampleApp
 
         private void btnUnvanAra_Click(object sender, EventArgs e)
         {
+            var UserList = EFatura.MukellefAra(tbUnvan.Text);
 
-            if (tbUnvan.Text.Length >= 3)
+            txbSonuc.Visible = false;
+            txbSonuc.Clear();
+            foreach (var item in UserList)
             {
-                var UserList = EFatura.MukellefAra(tbUnvan.Text);
-
-                txbSonuc.Visible = false;
-                txbSonuc.Clear();
-                foreach (var item in UserList)
-                {
-                    txbSonuc.AppendText(item.Identifier + "\t" + item.Title + "\r\n");
-                }
-                txbSonuc.Visible = true;
+                txbSonuc.AppendText(item.Identifier + "\t" + item.Title + "\r\n");
             }
-            else
-            {
-                MessageBox.Show("Lütfen en az 3 harf giriniz");
-            }
+            txbSonuc.Visible = true;
 
         }
     }

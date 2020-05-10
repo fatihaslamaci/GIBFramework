@@ -39,7 +39,7 @@ namespace SampleApp
             dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dataGridView1.DoubleClick += dataGridView1_DoubleClick;
-            
+
 
             dataGridView1.Columns.Add("VKN", "VKN");//0
             dataGridView1.Columns.Add("Unvan", "Unvan");//1
@@ -52,7 +52,7 @@ namespace SampleApp
         private void dataGridView1_DoubleClick(object sender, EventArgs e)
         {
             DialogResultOK();
-            
+
         }
 
         private void btnTamam_Click(object sender, EventArgs e)
@@ -81,33 +81,28 @@ namespace SampleApp
 
         private void Ara()
         {
-            if (tbUnvan.Text.Length >= 2)
-            {
-                var UserList = EFatura.MukellefAra(tbUnvan.Text);
 
-                dataGridView1.Visible = false;
-                dataGridView1.Rows.Clear();
-                foreach (var item in UserList)
-                {
-                    //txbSonuc.AppendText(item.Identifier + "\t" + item.Title + "\r\n");
-                    var row = new DataGridViewRow();
-                    row.CreateCells(dataGridView1);
-                    row.Cells[0].Value = item.Identifier;
-                    row.Cells[1].Value = item.Title;
-                    row.Tag = item;
-                    dataGridView1.Rows.Add(row);
+            var UserList = EFatura.MukellefAra(tbUnvan.Text);
 
-                }
-                dataGridView1.Visible = true;
-                if (UserList.Count > 0)
-                {
-                    dataGridView1.Focus();
-                }
-            }
-            else
+            dataGridView1.Visible = false;
+            dataGridView1.Rows.Clear();
+            foreach (var item in UserList)
             {
-                MessageBox.Show("Lütfen en az 2 harf giriniz");
+                //txbSonuc.AppendText(item.Identifier + "\t" + item.Title + "\r\n");
+                var row = new DataGridViewRow();
+                row.CreateCells(dataGridView1);
+                row.Cells[0].Value = item.Identifier;
+                row.Cells[1].Value = item.Title;
+                row.Tag = item;
+                dataGridView1.Rows.Add(row);
+
             }
+            dataGridView1.Visible = true;
+            if (UserList.Count > 0)
+            {
+                dataGridView1.Focus();
+            }
+
         }
 
         private void dataGridView1_SelectionChanged(object sender, EventArgs e)
@@ -124,7 +119,7 @@ namespace SampleApp
 
         private void tbUnvan_KeyUp(object sender, KeyEventArgs e)
         {
-            if(e.KeyCode == Keys.Enter)
+            if (e.KeyCode == Keys.Enter)
             {
                 Ara();
             }

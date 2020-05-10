@@ -164,13 +164,19 @@ select
   ,GIB_Alias.creationTime as aliasCreationTime
   ,GIB_Alias.deletionTime as aliasDeletionTime
 
-
 from GIB_UserList left join GIB_Alias On GIB_UserList.identifier = GIB_Alias.identifier
-where GIB_UserList.title LIKE @title
+
 ";
 
+
+                    if (string.IsNullOrWhiteSpace(Unvan)==false)
+                    {
+                        cmd.Parameters.Add(new SQLiteParameter("@title", Unvan + "%"));
+                        cmd.CommandText += " where GIB_UserList.title LIKE @title";
+                    }
+                    cmd.CommandText += " Limit 100";
                     cmd.CommandType = CommandType.Text;
-                    cmd.Parameters.Add(new SQLiteParameter("@title", Unvan + "%"));
+
                     using (SQLiteDataReader reader = cmd.ExecuteReader())
                     {
 
