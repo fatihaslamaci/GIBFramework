@@ -534,7 +534,8 @@ from GIB_Token where tokenId=@tokenId
                     using (SQLiteCommand cmd = con.CreateCommand())
                     {
                         cmd.Transaction = tr;
-                        cmd.CommandText = "Insert Into GIB_Token(tokenId,token,creationTime) Values (@tokenId,@token,@creationTime); SELECT last_insert_rowid()";
+                        cmd.CommandText = @"Delete from GIB_Token where tokenId=@tokenId;
+                                            Insert Into GIB_Token(tokenId,token,creationTime) Values (@tokenId,@token,@creationTime); SELECT last_insert_rowid()";
                         cmd.CommandType = CommandType.Text;
                             
                         cmd.Parameters.Clear();

@@ -23,6 +23,13 @@ namespace GIBProviders.SahteEntegrator
 
             SendResult r = new SendResult();
 
+            
+
+            if ( Convert.ToDateTime(token) < DateTime.Now )
+            {
+                throw new Exception("Token süresi dolmuş");
+            }
+
             r.IsSucceded = true;
             r.Message = "Gönderildi";
             r.ResultInvoices = new List<ResultInvoice>();

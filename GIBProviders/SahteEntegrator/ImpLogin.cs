@@ -28,7 +28,7 @@ namespace GIBProviders.SahteEntegrator
 
             if ((userName=="İstanbul")&&(passWord=="1453"))
             {
-                token = DateTime.Now.ToString("yyyy-MM-dd hh:mm");
+                token = DateTime.Now.AddMinutes(10).ToString("yyyy-MM-dd HH:mm");
                 return true;
             }
             else
@@ -45,7 +45,7 @@ namespace GIBProviders.SahteEntegrator
 
         public string TokenId()
         {
-            return "SahteEnt_" + DateTime.Now.ToString("yyyy-MM-dd hh:mm"); ;
+            return "SahteEnt_" + Settings["UserName"]+"_"+Settings["Password"];
         }
     }
 }

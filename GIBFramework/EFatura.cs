@@ -38,7 +38,9 @@ namespace GIBFramework
 
         }
 
-        public bool isLogin { get; private set; }
+
+        private TokenType token { get; set; }
+
 
         public EFatura(IEFatura Provider, IGIBData Data)
         {
@@ -193,32 +195,45 @@ namespace GIBFramework
         {
             if (isLogin == false)
             {
+                var ILogin = (Provider as ILogin);
+                if (ILogin.Login())
+                {
+                    token.TokenId = ILogin.TokenId();
+                    token.Token = ILogin.Token();
+                    token.CreationTime = DateTime.Now;
+                    token.Id = Data.InsertToken(token);
+                }
+            }
+        }
+
+        public bool isLogin
+        {
+            get
+            {
+                bool r = false;
                 if (Provider is ILogin)
                 {
-                    var ILogin = (Provider as ILogin);
 
-                    var token = Data.GetToken(ILogin.TokenId());
-
-                    if ((token!=null)&&(string.IsNullOrEmpty(token.Token)==false))
+                    if (token == null)
                     {
+                        var ILogin = (Provider as ILogin);
+                        token = Data.GetToken(ILogin.TokenId());
                         ILogin.LoadToken(token.Token);
-                        isLogin = true;
                     }
-                    else
+
+                    if (token.CreationTime.AddSeconds(60 * 9) > DateTime.Now)
                     {
-                        isLogin = ILogin.Login();
-                        if (isLogin)
-                        {
-                            token.TokenId = ILogin.TokenId();
-                            token.Token = ILogin.Token();
-                            token.CreationTime = DateTime.Now;
-                            token.Id = Data.InsertToken(token);
-                        }
+                        r = true;
                     }
 
                 }
-            }
+                else
+                {
+                    r = true;
+                }
 
+                return r;
+            }
         }
 
 
