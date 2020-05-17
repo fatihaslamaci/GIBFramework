@@ -16,9 +16,8 @@ Eğer entegratör firmalar kendi servisleri için Provider yazarlarsa zahmetsizc
 
 Proje C# ile yazılmakta. başarılı olması durumunda Java içinde kodlamayı düşünüyorum.
 
-Projeyi destekliyorsanız lütfen Yıldız vermeyi unutmayınız.
 
-
+# Kullanım örneği
 
 ```
 using GIBInterface;
@@ -79,3 +78,5 @@ namespace SampleConsoleApp
 
 
 ```
+
+Projeyi destekliyorsanız lütfen Yıldız vermeyi unutmayınız.
