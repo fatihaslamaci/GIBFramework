@@ -25,7 +25,7 @@ namespace GIBProviders.SahteEntegrator
 
             
 
-            if ( Convert.ToDateTime(token) < DateTime.Now )
+            if ( Convert.ToDateTime(token).AddMinutes(ExpirationTimeMinute()) < DateTime.Now )
             {
                 throw new Exception("Token süresi dolmuş");
             }

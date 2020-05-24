@@ -213,15 +213,14 @@ namespace GIBFramework
                 bool r = false;
                 if (Provider is ILogin)
                 {
-
+                    var ILogin = (Provider as ILogin);
                     if (token == null)
                     {
-                        var ILogin = (Provider as ILogin);
                         token = Data.GetToken(ILogin.TokenId());
                         ILogin.LoadToken(token.Token);
                     }
 
-                    if (token.CreationTime.AddSeconds(60 * 9) > DateTime.Now)
+                    if (TokenSonKullanmaZamaniDolmadi(ILogin.ExpirationTimeMinute()))
                     {
                         r = true;
                     }
@@ -236,6 +235,10 @@ namespace GIBFramework
             }
         }
 
+        private bool TokenSonKullanmaZamaniDolmadi(int dakika)
+        {
+            return token.CreationTime.AddMinutes(dakika) > DateTime.Now;
+        }
 
 
 
