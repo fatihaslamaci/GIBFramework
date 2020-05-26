@@ -106,7 +106,7 @@
       <Name>GIBInterface</Name>
     </ProjectReference>
     <ProjectReference Include="..\Tools\Tools.csproj">
-      <Project>{10a25b0b-c48d-43ba-a6c1-4be1613dc896}</Project>
+      <Project>{b1ca40fa-0b00-4254-a46f-274a3dc62194}</Project>
       <Name>Tools</Name>
     </ProjectReference>
   </ItemGroup>
