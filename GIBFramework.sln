@@ -5,8 +5,6 @@ VisualStudioVersion = 16.0.29613.14
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GIBProviders", "GIBProviders\GIBProviders.csproj", "{009A3339-1BC5-4B69-9A35-FCCEE9DA474B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GIBInterface", "GIBInterface\GIBInterface.csproj", "{6ECBF576-2350-45BA-A7E8-1F005897CE41}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SampleApp", "SampleApp\SampleApp.csproj", "{7CF5B4F1-6573-43EF-BA98-7DA6120008DC}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tools", "Tools\Tools.csproj", "{10A25B0B-C48D-43BA-A6C1-4BE1613DC896}"
@@ -16,6 +14,12 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SampleConsoleApp", "SampleConsoleApp\SampleConsoleApp.csproj", "{BFBDD268-2B43-4646-BAC5-0A7B1FFC1CC4}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GIBFrameworkOld", "GIBFrameworkOld\GIBFrameworkOld.csproj", "{D0E393AB-A187-4C67-A8E6-32F369B98BED}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GIBFramework", "GIBFramework\GIBFramework.csproj", "{2298A663-F49D-4E6B-ACD8-62A5938C443D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SampleDotNetCore", "SampleDotNetCore\SampleDotNetCore.csproj", "{FC3D9719-2037-44EF-9B32-D3EA7B34C78B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GIBInterface", "GIBInterface\GIBInterface.csproj", "{66987639-5217-4631-A056-95DF83FA8A97}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,10 +31,6 @@ Global
 		{009A3339-1BC5-4B69-9A35-FCCEE9DA474B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{009A3339-1BC5-4B69-9A35-FCCEE9DA474B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{009A3339-1BC5-4B69-9A35-FCCEE9DA474B}.Release|Any CPU.Build.0 = Release|Any CPU
-		{6ECBF576-2350-45BA-A7E8-1F005897CE41}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{6ECBF576-2350-45BA-A7E8-1F005897CE41}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{6ECBF576-2350-45BA-A7E8-1F005897CE41}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{6ECBF576-2350-45BA-A7E8-1F005897CE41}.Release|Any CPU.Build.0 = Release|Any CPU
 		{7CF5B4F1-6573-43EF-BA98-7DA6120008DC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{7CF5B4F1-6573-43EF-BA98-7DA6120008DC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7CF5B4F1-6573-43EF-BA98-7DA6120008DC}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -51,6 +51,18 @@ Global
 		{D0E393AB-A187-4C67-A8E6-32F369B98BED}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D0E393AB-A187-4C67-A8E6-32F369B98BED}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D0E393AB-A187-4C67-A8E6-32F369B98BED}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2298A663-F49D-4E6B-ACD8-62A5938C443D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2298A663-F49D-4E6B-ACD8-62A5938C443D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2298A663-F49D-4E6B-ACD8-62A5938C443D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2298A663-F49D-4E6B-ACD8-62A5938C443D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FC3D9719-2037-44EF-9B32-D3EA7B34C78B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FC3D9719-2037-44EF-9B32-D3EA7B34C78B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FC3D9719-2037-44EF-9B32-D3EA7B34C78B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FC3D9719-2037-44EF-9B32-D3EA7B34C78B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{66987639-5217-4631-A056-95DF83FA8A97}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{66987639-5217-4631-A056-95DF83FA8A97}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{66987639-5217-4631-A056-95DF83FA8A97}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{66987639-5217-4631-A056-95DF83FA8A97}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

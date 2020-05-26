@@ -1,9 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
-namespace GIBInterface
+namespace GIBInterfaceOld
 {
-  
+
+
     public interface ISettings
     {
         Dictionary<string, string> DefaultSettings();
@@ -14,7 +14,7 @@ namespace GIBInterface
 
     public interface IManipulatedInvoice
     {
-        GIBInterface.UBLTR.InvoiceType Manipulated(GIBInterface.UBLTR.InvoiceType invoice);
+        GIBInterfaceOld.UBLTR.InvoiceType Manipulated(GIBInterfaceOld.UBLTR.InvoiceType invoice);
     }
 
     public interface IEArsiv

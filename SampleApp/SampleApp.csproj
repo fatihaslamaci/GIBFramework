@@ -174,7 +174,7 @@
       <Name>GIBFrameworkOld</Name>
     </ProjectReference>
     <ProjectReference Include="..\GIBInterface\GIBInterface.csproj">
-      <Project>{6ecbf576-2350-45ba-a7e8-1f005897ce41}</Project>
+      <Project>{66987639-5217-4631-a056-95df83fa8a97}</Project>
       <Name>GIBInterface</Name>
     </ProjectReference>
     <ProjectReference Include="..\GIBProviders\GIBProviders.csproj">
