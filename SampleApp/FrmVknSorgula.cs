@@ -5,7 +5,7 @@ namespace SampleApp
 {
     public partial class FrmVknSorgula : Form
     {
-        public GIBFramework.EFatura EFatura { get; set; }
+        public GIBFrameworkOld.EFatura EFatura { get; set; }
         public FrmVknSorgula()
         {
             InitializeComponent();

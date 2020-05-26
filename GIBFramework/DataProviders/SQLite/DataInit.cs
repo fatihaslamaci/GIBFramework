@@ -1,6 +1,6 @@
 ﻿using System.Data.SQLite;
 
-namespace GIBFramework.DataProviders.SQLite
+namespace GIBFrameworkOld.DataProviders.SQLite
 {
 
 

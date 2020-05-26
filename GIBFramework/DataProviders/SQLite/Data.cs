@@ -1,4 +1,4 @@
-﻿using GIBFramework.SQLiteTools;
+﻿using GIBFrameworkOld.SQLiteTools;
 using GIBInterface;
 using GIBInterface.EFaturaPaketi;
 using System;
@@ -6,7 +6,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Data.SQLite;
 
-namespace GIBFramework.DataProviders.SQLite
+namespace GIBFrameworkOld.DataProviders.SQLite
 {
     public partial class Data : IGIBData
     {

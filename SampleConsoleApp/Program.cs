@@ -28,7 +28,7 @@ namespace SampleConsoleApp
             //Entegrator = new GIBProviders.Logo.EFatura();
 
             //Seçilen Entegratör ile GIB Framework oluşturulur
-            var EFatura = new GIBFramework.EFatura(Entegrator);
+            var EFatura = new GIBFrameworkOld.EFatura(Entegrator);
 
             //Entegratöre özel varsayılan ayarlar var ise consola yazıyoruz (Username, Pasword, Servis adresi gibi)
             Console.WriteLine("Entegratöre özel varsayılan ayarlar");

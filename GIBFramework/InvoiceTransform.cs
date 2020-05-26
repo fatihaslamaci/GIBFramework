@@ -4,7 +4,7 @@ using System.Linq;
 using System.Xml;
 using System.Xml.Xsl;
 
-namespace GIBFramework
+namespace GIBFrameworkOld
 {
     public class InvoiceTransform
     {

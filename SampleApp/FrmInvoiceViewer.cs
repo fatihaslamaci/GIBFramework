@@ -1,4 +1,4 @@
-﻿using GIBFramework;
+﻿using GIBFrameworkOld;
 using System;
 using System.IO;
 using System.Text;
@@ -36,7 +36,7 @@ namespace SampleApp
 
         private void ShowInvoice()
         {
-            GIBFramework.InvoiceTransform it = new GIBFramework.InvoiceTransform();
+            GIBFrameworkOld.InvoiceTransform it = new GIBFrameworkOld.InvoiceTransform();
             webBrowserHTML.DocumentText = it.InvoiceToHTML(Invoice, xslt);
             webBrowserXML.DocumentText = Invoice.CreateXml();
             txbUBLText.Text = Invoice.CreateXml();

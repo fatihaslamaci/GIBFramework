@@ -7,7 +7,7 @@ namespace SampleApp
 {
     public partial class FrmProviderSelect : Form
     {
-        public GIBFramework.EFatura EFatura { get; set; }
+        public GIBFrameworkOld.EFatura EFatura { get; set; }
 
         public GIBInterface.IGIBData dataLayer { get; set; } 
         
@@ -54,7 +54,7 @@ namespace SampleApp
                     }
 
      
-                    EFatura = new GIBFramework.EFatura(AktiveProvider, dataLayer);
+                    EFatura = new GIBFrameworkOld.EFatura(AktiveProvider, dataLayer);
 
 
                     if (System.IO.File.Exists(GetSettingsFileName()))

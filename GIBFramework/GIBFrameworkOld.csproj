@@ -13,8 +13,8 @@
     <ProjectGuid>{D0E393AB-A187-4C67-A8E6-32F369B98BED}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>GIBFramework</RootNamespace>
-    <AssemblyName>GIBFramework</AssemblyName>
+    <RootNamespace>GIBFrameworkOld</RootNamespace>
+    <AssemblyName>GIBFrameworkOld</AssemblyName>
     <TargetFrameworkVersion>v4.6.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>

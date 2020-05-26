@@ -56,9 +56,9 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\GIBFramework\GIBFramework.csproj">
+    <ProjectReference Include="..\GIBFramework\GIBFrameworkOld.csproj">
       <Project>{d0e393ab-a187-4c67-a8e6-32f369b98bed}</Project>
-      <Name>GIBFramework</Name>
+      <Name>GIBFrameworkOld</Name>
     </ProjectReference>
     <ProjectReference Include="..\GIBInterface\GIBInterface.csproj">
       <Project>{6ECBF576-2350-45BA-A7E8-1F005897CE41}</Project>

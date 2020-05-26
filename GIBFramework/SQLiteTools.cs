@@ -4,7 +4,7 @@ using System.Data;
 using System.Data.SQLite;
 using System.Linq;
 
-namespace GIBFramework.SQLiteTools
+namespace GIBFrameworkOld.SQLiteTools
 {
 
     internal class TableProp

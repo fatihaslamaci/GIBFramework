@@ -12,7 +12,7 @@ namespace GIBFrameworkTest.Uyumsoft
         {
             GIBProviders.Uyumsoft.IUyumsoftService mockUyumsoftService = new MockUyumsoftService();
             GIBInterface.IEFatura provider = new GIBProviders.Uyumsoft.EFatura(mockUyumsoftService);
-            GIBFramework.EFatura eFatura = new GIBFramework.EFatura(provider);
+            GIBFrameworkOld.EFatura eFatura = new GIBFrameworkOld.EFatura(provider);
             var user = eFatura.MukellefBilgisi("6130438766");
             Assert.IsNotNull(user, "Mükellef Bulunamadı");
             user = eFatura.MukellefBilgisi("1111111111");
@@ -24,7 +24,7 @@ namespace GIBFrameworkTest.Uyumsoft
         {
             GIBProviders.Uyumsoft.IUyumsoftService mockUyumsoftService = new MockUyumsoftService();
             GIBInterface.IEFatura provider = new GIBProviders.Uyumsoft.EFatura(mockUyumsoftService);
-            GIBFramework.EFatura eFatura = new GIBFramework.EFatura(provider);
+            GIBFrameworkOld.EFatura eFatura = new GIBFrameworkOld.EFatura(provider);
 
             GIBInterface.SendParameters val = new GIBInterface.SendParameters();
             val.InvoicesInfo = CreateInvoiceInfoList();
@@ -42,7 +42,7 @@ namespace GIBFrameworkTest.Uyumsoft
         {
             GIBProviders.Uyumsoft.IUyumsoftService mockUyumsoftService = new MockUyumsoftService();
             GIBInterface.IEFatura provider = new GIBProviders.Uyumsoft.EFatura(mockUyumsoftService);
-            GIBFramework.EFatura eFatura = new GIBFramework.EFatura(provider);
+            GIBFrameworkOld.EFatura eFatura = new GIBFrameworkOld.EFatura(provider);
 
 
             List<GIBInterface.QueryStatusParameters> val = new List<GIBInterface.QueryStatusParameters>();

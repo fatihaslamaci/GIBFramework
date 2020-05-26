@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.btnDurumSorgula = new System.Windows.Forms.Button();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
@@ -44,6 +44,16 @@
             this.panel1.Size = new System.Drawing.Size(860, 48);
             this.panel1.TabIndex = 0;
             // 
+            // btnDurumSorgula
+            // 
+            this.btnDurumSorgula.Location = new System.Drawing.Point(12, 12);
+            this.btnDurumSorgula.Name = "btnDurumSorgula";
+            this.btnDurumSorgula.Size = new System.Drawing.Size(240, 23);
+            this.btnDurumSorgula.TabIndex = 0;
+            this.btnDurumSorgula.Text = "Seçilen Faturaların Durumunu Sorgula";
+            this.btnDurumSorgula.UseVisualStyleBackColor = true;
+            this.btnDurumSorgula.Click += new System.EventHandler(this.btnDurumSorgula_Click);
+            // 
             // dataGridView1
             // 
             this.dataGridView1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -55,16 +65,6 @@
             this.dataGridView1.Size = new System.Drawing.Size(836, 408);
             this.dataGridView1.TabIndex = 1;
             // 
-            // btnDurumSorgula
-            // 
-            this.btnDurumSorgula.Location = new System.Drawing.Point(12, 12);
-            this.btnDurumSorgula.Name = "btnDurumSorgula";
-            this.btnDurumSorgula.Size = new System.Drawing.Size(240, 23);
-            this.btnDurumSorgula.TabIndex = 0;
-            this.btnDurumSorgula.Text = "Seçilen Faturaların Durumunu Sorgula";
-            this.btnDurumSorgula.UseVisualStyleBackColor = true;
-            this.btnDurumSorgula.Click += new System.EventHandler(this.btnDurumSorgula_Click);
-            // 
             // FrmFaturaListesi
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -73,7 +73,7 @@
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.panel1);
             this.Name = "FrmFaturaListesi";
-            this.Text = "FrmFaturaListesi";
+            this.Text = "q";
             this.Shown += new System.EventHandler(this.FrmFaturaListesi_Shown);
             this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();

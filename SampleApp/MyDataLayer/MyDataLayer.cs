@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace SampleApp.MyDataLayer
 {
-    public class MyDataLayer : GIBFramework.DataProviders.SQLite.Data
+    public class MyDataLayer : GIBFrameworkOld.DataProviders.SQLite.Data
     {
 
     }

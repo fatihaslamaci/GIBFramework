@@ -9,7 +9,7 @@ namespace SampleApp
 {
     public partial class FrmInvoiceCreate : Form
     {
-        public GIBFramework.EFatura EFatura { get; set; }
+        public GIBFrameworkOld.EFatura EFatura { get; set; }
         private string SampleFileDir = ".\\OrnekFaturalar";
 
         private string _sampleFileName;
