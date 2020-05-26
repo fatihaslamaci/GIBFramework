@@ -22,24 +22,20 @@ Proje C# ile yazılmakta. başarılı olması durumunda Java içinde kodlamayı 
 ```
 using GIBInterface;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace SampleConsoleApp
+namespace SampleDotNetCore
 {
     class Program
     {
         static void Main(string[] args)
         {
-
             //Not: Örneğin çalışabilmesi için referanslara "System.Data.SQLite" eklenmesi gerekmekte
 
             IEFatura Entegrator;
             
+
             //Test için Sahte entgeratör seçiyoruz
-            Entegrator = new GIBProviders.SahteEntegrator.EFatura();
+            Entegrator = new SahteEntegrator.EFatura();
 
             //Gerekirse Aşağıdaki gibi Entegratörlerden birinide seçebiliriz
             //Uyumsof
@@ -59,9 +55,11 @@ namespace SampleConsoleApp
             //Entegratore özel Ayarları Json formatında giriyoruz
             EFatura.SettingsJson = "{\"UserName\": \"İstanbul\", \"Password\": \"1453\"}";
 
-            
+
             //VKN Sorgulama örneği
             var Mukellef = EFatura.MukellefBilgisi("2970610282");
+            Console.WriteLine(Mukellef.Title);
+
 
             //Fatura Gönderim örneği.
             //EFatura.SendInvoice(new SendParameters());
@@ -70,13 +68,9 @@ namespace SampleConsoleApp
             //EFatura.FaturaDurumSorgula(new List<QueryStatusParameters>());
 
             Console.ReadKey();
-        
-
         }
     }
 }
-
-
 ```
 
 Projeyi destekliyorsanız lütfen Yıldız vermeyi unutmayınız.
