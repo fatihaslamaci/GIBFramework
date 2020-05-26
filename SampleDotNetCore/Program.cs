@@ -9,11 +9,11 @@ namespace SampleDotNetCore
         {
             //Not: Örneğin çalışabilmesi için referanslara "System.Data.SQLite" eklenmesi gerekmekte
 
-            IEFatura Entegrator=null;
-            IGIBData Data=null;
+            IEFatura Entegrator;
+            
 
             //Test için Sahte entgeratör seçiyoruz
-            //Entegrator = new GIBProviders.SahteEntegrator.EFatura();
+            Entegrator = new GIBProviders.SahteEntegrator.EFatura();
 
             //Gerekirse Aşağıdaki gibi Entegratörlerden birinide seçebiliriz
             //Uyumsof
@@ -24,7 +24,7 @@ namespace SampleDotNetCore
             //Entegrator = new GIBProviders.Logo.EFatura();
 
             //Seçilen Entegratör ile GIB Framework oluşturulur
-            var EFatura = new GIBFramework.EFatura(Entegrator, Data);
+            var EFatura = new GIBFramework.EFatura(Entegrator);
 
             //Entegratöre özel varsayılan ayarlar var ise consola yazıyoruz (Username, Pasword, Servis adresi gibi)
             Console.WriteLine("Entegratöre özel varsayılan ayarlar");

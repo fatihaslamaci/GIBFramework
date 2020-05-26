@@ -169,9 +169,9 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\GIBFrameworkOld\GIBFrameworkOld.csproj">
-      <Project>{d0e393ab-a187-4c67-a8e6-32f369b98bed}</Project>
-      <Name>GIBFrameworkOld</Name>
+    <ProjectReference Include="..\GIBFramework\GIBFramework.csproj">
+      <Project>{2298a663-f49d-4e6b-acd8-62a5938c443d}</Project>
+      <Name>GIBFramework</Name>
     </ProjectReference>
     <ProjectReference Include="..\GIBInterface\GIBInterface.csproj">
       <Project>{66987639-5217-4631-a056-95df83fa8a97}</Project>

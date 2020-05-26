@@ -45,11 +45,11 @@ namespace GIBFramework
             this.Provider = Provider;
         }
 
-        //public EFatura(IEFatura Provider)
-        //{
-        //    this.Data = new DataProviders.SQLite.Data();
-        //    this.Provider = Provider;
-        //}
+        public EFatura(IEFatura Provider)
+        {
+            this.Data = new DataProviders.SQLite.Data();
+            this.Provider = Provider;
+        }
 
         public User MukellefBilgisi(string VKN_TCKN)
         {

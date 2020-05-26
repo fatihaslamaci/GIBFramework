@@ -6,7 +6,7 @@ namespace SampleApp
     public partial class FrmMain : Form
     {
 
-        private GIBFrameworkOld.EFatura EFatura { get; set; }
+        private GIBFramework.EFatura EFatura { get; set; }
         private MyDataLayer.MyDataLayer myDataLayer { get; set; }
 
         public FrmMain()
