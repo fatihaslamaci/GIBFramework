@@ -13,7 +13,7 @@ namespace SampleDotNetCore
             
 
             //Test için Sahte entgeratör seçiyoruz
-            Entegrator = new GIBProviders.SahteEntegrator.EFatura();
+            Entegrator = new SahteEntegrator.EFatura();
 
             //Gerekirse Aşağıdaki gibi Entegratörlerden birinide seçebiliriz
             //Uyumsof
@@ -36,6 +36,8 @@ namespace SampleDotNetCore
 
             //VKN Sorgulama örneği
             var Mukellef = EFatura.MukellefBilgisi("2970610282");
+            Console.WriteLine(Mukellef.Title);
+
 
             //Fatura Gönderim örneği.
             //EFatura.SendInvoice(new SendParameters());

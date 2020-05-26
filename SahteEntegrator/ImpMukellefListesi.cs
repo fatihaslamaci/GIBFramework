@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace GIBProviders.SahteEntegrator
+namespace SahteEntegrator
 {
         public partial class EFatura : IMukellefListesi
         {

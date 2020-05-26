@@ -17,7 +17,7 @@ namespace SampleConsoleApp
             IEFatura Entegrator;
             
             //Test için Sahte entgeratör seçiyoruz
-            Entegrator = new GIBProviders.SahteEntegrator.EFatura();
+            Entegrator = new SahteEntegrator.EFatura();
 
             //Gerekirse Aşağıdaki gibi Entegratörlerden birinide seçebiliriz
             //Uyumsof

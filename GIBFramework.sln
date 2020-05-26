@@ -19,6 +19,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GIBInterface", "GIBInterfac
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tools", "Tools\Tools.csproj", "{B1CA40FA-0B00-4254-A46F-274A3DC62194}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Entegratorler", "Entegratorler", "{4CD967AA-F717-4135-84CF-008D70F7F55F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SahteEntegrator", "SahteEntegrator\SahteEntegrator.csproj", "{6F2A7C3E-902A-4338-A10F-E6B0A5660882}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -57,9 +61,16 @@ Global
 		{B1CA40FA-0B00-4254-A46F-274A3DC62194}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B1CA40FA-0B00-4254-A46F-274A3DC62194}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B1CA40FA-0B00-4254-A46F-274A3DC62194}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6F2A7C3E-902A-4338-A10F-E6B0A5660882}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6F2A7C3E-902A-4338-A10F-E6B0A5660882}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6F2A7C3E-902A-4338-A10F-E6B0A5660882}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6F2A7C3E-902A-4338-A10F-E6B0A5660882}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{6F2A7C3E-902A-4338-A10F-E6B0A5660882} = {4CD967AA-F717-4135-84CF-008D70F7F55F}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {10156FE7-ED3D-43F1-96FB-916AE1E34F35}

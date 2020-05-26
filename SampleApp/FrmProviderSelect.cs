@@ -37,7 +37,7 @@ namespace SampleApp
                 {
                     if (cbProviders.SelectedItem.ToString() == "Sahte Entegrator")
                     {
-                        AktiveProvider = new GIBProviders.SahteEntegrator.EFatura();
+                        AktiveProvider = new SahteEntegrator.EFatura();
                     }
 
                     if (cbProviders.SelectedItem.ToString() == "Uyumsoft")
