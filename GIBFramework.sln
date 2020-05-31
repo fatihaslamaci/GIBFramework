@@ -17,11 +17,17 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SampleDotNetCore", "SampleD
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GIBInterface", "GIBInterface\GIBInterface.csproj", "{66987639-5217-4631-A056-95DF83FA8A97}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tools", "Tools\Tools.csproj", "{B1CA40FA-0B00-4254-A46F-274A3DC62194}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Tools", "Tools\Tools.csproj", "{B1CA40FA-0B00-4254-A46F-274A3DC62194}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Entegratorler", "Entegratorler", "{4CD967AA-F717-4135-84CF-008D70F7F55F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SahteEntegrator", "SahteEntegrator\SahteEntegrator.csproj", "{6F2A7C3E-902A-4338-A10F-E6B0A5660882}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SahteEntegrator", "SahteEntegrator\SahteEntegrator.csproj", "{6F2A7C3E-902A-4338-A10F-E6B0A5660882}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Uyumsoft", "Uyumsoft", "{39CCB027-13F6-4C1A-89DE-D0AE02CF2DFD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UyumsoftDotNetStandart", "UyumsoftDotNetStandart\UyumsoftDotNetStandart.csproj", "{55A0134D-3A20-4934-A05C-61AA30E68A93}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Uyumsoft", "Uyumsoft\Uyumsoft.csproj", "{F0433BD5-2245-486D-942B-213844C61346}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -65,12 +71,23 @@ Global
 		{6F2A7C3E-902A-4338-A10F-E6B0A5660882}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6F2A7C3E-902A-4338-A10F-E6B0A5660882}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6F2A7C3E-902A-4338-A10F-E6B0A5660882}.Release|Any CPU.Build.0 = Release|Any CPU
+		{55A0134D-3A20-4934-A05C-61AA30E68A93}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{55A0134D-3A20-4934-A05C-61AA30E68A93}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{55A0134D-3A20-4934-A05C-61AA30E68A93}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{55A0134D-3A20-4934-A05C-61AA30E68A93}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F0433BD5-2245-486D-942B-213844C61346}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F0433BD5-2245-486D-942B-213844C61346}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F0433BD5-2245-486D-942B-213844C61346}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F0433BD5-2245-486D-942B-213844C61346}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{6F2A7C3E-902A-4338-A10F-E6B0A5660882} = {4CD967AA-F717-4135-84CF-008D70F7F55F}
+		{39CCB027-13F6-4C1A-89DE-D0AE02CF2DFD} = {4CD967AA-F717-4135-84CF-008D70F7F55F}
+		{55A0134D-3A20-4934-A05C-61AA30E68A93} = {39CCB027-13F6-4C1A-89DE-D0AE02CF2DFD}
+		{F0433BD5-2245-486D-942B-213844C61346} = {39CCB027-13F6-4C1A-89DE-D0AE02CF2DFD}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {10156FE7-ED3D-43F1-96FB-916AE1E34F35}

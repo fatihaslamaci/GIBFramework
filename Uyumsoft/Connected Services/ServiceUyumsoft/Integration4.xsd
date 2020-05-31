@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://www.w3.org/2000/09/xmldsig#" elementFormDefault="qualified" targetNamespace="http://www.w3.org/2000/09/xmldsig#" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="Signature" type="tns:SignatureType" />
+  <xs:complexType name="SignatureType">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="1" name="SignedInfo" type="tns:SignedInfoType" />
+      <xs:element minOccurs="0" maxOccurs="1" name="SignatureValue" type="tns:SignatureValueType" />
+      <xs:element minOccurs="0" maxOccurs="1" name="KeyInfo" type="tns:KeyInfoType" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Object" type="tns:ObjectType" />
+    </xs:sequence>
+    <xs:attribute name="Id" type="xs:ID" />
+  </xs:complexType>
+  <xs:complexType name="SignedInfoType">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="1" name="CanonicalizationMethod" type="tns:CanonicalizationMethodType" />
+      <xs:element minOccurs="0" maxOccurs="1" name="SignatureMethod" type="tns:SignatureMethodType" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Reference" type="tns:ReferenceType" />
+    </xs:sequence>
+    <xs:attribute name="Id" type="xs:ID" />
+  </xs:complexType>
+  <xs:complexType name="CanonicalizationMethodType" mixed="true">
+    <xs:sequence>
+      <xs:any minOccurs="0" maxOccurs="unbounded" />
+    </xs:sequence>
+    <xs:attribute name="Algorithm" type="xs:anyURI" />
+  </xs:complexType>
+  <xs:complexType name="SignatureMethodType" mixed="true">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="1" name="HMACOutputLength" type="xs:integer" />
+      <xs:any minOccurs="0" maxOccurs="unbounded" />
+    </xs:sequence>
+    <xs:attribute name="Algorithm" type="xs:anyURI" />
+  </xs:complexType>
+  <xs:complexType name="ReferenceType">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="1" name="Transforms" type="tns:ArrayOfTransformType" />
+      <xs:element minOccurs="0" maxOccurs="1" name="DigestMethod" type="tns:DigestMethodType" />
+      <xs:element minOccurs="0" maxOccurs="1" name="DigestValue" type="xs:base64Binary" />
+    </xs:sequence>
+    <xs:attribute name="Id" type="xs:ID" />
+    <xs:attribute name="URI" type="xs:anyURI" />
+    <xs:attribute name="Type" type="xs:anyURI" />
+  </xs:complexType>
+  <xs:complexType name="ArrayOfTransformType">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Transform" type="tns:TransformType" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="TransformType" mixed="true">
+    <xs:sequence>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element minOccurs="0" maxOccurs="1" name="XPath" type="xs:string" />
+        <xs:any minOccurs="0" maxOccurs="1" />
+      </xs:choice>
+    </xs:sequence>
+    <xs:attribute name="Algorithm" type="xs:anyURI" />
+  </xs:complexType>
+  <xs:complexType name="DigestMethodType" mixed="true">
+    <xs:sequence>
+      <xs:any minOccurs="0" maxOccurs="unbounded" />
+    </xs:sequence>
+    <xs:attribute name="Algorithm" type="xs:anyURI" />
+  </xs:complexType>
+  <xs:complexType name="SignatureValueType">
+    <xs:simpleContent>
+      <xs:extension base="xs:base64Binary">
+        <xs:attribute name="Id" type="xs:ID" />
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="KeyInfoType" mixed="true">
+    <xs:sequence>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element minOccurs="0" maxOccurs="1" name="X509Data" type="tns:X509DataType" />
+        <xs:element minOccurs="0" maxOccurs="1" name="MgmtData" type="xs:string" />
+        <xs:element minOccurs="0" maxOccurs="1" name="RetrievalMethod" type="tns:RetrievalMethodType" />
+        <xs:element minOccurs="0" maxOccurs="1" name="PGPData" type="tns:PGPDataType" />
+        <xs:element minOccurs="0" maxOccurs="1" name="KeyValue" type="tns:KeyValueType" />
+        <xs:element minOccurs="0" maxOccurs="1" name="SPKIData" type="tns:SPKIDataType" />
+        <xs:element minOccurs="0" maxOccurs="1" name="KeyName" type="xs:string" />
+        <xs:any minOccurs="0" maxOccurs="1" />
+      </xs:choice>
+    </xs:sequence>
+    <xs:attribute name="Id" type="xs:ID" />
+  </xs:complexType>
+  <xs:complexType name="X509DataType">
+    <xs:sequence>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element minOccurs="0" maxOccurs="1" name="X509Certificate" type="xs:base64Binary" />
+        <xs:element minOccurs="0" maxOccurs="1" name="X509SKI" type="xs:base64Binary" />
+        <xs:element minOccurs="0" maxOccurs="1" name="X509CRL" type="xs:base64Binary" />
+        <xs:element minOccurs="0" maxOccurs="1" name="X509IssuerSerial" type="tns:X509IssuerSerialType" />
+        <xs:element minOccurs="0" maxOccurs="1" name="X509SubjectName" type="xs:string" />
+        <xs:any minOccurs="0" maxOccurs="1" />
+      </xs:choice>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="X509IssuerSerialType">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="1" name="X509IssuerName" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="X509SerialNumber" type="xs:integer" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="RetrievalMethodType">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="1" name="Transforms" type="tns:ArrayOfTransformType" />
+    </xs:sequence>
+    <xs:attribute name="URI" type="xs:anyURI" />
+    <xs:attribute name="Type" type="xs:anyURI" />
+  </xs:complexType>
+  <xs:complexType name="PGPDataType">
+    <xs:sequence>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element minOccurs="0" maxOccurs="1" name="PGPKeyID" type="xs:base64Binary" />
+        <xs:element minOccurs="0" maxOccurs="1" name="PGPKeyPacket" type="xs:base64Binary" />
+        <xs:any minOccurs="0" maxOccurs="1" />
+      </xs:choice>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="KeyValueType" mixed="true">
+    <xs:sequence>
+      <xs:choice minOccurs="1" maxOccurs="1">
+        <xs:element minOccurs="0" maxOccurs="1" name="DSAKeyValue" type="tns:DSAKeyValueType" />
+        <xs:element minOccurs="0" maxOccurs="1" name="RSAKeyValue" type="tns:RSAKeyValueType" />
+        <xs:any minOccurs="0" maxOccurs="1" />
+      </xs:choice>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="DSAKeyValueType">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="1" name="P" type="xs:base64Binary" />
+      <xs:element minOccurs="0" maxOccurs="1" name="Q" type="xs:base64Binary" />
+      <xs:element minOccurs="0" maxOccurs="1" name="G" type="xs:base64Binary" />
+      <xs:element minOccurs="0" maxOccurs="1" name="Y" type="xs:base64Binary" />
+      <xs:element minOccurs="0" maxOccurs="1" name="J" type="xs:base64Binary" />
+      <xs:element minOccurs="0" maxOccurs="1" name="Seed" type="xs:base64Binary" />
+      <xs:element minOccurs="0" maxOccurs="1" name="PgenCounter" type="xs:base64Binary" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="RSAKeyValueType">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="1" name="Modulus" type="xs:base64Binary" />
+      <xs:element minOccurs="0" maxOccurs="1" name="Exponent" type="xs:base64Binary" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="SPKIDataType">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="SPKISexp" type="xs:base64Binary" />
+      <xs:any minOccurs="0" maxOccurs="1" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ObjectType" mixed="true">
+    <xs:sequence>
+      <xs:any minOccurs="0" maxOccurs="unbounded" />
+    </xs:sequence>
+    <xs:attribute name="Id" type="xs:ID" />
+    <xs:attribute name="MimeType" type="xs:string" />
+    <xs:attribute name="Encoding" type="xs:anyURI" />
+  </xs:complexType>
+</xs:schema>

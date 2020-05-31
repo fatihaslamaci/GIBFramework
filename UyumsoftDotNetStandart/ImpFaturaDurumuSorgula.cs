@@ -2,7 +2,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace GIBProviders.Uyumsoft
+namespace UyumsoftDotNetStandart
 {
     public partial class EFatura : IFaturaDurumuSorgula
     {
@@ -14,7 +14,7 @@ namespace GIBProviders.Uyumsoft
             }
 
             List<QueryStatusResponse> r = new List<QueryStatusResponse>();
-            var response = new GIBProviders.ServiceUyumsoft.InvoiceStatusResponse();
+            var response = new ServiceUyumsoft.InvoiceStatusResponse();
             List<string> guid = new List<string>();
 
             foreach (var item in SendParameters)

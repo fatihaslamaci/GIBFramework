@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="urn:oasis:names:specification:ubl:schema:xsd:SignatureBasicComponents-2" elementFormDefault="qualified" targetNamespace="urn:oasis:names:specification:ubl:schema:xsd:SignatureBasicComponents-2" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="https://efatura-test.uyumsoft.com.tr/Services/Integration?xsd=xsd5" namespace="urn:oasis:names:specification:ubl:schema:xsd:UnqualifiedDataTypes-2" />
+  <xs:complexType name="ReferencedSignatureIDType">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q1="urn:oasis:names:specification:ubl:schema:xsd:UnqualifiedDataTypes-2" base="q1:IdentifierType" />
+    </xs:complexContent>
+  </xs:complexType>
+</xs:schema>

@@ -1,0 +1,197 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{F0433BD5-2245-486D-942B-213844C61346}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Uyumsoft</RootNamespace>
+    <AssemblyName>Uyumsoft</AssemblyName>
+    <TargetFrameworkVersion>v4.6.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Connected Services\ServiceUyumsoft\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="ImpEFatura.cs" />
+    <Compile Include="ImpFaturaDurumuSorgula.cs" />
+    <Compile Include="ImpManipulatedInvoice.cs" />
+    <Compile Include="ImpMukellefListesi.cs" />
+    <Compile Include="ImpSettings.cs" />
+    <Compile Include="ImpUyumsoftService.cs" />
+    <Compile Include="IUyumsoftService.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UyumsoftEFatura.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="Connected Services\ServiceUyumsoft\Integration.wsdl" />
+    <None Include="Connected Services\ServiceUyumsoft\Integration.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\ServiceUyumsoft\Integration1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\ServiceUyumsoft\Integration2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\ServiceUyumsoft\Integration3.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\ServiceUyumsoft\Integration4.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\ServiceUyumsoft\Integration5.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\ServiceUyumsoft\Integration6.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\ServiceUyumsoft\Integration7.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\ServiceUyumsoft\Integration8.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\ServiceUyumsoft\Uyumsoft.ServiceUyumsoft.ByteArrayResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceUyumsoft\Uyumsoft.ServiceUyumsoft.CloneInvoiceServiceResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceUyumsoft\Uyumsoft.ServiceUyumsoft.DateResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceUyumsoft\Uyumsoft.ServiceUyumsoft.DocumentResponseStatusResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceUyumsoft\Uyumsoft.ServiceUyumsoft.EnvelopeResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceUyumsoft\Uyumsoft.ServiceUyumsoft.FlagResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceUyumsoft\Uyumsoft.ServiceUyumsoft.InboxInvoiceListResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceUyumsoft\Uyumsoft.ServiceUyumsoft.InvoiceDataResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceUyumsoft\Uyumsoft.ServiceUyumsoft.InvoiceGtbInfoResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceUyumsoft\Uyumsoft.ServiceUyumsoft.InvoiceIdentitiesResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceUyumsoft\Uyumsoft.ServiceUyumsoft.InvoiceResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceUyumsoft\Uyumsoft.ServiceUyumsoft.InvoicesDataResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceUyumsoft\Uyumsoft.ServiceUyumsoft.InvoicesResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceUyumsoft\Uyumsoft.ServiceUyumsoft.InvoiceStatusResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceUyumsoft\Uyumsoft.ServiceUyumsoft.InvoiceStatusWithLogResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceUyumsoft\Uyumsoft.ServiceUyumsoft.InvoiceViewResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceUyumsoft\Uyumsoft.ServiceUyumsoft.OutboxInvoiceListResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceUyumsoft\Uyumsoft.ServiceUyumsoft.Response.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceUyumsoft\Uyumsoft.ServiceUyumsoft.ResponseOfWhoAmIInfo.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceUyumsoft\Uyumsoft.ServiceUyumsoft.StringElementResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceUyumsoft\Uyumsoft.ServiceUyumsoft.StringResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceUyumsoft\Uyumsoft.ServiceUyumsoft.SummaryReportResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceUyumsoft\Uyumsoft.ServiceUyumsoft.SystemUsersResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceUyumsoft\Uyumsoft.ServiceUyumsoft.UserAliassesResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadataStorage Include="Connected Services\ServiceUyumsoft\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\ServiceUyumsoft\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\ServiceUyumsoft\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\ServiceUyumsoft\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\GIBFramework\GIBFramework.csproj">
+      <Project>{2298a663-f49d-4e6b-acd8-62a5938c443d}</Project>
+      <Name>GIBFramework</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\GIBInterface\GIBInterface.csproj">
+      <Project>{66987639-5217-4631-a056-95df83fa8a97}</Project>
+      <Name>GIBInterface</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Tools\Tools.csproj">
+      <Project>{b1ca40fa-0b00-4254-a46f-274a3dc62194}</Project>
+      <Name>Tools</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

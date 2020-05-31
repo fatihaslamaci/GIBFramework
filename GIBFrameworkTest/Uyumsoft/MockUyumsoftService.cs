@@ -1,9 +1,10 @@
-﻿using GIBProviders.ServiceUyumsoft;
-using System.Linq;
+﻿using System.Linq;
+using Uyumsoft;
+using Uyumsoft.ServiceUyumsoft;
 
 namespace GIBFrameworkTest.Uyumsoft
 {
-    public class MockUyumsoftService : GIBProviders.Uyumsoft.IUyumsoftService
+    public class MockUyumsoftService : IUyumsoftService
     {
         public ByteArrayResponse GetSystemUsersCompressedList(AliasType type)
         {

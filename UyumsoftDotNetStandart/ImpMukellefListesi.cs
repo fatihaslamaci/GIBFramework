@@ -3,7 +3,7 @@ using GIBInterface.EFaturaPaketi;
 using System.IO;
 using Tools;
 
-namespace GIBProviders.Uyumsoft
+namespace UyumsoftDotNetStandart
 {
     public partial class EFatura : IMukellefListesi
     {

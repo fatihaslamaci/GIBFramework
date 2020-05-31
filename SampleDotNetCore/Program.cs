@@ -10,7 +10,7 @@ namespace SampleDotNetCore
             //Not: Örneğin çalışabilmesi için referanslara "System.Data.SQLite" eklenmesi gerekmekte
 
             IEFatura Entegrator;
-            
+
 
             //Test için Sahte entgeratör seçiyoruz
             Entegrator = new SahteEntegrator.EFatura();
@@ -31,7 +31,7 @@ namespace SampleDotNetCore
             Console.WriteLine(EFatura.DefaultSettingsJson());
 
             //Entegratore özel Ayarları Json formatında giriyoruz
-            EFatura.SettingsJson = "{\"UserName\": \"İstanbul\", \"Password\": \"1453\"}";
+            //EFatura.SettingsJson = "{\"UserName\": \"İstanbul\", \"Password\": \"1453\"}";
 
 
             //VKN Sorgulama örneği

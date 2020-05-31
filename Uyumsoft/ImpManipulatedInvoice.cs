@@ -1,6 +1,6 @@
 ﻿using GIBInterface;
 
-namespace GIBProviders.Uyumsoft
+namespace Uyumsoft
 {
     public partial class EFatura : IManipulatedInvoice
     {

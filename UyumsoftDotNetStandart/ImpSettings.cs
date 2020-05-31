@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 
 
-namespace GIBProviders.Uyumsoft
+namespace UyumsoftDotNetStandart
 {
     public partial class EFatura : ISettings
     {

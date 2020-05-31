@@ -24,6 +24,8 @@ namespace SampleApp
         {
             cbProviders.Items.Add("Sahte Entegrator");
             cbProviders.Items.Add("Uyumsoft");
+            cbProviders.Items.Add("Uyumsoft Dot Net Standart");
+
             cbProviders.Items.Add("Veriban");
             cbProviders.Items.Add("Logo");
 
@@ -42,8 +44,14 @@ namespace SampleApp
 
                     if (cbProviders.SelectedItem.ToString() == "Uyumsoft")
                     {
-                        AktiveProvider = new GIBProviders.Uyumsoft.EFatura();
+                        AktiveProvider = new Uyumsoft.EFatura();
                     }
+
+                    if (cbProviders.SelectedItem.ToString() == "Uyumsoft Dot Net Standart")
+                    {
+                        AktiveProvider = new UyumsoftDotNetStandart.EFatura();
+                    }
+
                     if (cbProviders.SelectedItem.ToString() == "Veriban")
                     {
                         AktiveProvider = new GIBProviders.Veriban.EFatura();

@@ -1,21 +1,21 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.ServiceModel;
+using System.Text;
+using Uyumsoft.ServiceUyumsoft;
 
-namespace GIBProviders.Uyumsoft
+namespace Uyumsoft
 {
-    public partial class EFatura : IDisposable
+    public class ImpUyumsoftService : IUyumsoftService, IDisposable
     {
-        internal IUyumsoftService service;
+
+        internal ServiceUyumsoft.IntegrationClient _service;
+
         protected virtual void Dispose(bool disposing)
         {
             if (disposing)
             {
-                if (service != null)
-                {
-                    if (service is IDisposable)
-                    {
-                        (service as IDisposable).Dispose();
-                    }
-                }
+               
             }
         }
 
@@ -25,26 +25,13 @@ namespace GIBProviders.Uyumsoft
             GC.SuppressFinalize(this);
         }
 
-
-
-        public EFatura(IUyumsoftService service)
-        {
-            this.service = service;
-        }
-
-        public EFatura()
-        {
-            service = new ImpUyumsoftService(this);
-        }
-
-        /*
-        private ServiceUyumsoft.IntegrationClient service
+        public ServiceUyumsoft.IntegrationClient service
         {
             get
             {
                 if (_service == null)
                 {
-                    var Uri = Settings["Uri"];
+                    var Uri = settings.Settings["Uri"];
 
 
                     var binding = new BasicHttpBinding()
@@ -60,8 +47,8 @@ namespace GIBProviders.Uyumsoft
                     var endpoint = new EndpointAddress(Uri);
 
                     _service = new ServiceUyumsoft.IntegrationClient(binding, endpoint);
-                    var UserName = Settings["UserName"];
-                    var Password = Settings["Password"];
+                    var UserName = settings.Settings["UserName"];
+                    var Password = settings.Settings["Password"];
                     _service.ClientCredentials.UserName.UserName = UserName;
                     _service.ClientCredentials.UserName.Password = Password;
                 }
@@ -69,7 +56,30 @@ namespace GIBProviders.Uyumsoft
             }
 
         }
-        */
 
+        GIBInterface.ISettings settings;
+        public ImpUyumsoftService(GIBInterface.ISettings settings)
+        {
+            this.settings = settings;
+        }
+
+
+        public ByteArrayResponse GetSystemUsersCompressedList(AliasType type)
+        {
+            return service.GetSystemUsersCompressedList(type);
+        }
+
+        public InvoiceStatusResponse QueryOutboxInvoiceStatus(string[] invoiceIds)
+        {
+            return service.QueryOutboxInvoiceStatus(invoiceIds);
+
+        }
+
+        public InvoiceIdentitiesResponse SendInvoice(InvoiceInfo[] invoices)
+        {
+            return service.SendInvoice(invoices);
+        }
+
+   
     }
 }

@@ -1,12 +1,12 @@
 ﻿using GIBInterface;
-using GIBProviders.ServiceUyumsoft;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
 using System.Xml.Serialization;
+using Uyumsoft.ServiceUyumsoft;
 
-namespace GIBProviders.Uyumsoft
+namespace Uyumsoft
 {
     public partial class EFatura : IEFatura
     {
@@ -17,7 +17,7 @@ namespace GIBProviders.Uyumsoft
         public SendResult SendInvoice(SendParameters SendParameters)
         {
             SendResult r = new SendResult();
-            GIBProviders.ServiceUyumsoft.InvoiceInfo[] InvoiceInfo = new GIBProviders.ServiceUyumsoft.InvoiceInfo[SendParameters.InvoicesInfo.Count];
+            ServiceUyumsoft.InvoiceInfo[] InvoiceInfo = new ServiceUyumsoft.InvoiceInfo[SendParameters.InvoicesInfo.Count];
 
             int i = 0;
             foreach (var item in SendParameters.InvoicesInfo)
@@ -60,7 +60,7 @@ namespace GIBProviders.Uyumsoft
             return r;
         }
 
-        public static GIBProviders.ServiceUyumsoft.InvoiceType UyumsoftInvoiceDeserialize(string xml)
+        public static ServiceUyumsoft.InvoiceType UyumsoftInvoiceDeserialize(string xml)
         {
             xml = xml.Replace("<Invoice ", "<InvoiceType ");
             xml = xml.Replace("</Invoice>", "</InvoiceType>");
@@ -84,11 +84,11 @@ namespace GIBProviders.Uyumsoft
                 }
                 xml = sb.ToString();
             }
-            XmlSerializer serialize = new XmlSerializer(typeof(GIBProviders.ServiceUyumsoft.InvoiceType));
+            XmlSerializer serialize = new XmlSerializer(typeof(ServiceUyumsoft.InvoiceType));
             using (var stream = new MemoryStream(Encoding.UTF8.GetBytes(xml)))
             {
                 stream.Seek(0, SeekOrigin.Begin);
-                return serialize.Deserialize(stream) as GIBProviders.ServiceUyumsoft.InvoiceType;
+                return serialize.Deserialize(stream) as ServiceUyumsoft.InvoiceType;
             }
         }
 

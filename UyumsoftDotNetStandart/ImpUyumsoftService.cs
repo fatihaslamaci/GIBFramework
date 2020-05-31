@@ -1,8 +1,10 @@
-﻿using GIBProviders.ServiceUyumsoft;
+﻿using ServiceUyumsoft;
 using System;
+using System.Collections.Generic;
 using System.ServiceModel;
+using System.Text;
 
-namespace GIBProviders.Uyumsoft
+namespace UyumsoftDotNetStandart
 {
     public class ImpUyumsoftService : IUyumsoftService, IDisposable
     {
@@ -13,10 +15,7 @@ namespace GIBProviders.Uyumsoft
         {
             if (disposing)
             {
-                if (_service != null)
-                {
-                    _service.Close();
-                }
+               
             }
         }
 
@@ -26,7 +25,7 @@ namespace GIBProviders.Uyumsoft
             GC.SuppressFinalize(this);
         }
 
-        private ServiceUyumsoft.IntegrationClient service
+        public ServiceUyumsoft.IntegrationClient service
         {
             get
             {
@@ -42,7 +41,7 @@ namespace GIBProviders.Uyumsoft
                         MaxReceivedMessageSize = 2147483647,
 
                     };
-                    binding.Security = new BasicHttpSecurity();
+                    //binding.Security = new BasicHttpSecurity();
                     binding.Security.Mode = BasicHttpSecurityMode.TransportWithMessageCredential;
 
                     var endpoint = new EndpointAddress(Uri);
@@ -81,6 +80,6 @@ namespace GIBProviders.Uyumsoft
             return service.SendInvoice(invoices);
         }
 
-
+   
     }
 }

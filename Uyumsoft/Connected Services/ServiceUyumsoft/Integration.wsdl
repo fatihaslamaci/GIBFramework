@@ -1,0 +1,1015 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="Integration" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsp:Policy wsu:Id="BasicHttpBinding_IIntegration_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:TransportBinding xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <wsp:Policy>
+            <sp:TransportToken>
+              <wsp:Policy>
+                <sp:HttpsToken RequireClientCertificate="false" />
+              </wsp:Policy>
+            </sp:TransportToken>
+            <sp:AlgorithmSuite>
+              <wsp:Policy>
+                <sp:Basic256 />
+              </wsp:Policy>
+            </sp:AlgorithmSuite>
+            <sp:Layout>
+              <wsp:Policy>
+                <sp:Lax />
+              </wsp:Policy>
+            </sp:Layout>
+            <sp:IncludeTimestamp />
+          </wsp:Policy>
+        </sp:TransportBinding>
+        <sp:SignedSupportingTokens xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <wsp:Policy>
+            <sp:UsernameToken sp:IncludeToken="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy/IncludeToken/AlwaysToRecipient">
+              <wsp:Policy>
+                <sp:WssUsernameToken10 />
+              </wsp:Policy>
+            </sp:UsernameToken>
+          </wsp:Policy>
+        </sp:SignedSupportingTokens>
+        <sp:Wss10 xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <wsp:Policy />
+        </sp:Wss10>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://tempuri.org/Imports">
+      <xsd:import schemaLocation="https://efatura-test.uyumsoft.com.tr/Services/Integration?xsd=xsd0" namespace="http://tempuri.org/" />
+      <xsd:import schemaLocation="https://efatura-test.uyumsoft.com.tr/Services/Integration?xsd=xsd1" namespace="urn:oasis:names:specification:ubl:schema:xsd:Invoice-2" />
+      <xsd:import schemaLocation="https://efatura-test.uyumsoft.com.tr/Services/Integration?xsd=xsd2" namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonExtensionComponents-2" />
+      <xsd:import schemaLocation="https://efatura-test.uyumsoft.com.tr/Services/Integration?xsd=xsd3" namespace="http://www.w3.org/2000/09/xmldsig#" />
+      <xsd:import schemaLocation="https://efatura-test.uyumsoft.com.tr/Services/Integration?xsd=xsd4" namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2" />
+      <xsd:import schemaLocation="https://efatura-test.uyumsoft.com.tr/Services/Integration?xsd=xsd5" namespace="urn:oasis:names:specification:ubl:schema:xsd:UnqualifiedDataTypes-2" />
+      <xsd:import schemaLocation="https://efatura-test.uyumsoft.com.tr/Services/Integration?xsd=xsd6" namespace="urn:un:unece:uncefact:data:specification:CoreComponentTypeSchemaModule:2" />
+      <xsd:import schemaLocation="https://efatura-test.uyumsoft.com.tr/Services/Integration?xsd=xsd7" namespace="urn:oasis:names:specification:ubl:schema:xsd:SignatureBasicComponents-2" />
+      <xsd:import schemaLocation="https://efatura-test.uyumsoft.com.tr/Services/Integration?xsd=xsd8" namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="IIntegration_GetSystemDate_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetSystemDate" />
+  </wsdl:message>
+  <wsdl:message name="IIntegration_GetSystemDate_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetSystemDateResponse" />
+  </wsdl:message>
+  <wsdl:message name="IIntegration_GetSystemDateWithFormat_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetSystemDateWithFormat" />
+  </wsdl:message>
+  <wsdl:message name="IIntegration_GetSystemDateWithFormat_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetSystemDateWithFormatResponse" />
+  </wsdl:message>
+  <wsdl:message name="IIntegration_IsEInvoiceUser_InputMessage">
+    <wsdl:part name="parameters" element="tns:IsEInvoiceUser" />
+  </wsdl:message>
+  <wsdl:message name="IIntegration_IsEInvoiceUser_OutputMessage">
+    <wsdl:part name="parameters" element="tns:IsEInvoiceUserResponse" />
+  </wsdl:message>
+  <wsdl:message name="IIntegration_GetEInvoiceUsers_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetEInvoiceUsers" />
+  </wsdl:message>
+  <wsdl:message name="IIntegration_GetEInvoiceUsers_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetEInvoiceUsersResponse" />
+  </wsdl:message>
+  <wsdl:message name="IIntegration_FilterEInvoiceUsers_InputMessage">
+    <wsdl:part name="parameters" element="tns:FilterEInvoiceUsers" />
+  </wsdl:message>
+  <wsdl:message name="IIntegration_FilterEInvoiceUsers_OutputMessage">
+    <wsdl:part name="parameters" element="tns:FilterEInvoiceUsersResponse" />
+  </wsdl:message>
+  <wsdl:message name="IIntegration_GetUserAliasses_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetUserAliasses" />
+  </wsdl:message>
+  <wsdl:message name="IIntegration_GetUserAliasses_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetUserAliassesResponse" />
+  </wsdl:message>
+  <wsdl:message name="IIntegration_SetXsltView_InputMessage">
+    <wsdl:part name="parameters" element="tns:SetXsltView" />
+  </wsdl:message>
+  <wsdl:message name="IIntegration_SetXsltView_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SetXsltViewResponse" />
+  </wsdl:message>
+  <wsdl:message name="IIntegration_GetXsltView_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetXsltView" />
+  </wsdl:message>
+  <wsdl:message name="IIntegration_GetXsltView_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetXsltViewResponse" />
+  </wsdl:message>
+  <wsdl:message name="IIntegration_ValidateInvoice_InputMessage">
+    <wsdl:part name="parameters" element="tns:ValidateInvoice" />
+  </wsdl:message>
+  <wsdl:message name="IIntegration_ValidateInvoice_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ValidateInvoiceResponse" />
+  </wsdl:message>
+  <wsdl:message name="IIntegration_GetInboxInvoices_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetInboxInvoices" />
+  </wsdl:message>
+  <wsdl:message name="IIntegration_GetInboxInvoices_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetInboxInvoicesResponse" />
+  </wsdl:message>
+  <wsdl:message name="IIntegration_GetInboxInvoiceList_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetInboxInvoiceList" />
+  </wsdl:message>
+  <wsdl:message name="IIntegration_GetInboxInvoiceList_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetInboxInvoiceListResponse" />
+  </wsdl:message>
+  <wsdl:message name="IIntegration_GetInboxInvoice_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetInboxInvoice" />
+  </wsdl:message>
+  <wsdl:message name="IIntegration_GetInboxInvoice_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetInboxInvoiceResponse" />
+  </wsdl:message>
+  <wsdl:message name="IIntegration_GetInboxInvoicesData_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetInboxInvoicesData" />
+  </wsdl:message>
+  <wsdl:message name="IIntegration_GetInboxInvoicesData_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetInboxInvoicesDataResponse" />
+  </wsdl:message>
+  <wsdl:message name="IIntegration_GetInboxInvoiceData_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetInboxInvoiceData" />
+  </wsdl:message>
+  <wsdl:message name="IIntegration_GetInboxInvoiceData_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetInboxInvoiceDataResponse" />
+  </wsdl:message>
+  <wsdl:message name="IIntegration_QueryInboxInvoiceStatus_InputMessage">
+    <wsdl:part name="parameters" element="tns:QueryInboxInvoiceStatus" />
+  </wsdl:message>
+  <wsdl:message name="IIntegration_QueryInboxInvoiceStatus_OutputMessage">
+    <wsdl:part name="parameters" element="tns:QueryInboxInvoiceStatusResponse" />
+  </wsdl:message>
+  <wsdl:message name="IIntegration_SetInvoicesTaken_InputMessage">
+    <wsdl:part name="parameters" element="tns:SetInvoicesTaken" />
+  </wsdl:message>
+  <wsdl:message name="IIntegration_SetInvoicesTaken_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SetInvoicesTakenResponse" />
+  </wsdl:message>
+  <wsdl:message name="IIntegration_SendDocumentResponse_InputMessage">
+    <wsdl:part name="parameters" element="tns:SendDocumentResponse" />
+  </wsdl:message>
+  <wsdl:message name="IIntegration_SendDocumentResponse_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SendDocumentResponseResponse" />
+  </wsdl:message>
+  <wsdl:message name="IIntegration_QueryDocumentResponseStatus_InputMessage">
+    <wsdl:part name="parameters" element="tns:QueryDocumentResponseStatus" />
+  </wsdl:message>
+  <wsdl:message name="IIntegration_QueryDocumentResponseStatus_OutputMessage">
+    <wsdl:part name="parameters" element="tns:QueryDocumentResponseStatusResponse" />
+  </wsdl:message>
+  <wsdl:message name="IIntegration_GetOutboxInvoices_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetOutboxInvoices" />
+  </wsdl:message>
+  <wsdl:message name="IIntegration_GetOutboxInvoices_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetOutboxInvoicesResponse" />
+  </wsdl:message>
+  <wsdl:message name="IIntegration_GetOutboxInvoiceList_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetOutboxInvoiceList" />
+  </wsdl:message>
+  <wsdl:message name="IIntegration_GetOutboxInvoiceList_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetOutboxInvoiceListResponse" />
+  </wsdl:message>
+  <wsdl:message name="IIntegration_GetOutboxInvoice_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetOutboxInvoice" />
+  </wsdl:message>
+  <wsdl:message name="IIntegration_GetOutboxInvoice_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetOutboxInvoiceResponse" />
+  </wsdl:message>
+  <wsdl:message name="IIntegration_GetOutboxInvoicesData_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetOutboxInvoicesData" />
+  </wsdl:message>
+  <wsdl:message name="IIntegration_GetOutboxInvoicesData_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetOutboxInvoicesDataResponse" />
+  </wsdl:message>
+  <wsdl:message name="IIntegration_GetOutboxInvoiceData_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetOutboxInvoiceData" />
+  </wsdl:message>
+  <wsdl:message name="IIntegration_GetOutboxInvoiceData_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetOutboxInvoiceDataResponse" />
+  </wsdl:message>
+  <wsdl:message name="IIntegration_QueryOutboxInvoiceStatus_InputMessage">
+    <wsdl:part name="parameters" element="tns:QueryOutboxInvoiceStatus" />
+  </wsdl:message>
+  <wsdl:message name="IIntegration_QueryOutboxInvoiceStatus_OutputMessage">
+    <wsdl:part name="parameters" element="tns:QueryOutboxInvoiceStatusResponse" />
+  </wsdl:message>
+  <wsdl:message name="IIntegration_QueryInvoiceGtbResponses_InputMessage">
+    <wsdl:part name="parameters" element="tns:QueryInvoiceGtbResponses" />
+  </wsdl:message>
+  <wsdl:message name="IIntegration_QueryInvoiceGtbResponses_OutputMessage">
+    <wsdl:part name="parameters" element="tns:QueryInvoiceGtbResponsesResponse" />
+  </wsdl:message>
+  <wsdl:message name="IIntegration_SaveAsDraft_InputMessage">
+    <wsdl:part name="parameters" element="tns:SaveAsDraft" />
+  </wsdl:message>
+  <wsdl:message name="IIntegration_SaveAsDraft_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SaveAsDraftResponse" />
+  </wsdl:message>
+  <wsdl:message name="IIntegration_SendInvoice_InputMessage">
+    <wsdl:part name="parameters" element="tns:SendInvoice" />
+  </wsdl:message>
+  <wsdl:message name="IIntegration_SendInvoice_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SendInvoiceResponse" />
+  </wsdl:message>
+  <wsdl:message name="IIntegration_CompressedSaveAsDraft_InputMessage">
+    <wsdl:part name="parameters" element="tns:CompressedSaveAsDraft" />
+  </wsdl:message>
+  <wsdl:message name="IIntegration_CompressedSaveAsDraft_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CompressedSaveAsDraftResponse" />
+  </wsdl:message>
+  <wsdl:message name="IIntegration_CompressedSendInvoice_InputMessage">
+    <wsdl:part name="parameters" element="tns:CompressedSendInvoice" />
+  </wsdl:message>
+  <wsdl:message name="IIntegration_CompressedSendInvoice_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CompressedSendInvoiceResponse" />
+  </wsdl:message>
+  <wsdl:message name="IIntegration_SendDraft_InputMessage">
+    <wsdl:part name="parameters" element="tns:SendDraft" />
+  </wsdl:message>
+  <wsdl:message name="IIntegration_SendDraft_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SendDraftResponse" />
+  </wsdl:message>
+  <wsdl:message name="IIntegration_CancelDraft_InputMessage">
+    <wsdl:part name="parameters" element="tns:CancelDraft" />
+  </wsdl:message>
+  <wsdl:message name="IIntegration_CancelDraft_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CancelDraftResponse" />
+  </wsdl:message>
+  <wsdl:message name="IIntegration_GetInboxInvoiceView_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetInboxInvoiceView" />
+  </wsdl:message>
+  <wsdl:message name="IIntegration_GetInboxInvoiceView_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetInboxInvoiceViewResponse" />
+  </wsdl:message>
+  <wsdl:message name="IIntegration_GetOutboxInvoiceView_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetOutboxInvoiceView" />
+  </wsdl:message>
+  <wsdl:message name="IIntegration_GetOutboxInvoiceView_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetOutboxInvoiceViewResponse" />
+  </wsdl:message>
+  <wsdl:message name="IIntegration_GetOutboxInvoiceResponseView_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetOutboxInvoiceResponseView" />
+  </wsdl:message>
+  <wsdl:message name="IIntegration_GetOutboxInvoiceResponseView_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetOutboxInvoiceResponseViewResponse" />
+  </wsdl:message>
+  <wsdl:message name="IIntegration_GetInboxInvoiceStatusWithLogs_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetInboxInvoiceStatusWithLogs" />
+  </wsdl:message>
+  <wsdl:message name="IIntegration_GetInboxInvoiceStatusWithLogs_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetInboxInvoiceStatusWithLogsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IIntegration_GetOutboxInvoiceStatusWithLogs_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetOutboxInvoiceStatusWithLogs" />
+  </wsdl:message>
+  <wsdl:message name="IIntegration_GetOutboxInvoiceStatusWithLogs_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetOutboxInvoiceStatusWithLogsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IIntegration_RetrySendInvoices_InputMessage">
+    <wsdl:part name="parameters" element="tns:RetrySendInvoices" />
+  </wsdl:message>
+  <wsdl:message name="IIntegration_RetrySendInvoices_OutputMessage">
+    <wsdl:part name="parameters" element="tns:RetrySendInvoicesResponse" />
+  </wsdl:message>
+  <wsdl:message name="IIntegration_CloneInvoices_InputMessage">
+    <wsdl:part name="parameters" element="tns:CloneInvoices" />
+  </wsdl:message>
+  <wsdl:message name="IIntegration_CloneInvoices_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CloneInvoicesResponse" />
+  </wsdl:message>
+  <wsdl:message name="IIntegration_CancelEArchiveInvoice_InputMessage">
+    <wsdl:part name="parameters" element="tns:CancelEArchiveInvoice" />
+  </wsdl:message>
+  <wsdl:message name="IIntegration_CancelEArchiveInvoice_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CancelEArchiveInvoiceResponse" />
+  </wsdl:message>
+  <wsdl:message name="IIntegration_GetInboxInvoicePdf_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetInboxInvoicePdf" />
+  </wsdl:message>
+  <wsdl:message name="IIntegration_GetInboxInvoicePdf_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetInboxInvoicePdfResponse" />
+  </wsdl:message>
+  <wsdl:message name="IIntegration_GetOutboxInvoicePdf_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetOutboxInvoicePdf" />
+  </wsdl:message>
+  <wsdl:message name="IIntegration_GetOutboxInvoicePdf_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetOutboxInvoicePdfResponse" />
+  </wsdl:message>
+  <wsdl:message name="IIntegration_ChangeInvoiceArchiveStatus_InputMessage">
+    <wsdl:part name="parameters" element="tns:ChangeInvoiceArchiveStatus" />
+  </wsdl:message>
+  <wsdl:message name="IIntegration_ChangeInvoiceArchiveStatus_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ChangeInvoiceArchiveStatusResponse" />
+  </wsdl:message>
+  <wsdl:message name="IIntegration_GetSystemUsersCompressedList_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetSystemUsersCompressedList" />
+  </wsdl:message>
+  <wsdl:message name="IIntegration_GetSystemUsersCompressedList_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetSystemUsersCompressedListResponse" />
+  </wsdl:message>
+  <wsdl:message name="IIntegration_GetSystemUsersCompressedListOld_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetSystemUsersCompressedListOld" />
+  </wsdl:message>
+  <wsdl:message name="IIntegration_GetSystemUsersCompressedListOld_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetSystemUsersCompressedListOldResponse" />
+  </wsdl:message>
+  <wsdl:message name="IIntegration_ImportExistingInvoice_InputMessage">
+    <wsdl:part name="parameters" element="tns:ImportExistingInvoice" />
+  </wsdl:message>
+  <wsdl:message name="IIntegration_ImportExistingInvoice_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ImportExistingInvoiceResponse" />
+  </wsdl:message>
+  <wsdl:message name="IIntegration_QueueInvoiceNotification_InputMessage">
+    <wsdl:part name="parameters" element="tns:QueueInvoiceNotification" />
+  </wsdl:message>
+  <wsdl:message name="IIntegration_QueueInvoiceNotification_OutputMessage">
+    <wsdl:part name="parameters" element="tns:QueueInvoiceNotificationResponse" />
+  </wsdl:message>
+  <wsdl:message name="IIntegration_GetInvoiceEnvelope_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetInvoiceEnvelope" />
+  </wsdl:message>
+  <wsdl:message name="IIntegration_GetInvoiceEnvelope_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetInvoiceEnvelopeResponse" />
+  </wsdl:message>
+  <wsdl:message name="IIntegration_TestConnection_InputMessage">
+    <wsdl:part name="parameters" element="tns:TestConnection" />
+  </wsdl:message>
+  <wsdl:message name="IIntegration_TestConnection_OutputMessage">
+    <wsdl:part name="parameters" element="tns:TestConnectionResponse" />
+  </wsdl:message>
+  <wsdl:message name="IIntegration_GetSummaryReport_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetSummaryReport" />
+  </wsdl:message>
+  <wsdl:message name="IIntegration_GetSummaryReport_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetSummaryReportResponse" />
+  </wsdl:message>
+  <wsdl:message name="IIntegration_WhoAmI_InputMessage">
+    <wsdl:part name="parameters" element="tns:WhoAmI" />
+  </wsdl:message>
+  <wsdl:message name="IIntegration_WhoAmI_OutputMessage">
+    <wsdl:part name="parameters" element="tns:WhoAmIResponse" />
+  </wsdl:message>
+  <wsdl:portType msc:usingSession="false" name="IIntegration">
+    <wsdl:operation name="GetSystemDate">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICustomerServiceBase/GetSystemDate" message="tns:IIntegration_GetSystemDate_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICustomerServiceBase/GetSystemDateResponse" message="tns:IIntegration_GetSystemDate_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetSystemDateWithFormat">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICustomerServiceBase/GetSystemDateWithFormat" message="tns:IIntegration_GetSystemDateWithFormat_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICustomerServiceBase/GetSystemDateWithFormatResponse" message="tns:IIntegration_GetSystemDateWithFormat_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="IsEInvoiceUser">
+      <wsdl:input wsaw:Action="http://tempuri.org/IIntegration/IsEInvoiceUser" message="tns:IIntegration_IsEInvoiceUser_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IIntegration/IsEInvoiceUserResponse" message="tns:IIntegration_IsEInvoiceUser_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetEInvoiceUsers">
+      <wsdl:input wsaw:Action="http://tempuri.org/IIntegration/GetEInvoiceUsers" message="tns:IIntegration_GetEInvoiceUsers_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IIntegration/GetEInvoiceUsersResponse" message="tns:IIntegration_GetEInvoiceUsers_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="FilterEInvoiceUsers">
+      <wsdl:input wsaw:Action="http://tempuri.org/IIntegration/FilterEInvoiceUsers" message="tns:IIntegration_FilterEInvoiceUsers_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IIntegration/FilterEInvoiceUsersResponse" message="tns:IIntegration_FilterEInvoiceUsers_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetUserAliasses">
+      <wsdl:input wsaw:Action="http://tempuri.org/IIntegration/GetUserAliasses" message="tns:IIntegration_GetUserAliasses_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IIntegration/GetUserAliassesResponse" message="tns:IIntegration_GetUserAliasses_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SetXsltView">
+      <wsdl:input wsaw:Action="http://tempuri.org/IIntegration/SetXsltView" message="tns:IIntegration_SetXsltView_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IIntegration/SetXsltViewResponse" message="tns:IIntegration_SetXsltView_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetXsltView">
+      <wsdl:input wsaw:Action="http://tempuri.org/IIntegration/GetXsltView" message="tns:IIntegration_GetXsltView_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IIntegration/GetXsltViewResponse" message="tns:IIntegration_GetXsltView_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ValidateInvoice">
+      <wsdl:input wsaw:Action="http://tempuri.org/IIntegration/ValidateInvoice" message="tns:IIntegration_ValidateInvoice_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IIntegration/ValidateInvoiceResponse" message="tns:IIntegration_ValidateInvoice_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetInboxInvoices">
+      <wsdl:input wsaw:Action="http://tempuri.org/IIntegration/GetInboxInvoices" message="tns:IIntegration_GetInboxInvoices_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IIntegration/GetInboxInvoicesResponse" message="tns:IIntegration_GetInboxInvoices_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetInboxInvoiceList">
+      <wsdl:input wsaw:Action="http://tempuri.org/IIntegration/GetInboxInvoiceList" message="tns:IIntegration_GetInboxInvoiceList_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IIntegration/GetInboxInvoiceListResponse" message="tns:IIntegration_GetInboxInvoiceList_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetInboxInvoice">
+      <wsdl:input wsaw:Action="http://tempuri.org/IIntegration/GetInboxInvoice" message="tns:IIntegration_GetInboxInvoice_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IIntegration/GetInboxInvoiceResponse" message="tns:IIntegration_GetInboxInvoice_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetInboxInvoicesData">
+      <wsdl:input wsaw:Action="http://tempuri.org/IIntegration/GetInboxInvoicesData" message="tns:IIntegration_GetInboxInvoicesData_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IIntegration/GetInboxInvoicesDataResponse" message="tns:IIntegration_GetInboxInvoicesData_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetInboxInvoiceData">
+      <wsdl:input wsaw:Action="http://tempuri.org/IIntegration/GetInboxInvoiceData" message="tns:IIntegration_GetInboxInvoiceData_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IIntegration/GetInboxInvoiceDataResponse" message="tns:IIntegration_GetInboxInvoiceData_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="QueryInboxInvoiceStatus">
+      <wsdl:input wsaw:Action="http://tempuri.org/IIntegration/QueryInboxInvoiceStatus" message="tns:IIntegration_QueryInboxInvoiceStatus_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IIntegration/QueryInboxInvoiceStatusResponse" message="tns:IIntegration_QueryInboxInvoiceStatus_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SetInvoicesTaken">
+      <wsdl:input wsaw:Action="http://tempuri.org/IIntegration/SetInvoicesTaken" message="tns:IIntegration_SetInvoicesTaken_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IIntegration/SetInvoicesTakenResponse" message="tns:IIntegration_SetInvoicesTaken_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SendDocumentResponse">
+      <wsdl:input wsaw:Action="http://tempuri.org/IIntegration/SendDocumentResponse" message="tns:IIntegration_SendDocumentResponse_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IIntegration/SendDocumentResponseResponse" message="tns:IIntegration_SendDocumentResponse_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="QueryDocumentResponseStatus">
+      <wsdl:input wsaw:Action="http://tempuri.org/IIntegration/QueryDocumentResponseStatus" message="tns:IIntegration_QueryDocumentResponseStatus_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IIntegration/QueryDocumentResponseStatusResponse" message="tns:IIntegration_QueryDocumentResponseStatus_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetOutboxInvoices">
+      <wsdl:input wsaw:Action="http://tempuri.org/IIntegration/GetOutboxInvoices" message="tns:IIntegration_GetOutboxInvoices_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IIntegration/GetOutboxInvoicesResponse" message="tns:IIntegration_GetOutboxInvoices_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetOutboxInvoiceList">
+      <wsdl:input wsaw:Action="http://tempuri.org/IIntegration/GetOutboxInvoiceList" message="tns:IIntegration_GetOutboxInvoiceList_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IIntegration/GetOutboxInvoiceListResponse" message="tns:IIntegration_GetOutboxInvoiceList_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetOutboxInvoice">
+      <wsdl:input wsaw:Action="http://tempuri.org/IIntegration/GetOutboxInvoice" message="tns:IIntegration_GetOutboxInvoice_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IIntegration/GetOutboxInvoiceResponse" message="tns:IIntegration_GetOutboxInvoice_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetOutboxInvoicesData">
+      <wsdl:input wsaw:Action="http://tempuri.org/IIntegration/GetOutboxInvoicesData" message="tns:IIntegration_GetOutboxInvoicesData_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IIntegration/GetOutboxInvoicesDataResponse" message="tns:IIntegration_GetOutboxInvoicesData_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetOutboxInvoiceData">
+      <wsdl:input wsaw:Action="http://tempuri.org/IIntegration/GetOutboxInvoiceData" message="tns:IIntegration_GetOutboxInvoiceData_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IIntegration/GetOutboxInvoiceDataResponse" message="tns:IIntegration_GetOutboxInvoiceData_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="QueryOutboxInvoiceStatus">
+      <wsdl:input wsaw:Action="http://tempuri.org/IIntegration/QueryOutboxInvoiceStatus" message="tns:IIntegration_QueryOutboxInvoiceStatus_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IIntegration/QueryOutboxInvoiceStatusResponse" message="tns:IIntegration_QueryOutboxInvoiceStatus_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="QueryInvoiceGtbResponses">
+      <wsdl:input wsaw:Action="http://tempuri.org/IIntegration/QueryInvoiceGtbResponses" message="tns:IIntegration_QueryInvoiceGtbResponses_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IIntegration/QueryInvoiceGtbResponsesResponse" message="tns:IIntegration_QueryInvoiceGtbResponses_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SaveAsDraft">
+      <wsdl:input wsaw:Action="http://tempuri.org/IIntegration/SaveAsDraft" message="tns:IIntegration_SaveAsDraft_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IIntegration/SaveAsDraftResponse" message="tns:IIntegration_SaveAsDraft_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SendInvoice">
+      <wsdl:input wsaw:Action="http://tempuri.org/IIntegration/SendInvoice" message="tns:IIntegration_SendInvoice_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IIntegration/SendInvoiceResponse" message="tns:IIntegration_SendInvoice_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CompressedSaveAsDraft">
+      <wsdl:input wsaw:Action="http://tempuri.org/IIntegration/CompressedSaveAsDraft" message="tns:IIntegration_CompressedSaveAsDraft_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IIntegration/CompressedSaveAsDraftResponse" message="tns:IIntegration_CompressedSaveAsDraft_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CompressedSendInvoice">
+      <wsdl:input wsaw:Action="http://tempuri.org/IIntegration/CompressedSendInvoice" message="tns:IIntegration_CompressedSendInvoice_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IIntegration/CompressedSendInvoiceResponse" message="tns:IIntegration_CompressedSendInvoice_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SendDraft">
+      <wsdl:input wsaw:Action="http://tempuri.org/IIntegration/SendDraft" message="tns:IIntegration_SendDraft_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IIntegration/SendDraftResponse" message="tns:IIntegration_SendDraft_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CancelDraft">
+      <wsdl:input wsaw:Action="http://tempuri.org/IIntegration/CancelDraft" message="tns:IIntegration_CancelDraft_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IIntegration/CancelDraftResponse" message="tns:IIntegration_CancelDraft_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetInboxInvoiceView">
+      <wsdl:input wsaw:Action="http://tempuri.org/IIntegration/GetInboxInvoiceView" message="tns:IIntegration_GetInboxInvoiceView_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IIntegration/GetInboxInvoiceViewResponse" message="tns:IIntegration_GetInboxInvoiceView_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetOutboxInvoiceView">
+      <wsdl:input wsaw:Action="http://tempuri.org/IIntegration/GetOutboxInvoiceView" message="tns:IIntegration_GetOutboxInvoiceView_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IIntegration/GetOutboxInvoiceViewResponse" message="tns:IIntegration_GetOutboxInvoiceView_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetOutboxInvoiceResponseView">
+      <wsdl:input wsaw:Action="http://tempuri.org/IIntegration/GetOutboxInvoiceResponseView" message="tns:IIntegration_GetOutboxInvoiceResponseView_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IIntegration/GetOutboxInvoiceResponseViewResponse" message="tns:IIntegration_GetOutboxInvoiceResponseView_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetInboxInvoiceStatusWithLogs">
+      <wsdl:input wsaw:Action="http://tempuri.org/IIntegration/GetInboxInvoiceStatusWithLogs" message="tns:IIntegration_GetInboxInvoiceStatusWithLogs_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IIntegration/GetInboxInvoiceStatusWithLogsResponse" message="tns:IIntegration_GetInboxInvoiceStatusWithLogs_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetOutboxInvoiceStatusWithLogs">
+      <wsdl:input wsaw:Action="http://tempuri.org/IIntegration/GetOutboxInvoiceStatusWithLogs" message="tns:IIntegration_GetOutboxInvoiceStatusWithLogs_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IIntegration/GetOutboxInvoiceStatusWithLogsResponse" message="tns:IIntegration_GetOutboxInvoiceStatusWithLogs_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="RetrySendInvoices">
+      <wsdl:input wsaw:Action="http://tempuri.org/IIntegration/RetrySendInvoices" message="tns:IIntegration_RetrySendInvoices_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IIntegration/RetrySendInvoicesResponse" message="tns:IIntegration_RetrySendInvoices_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CloneInvoices">
+      <wsdl:input wsaw:Action="http://tempuri.org/IIntegration/CloneInvoices" message="tns:IIntegration_CloneInvoices_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IIntegration/CloneInvoicesResponse" message="tns:IIntegration_CloneInvoices_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CancelEArchiveInvoice">
+      <wsdl:input wsaw:Action="http://tempuri.org/IIntegration/CancelEArchiveInvoice" message="tns:IIntegration_CancelEArchiveInvoice_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IIntegration/CancelEArchiveInvoiceResponse" message="tns:IIntegration_CancelEArchiveInvoice_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetInboxInvoicePdf">
+      <wsdl:input wsaw:Action="http://tempuri.org/IIntegration/GetInboxInvoicePdf" message="tns:IIntegration_GetInboxInvoicePdf_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IIntegration/GetInboxInvoicePdfResponse" message="tns:IIntegration_GetInboxInvoicePdf_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetOutboxInvoicePdf">
+      <wsdl:input wsaw:Action="http://tempuri.org/IIntegration/GetOutboxInvoicePdf" message="tns:IIntegration_GetOutboxInvoicePdf_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IIntegration/GetOutboxInvoicePdfResponse" message="tns:IIntegration_GetOutboxInvoicePdf_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ChangeInvoiceArchiveStatus">
+      <wsdl:input wsaw:Action="http://tempuri.org/IIntegration/ChangeInvoiceArchiveStatus" message="tns:IIntegration_ChangeInvoiceArchiveStatus_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IIntegration/ChangeInvoiceArchiveStatusResponse" message="tns:IIntegration_ChangeInvoiceArchiveStatus_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetSystemUsersCompressedList">
+      <wsdl:input wsaw:Action="http://tempuri.org/IIntegration/GetSystemUsersCompressedList" message="tns:IIntegration_GetSystemUsersCompressedList_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IIntegration/GetSystemUsersCompressedListResponse" message="tns:IIntegration_GetSystemUsersCompressedList_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetSystemUsersCompressedListOld">
+      <wsdl:input wsaw:Action="http://tempuri.org/IIntegration/GetSystemUsersCompressedListOld" message="tns:IIntegration_GetSystemUsersCompressedListOld_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IIntegration/GetSystemUsersCompressedListOldResponse" message="tns:IIntegration_GetSystemUsersCompressedListOld_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ImportExistingInvoice">
+      <wsdl:input wsaw:Action="http://tempuri.org/IIntegration/ImportExistingInvoice" message="tns:IIntegration_ImportExistingInvoice_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IIntegration/ImportExistingInvoiceResponse" message="tns:IIntegration_ImportExistingInvoice_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="QueueInvoiceNotification">
+      <wsdl:input wsaw:Action="http://tempuri.org/IIntegration/QueueInvoiceNotification" message="tns:IIntegration_QueueInvoiceNotification_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IIntegration/QueueInvoiceNotificationResponse" message="tns:IIntegration_QueueInvoiceNotification_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetInvoiceEnvelope">
+      <wsdl:input wsaw:Action="http://tempuri.org/IIntegration/GetInvoiceEnvelope" message="tns:IIntegration_GetInvoiceEnvelope_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IIntegration/GetInvoiceEnvelopeResponse" message="tns:IIntegration_GetInvoiceEnvelope_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="TestConnection">
+      <wsdl:input wsaw:Action="http://tempuri.org/IIntegration/TestConnection" message="tns:IIntegration_TestConnection_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IIntegration/TestConnectionResponse" message="tns:IIntegration_TestConnection_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetSummaryReport">
+      <wsdl:input wsaw:Action="http://tempuri.org/IIntegration/GetSummaryReport" message="tns:IIntegration_GetSummaryReport_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IIntegration/GetSummaryReportResponse" message="tns:IIntegration_GetSummaryReport_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="WhoAmI">
+      <wsdl:input wsaw:Action="http://tempuri.org/IIntegration/WhoAmI" message="tns:IIntegration_WhoAmI_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IIntegration/WhoAmIResponse" message="tns:IIntegration_WhoAmI_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="BasicHttpBinding_IIntegration" type="tns:IIntegration">
+    <wsp:PolicyReference URI="#BasicHttpBinding_IIntegration_policy" />
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetSystemDate">
+      <soap:operation soapAction="http://tempuri.org/ICustomerServiceBase/GetSystemDate" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetSystemDateWithFormat">
+      <soap:operation soapAction="http://tempuri.org/ICustomerServiceBase/GetSystemDateWithFormat" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="IsEInvoiceUser">
+      <soap:operation soapAction="http://tempuri.org/IIntegration/IsEInvoiceUser" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetEInvoiceUsers">
+      <soap:operation soapAction="http://tempuri.org/IIntegration/GetEInvoiceUsers" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FilterEInvoiceUsers">
+      <soap:operation soapAction="http://tempuri.org/IIntegration/FilterEInvoiceUsers" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUserAliasses">
+      <soap:operation soapAction="http://tempuri.org/IIntegration/GetUserAliasses" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SetXsltView">
+      <soap:operation soapAction="http://tempuri.org/IIntegration/SetXsltView" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetXsltView">
+      <soap:operation soapAction="http://tempuri.org/IIntegration/GetXsltView" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ValidateInvoice">
+      <soap:operation soapAction="http://tempuri.org/IIntegration/ValidateInvoice" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetInboxInvoices">
+      <soap:operation soapAction="http://tempuri.org/IIntegration/GetInboxInvoices" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetInboxInvoiceList">
+      <soap:operation soapAction="http://tempuri.org/IIntegration/GetInboxInvoiceList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetInboxInvoice">
+      <soap:operation soapAction="http://tempuri.org/IIntegration/GetInboxInvoice" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetInboxInvoicesData">
+      <soap:operation soapAction="http://tempuri.org/IIntegration/GetInboxInvoicesData" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetInboxInvoiceData">
+      <soap:operation soapAction="http://tempuri.org/IIntegration/GetInboxInvoiceData" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="QueryInboxInvoiceStatus">
+      <soap:operation soapAction="http://tempuri.org/IIntegration/QueryInboxInvoiceStatus" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SetInvoicesTaken">
+      <soap:operation soapAction="http://tempuri.org/IIntegration/SetInvoicesTaken" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendDocumentResponse">
+      <soap:operation soapAction="http://tempuri.org/IIntegration/SendDocumentResponse" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="QueryDocumentResponseStatus">
+      <soap:operation soapAction="http://tempuri.org/IIntegration/QueryDocumentResponseStatus" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetOutboxInvoices">
+      <soap:operation soapAction="http://tempuri.org/IIntegration/GetOutboxInvoices" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetOutboxInvoiceList">
+      <soap:operation soapAction="http://tempuri.org/IIntegration/GetOutboxInvoiceList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetOutboxInvoice">
+      <soap:operation soapAction="http://tempuri.org/IIntegration/GetOutboxInvoice" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetOutboxInvoicesData">
+      <soap:operation soapAction="http://tempuri.org/IIntegration/GetOutboxInvoicesData" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetOutboxInvoiceData">
+      <soap:operation soapAction="http://tempuri.org/IIntegration/GetOutboxInvoiceData" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="QueryOutboxInvoiceStatus">
+      <soap:operation soapAction="http://tempuri.org/IIntegration/QueryOutboxInvoiceStatus" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="QueryInvoiceGtbResponses">
+      <soap:operation soapAction="http://tempuri.org/IIntegration/QueryInvoiceGtbResponses" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SaveAsDraft">
+      <soap:operation soapAction="http://tempuri.org/IIntegration/SaveAsDraft" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendInvoice">
+      <soap:operation soapAction="http://tempuri.org/IIntegration/SendInvoice" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CompressedSaveAsDraft">
+      <soap:operation soapAction="http://tempuri.org/IIntegration/CompressedSaveAsDraft" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CompressedSendInvoice">
+      <soap:operation soapAction="http://tempuri.org/IIntegration/CompressedSendInvoice" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendDraft">
+      <soap:operation soapAction="http://tempuri.org/IIntegration/SendDraft" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CancelDraft">
+      <soap:operation soapAction="http://tempuri.org/IIntegration/CancelDraft" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetInboxInvoiceView">
+      <soap:operation soapAction="http://tempuri.org/IIntegration/GetInboxInvoiceView" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetOutboxInvoiceView">
+      <soap:operation soapAction="http://tempuri.org/IIntegration/GetOutboxInvoiceView" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetOutboxInvoiceResponseView">
+      <soap:operation soapAction="http://tempuri.org/IIntegration/GetOutboxInvoiceResponseView" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetInboxInvoiceStatusWithLogs">
+      <soap:operation soapAction="http://tempuri.org/IIntegration/GetInboxInvoiceStatusWithLogs" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetOutboxInvoiceStatusWithLogs">
+      <soap:operation soapAction="http://tempuri.org/IIntegration/GetOutboxInvoiceStatusWithLogs" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RetrySendInvoices">
+      <soap:operation soapAction="http://tempuri.org/IIntegration/RetrySendInvoices" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CloneInvoices">
+      <soap:operation soapAction="http://tempuri.org/IIntegration/CloneInvoices" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CancelEArchiveInvoice">
+      <soap:operation soapAction="http://tempuri.org/IIntegration/CancelEArchiveInvoice" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetInboxInvoicePdf">
+      <soap:operation soapAction="http://tempuri.org/IIntegration/GetInboxInvoicePdf" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetOutboxInvoicePdf">
+      <soap:operation soapAction="http://tempuri.org/IIntegration/GetOutboxInvoicePdf" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ChangeInvoiceArchiveStatus">
+      <soap:operation soapAction="http://tempuri.org/IIntegration/ChangeInvoiceArchiveStatus" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetSystemUsersCompressedList">
+      <soap:operation soapAction="http://tempuri.org/IIntegration/GetSystemUsersCompressedList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetSystemUsersCompressedListOld">
+      <soap:operation soapAction="http://tempuri.org/IIntegration/GetSystemUsersCompressedListOld" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ImportExistingInvoice">
+      <soap:operation soapAction="http://tempuri.org/IIntegration/ImportExistingInvoice" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="QueueInvoiceNotification">
+      <soap:operation soapAction="http://tempuri.org/IIntegration/QueueInvoiceNotification" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetInvoiceEnvelope">
+      <soap:operation soapAction="http://tempuri.org/IIntegration/GetInvoiceEnvelope" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TestConnection">
+      <soap:operation soapAction="http://tempuri.org/IIntegration/TestConnection" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetSummaryReport">
+      <soap:operation soapAction="http://tempuri.org/IIntegration/GetSummaryReport" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="WhoAmI">
+      <soap:operation soapAction="http://tempuri.org/IIntegration/WhoAmI" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="Integration">
+    <wsdl:port name="BasicHttpBinding_IIntegration" binding="tns:BasicHttpBinding_IIntegration">
+      <soap:address location="https://efatura-test.uyumsoft.com.tr/Services/Integration" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

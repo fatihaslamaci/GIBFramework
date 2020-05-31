@@ -1,6 +1,7 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Collections.Generic;
+using Uyumsoft;
 
 namespace GIBFrameworkTest.Uyumsoft
 {
@@ -10,8 +11,8 @@ namespace GIBFrameworkTest.Uyumsoft
         [TestMethod]
         public void TestMukellefBilgisi()
         {
-            GIBProviders.Uyumsoft.IUyumsoftService mockUyumsoftService = new MockUyumsoftService();
-            GIBInterface.IEFatura provider = new GIBProviders.Uyumsoft.EFatura(mockUyumsoftService);
+            IUyumsoftService mockUyumsoftService = new MockUyumsoftService();
+            GIBInterface.IEFatura provider = new EFatura(mockUyumsoftService);
             GIBInterface.IGIBData data = null;
             GIBFramework.EFatura eFatura = new GIBFramework.EFatura(provider);
             var user = eFatura.MukellefBilgisi("6130438766");
@@ -23,8 +24,8 @@ namespace GIBFrameworkTest.Uyumsoft
         [TestMethod]
         public void TestSendInvoice()
         {
-            GIBProviders.Uyumsoft.IUyumsoftService mockUyumsoftService = new MockUyumsoftService();
-            GIBInterface.IEFatura provider = new GIBProviders.Uyumsoft.EFatura(mockUyumsoftService);
+            IUyumsoftService mockUyumsoftService = new MockUyumsoftService();
+            GIBInterface.IEFatura provider = new EFatura(mockUyumsoftService);
             GIBFramework.EFatura eFatura = new GIBFramework.EFatura(provider);
 
             GIBInterface.SendParameters val = new GIBInterface.SendParameters();
@@ -41,8 +42,8 @@ namespace GIBFrameworkTest.Uyumsoft
         [TestMethod]
         public void TestDurumSorgula()
         {
-            GIBProviders.Uyumsoft.IUyumsoftService mockUyumsoftService = new MockUyumsoftService();
-            GIBInterface.IEFatura provider = new GIBProviders.Uyumsoft.EFatura(mockUyumsoftService);
+            IUyumsoftService mockUyumsoftService = new MockUyumsoftService();
+            GIBInterface.IEFatura provider = new EFatura(mockUyumsoftService);
             GIBFramework.EFatura eFatura = new GIBFramework.EFatura(provider);
 
 

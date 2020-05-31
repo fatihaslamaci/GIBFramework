@@ -9,6 +9,7 @@
     <ProjectReference Include="..\GIBFramework\GIBFramework.csproj" />
     <ProjectReference Include="..\GIBInterface\GIBInterface.csproj" />
     <ProjectReference Include="..\SahteEntegrator\SahteEntegrator.csproj" />
+    <ProjectReference Include="..\UyumsoftDotNetStandart\UyumsoftDotNetStandart.csproj" />
   </ItemGroup>
 
 </Project>
