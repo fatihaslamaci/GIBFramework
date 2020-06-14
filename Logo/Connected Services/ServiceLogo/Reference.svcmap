@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="c5cf5a1a-e860-4135-83cc-48e2b41e3402" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="https://pb.diyalogo.com.tr/PostBoxService.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="PostBoxService.xsd" MetadataType="Schema" ID="f063d011-3b05-4520-919f-004f8ddd499b" SourceId="1" SourceUrl="https://pb.diyalogo.com.tr/PostBoxService.svc?xsd=xsd0" />
+    <MetadataFile FileName="PostBoxService1.xsd" MetadataType="Schema" ID="f9832f0e-74a3-4791-b517-99ebf2f5443f" SourceId="1" SourceUrl="https://pb.diyalogo.com.tr/PostBoxService.svc?xsd=xsd1" />
+    <MetadataFile FileName="PostBoxService2.xsd" MetadataType="Schema" ID="15a30cce-ac18-44f7-937e-b6c1f44001f0" SourceId="1" SourceUrl="https://pb.diyalogo.com.tr/PostBoxService.svc?xsd=xsd2" />
+    <MetadataFile FileName="PostBoxService3.xsd" MetadataType="Schema" ID="8ba5dc7d-9726-45ef-862a-e14a9f65bbda" SourceId="1" SourceUrl="https://pb.diyalogo.com.tr/PostBoxService.svc?xsd=xsd3" />
+    <MetadataFile FileName="PostBoxService4.xsd" MetadataType="Schema" ID="85b50268-3370-49c2-a052-a2780ce0903e" SourceId="1" SourceUrl="https://pb.diyalogo.com.tr/PostBoxService.svc?xsd=xsd4" />
+    <MetadataFile FileName="PostBoxService5.xsd" MetadataType="Schema" ID="133cc945-43ca-42f5-8695-cbe4ee3a585f" SourceId="1" SourceUrl="https://pb.diyalogo.com.tr/PostBoxService.svc?xsd=xsd5" />
+    <MetadataFile FileName="PostBoxService6.xsd" MetadataType="Schema" ID="c8a0513a-f616-4f9f-a12a-fa1d14b5178a" SourceId="1" SourceUrl="https://pb.diyalogo.com.tr/PostBoxService.svc?xsd=xsd6" />
+    <MetadataFile FileName="PostBoxService.wsdl" MetadataType="Wsdl" ID="c81af241-66f2-464d-9d8d-43b2865414bc" SourceId="1" SourceUrl="https://pb.diyalogo.com.tr/PostBoxService.svc" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

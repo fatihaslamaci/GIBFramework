@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/CommonLib" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/CommonLib" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="https://pb.diyalogo.com.tr/PostBoxService.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+  <xs:simpleType name="SendRecvType">
+    <xs:annotation>
+      <xs:appinfo>
+        <ActualType Name="unsignedByte" Namespace="http://www.w3.org/2001/XMLSchema" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="SEND">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">1</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="RECV">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">2</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="SendRecvType" nillable="true" type="tns:SendRecvType" />
+  <xs:simpleType name="UserListType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="GBLIST" />
+      <xs:enumeration value="PKLIST" />
+      <xs:enumeration value="LIST4760">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">3</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="LIST5015">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">4</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="UserListType" nillable="true" type="tns:UserListType" />
+  <xs:complexType name="ArrayOfReconInvoiceType">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="ReconInvoiceType" nillable="true" type="tns:ReconInvoiceType" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfReconInvoiceType" nillable="true" type="tns:ArrayOfReconInvoiceType" />
+  <xs:complexType name="ReconInvoiceType">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Cancel" type="xs:boolean" />
+      <xs:element minOccurs="0" name="InvoiceDate" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="InvoiceNumber" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="InvoiceStatus" nillable="true" type="tns:EArchiveInvoiceStatusForRecon" />
+      <xs:element minOccurs="0" name="Uuid" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ReconInvoiceType" nillable="true" type="tns:ReconInvoiceType" />
+  <xs:simpleType name="EArchiveInvoiceStatusForRecon">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="SUCCESS">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">2</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="FAULT">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">-1</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="QUEUE">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">1</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="EArchiveInvoiceStatusForRecon" nillable="true" type="tns:EArchiveInvoiceStatusForRecon" />
+  <xs:simpleType name="InvoiceType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="EINVOICE" />
+      <xs:enumeration value="EARCHIVE" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="InvoiceType" nillable="true" type="tns:InvoiceType" />
+</xs:schema>

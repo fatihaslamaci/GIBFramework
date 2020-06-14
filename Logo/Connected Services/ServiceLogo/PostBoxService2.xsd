@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/eFaturaWebService" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/eFaturaWebService" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="https://pb.diyalogo.com.tr/PostBoxService.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+  <xs:import schemaLocation="https://pb.diyalogo.com.tr/PostBoxService.svc?xsd=xsd6" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+  <xs:complexType name="LoginType">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="appStr" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="passWord" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="source" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="userName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="version" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="LoginType" nillable="true" type="tns:LoginType" />
+  <xs:complexType name="DocumentType">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="binaryData" nillable="true" type="tns:base64BinaryData" />
+      <xs:element minOccurs="0" name="currentDate" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="fileName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="hash" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="DocumentType" nillable="true" type="tns:DocumentType" />
+  <xs:complexType name="base64BinaryData">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Value" nillable="true" type="xs:base64Binary" />
+      <xs:element minOccurs="0" name="contentType" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="base64BinaryData" nillable="true" type="tns:base64BinaryData" />
+  <xs:complexType name="ElementType">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="binaryData" nillable="true" type="tns:base64BinaryData" />
+      <xs:element minOccurs="0" name="currentDate" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="envelopeId" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="fileName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="gbLabel" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="hash" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="pkLabel" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ElementType" nillable="true" type="tns:ElementType" />
+  <xs:simpleType name="GetDocumentType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="EINVOICE">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">1</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="EARCHIVE">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">2</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="APPLICATIONRESPONSE">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">3</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="GetDocumentType" nillable="true" type="tns:GetDocumentType" />
+  <xs:simpleType name="DocumentDataType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="UBL">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">1</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="PDF">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">2</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="DocumentDataType" nillable="true" type="tns:DocumentDataType" />
+  <xs:complexType name="eFaturaWebService.ResultType">
+    <xs:sequence>
+      <xs:element xmlns:q1="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="outputList" nillable="true" type="q1:ArrayOfstring" />
+      <xs:element minOccurs="0" name="resultCode" type="xs:int" />
+      <xs:element minOccurs="0" name="resultMsg" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="eFaturaWebService.ResultType" nillable="true" type="tns:eFaturaWebService.ResultType" />
+  <xs:complexType name="DocumentStatusType">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="code" type="xs:int" />
+      <xs:element minOccurs="0" name="currentDate" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="description" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="envelopeId" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="isCancel" type="xs:boolean" />
+      <xs:element minOccurs="0" name="status" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="DocumentStatusType" nillable="true" type="tns:DocumentStatusType" />
+  <xs:complexType name="ArrayOfDocument">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Document" nillable="true" type="tns:Document" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfDocument" nillable="true" type="tns:ArrayOfDocument" />
+  <xs:complexType name="Document">
+    <xs:sequence>
+      <xs:element xmlns:q2="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="docInfo" nillable="true" type="q2:ArrayOfstring" />
+      <xs:element minOccurs="0" name="documentId" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="documentJSon" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="documentUuid" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Document" nillable="true" type="tns:Document" />
+  <xs:complexType name="ArrayOfGibUserType">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="GibUserType" nillable="true" type="tns:GibUserType" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfGibUserType" nillable="true" type="tns:ArrayOfGibUserType" />
+  <xs:complexType name="GibUserType">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="DespatchAdvice" type="xs:int" />
+      <xs:element minOccurs="0" name="DespatchAdviceGbList" nillable="true" type="tns:ArrayOfGibUserInfoType" />
+      <xs:element minOccurs="0" name="DespatchAdvicePkList" nillable="true" type="tns:ArrayOfGibUserInfoType" />
+      <xs:element minOccurs="0" name="Identifier" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Invoice" type="xs:int" />
+      <xs:element minOccurs="0" name="InvoiceGbList" nillable="true" type="tns:ArrayOfGibUserInfoType" />
+      <xs:element minOccurs="0" name="InvoicePkList" nillable="true" type="tns:ArrayOfGibUserInfoType" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="GibUserType" nillable="true" type="tns:GibUserType" />
+  <xs:complexType name="ArrayOfGibUserInfoType">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="GibUserInfoType" nillable="true" type="tns:GibUserInfoType" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfGibUserInfoType" nillable="true" type="tns:ArrayOfGibUserInfoType" />
+  <xs:complexType name="GibUserInfoType">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Alias" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="AliasCreationTime" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="FirstCreationTime" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Identifier" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Title" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Type" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="GibUserInfoType" nillable="true" type="tns:GibUserInfoType" />
+</xs:schema>

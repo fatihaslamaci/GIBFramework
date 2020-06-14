@@ -1,0 +1,1484 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="PostBoxService" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsp:Policy wsu:Id="PostBoxServiceEndpoint_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:TransportBinding xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <wsp:Policy>
+            <sp:TransportToken>
+              <wsp:Policy>
+                <sp:HttpsToken RequireClientCertificate="false" />
+              </wsp:Policy>
+            </sp:TransportToken>
+            <sp:AlgorithmSuite>
+              <wsp:Policy>
+                <sp:Basic256 />
+              </wsp:Policy>
+            </sp:AlgorithmSuite>
+            <sp:Layout>
+              <wsp:Policy>
+                <sp:Strict />
+              </wsp:Policy>
+            </sp:Layout>
+          </wsp:Policy>
+        </sp:TransportBinding>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://tempuri.org/Imports">
+      <xsd:import schemaLocation="https://pb.diyalogo.com.tr/PostBoxService.svc?xsd=xsd0" namespace="http://tempuri.org/" />
+      <xsd:import schemaLocation="https://pb.diyalogo.com.tr/PostBoxService.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="https://pb.diyalogo.com.tr/PostBoxService.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/eFaturaWebService" />
+      <xsd:import schemaLocation="https://pb.diyalogo.com.tr/PostBoxService.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/eFaturaCoreLib.Common" />
+      <xsd:import schemaLocation="https://pb.diyalogo.com.tr/PostBoxService.svc?xsd=xsd4" namespace="http://schemas.datacontract.org/2004/07/CommonLib.Helpers" />
+      <xsd:import schemaLocation="https://pb.diyalogo.com.tr/PostBoxService.svc?xsd=xsd5" namespace="http://schemas.datacontract.org/2004/07/CommonLib" />
+      <xsd:import schemaLocation="https://pb.diyalogo.com.tr/PostBoxService.svc?xsd=xsd6" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="IPostBoxService_Ping_InputMessage">
+    <wsdl:part name="parameters" element="tns:Ping" />
+  </wsdl:message>
+  <wsdl:message name="IPostBoxService_Ping_OutputMessage">
+    <wsdl:part name="parameters" element="tns:PingResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPostBoxService_ALive_InputMessage">
+    <wsdl:part name="parameters" element="tns:ALive" />
+  </wsdl:message>
+  <wsdl:message name="IPostBoxService_ALive_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ALiveResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPostBoxService_Login_InputMessage">
+    <wsdl:part name="parameters" element="tns:Login" />
+  </wsdl:message>
+  <wsdl:message name="IPostBoxService_Login_OutputMessage">
+    <wsdl:part name="parameters" element="tns:LoginResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPostBoxService_Logout_InputMessage">
+    <wsdl:part name="parameters" element="tns:Logout" />
+  </wsdl:message>
+  <wsdl:message name="IPostBoxService_Logout_OutputMessage">
+    <wsdl:part name="parameters" element="tns:LogoutResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPostBoxService_sendEnvelope_InputMessage">
+    <wsdl:part name="parameters" element="tns:sendEnvelope" />
+  </wsdl:message>
+  <wsdl:message name="IPostBoxService_sendEnvelope_OutputMessage">
+    <wsdl:part name="parameters" element="tns:sendEnvelopeResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPostBoxService_sendInvoice_InputMessage">
+    <wsdl:part name="parameters" element="tns:sendInvoice" />
+  </wsdl:message>
+  <wsdl:message name="IPostBoxService_sendInvoice_OutputMessage">
+    <wsdl:part name="parameters" element="tns:sendInvoiceResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPostBoxService_sendApplicationResponse_InputMessage">
+    <wsdl:part name="parameters" element="tns:sendApplicationResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPostBoxService_sendApplicationResponse_OutputMessage">
+    <wsdl:part name="parameters" element="tns:sendApplicationResponseResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPostBoxService_sendEnvelopeEx_InputMessage">
+    <wsdl:part name="parameters" element="tns:sendEnvelopeEx" />
+  </wsdl:message>
+  <wsdl:message name="IPostBoxService_sendEnvelopeEx_OutputMessage">
+    <wsdl:part name="parameters" element="tns:sendEnvelopeExResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPostBoxService_sendInvoiceEx_InputMessage">
+    <wsdl:part name="parameters" element="tns:sendInvoiceEx" />
+  </wsdl:message>
+  <wsdl:message name="IPostBoxService_sendInvoiceEx_OutputMessage">
+    <wsdl:part name="parameters" element="tns:sendInvoiceExResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPostBoxService_sendSignedInvoice_InputMessage">
+    <wsdl:part name="parameters" element="tns:sendSignedInvoice" />
+  </wsdl:message>
+  <wsdl:message name="IPostBoxService_sendSignedInvoice_OutputMessage">
+    <wsdl:part name="parameters" element="tns:sendSignedInvoiceResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPostBoxService_sendApplicationResponseEx_InputMessage">
+    <wsdl:part name="parameters" element="tns:sendApplicationResponseEx" />
+  </wsdl:message>
+  <wsdl:message name="IPostBoxService_sendApplicationResponseEx_OutputMessage">
+    <wsdl:part name="parameters" element="tns:sendApplicationResponseExResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPostBoxService_sendEArchiveDocument_InputMessage">
+    <wsdl:part name="parameters" element="tns:sendEArchiveDocument" />
+  </wsdl:message>
+  <wsdl:message name="IPostBoxService_sendEArchiveDocument_OutputMessage">
+    <wsdl:part name="parameters" element="tns:sendEArchiveDocumentResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPostBoxService_receiveDocument_InputMessage">
+    <wsdl:part name="parameters" element="tns:receiveDocument" />
+  </wsdl:message>
+  <wsdl:message name="IPostBoxService_receiveDocument_OutputMessage">
+    <wsdl:part name="parameters" element="tns:receiveDocumentResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPostBoxService_receiveDone_InputMessage">
+    <wsdl:part name="parameters" element="tns:receiveDone" />
+  </wsdl:message>
+  <wsdl:message name="IPostBoxService_receiveDone_OutputMessage">
+    <wsdl:part name="parameters" element="tns:receiveDoneResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPostBoxService_receiveInvoice_InputMessage">
+    <wsdl:part name="parameters" element="tns:receiveInvoice" />
+  </wsdl:message>
+  <wsdl:message name="IPostBoxService_receiveInvoice_OutputMessage">
+    <wsdl:part name="parameters" element="tns:receiveInvoiceResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPostBoxService_receiveInvoiceDone_InputMessage">
+    <wsdl:part name="parameters" element="tns:receiveInvoiceDone" />
+  </wsdl:message>
+  <wsdl:message name="IPostBoxService_receiveInvoiceDone_OutputMessage">
+    <wsdl:part name="parameters" element="tns:receiveInvoiceDoneResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPostBoxService_receiveApplicationResponse_InputMessage">
+    <wsdl:part name="parameters" element="tns:receiveApplicationResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPostBoxService_receiveApplicationResponse_OutputMessage">
+    <wsdl:part name="parameters" element="tns:receiveApplicationResponseResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPostBoxService_receiveApplicationResponseDone_InputMessage">
+    <wsdl:part name="parameters" element="tns:receiveApplicationResponseDone" />
+  </wsdl:message>
+  <wsdl:message name="IPostBoxService_receiveApplicationResponseDone_OutputMessage">
+    <wsdl:part name="parameters" element="tns:receiveApplicationResponseDoneResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPostBoxService_getApplicationResponse_InputMessage">
+    <wsdl:part name="parameters" element="tns:getApplicationResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPostBoxService_getApplicationResponse_OutputMessage">
+    <wsdl:part name="parameters" element="tns:getApplicationResponseResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPostBoxService_getInvoiceStatus_InputMessage">
+    <wsdl:part name="parameters" element="tns:getInvoiceStatus" />
+  </wsdl:message>
+  <wsdl:message name="IPostBoxService_getInvoiceStatus_OutputMessage">
+    <wsdl:part name="parameters" element="tns:getInvoiceStatusResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPostBoxService_getAppRespStatus_InputMessage">
+    <wsdl:part name="parameters" element="tns:getAppRespStatus" />
+  </wsdl:message>
+  <wsdl:message name="IPostBoxService_getAppRespStatus_OutputMessage">
+    <wsdl:part name="parameters" element="tns:getAppRespStatusResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPostBoxService_getEnvelopeList_InputMessage">
+    <wsdl:part name="parameters" element="tns:getEnvelopeList" />
+  </wsdl:message>
+  <wsdl:message name="IPostBoxService_getEnvelopeList_OutputMessage">
+    <wsdl:part name="parameters" element="tns:getEnvelopeListResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPostBoxService_getEnvelope_InputMessage">
+    <wsdl:part name="parameters" element="tns:getEnvelope" />
+  </wsdl:message>
+  <wsdl:message name="IPostBoxService_getEnvelope_OutputMessage">
+    <wsdl:part name="parameters" element="tns:getEnvelopeResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPostBoxService_getInvoiceList_InputMessage">
+    <wsdl:part name="parameters" element="tns:getInvoiceList" />
+  </wsdl:message>
+  <wsdl:message name="IPostBoxService_getInvoiceList_OutputMessage">
+    <wsdl:part name="parameters" element="tns:getInvoiceListResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPostBoxService_getInvoice_InputMessage">
+    <wsdl:part name="parameters" element="tns:getInvoice" />
+  </wsdl:message>
+  <wsdl:message name="IPostBoxService_getInvoice_OutputMessage">
+    <wsdl:part name="parameters" element="tns:getInvoiceResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPostBoxService_getUserList_InputMessage">
+    <wsdl:part name="parameters" element="tns:getUserList" />
+  </wsdl:message>
+  <wsdl:message name="IPostBoxService_getUserList_OutputMessage">
+    <wsdl:part name="parameters" element="tns:getUserListResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPostBoxService_getUserListNew_InputMessage">
+    <wsdl:part name="parameters" element="tns:getUserListNew" />
+  </wsdl:message>
+  <wsdl:message name="IPostBoxService_getUserListNew_OutputMessage">
+    <wsdl:part name="parameters" element="tns:getUserListNewResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPostBoxService_getApprovalFlowList_InputMessage">
+    <wsdl:part name="parameters" element="tns:getApprovalFlowList" />
+  </wsdl:message>
+  <wsdl:message name="IPostBoxService_getApprovalFlowList_OutputMessage">
+    <wsdl:part name="parameters" element="tns:getApprovalFlowListResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPostBoxService_setApprovalFlowId_InputMessage">
+    <wsdl:part name="parameters" element="tns:setApprovalFlowId" />
+  </wsdl:message>
+  <wsdl:message name="IPostBoxService_setApprovalFlowId_OutputMessage">
+    <wsdl:part name="parameters" element="tns:setApprovalFlowIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPostBoxService_getApprovalFlowRes_InputMessage">
+    <wsdl:part name="parameters" element="tns:getApprovalFlowRes" />
+  </wsdl:message>
+  <wsdl:message name="IPostBoxService_getApprovalFlowRes_OutputMessage">
+    <wsdl:part name="parameters" element="tns:getApprovalFlowResResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPostBoxService_getDocumentStatus_InputMessage">
+    <wsdl:part name="parameters" element="tns:getDocumentStatus" />
+  </wsdl:message>
+  <wsdl:message name="IPostBoxService_getDocumentStatus_OutputMessage">
+    <wsdl:part name="parameters" element="tns:getDocumentStatusResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPostBoxService_getDocumentStatusEx_InputMessage">
+    <wsdl:part name="parameters" element="tns:getDocumentStatusEx" />
+  </wsdl:message>
+  <wsdl:message name="IPostBoxService_getDocumentStatusEx_OutputMessage">
+    <wsdl:part name="parameters" element="tns:getDocumentStatusExResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPostBoxService_getEArchiveXslt_InputMessage">
+    <wsdl:part name="parameters" element="tns:getEArchiveXslt" />
+  </wsdl:message>
+  <wsdl:message name="IPostBoxService_getEArchiveXslt_OutputMessage">
+    <wsdl:part name="parameters" element="tns:getEArchiveXsltResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPostBoxService_getInvoiceApplicationResponse_InputMessage">
+    <wsdl:part name="parameters" element="tns:getInvoiceApplicationResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPostBoxService_getInvoiceApplicationResponse_OutputMessage">
+    <wsdl:part name="parameters" element="tns:getInvoiceApplicationResponseResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPostBoxService_getInvoiceResponseData_InputMessage">
+    <wsdl:part name="parameters" element="tns:getInvoiceResponseData" />
+  </wsdl:message>
+  <wsdl:message name="IPostBoxService_getInvoiceResponseData_OutputMessage">
+    <wsdl:part name="parameters" element="tns:getInvoiceResponseDataResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPostBoxService_setApplicationResponseOption_InputMessage">
+    <wsdl:part name="parameters" element="tns:setApplicationResponseOption" />
+  </wsdl:message>
+  <wsdl:message name="IPostBoxService_setApplicationResponseOption_OutputMessage">
+    <wsdl:part name="parameters" element="tns:setApplicationResponseOptionResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPostBoxService_getEArchiveInvoicePdfData_InputMessage">
+    <wsdl:part name="parameters" element="tns:getEArchiveInvoicePdfData" />
+  </wsdl:message>
+  <wsdl:message name="IPostBoxService_getEArchiveInvoicePdfData_OutputMessage">
+    <wsdl:part name="parameters" element="tns:getEArchiveInvoicePdfDataResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPostBoxService_getDocumentData_InputMessage">
+    <wsdl:part name="parameters" element="tns:getDocumentData" />
+  </wsdl:message>
+  <wsdl:message name="IPostBoxService_getDocumentData_OutputMessage">
+    <wsdl:part name="parameters" element="tns:getDocumentDataResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPostBoxService_getReconciliationList_InputMessage">
+    <wsdl:part name="parameters" element="tns:getReconciliationList" />
+  </wsdl:message>
+  <wsdl:message name="IPostBoxService_getReconciliationList_OutputMessage">
+    <wsdl:part name="parameters" element="tns:getReconciliationListResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPostBoxService_sendReconciliationReport_InputMessage">
+    <wsdl:part name="parameters" element="tns:sendReconciliationReport" />
+  </wsdl:message>
+  <wsdl:message name="IPostBoxService_sendReconciliationReport_OutputMessage">
+    <wsdl:part name="parameters" element="tns:sendReconciliationReportResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPostBoxService_createElementId_InputMessage">
+    <wsdl:part name="parameters" element="tns:createElementId" />
+  </wsdl:message>
+  <wsdl:message name="IPostBoxService_createElementId_OutputMessage">
+    <wsdl:part name="parameters" element="tns:createElementIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPostBoxService_cancelEArchiveInvoice_InputMessage">
+    <wsdl:part name="parameters" element="tns:cancelEArchiveInvoice" />
+  </wsdl:message>
+  <wsdl:message name="IPostBoxService_cancelEArchiveInvoice_OutputMessage">
+    <wsdl:part name="parameters" element="tns:cancelEArchiveInvoiceResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPostBoxService_SendEArchiveListForReconcilition_InputMessage">
+    <wsdl:part name="parameters" element="tns:SendEArchiveListForReconcilition" />
+  </wsdl:message>
+  <wsdl:message name="IPostBoxService_SendEArchiveListForReconcilition_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SendEArchiveListForReconcilitionResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPostBoxService_SendDocument_InputMessage">
+    <wsdl:part name="parameters" element="tns:SendDocument" />
+  </wsdl:message>
+  <wsdl:message name="IPostBoxService_SendDocument_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SendDocumentResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPostBoxService_GetDocument_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetDocument" />
+  </wsdl:message>
+  <wsdl:message name="IPostBoxService_GetDocument_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetDocumentResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPostBoxService_GetDocumentDone_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetDocumentDone" />
+  </wsdl:message>
+  <wsdl:message name="IPostBoxService_GetDocumentDone_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetDocumentDoneResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPostBoxService_GetDocumentStatus_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetDocumentStatus" />
+  </wsdl:message>
+  <wsdl:message name="IPostBoxService_GetDocumentStatus_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetDocumentStatusResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPostBoxService_GetDocumentData_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetDocumentData" />
+  </wsdl:message>
+  <wsdl:message name="IPostBoxService_GetDocumentData_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetDocumentDataResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPostBoxService_GetDocumentList_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetDocumentList" />
+  </wsdl:message>
+  <wsdl:message name="IPostBoxService_GetDocumentList_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetDocumentListResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPostBoxService_GetValidateGIBUser_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetValidateGIBUser" />
+  </wsdl:message>
+  <wsdl:message name="IPostBoxService_GetValidateGIBUser_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetValidateGIBUserResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPostBoxService_CheckGibUser_InputMessage">
+    <wsdl:part name="parameters" element="tns:CheckGibUser" />
+  </wsdl:message>
+  <wsdl:message name="IPostBoxService_CheckGibUser_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CheckGibUserResponse" />
+  </wsdl:message>
+  <wsdl:portType name="IPostBoxService">
+    <wsdl:operation name="Ping">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPostBoxService/Ping" message="tns:IPostBoxService_Ping_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPostBoxService/PingResponse" message="tns:IPostBoxService_Ping_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ALive">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPostBoxService/ALive" message="tns:IPostBoxService_ALive_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPostBoxService/ALiveResponse" message="tns:IPostBoxService_ALive_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Login">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPostBoxService/Login" message="tns:IPostBoxService_Login_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPostBoxService/LoginResponse" message="tns:IPostBoxService_Login_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Logout">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPostBoxService/Logout" message="tns:IPostBoxService_Logout_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPostBoxService/LogoutResponse" message="tns:IPostBoxService_Logout_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="sendEnvelope">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPostBoxService/sendEnvelope" message="tns:IPostBoxService_sendEnvelope_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPostBoxService/sendEnvelopeResponse" message="tns:IPostBoxService_sendEnvelope_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="sendInvoice">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPostBoxService/sendInvoice" message="tns:IPostBoxService_sendInvoice_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPostBoxService/sendInvoiceResponse" message="tns:IPostBoxService_sendInvoice_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="sendApplicationResponse">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPostBoxService/sendApplicationResponse" message="tns:IPostBoxService_sendApplicationResponse_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPostBoxService/sendApplicationResponseResponse" message="tns:IPostBoxService_sendApplicationResponse_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="sendEnvelopeEx">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPostBoxService/sendEnvelopeEx" message="tns:IPostBoxService_sendEnvelopeEx_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPostBoxService/sendEnvelopeExResponse" message="tns:IPostBoxService_sendEnvelopeEx_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="sendInvoiceEx">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPostBoxService/sendInvoiceEx" message="tns:IPostBoxService_sendInvoiceEx_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPostBoxService/sendInvoiceExResponse" message="tns:IPostBoxService_sendInvoiceEx_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="sendSignedInvoice">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPostBoxService/sendSignedInvoice" message="tns:IPostBoxService_sendSignedInvoice_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPostBoxService/sendSignedInvoiceResponse" message="tns:IPostBoxService_sendSignedInvoice_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="sendApplicationResponseEx">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPostBoxService/sendApplicationResponseEx" message="tns:IPostBoxService_sendApplicationResponseEx_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPostBoxService/sendApplicationResponseExResponse" message="tns:IPostBoxService_sendApplicationResponseEx_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="sendEArchiveDocument">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPostBoxService/sendEArchiveDocument" message="tns:IPostBoxService_sendEArchiveDocument_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPostBoxService/sendEArchiveDocumentResponse" message="tns:IPostBoxService_sendEArchiveDocument_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="receiveDocument">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPostBoxService/receiveDocument" message="tns:IPostBoxService_receiveDocument_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPostBoxService/receiveDocumentResponse" message="tns:IPostBoxService_receiveDocument_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="receiveDone">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPostBoxService/receiveDone" message="tns:IPostBoxService_receiveDone_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPostBoxService/receiveDoneResponse" message="tns:IPostBoxService_receiveDone_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="receiveInvoice">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPostBoxService/receiveInvoice" message="tns:IPostBoxService_receiveInvoice_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPostBoxService/receiveInvoiceResponse" message="tns:IPostBoxService_receiveInvoice_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="receiveInvoiceDone">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPostBoxService/receiveInvoiceDone" message="tns:IPostBoxService_receiveInvoiceDone_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPostBoxService/receiveInvoiceDoneResponse" message="tns:IPostBoxService_receiveInvoiceDone_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="receiveApplicationResponse">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPostBoxService/receiveApplicationResponse" message="tns:IPostBoxService_receiveApplicationResponse_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPostBoxService/receiveApplicationResponseResponse" message="tns:IPostBoxService_receiveApplicationResponse_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="receiveApplicationResponseDone">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPostBoxService/receiveApplicationResponseDone" message="tns:IPostBoxService_receiveApplicationResponseDone_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPostBoxService/receiveApplicationResponseDoneResponse" message="tns:IPostBoxService_receiveApplicationResponseDone_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="getApplicationResponse">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPostBoxService/getApplicationResponse" message="tns:IPostBoxService_getApplicationResponse_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPostBoxService/getApplicationResponseResponse" message="tns:IPostBoxService_getApplicationResponse_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="getInvoiceStatus">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPostBoxService/getInvoiceStatus" message="tns:IPostBoxService_getInvoiceStatus_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPostBoxService/getInvoiceStatusResponse" message="tns:IPostBoxService_getInvoiceStatus_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="getAppRespStatus">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPostBoxService/getAppRespStatus" message="tns:IPostBoxService_getAppRespStatus_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPostBoxService/getAppRespStatusResponse" message="tns:IPostBoxService_getAppRespStatus_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="getEnvelopeList">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPostBoxService/getEnvelopeList" message="tns:IPostBoxService_getEnvelopeList_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPostBoxService/getEnvelopeListResponse" message="tns:IPostBoxService_getEnvelopeList_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="getEnvelope">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPostBoxService/getEnvelope" message="tns:IPostBoxService_getEnvelope_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPostBoxService/getEnvelopeResponse" message="tns:IPostBoxService_getEnvelope_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="getInvoiceList">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPostBoxService/getInvoiceList" message="tns:IPostBoxService_getInvoiceList_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPostBoxService/getInvoiceListResponse" message="tns:IPostBoxService_getInvoiceList_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="getInvoice">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPostBoxService/getInvoice" message="tns:IPostBoxService_getInvoice_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPostBoxService/getInvoiceResponse" message="tns:IPostBoxService_getInvoice_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="getUserList">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPostBoxService/getUserList" message="tns:IPostBoxService_getUserList_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPostBoxService/getUserListResponse" message="tns:IPostBoxService_getUserList_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="getUserListNew">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPostBoxService/getUserListNew" message="tns:IPostBoxService_getUserListNew_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPostBoxService/getUserListNewResponse" message="tns:IPostBoxService_getUserListNew_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="getApprovalFlowList">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPostBoxService/getApprovalFlowList" message="tns:IPostBoxService_getApprovalFlowList_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPostBoxService/getApprovalFlowListResponse" message="tns:IPostBoxService_getApprovalFlowList_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="setApprovalFlowId">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPostBoxService/setApprovalFlowId" message="tns:IPostBoxService_setApprovalFlowId_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPostBoxService/setApprovalFlowIdResponse" message="tns:IPostBoxService_setApprovalFlowId_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="getApprovalFlowRes">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPostBoxService/getApprovalFlowRes" message="tns:IPostBoxService_getApprovalFlowRes_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPostBoxService/getApprovalFlowResResponse" message="tns:IPostBoxService_getApprovalFlowRes_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="getDocumentStatus">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPostBoxService/getDocumentStatus" message="tns:IPostBoxService_getDocumentStatus_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPostBoxService/getDocumentStatusResponse" message="tns:IPostBoxService_getDocumentStatus_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="getDocumentStatusEx">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPostBoxService/getDocumentStatusEx" message="tns:IPostBoxService_getDocumentStatusEx_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPostBoxService/getDocumentStatusExResponse" message="tns:IPostBoxService_getDocumentStatusEx_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="getEArchiveXslt">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPostBoxService/getEArchiveXslt" message="tns:IPostBoxService_getEArchiveXslt_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPostBoxService/getEArchiveXsltResponse" message="tns:IPostBoxService_getEArchiveXslt_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="getInvoiceApplicationResponse">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPostBoxService/getInvoiceApplicationResponse" message="tns:IPostBoxService_getInvoiceApplicationResponse_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPostBoxService/getInvoiceApplicationResponseResponse" message="tns:IPostBoxService_getInvoiceApplicationResponse_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="getInvoiceResponseData">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPostBoxService/getInvoiceResponseData" message="tns:IPostBoxService_getInvoiceResponseData_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPostBoxService/getInvoiceResponseDataResponse" message="tns:IPostBoxService_getInvoiceResponseData_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="setApplicationResponseOption">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPostBoxService/setApplicationResponseOption" message="tns:IPostBoxService_setApplicationResponseOption_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPostBoxService/setApplicationResponseOptionResponse" message="tns:IPostBoxService_setApplicationResponseOption_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="getEArchiveInvoicePdfData">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPostBoxService/getEArchiveInvoicePdfData" message="tns:IPostBoxService_getEArchiveInvoicePdfData_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPostBoxService/getEArchiveInvoicePdfDataResponse" message="tns:IPostBoxService_getEArchiveInvoicePdfData_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="getDocumentData">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPostBoxService/getDocumentData" message="tns:IPostBoxService_getDocumentData_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPostBoxService/getDocumentDataResponse" message="tns:IPostBoxService_getDocumentData_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="getReconciliationList">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPostBoxService/getReconciliationList" message="tns:IPostBoxService_getReconciliationList_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPostBoxService/getReconciliationListResponse" message="tns:IPostBoxService_getReconciliationList_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="sendReconciliationReport">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPostBoxService/sendReconciliationReport" message="tns:IPostBoxService_sendReconciliationReport_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPostBoxService/sendReconciliationReportResponse" message="tns:IPostBoxService_sendReconciliationReport_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="createElementId">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPostBoxService/createElementId" message="tns:IPostBoxService_createElementId_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPostBoxService/createElementIdResponse" message="tns:IPostBoxService_createElementId_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="cancelEArchiveInvoice">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPostBoxService/cancelEArchiveInvoice" message="tns:IPostBoxService_cancelEArchiveInvoice_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPostBoxService/cancelEArchiveInvoiceResponse" message="tns:IPostBoxService_cancelEArchiveInvoice_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SendEArchiveListForReconcilition">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPostBoxService/SendEArchiveListForReconcilition" message="tns:IPostBoxService_SendEArchiveListForReconcilition_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPostBoxService/SendEArchiveListForReconcilitionResponse" message="tns:IPostBoxService_SendEArchiveListForReconcilition_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SendDocument">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPostBoxService/SendDocument" message="tns:IPostBoxService_SendDocument_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPostBoxService/SendDocumentResponse" message="tns:IPostBoxService_SendDocument_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetDocument">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPostBoxService/GetDocument" message="tns:IPostBoxService_GetDocument_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPostBoxService/GetDocumentResponse" message="tns:IPostBoxService_GetDocument_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetDocumentDone">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPostBoxService/GetDocumentDone" message="tns:IPostBoxService_GetDocumentDone_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPostBoxService/GetDocumentDoneResponse" message="tns:IPostBoxService_GetDocumentDone_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetDocumentStatus">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPostBoxService/GetDocumentStatus" message="tns:IPostBoxService_GetDocumentStatus_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPostBoxService/GetDocumentStatusResponse" message="tns:IPostBoxService_GetDocumentStatus_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetDocumentData">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPostBoxService/GetDocumentData" message="tns:IPostBoxService_GetDocumentData_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPostBoxService/GetDocumentDataResponse" message="tns:IPostBoxService_GetDocumentData_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetDocumentList">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPostBoxService/GetDocumentList" message="tns:IPostBoxService_GetDocumentList_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPostBoxService/GetDocumentListResponse" message="tns:IPostBoxService_GetDocumentList_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetValidateGIBUser">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPostBoxService/GetValidateGIBUser" message="tns:IPostBoxService_GetValidateGIBUser_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPostBoxService/GetValidateGIBUserResponse" message="tns:IPostBoxService_GetValidateGIBUser_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CheckGibUser">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPostBoxService/CheckGibUser" message="tns:IPostBoxService_CheckGibUser_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPostBoxService/CheckGibUserResponse" message="tns:IPostBoxService_CheckGibUser_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="PostBoxServiceEndpoint" type="tns:IPostBoxService">
+    <wsp:PolicyReference URI="#PostBoxServiceEndpoint_policy" />
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="Ping">
+      <soap:operation soapAction="http://tempuri.org/IPostBoxService/Ping" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ALive">
+      <soap:operation soapAction="http://tempuri.org/IPostBoxService/ALive" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Login">
+      <soap:operation soapAction="http://tempuri.org/IPostBoxService/Login" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Logout">
+      <soap:operation soapAction="http://tempuri.org/IPostBoxService/Logout" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="sendEnvelope">
+      <soap:operation soapAction="http://tempuri.org/IPostBoxService/sendEnvelope" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="sendInvoice">
+      <soap:operation soapAction="http://tempuri.org/IPostBoxService/sendInvoice" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="sendApplicationResponse">
+      <soap:operation soapAction="http://tempuri.org/IPostBoxService/sendApplicationResponse" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="sendEnvelopeEx">
+      <soap:operation soapAction="http://tempuri.org/IPostBoxService/sendEnvelopeEx" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="sendInvoiceEx">
+      <soap:operation soapAction="http://tempuri.org/IPostBoxService/sendInvoiceEx" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="sendSignedInvoice">
+      <soap:operation soapAction="http://tempuri.org/IPostBoxService/sendSignedInvoice" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="sendApplicationResponseEx">
+      <soap:operation soapAction="http://tempuri.org/IPostBoxService/sendApplicationResponseEx" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="sendEArchiveDocument">
+      <soap:operation soapAction="http://tempuri.org/IPostBoxService/sendEArchiveDocument" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="receiveDocument">
+      <soap:operation soapAction="http://tempuri.org/IPostBoxService/receiveDocument" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="receiveDone">
+      <soap:operation soapAction="http://tempuri.org/IPostBoxService/receiveDone" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="receiveInvoice">
+      <soap:operation soapAction="http://tempuri.org/IPostBoxService/receiveInvoice" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="receiveInvoiceDone">
+      <soap:operation soapAction="http://tempuri.org/IPostBoxService/receiveInvoiceDone" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="receiveApplicationResponse">
+      <soap:operation soapAction="http://tempuri.org/IPostBoxService/receiveApplicationResponse" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="receiveApplicationResponseDone">
+      <soap:operation soapAction="http://tempuri.org/IPostBoxService/receiveApplicationResponseDone" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getApplicationResponse">
+      <soap:operation soapAction="http://tempuri.org/IPostBoxService/getApplicationResponse" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getInvoiceStatus">
+      <soap:operation soapAction="http://tempuri.org/IPostBoxService/getInvoiceStatus" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAppRespStatus">
+      <soap:operation soapAction="http://tempuri.org/IPostBoxService/getAppRespStatus" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getEnvelopeList">
+      <soap:operation soapAction="http://tempuri.org/IPostBoxService/getEnvelopeList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getEnvelope">
+      <soap:operation soapAction="http://tempuri.org/IPostBoxService/getEnvelope" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getInvoiceList">
+      <soap:operation soapAction="http://tempuri.org/IPostBoxService/getInvoiceList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getInvoice">
+      <soap:operation soapAction="http://tempuri.org/IPostBoxService/getInvoice" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getUserList">
+      <soap:operation soapAction="http://tempuri.org/IPostBoxService/getUserList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getUserListNew">
+      <soap:operation soapAction="http://tempuri.org/IPostBoxService/getUserListNew" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getApprovalFlowList">
+      <soap:operation soapAction="http://tempuri.org/IPostBoxService/getApprovalFlowList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="setApprovalFlowId">
+      <soap:operation soapAction="http://tempuri.org/IPostBoxService/setApprovalFlowId" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getApprovalFlowRes">
+      <soap:operation soapAction="http://tempuri.org/IPostBoxService/getApprovalFlowRes" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getDocumentStatus">
+      <soap:operation soapAction="http://tempuri.org/IPostBoxService/getDocumentStatus" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getDocumentStatusEx">
+      <soap:operation soapAction="http://tempuri.org/IPostBoxService/getDocumentStatusEx" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getEArchiveXslt">
+      <soap:operation soapAction="http://tempuri.org/IPostBoxService/getEArchiveXslt" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getInvoiceApplicationResponse">
+      <soap:operation soapAction="http://tempuri.org/IPostBoxService/getInvoiceApplicationResponse" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getInvoiceResponseData">
+      <soap:operation soapAction="http://tempuri.org/IPostBoxService/getInvoiceResponseData" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="setApplicationResponseOption">
+      <soap:operation soapAction="http://tempuri.org/IPostBoxService/setApplicationResponseOption" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getEArchiveInvoicePdfData">
+      <soap:operation soapAction="http://tempuri.org/IPostBoxService/getEArchiveInvoicePdfData" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getDocumentData">
+      <soap:operation soapAction="http://tempuri.org/IPostBoxService/getDocumentData" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getReconciliationList">
+      <soap:operation soapAction="http://tempuri.org/IPostBoxService/getReconciliationList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="sendReconciliationReport">
+      <soap:operation soapAction="http://tempuri.org/IPostBoxService/sendReconciliationReport" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="createElementId">
+      <soap:operation soapAction="http://tempuri.org/IPostBoxService/createElementId" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="cancelEArchiveInvoice">
+      <soap:operation soapAction="http://tempuri.org/IPostBoxService/cancelEArchiveInvoice" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendEArchiveListForReconcilition">
+      <soap:operation soapAction="http://tempuri.org/IPostBoxService/SendEArchiveListForReconcilition" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendDocument">
+      <soap:operation soapAction="http://tempuri.org/IPostBoxService/SendDocument" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDocument">
+      <soap:operation soapAction="http://tempuri.org/IPostBoxService/GetDocument" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDocumentDone">
+      <soap:operation soapAction="http://tempuri.org/IPostBoxService/GetDocumentDone" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDocumentStatus">
+      <soap:operation soapAction="http://tempuri.org/IPostBoxService/GetDocumentStatus" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDocumentData">
+      <soap:operation soapAction="http://tempuri.org/IPostBoxService/GetDocumentData" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDocumentList">
+      <soap:operation soapAction="http://tempuri.org/IPostBoxService/GetDocumentList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetValidateGIBUser">
+      <soap:operation soapAction="http://tempuri.org/IPostBoxService/GetValidateGIBUser" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CheckGibUser">
+      <soap:operation soapAction="http://tempuri.org/IPostBoxService/CheckGibUser" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="PostBoxServiceEndpoint1" type="tns:IPostBoxService">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="Ping">
+      <soap:operation soapAction="http://tempuri.org/IPostBoxService/Ping" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ALive">
+      <soap:operation soapAction="http://tempuri.org/IPostBoxService/ALive" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Login">
+      <soap:operation soapAction="http://tempuri.org/IPostBoxService/Login" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Logout">
+      <soap:operation soapAction="http://tempuri.org/IPostBoxService/Logout" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="sendEnvelope">
+      <soap:operation soapAction="http://tempuri.org/IPostBoxService/sendEnvelope" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="sendInvoice">
+      <soap:operation soapAction="http://tempuri.org/IPostBoxService/sendInvoice" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="sendApplicationResponse">
+      <soap:operation soapAction="http://tempuri.org/IPostBoxService/sendApplicationResponse" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="sendEnvelopeEx">
+      <soap:operation soapAction="http://tempuri.org/IPostBoxService/sendEnvelopeEx" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="sendInvoiceEx">
+      <soap:operation soapAction="http://tempuri.org/IPostBoxService/sendInvoiceEx" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="sendSignedInvoice">
+      <soap:operation soapAction="http://tempuri.org/IPostBoxService/sendSignedInvoice" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="sendApplicationResponseEx">
+      <soap:operation soapAction="http://tempuri.org/IPostBoxService/sendApplicationResponseEx" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="sendEArchiveDocument">
+      <soap:operation soapAction="http://tempuri.org/IPostBoxService/sendEArchiveDocument" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="receiveDocument">
+      <soap:operation soapAction="http://tempuri.org/IPostBoxService/receiveDocument" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="receiveDone">
+      <soap:operation soapAction="http://tempuri.org/IPostBoxService/receiveDone" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="receiveInvoice">
+      <soap:operation soapAction="http://tempuri.org/IPostBoxService/receiveInvoice" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="receiveInvoiceDone">
+      <soap:operation soapAction="http://tempuri.org/IPostBoxService/receiveInvoiceDone" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="receiveApplicationResponse">
+      <soap:operation soapAction="http://tempuri.org/IPostBoxService/receiveApplicationResponse" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="receiveApplicationResponseDone">
+      <soap:operation soapAction="http://tempuri.org/IPostBoxService/receiveApplicationResponseDone" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getApplicationResponse">
+      <soap:operation soapAction="http://tempuri.org/IPostBoxService/getApplicationResponse" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getInvoiceStatus">
+      <soap:operation soapAction="http://tempuri.org/IPostBoxService/getInvoiceStatus" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAppRespStatus">
+      <soap:operation soapAction="http://tempuri.org/IPostBoxService/getAppRespStatus" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getEnvelopeList">
+      <soap:operation soapAction="http://tempuri.org/IPostBoxService/getEnvelopeList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getEnvelope">
+      <soap:operation soapAction="http://tempuri.org/IPostBoxService/getEnvelope" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getInvoiceList">
+      <soap:operation soapAction="http://tempuri.org/IPostBoxService/getInvoiceList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getInvoice">
+      <soap:operation soapAction="http://tempuri.org/IPostBoxService/getInvoice" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getUserList">
+      <soap:operation soapAction="http://tempuri.org/IPostBoxService/getUserList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getUserListNew">
+      <soap:operation soapAction="http://tempuri.org/IPostBoxService/getUserListNew" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getApprovalFlowList">
+      <soap:operation soapAction="http://tempuri.org/IPostBoxService/getApprovalFlowList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="setApprovalFlowId">
+      <soap:operation soapAction="http://tempuri.org/IPostBoxService/setApprovalFlowId" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getApprovalFlowRes">
+      <soap:operation soapAction="http://tempuri.org/IPostBoxService/getApprovalFlowRes" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getDocumentStatus">
+      <soap:operation soapAction="http://tempuri.org/IPostBoxService/getDocumentStatus" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getDocumentStatusEx">
+      <soap:operation soapAction="http://tempuri.org/IPostBoxService/getDocumentStatusEx" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getEArchiveXslt">
+      <soap:operation soapAction="http://tempuri.org/IPostBoxService/getEArchiveXslt" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getInvoiceApplicationResponse">
+      <soap:operation soapAction="http://tempuri.org/IPostBoxService/getInvoiceApplicationResponse" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getInvoiceResponseData">
+      <soap:operation soapAction="http://tempuri.org/IPostBoxService/getInvoiceResponseData" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="setApplicationResponseOption">
+      <soap:operation soapAction="http://tempuri.org/IPostBoxService/setApplicationResponseOption" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getEArchiveInvoicePdfData">
+      <soap:operation soapAction="http://tempuri.org/IPostBoxService/getEArchiveInvoicePdfData" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getDocumentData">
+      <soap:operation soapAction="http://tempuri.org/IPostBoxService/getDocumentData" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getReconciliationList">
+      <soap:operation soapAction="http://tempuri.org/IPostBoxService/getReconciliationList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="sendReconciliationReport">
+      <soap:operation soapAction="http://tempuri.org/IPostBoxService/sendReconciliationReport" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="createElementId">
+      <soap:operation soapAction="http://tempuri.org/IPostBoxService/createElementId" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="cancelEArchiveInvoice">
+      <soap:operation soapAction="http://tempuri.org/IPostBoxService/cancelEArchiveInvoice" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendEArchiveListForReconcilition">
+      <soap:operation soapAction="http://tempuri.org/IPostBoxService/SendEArchiveListForReconcilition" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendDocument">
+      <soap:operation soapAction="http://tempuri.org/IPostBoxService/SendDocument" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDocument">
+      <soap:operation soapAction="http://tempuri.org/IPostBoxService/GetDocument" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDocumentDone">
+      <soap:operation soapAction="http://tempuri.org/IPostBoxService/GetDocumentDone" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDocumentStatus">
+      <soap:operation soapAction="http://tempuri.org/IPostBoxService/GetDocumentStatus" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDocumentData">
+      <soap:operation soapAction="http://tempuri.org/IPostBoxService/GetDocumentData" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDocumentList">
+      <soap:operation soapAction="http://tempuri.org/IPostBoxService/GetDocumentList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetValidateGIBUser">
+      <soap:operation soapAction="http://tempuri.org/IPostBoxService/GetValidateGIBUser" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CheckGibUser">
+      <soap:operation soapAction="http://tempuri.org/IPostBoxService/CheckGibUser" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="PostBoxService">
+    <wsdl:port name="PostBoxServiceEndpoint" binding="tns:PostBoxServiceEndpoint">
+      <soap:address location="https://pb.diyalogo.com.tr/PostBoxService.svc" />
+    </wsdl:port>
+    <wsdl:port name="PostBoxServiceEndpoint1" binding="tns:PostBoxServiceEndpoint1">
+      <soap:address location="http://pb.elogo.com.tr/PostBoxService.svc" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

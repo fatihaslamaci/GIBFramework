@@ -64,10 +64,6 @@
       <Project>{66987639-5217-4631-a056-95df83fa8a97}</Project>
       <Name>GIBInterface</Name>
     </ProjectReference>
-    <ProjectReference Include="..\GIBProviders\GIBProviders.csproj">
-      <Project>{009a3339-1bc5-4b69-9a35-fccee9da474b}</Project>
-      <Name>GIBProviders</Name>
-    </ProjectReference>
     <ProjectReference Include="..\SahteEntegrator\SahteEntegrator.csproj">
       <Project>{6f2a7c3e-902a-4338-a10f-e6b0a5660882}</Project>
       <Name>SahteEntegrator</Name>
