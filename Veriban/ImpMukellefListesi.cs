@@ -1,9 +1,27 @@
-﻿using System;
+﻿using GIBInterface;
+using GIBInterface.EFaturaPaketi;
+using System;
+using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Net;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace Veriban
 {
+    public partial class VeribanEFatura : IMukellefListesi
+    {
+        public UserList GetUserList()
+        {
+            FtpInfo ftpInfo = new FtpInfo();
+            ftpInfo.UserName = Settings["ftp_UserName"];
+            ftpInfo.Password = Settings["ftp_Password"];
+            ftpInfo.Adress = Settings["ftp_Adress"];
+
+            return MukellefListesi.GetUserList(ftpInfo, "");
+        }
+    }
 
 
     public class FtpInfo
@@ -55,4 +73,6 @@ namespace Veriban
             return "GIBUserList" + now.ToString("yyyyMMdd") + ".xml";
         }
     }
+
+
 }

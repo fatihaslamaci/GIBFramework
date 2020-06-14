@@ -48,9 +48,12 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
-    <Compile Include="EFatura.cs" />
+    <Compile Include="VeribanEFatura.cs" />
     <Compile Include="ImpEFatura.cs" />
-    <Compile Include="MukellefListesi.cs" />
+    <Compile Include="ImpFaturaDurumuSorgula.cs" />
+    <Compile Include="ImpLogin.cs" />
+    <Compile Include="ImpMukellefListesi.cs" />
+    <Compile Include="ImpSettings.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

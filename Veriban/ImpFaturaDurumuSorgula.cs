@@ -7,17 +7,11 @@ using System.Threading.Tasks;
 
 namespace Veriban
 {
-    public partial class VeribanEFatura : IEFatura
+    public partial class VeribanEFatura : IFaturaDurumuSorgula
     {
-        public string ProviderId()
-        {
-            return "Veriban";
-        }
-
-        public SendResult SendInvoice(SendParameters SendParameters)
+        public List<QueryStatusResponse> InvoiceStatus(List<QueryStatusParameters> SendParameters)
         {
             throw new NotImplementedException();
         }
-
     }
 }

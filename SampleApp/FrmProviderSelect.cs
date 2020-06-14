@@ -54,7 +54,7 @@ namespace SampleApp
 
                     if (cbProviders.SelectedItem.ToString() == "Veriban")
                     {
-                        AktiveProvider = new Veriban.EFatura();
+                        AktiveProvider = new Veriban.VeribanEFatura();
                     }
                     if (cbProviders.SelectedItem.ToString() == "Logo")
                     {
