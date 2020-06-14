@@ -49,6 +49,7 @@
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
     <Compile Include="EFatura.cs" />
+    <Compile Include="ImpEFatura.cs" />
     <Compile Include="MukellefListesi.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

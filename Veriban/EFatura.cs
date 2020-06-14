@@ -7,7 +7,7 @@ using System.ServiceModel.Channels;
 
 namespace Veriban
 {
-    public class EFatura : IEFatura, ISettings, IMukellefListesi, ILogin, IDisposable
+    public partial class EFatura : ISettings, IMukellefListesi, ILogin, IDisposable
     {
         private ServiceVeriban.TransferDocumentServiceClient _service;
 
@@ -116,16 +116,6 @@ namespace Veriban
         public void LoadToken(string Token)
         {
             SessionID = Token;
-        }
-
-        public SendResult SendInvoice(SendParameters SendParameters)
-        {
-            throw new NotImplementedException();
-        }
-
-        public string ProviderId()
-        {
-            return "Veriban";
         }
 
         public string TokenId()
