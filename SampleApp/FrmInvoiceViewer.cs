@@ -81,14 +81,9 @@ namespace SampleApp
             DialogResult = DialogResult.OK;
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void btnXsltAdding_Click(object sender, EventArgs e)
         {
-            OpenFileDialog openFileDialog1 = new OpenFileDialog
+            using (OpenFileDialog openFileDialog1 = new OpenFileDialog()
             {
                 InitialDirectory = @"C:\",
                 Title = "Browse Text Files",
@@ -103,28 +98,30 @@ namespace SampleApp
 
                 ReadOnlyChecked = true,
                 ShowReadOnly = true
-            };
-
-            if (openFileDialog1.ShowDialog() == DialogResult.OK)
+            })
             {
-                var res = openFileDialog1.FileName;
-            }
 
-            try
-            {
-                byte[] readText = File.ReadAllBytes(openFileDialog1.FileName);
-                using (var fs = new FileStream(".\\xslt\\" + Path.GetFileName(openFileDialog1.FileName), FileMode.Create, FileAccess.Write))
+                if (openFileDialog1.ShowDialog() == DialogResult.OK)
                 {
-                    fs.Write(readText, 0, readText.Length);
+                    var res = openFileDialog1.FileName;
+                }
+
+                try
+                {
+                    byte[] readText = File.ReadAllBytes(openFileDialog1.FileName);
+                    using (var fs = new FileStream(".\\xslt\\" + Path.GetFileName(openFileDialog1.FileName), FileMode.Create, FileAccess.Write))
+                    {
+                        fs.Write(readText, 0, readText.Length);
+
+                    }
+                    cbXsltFileName.Items.Clear();
+                    FrmInvoiceViewer_Load(sender, e);
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine("Exception caught in process: {0}", ex.Message);
 
                 }
-                cbXsltFileName.Items.Clear();
-                FrmInvoiceViewer_Load(sender, e);
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine("Exception caught in process: {0}", ex.Message);
-
             }
         }
     }
