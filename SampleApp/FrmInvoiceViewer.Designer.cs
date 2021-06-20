@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
+            this.btnXsltAdding = new System.Windows.Forms.Button();
             this.cbXsltFileName = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
@@ -36,11 +37,11 @@
             this.tabPageHTML = new System.Windows.Forms.TabPage();
             this.webBrowserHTML = new System.Windows.Forms.WebBrowser();
             this.tabPageXML = new System.Windows.Forms.TabPage();
+            this.webBrowserXML = new System.Windows.Forms.WebBrowser();
             this.tabPageTxt = new System.Windows.Forms.TabPage();
+            this.txbUBLText = new System.Windows.Forms.TextBox();
             this.panel2 = new System.Windows.Forms.Panel();
             this.btnOk = new System.Windows.Forms.Button();
-            this.webBrowserXML = new System.Windows.Forms.WebBrowser();
-            this.txbUBLText = new System.Windows.Forms.TextBox();
             this.panel1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPageHTML.SuspendLayout();
@@ -51,6 +52,7 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.btnXsltAdding);
             this.panel1.Controls.Add(this.cbXsltFileName);
             this.panel1.Controls.Add(this.label2);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
@@ -58,6 +60,16 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(800, 54);
             this.panel1.TabIndex = 0;
+            // 
+            // btnXsltAdding
+            // 
+            this.btnXsltAdding.Location = new System.Drawing.Point(226, 25);
+            this.btnXsltAdding.Name = "btnXsltAdding";
+            this.btnXsltAdding.Size = new System.Drawing.Size(75, 23);
+            this.btnXsltAdding.TabIndex = 6;
+            this.btnXsltAdding.Text = "Görsel Ekle";
+            this.btnXsltAdding.UseVisualStyleBackColor = true;
+            this.btnXsltAdding.Click += new System.EventHandler(this.btnXsltAdding_Click);
             // 
             // cbXsltFileName
             // 
@@ -110,8 +122,8 @@
             // 
             // webBrowserHTML
             // 
-            this.webBrowserHTML.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
+            this.webBrowserHTML.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+            | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right)));
             this.webBrowserHTML.Location = new System.Drawing.Point(0, 6);
             this.webBrowserHTML.MinimumSize = new System.Drawing.Size(20, 20);
@@ -131,6 +143,18 @@
             this.tabPageXML.Text = "XML";
             this.tabPageXML.UseVisualStyleBackColor = true;
             // 
+            // webBrowserXML
+            // 
+            this.webBrowserXML.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+            | System.Windows.Forms.AnchorStyles.Left)
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.webBrowserXML.Location = new System.Drawing.Point(3, 6);
+            this.webBrowserXML.MinimumSize = new System.Drawing.Size(20, 20);
+            this.webBrowserXML.Name = "webBrowserXML";
+            this.webBrowserXML.ScriptErrorsSuppressed = true;
+            this.webBrowserXML.Size = new System.Drawing.Size(786, 292);
+            this.webBrowserXML.TabIndex = 2;
+            // 
             // tabPageTxt
             // 
             this.tabPageTxt.Controls.Add(this.txbUBLText);
@@ -141,6 +165,18 @@
             this.tabPageTxt.TabIndex = 2;
             this.tabPageTxt.Text = "TXT";
             this.tabPageTxt.UseVisualStyleBackColor = true;
+            // 
+            // txbUBLText
+            // 
+            this.txbUBLText.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+            | System.Windows.Forms.AnchorStyles.Left)
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txbUBLText.Location = new System.Drawing.Point(8, 6);
+            this.txbUBLText.Multiline = true;
+            this.txbUBLText.Name = "txbUBLText";
+            this.txbUBLText.ScrollBars = System.Windows.Forms.ScrollBars.Both;
+            this.txbUBLText.Size = new System.Drawing.Size(776, 292);
+            this.txbUBLText.TabIndex = 0;
             // 
             // panel2
             // 
@@ -160,30 +196,6 @@
             this.btnOk.Text = "Tamam";
             this.btnOk.UseVisualStyleBackColor = true;
             this.btnOk.Click += new System.EventHandler(this.btnOk_Click);
-            // 
-            // webBrowserXML
-            // 
-            this.webBrowserXML.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.webBrowserXML.Location = new System.Drawing.Point(3, 6);
-            this.webBrowserXML.MinimumSize = new System.Drawing.Size(20, 20);
-            this.webBrowserXML.Name = "webBrowserXML";
-            this.webBrowserXML.ScriptErrorsSuppressed = true;
-            this.webBrowserXML.Size = new System.Drawing.Size(786, 292);
-            this.webBrowserXML.TabIndex = 2;
-            // 
-            // txbUBLText
-            // 
-            this.txbUBLText.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.txbUBLText.Location = new System.Drawing.Point(8, 6);
-            this.txbUBLText.Multiline = true;
-            this.txbUBLText.Name = "txbUBLText";
-            this.txbUBLText.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.txbUBLText.Size = new System.Drawing.Size(776, 292);
-            this.txbUBLText.TabIndex = 0;
             // 
             // FrmInvoiceViewer
             // 
@@ -227,5 +239,6 @@
         private System.Windows.Forms.Button btnOk;
         private System.Windows.Forms.WebBrowser webBrowserXML;
         private System.Windows.Forms.TextBox txbUBLText;
+        private System.Windows.Forms.Button btnXsltAdding;
     }
 }
