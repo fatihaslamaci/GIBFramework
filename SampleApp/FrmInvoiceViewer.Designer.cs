@@ -42,6 +42,7 @@
             this.txbUBLText = new System.Windows.Forms.TextBox();
             this.panel2 = new System.Windows.Forms.Panel();
             this.btnOk = new System.Windows.Forms.Button();
+            this.btnEsmmXsltTest = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPageHTML.SuspendLayout();
@@ -52,6 +53,7 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.btnEsmmXsltTest);
             this.panel1.Controls.Add(this.btnXsltAdding);
             this.panel1.Controls.Add(this.cbXsltFileName);
             this.panel1.Controls.Add(this.label2);
@@ -122,8 +124,8 @@
             // 
             // webBrowserHTML
             // 
-            this.webBrowserHTML.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-            | System.Windows.Forms.AnchorStyles.Left)
+            this.webBrowserHTML.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.webBrowserHTML.Location = new System.Drawing.Point(0, 6);
             this.webBrowserHTML.MinimumSize = new System.Drawing.Size(20, 20);
@@ -145,8 +147,8 @@
             // 
             // webBrowserXML
             // 
-            this.webBrowserXML.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-            | System.Windows.Forms.AnchorStyles.Left)
+            this.webBrowserXML.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.webBrowserXML.Location = new System.Drawing.Point(3, 6);
             this.webBrowserXML.MinimumSize = new System.Drawing.Size(20, 20);
@@ -168,8 +170,8 @@
             // 
             // txbUBLText
             // 
-            this.txbUBLText.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-            | System.Windows.Forms.AnchorStyles.Left)
+            this.txbUBLText.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txbUBLText.Location = new System.Drawing.Point(8, 6);
             this.txbUBLText.Multiline = true;
@@ -196,6 +198,16 @@
             this.btnOk.Text = "Tamam";
             this.btnOk.UseVisualStyleBackColor = true;
             this.btnOk.Click += new System.EventHandler(this.btnOk_Click);
+            // 
+            // btnEsmmXsltTest
+            // 
+            this.btnEsmmXsltTest.Location = new System.Drawing.Point(519, 25);
+            this.btnEsmmXsltTest.Name = "btnEsmmXsltTest";
+            this.btnEsmmXsltTest.Size = new System.Drawing.Size(138, 23);
+            this.btnEsmmXsltTest.TabIndex = 7;
+            this.btnEsmmXsltTest.Text = "btnEsmmXsltTest";
+            this.btnEsmmXsltTest.UseVisualStyleBackColor = true;
+            this.btnEsmmXsltTest.Click += new System.EventHandler(this.btnEsmmXsltTest_Click);
             // 
             // FrmInvoiceViewer
             // 
@@ -240,5 +252,6 @@
         private System.Windows.Forms.WebBrowser webBrowserXML;
         private System.Windows.Forms.TextBox txbUBLText;
         private System.Windows.Forms.Button btnXsltAdding;
+        private System.Windows.Forms.Button btnEsmmXsltTest;
     }
 }

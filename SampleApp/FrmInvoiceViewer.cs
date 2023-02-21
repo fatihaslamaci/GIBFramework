@@ -124,5 +124,20 @@ namespace SampleApp
                 }
             }
         }
+
+        private void btnEsmmXsltTest_Click(object sender, EventArgs e)
+        {
+
+            var xml = File.ReadAllText("C:\\esmm\\xml.xml",Encoding.UTF8);
+            var xslt = File.ReadAllText("C:\\esmm\\xsltCustom.xslt", Encoding.UTF8);
+
+
+
+            webBrowserHTML.DocumentText = GIBFramework.InvoiceTransform.TransformXMLToHTML(xml, xslt);
+            webBrowserXML.DocumentText = xml;
+            txbUBLText.Text =xml;
+
+
+        }
     }
 }
