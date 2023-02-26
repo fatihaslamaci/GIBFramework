@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<configurationSnapshot xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="urn:schemas-microsoft-com:xml-wcfconfigurationsnapshot">
+  <behaviors />
+  <bindings>
+    <binding digest="System.ServiceModel.Configuration.BasicHttpBindingElement, System.ServiceModel, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089:&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-16&quot;?&gt;&lt;Data name=&quot;BasicHttpBinding_IVoucherIntegration&quot;&gt;&lt;security mode=&quot;TransportWithMessageCredential&quot; /&gt;&lt;/Data&gt;" bindingType="basicHttpBinding" name="BasicHttpBinding_IVoucherIntegration" />
+  </bindings>
+  <endpoints>
+    <endpoint normalizedDigest="&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-16&quot;?&gt;&lt;Data address=&quot;https://efatura-test.uyumsoft.com.tr/Services/VoucherIntegration&quot; binding=&quot;basicHttpBinding&quot; bindingConfiguration=&quot;BasicHttpBinding_IVoucherIntegration&quot; contract=&quot;ServiceUyumsoftVoucher.IVoucherIntegration&quot; name=&quot;BasicHttpBinding_IVoucherIntegration&quot; /&gt;" digest="&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-16&quot;?&gt;&lt;Data address=&quot;https://efatura-test.uyumsoft.com.tr/Services/VoucherIntegration&quot; binding=&quot;basicHttpBinding&quot; bindingConfiguration=&quot;BasicHttpBinding_IVoucherIntegration&quot; contract=&quot;ServiceUyumsoftVoucher.IVoucherIntegration&quot; name=&quot;BasicHttpBinding_IVoucherIntegration&quot; /&gt;" contractName="ServiceUyumsoftVoucher.IVoucherIntegration" name="BasicHttpBinding_IVoucherIntegration" />
+  </endpoints>
+</configurationSnapshot>

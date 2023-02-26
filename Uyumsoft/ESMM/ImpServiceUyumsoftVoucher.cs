@@ -1,21 +1,22 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.ServiceModel;
 using System.Text;
-using Uyumsoft.ServiceUyumsoft;
+using System.Threading.Tasks;
 
-namespace Uyumsoft
+namespace Uyumsoft.ESMM
 {
-    public class ImpUyumsoftService : IUyumsoftService, IDisposable
+    public class ImpServiceUyumsoftVoucher : IServiceUyumsoftVoucher, IDisposable
     {
 
-        internal ServiceUyumsoft.IntegrationClient _service;
+        internal ServiceUyumsoftVoucher.VoucherIntegrationClient _service;
 
         protected virtual void Dispose(bool disposing)
         {
             if (disposing)
             {
-               
+                
             }
         }
 
@@ -25,7 +26,7 @@ namespace Uyumsoft
             GC.SuppressFinalize(this);
         }
 
-        public ServiceUyumsoft.IntegrationClient service
+        public ServiceUyumsoftVoucher.VoucherIntegrationClient service
         {
             get
             {
@@ -46,40 +47,31 @@ namespace Uyumsoft
 
                     var endpoint = new EndpointAddress(Uri);
 
-                    _service = new ServiceUyumsoft.IntegrationClient(binding, endpoint);
+                    _service = new ServiceUyumsoftVoucher.VoucherIntegrationClient(binding, endpoint);
                     var UserName = settings.Settings["UserName"];
                     var Password = settings.Settings["Password"];
                     _service.ClientCredentials.UserName.UserName = UserName;
                     _service.ClientCredentials.UserName.Password = Password;
                 }
                 return _service;
+
+                
             }
 
         }
 
         GIBInterface.ISettings settings;
-        public ImpUyumsoftService(GIBInterface.ISettings settings)
+        public ImpServiceUyumsoftVoucher(GIBInterface.ISettings settings)
         {
             this.settings = settings;
         }
 
 
-        public ByteArrayResponse GetSystemUsersCompressedList(AliasType type)
+        public ServiceUyumsoftVoucher.DocumentIdentityResponse SendVoucher(ServiceUyumsoftVoucher.VoucherSource[] vouchers)
         {
-            return service.GetSystemUsersCompressedList(type);
+            return service.SendVoucher(vouchers);
         }
 
-        public InvoiceStatusResponse QueryOutboxInvoiceStatus(string[] invoiceIds)
-        {
-            return service.QueryOutboxInvoiceStatus(invoiceIds);
-
-        }
-
-        public InvoiceIdentitiesResponse SendInvoice(InvoiceInfo[] invoices)
-        {
-            return service.SendInvoice(invoices);
-        }
-       
 
     }
 }

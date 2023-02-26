@@ -71,6 +71,9 @@ namespace GIBInterface
         public List<InvoiceInfo> InvoicesInfo { get; set; }
     }
 
+   
+
+
     public class SendResult
     {
         public bool IsSucceded { get; set; }
@@ -79,6 +82,9 @@ namespace GIBInterface
         public string Error { get; set; }
         public object ErrorDetail { get; set; }
     }
+
+   
+
 
     public class ResultInvoice
     {

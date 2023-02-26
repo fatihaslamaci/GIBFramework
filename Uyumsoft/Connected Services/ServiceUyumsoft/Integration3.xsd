@@ -23,17 +23,17 @@
       <xs:extension xmlns:q2="urn:oasis:names:specification:ubl:schema:xsd:UnqualifiedDataTypes-2" base="q2:IdentifierType" />
     </xs:complexContent>
   </xs:complexType>
-  <xs:complexType name="ExtensionURIType">
+  <xs:complexType name="ExtensionAgencyIDType">
     <xs:complexContent mixed="false">
       <xs:extension xmlns:q3="urn:oasis:names:specification:ubl:schema:xsd:UnqualifiedDataTypes-2" base="q3:IdentifierType" />
     </xs:complexContent>
   </xs:complexType>
-  <xs:complexType name="ExtensionAgencyIDType">
+  <xs:complexType name="ExtensionAgencyURIType">
     <xs:complexContent mixed="false">
       <xs:extension xmlns:q4="urn:oasis:names:specification:ubl:schema:xsd:UnqualifiedDataTypes-2" base="q4:IdentifierType" />
     </xs:complexContent>
   </xs:complexType>
-  <xs:complexType name="ExtensionAgencyURIType">
+  <xs:complexType name="ExtensionURIType">
     <xs:complexContent mixed="false">
       <xs:extension xmlns:q5="urn:oasis:names:specification:ubl:schema:xsd:UnqualifiedDataTypes-2" base="q5:IdentifierType" />
     </xs:complexContent>

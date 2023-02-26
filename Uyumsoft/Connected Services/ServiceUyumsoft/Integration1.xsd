@@ -247,9 +247,16 @@
       <xs:enumeration value="VoucherCancelEmailBody" />
       <xs:enumeration value="ProducerReceipt" />
       <xs:enumeration value="InboxInvoiceEmailBody" />
-      <xs:enumeration value="SmsBody" />
       <xs:enumeration value="ProducerReceiptEmailBody" />
       <xs:enumeration value="ProducerReceiptCancelEmailBody" />
+      <xs:enumeration value="SmsBody" />
+      <xs:enumeration value="OutboxDespatchEmailBody" />
+      <xs:enumeration value="OutboxDespatchCancelEmailBody" />
+      <xs:enumeration value="InboxDespatchEmailBody" />
+      <xs:enumeration value="ReconciliationRecordMail" />
+      <xs:enumeration value="GuestCheck" />
+      <xs:enumeration value="ForeignExchangeSale" />
+      <xs:enumeration value="ForeignExchangeBuy" />
     </xs:restriction>
   </xs:simpleType>
   <xs:element name="SetXsltViewResponse">
@@ -478,6 +485,7 @@
           <xs:element minOccurs="0" maxOccurs="unbounded" name="StatusNotInList" type="tns:InvoiceStatus" />
           <xs:element minOccurs="1" maxOccurs="1" name="SortColumn" nillable="true" type="tns:InvoiceListSortingColumn" />
           <xs:element minOccurs="1" maxOccurs="1" name="SortMode" nillable="true" type="tns:QuerySortMode" />
+          <xs:element minOccurs="1" maxOccurs="1" name="IsArchived" nillable="true" type="xs:boolean" />
         </xs:sequence>
       </xs:extension>
     </xs:complexContent>
@@ -578,6 +586,8 @@
       <xs:element minOccurs="1" maxOccurs="1" name="Vat18TaxableAmount" type="xs:decimal" />
       <xs:element minOccurs="0" maxOccurs="1" name="OrderDocumentId" type="xs:string" />
       <xs:element minOccurs="1" maxOccurs="1" name="IsArchived" type="xs:boolean" />
+      <xs:element minOccurs="1" maxOccurs="1" name="InvoiceTipType" type="tns:InvoiceTipType" />
+      <xs:element minOccurs="1" maxOccurs="1" name="InvoiceTipTypeCode" type="xs:int" />
     </xs:sequence>
   </xs:complexType>
   <xs:simpleType name="InvoiceTypes">
@@ -588,6 +598,7 @@
       <xs:enumeration value="Export" />
       <xs:enumeration value="eArchive" />
       <xs:enumeration value="Hks" />
+      <xs:enumeration value="PublicAdministration" />
     </xs:restriction>
   </xs:simpleType>
   <xs:simpleType name="EnvelopeStatus">
@@ -632,6 +643,22 @@
       <xs:enumeration value="InvoiceLinkedToCancel" />
       <xs:enumeration value="CompletedSuccessfully" />
       <xs:enumeration value="CouldNotFindEnvelopeId" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="InvoiceTipType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Sales" />
+      <xs:enumeration value="Return" />
+      <xs:enumeration value="Tax" />
+      <xs:enumeration value="Exception" />
+      <xs:enumeration value="TaxBase" />
+      <xs:enumeration value="ExportSaved" />
+      <xs:enumeration value="Sgk" />
+      <xs:enumeration value="Broker" />
+      <xs:enumeration value="HksSales" />
+      <xs:enumeration value="HksBroker" />
+      <xs:enumeration value="WithholdingReturn" />
+      <xs:enumeration value="Accomodation" />
     </xs:restriction>
   </xs:simpleType>
   <xs:element name="GetInboxInvoice">
@@ -1553,6 +1580,8 @@
     <xs:sequence>
       <xs:element minOccurs="0" maxOccurs="1" name="User" type="tns:UserShortInfo" />
       <xs:element minOccurs="0" maxOccurs="1" name="Customer" type="tns:CustomerWithoutServiceInformation" />
+      <xs:element minOccurs="0" maxOccurs="1" name="Company" type="tns:CompanyBaseEntity" />
+      <xs:element minOccurs="0" maxOccurs="1" name="Services" type="tns:CustomerServiceInformation" />
     </xs:sequence>
   </xs:complexType>
   <xs:complexType name="UserShortInfo">
@@ -1593,6 +1622,8 @@
           <xs:element minOccurs="0" maxOccurs="1" name="ContactPhone" type="xs:string" />
           <xs:element minOccurs="0" maxOccurs="1" name="ContactEmail" type="xs:string" />
           <xs:element minOccurs="1" maxOccurs="1" name="ParentCustomer" type="xs:int" />
+          <xs:element minOccurs="1" maxOccurs="1" name="SourceType" type="xs:int" />
+          <xs:element minOccurs="1" maxOccurs="1" name="SourceTypeEnum" type="tns:CustomerSourceType" />
         </xs:sequence>
       </xs:extension>
     </xs:complexContent>
@@ -1609,4 +1640,85 @@
       <xs:enumeration value="Private" />
     </xs:restriction>
   </xs:simpleType>
+  <xs:simpleType name="CustomerSourceType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Default" />
+      <xs:enumeration value="eBelge" />
+      <xs:enumeration value="Hepsiburada" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:complexType name="CompanyBaseEntity">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:EntityUpdatedHistory">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="1" name="BranchName" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="BranchNo" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="BusinessDescription" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="Email" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="FaxNumber" type="xs:string" />
+          <xs:element minOccurs="1" maxOccurs="1" name="FiscalYearMonth" type="xs:int" />
+          <xs:element minOccurs="0" maxOccurs="1" name="PhoneNumber" type="xs:string" />
+          <xs:element minOccurs="1" maxOccurs="1" name="PhoneTypeEnum" type="tns:PhoneType" />
+          <xs:element minOccurs="1" maxOccurs="1" name="LedgerStartDate" nillable="true" type="xs:dateTime" />
+          <xs:element minOccurs="1" maxOccurs="1" name="LedgerMasterCounter" type="xs:int" />
+          <xs:element minOccurs="1" maxOccurs="1" name="LedgerDetailCounter" type="xs:int" />
+          <xs:element minOccurs="1" maxOccurs="1" name="LedgerDocumentId" type="xs:int" />
+          <xs:element minOccurs="1" maxOccurs="1" name="LedgerSendingPeriod" type="xs:int" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:simpleType name="PhoneType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Bookkeeper" />
+      <xs:enumeration value="Controller" />
+      <xs:enumeration value="Direct" />
+      <xs:enumeration value="Fax" />
+      <xs:enumeration value="InvestorRelations" />
+      <xs:enumeration value="Main" />
+      <xs:enumeration value="Switchboard" />
+      <xs:enumeration value="Other" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:complexType name="CustomerServiceInformation">
+    <xs:attribute name="HasEarchive" type="xs:boolean" use="required" />
+    <xs:attribute name="HasEInvoice" type="xs:boolean" use="required" />
+    <xs:attribute name="HasELedger" type="xs:boolean" use="required" />
+    <xs:attribute name="HasETicket" type="xs:boolean" use="required" />
+    <xs:attribute name="HasVoucher" type="xs:boolean" use="required" />
+    <xs:attribute name="HasProducerReceipt" type="xs:boolean" use="required" />
+    <xs:attribute name="HasEDespatch" type="xs:boolean" use="required" />
+    <xs:attribute name="HasEGuestCheck" type="xs:boolean" use="required" />
+    <xs:attribute name="HasEForeignExchange" type="xs:boolean" use="required" />
+    <xs:attribute name="HasEGibArchive" type="xs:boolean" use="required" />
+  </xs:complexType>
+  <xs:element name="MoveToDraftStatus">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" maxOccurs="1" name="invoiceIds" type="tns:ArrayOfString" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="MoveToDraftStatusResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" maxOccurs="1" name="MoveToDraftStatusResult" type="tns:FlagResponse" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="TransferInboxInvoiceToAnotherBranch">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" maxOccurs="1" name="invoiceIds" type="tns:ArrayOfString" />
+        <xs:element minOccurs="0" maxOccurs="1" name="targetBranchAlias" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="TransferInboxInvoiceToAnotherBranchResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" maxOccurs="1" name="TransferInboxInvoiceToAnotherBranchResult" type="tns:FlagResponse" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
 </xs:schema>

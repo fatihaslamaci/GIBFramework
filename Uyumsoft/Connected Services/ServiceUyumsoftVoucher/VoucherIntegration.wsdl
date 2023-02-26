@@ -1,0 +1,307 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tns="http://tempuri.org/" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" name="VoucherIntegration" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsp:Policy wsu:Id="BasicHttpBinding_IVoucherIntegration_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:TransportBinding xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <wsp:Policy>
+            <sp:TransportToken>
+              <wsp:Policy>
+                <sp:HttpsToken RequireClientCertificate="false" />
+              </wsp:Policy>
+            </sp:TransportToken>
+            <sp:AlgorithmSuite>
+              <wsp:Policy>
+                <sp:Basic256 />
+              </wsp:Policy>
+            </sp:AlgorithmSuite>
+            <sp:Layout>
+              <wsp:Policy>
+                <sp:Lax />
+              </wsp:Policy>
+            </sp:Layout>
+            <sp:IncludeTimestamp />
+          </wsp:Policy>
+        </sp:TransportBinding>
+        <sp:SignedSupportingTokens xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <wsp:Policy>
+            <sp:UsernameToken sp:IncludeToken="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy/IncludeToken/AlwaysToRecipient">
+              <wsp:Policy>
+                <sp:WssUsernameToken10 />
+              </wsp:Policy>
+            </sp:UsernameToken>
+          </wsp:Policy>
+        </sp:SignedSupportingTokens>
+        <sp:Wss10 xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <wsp:Policy />
+        </sp:Wss10>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://tempuri.org/Imports">
+      <xsd:import schemaLocation="https://efatura-test.uyumsoft.com.tr/Services/VoucherIntegration?xsd=xsd0" namespace="http://tempuri.org/" />
+      <xsd:import schemaLocation="https://efatura-test.uyumsoft.com.tr/Services/VoucherIntegration?xsd=xsd1" namespace="urn:names:myinvoice:voucher" />
+      <xsd:import schemaLocation="https://efatura-test.uyumsoft.com.tr/Services/VoucherIntegration?xsd=xsd2" namespace="urn:names:myinvoice:domain" />
+      <xsd:import schemaLocation="https://efatura-test.uyumsoft.com.tr/Services/VoucherIntegration?xsd=xsd3" namespace="http://earsiv.efatura.gov.tr" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="IVoucherIntegration_GetSystemDate_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetSystemDate" />
+  </wsdl:message>
+  <wsdl:message name="IVoucherIntegration_GetSystemDate_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetSystemDateResponse" />
+  </wsdl:message>
+  <wsdl:message name="IVoucherIntegration_GetSystemDateWithFormat_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetSystemDateWithFormat" />
+  </wsdl:message>
+  <wsdl:message name="IVoucherIntegration_GetSystemDateWithFormat_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetSystemDateWithFormatResponse" />
+  </wsdl:message>
+  <wsdl:message name="IVoucherIntegration_SendVoucher_InputMessage">
+    <wsdl:part name="parameters" element="tns:SendVoucher" />
+  </wsdl:message>
+  <wsdl:message name="IVoucherIntegration_SendVoucher_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SendVoucherResponse" />
+  </wsdl:message>
+  <wsdl:message name="IVoucherIntegration_SaveAsDraft_InputMessage">
+    <wsdl:part name="parameters" element="tns:SaveAsDraft" />
+  </wsdl:message>
+  <wsdl:message name="IVoucherIntegration_SaveAsDraft_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SaveAsDraftResponse" />
+  </wsdl:message>
+  <wsdl:message name="IVoucherIntegration_SendDraft_InputMessage">
+    <wsdl:part name="parameters" element="tns:SendDraft" />
+  </wsdl:message>
+  <wsdl:message name="IVoucherIntegration_SendDraft_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SendDraftResponse" />
+  </wsdl:message>
+  <wsdl:message name="IVoucherIntegration_CancelDraft_InputMessage">
+    <wsdl:part name="parameters" element="tns:CancelDraft" />
+  </wsdl:message>
+  <wsdl:message name="IVoucherIntegration_CancelDraft_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CancelDraftResponse" />
+  </wsdl:message>
+  <wsdl:message name="IVoucherIntegration_GetSignedPdf_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetSignedPdf" />
+  </wsdl:message>
+  <wsdl:message name="IVoucherIntegration_GetSignedPdf_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetSignedPdfResponse" />
+  </wsdl:message>
+  <wsdl:message name="IVoucherIntegration_CancelVoucher_InputMessage">
+    <wsdl:part name="parameters" element="tns:CancelVoucher" />
+  </wsdl:message>
+  <wsdl:message name="IVoucherIntegration_CancelVoucher_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CancelVoucherResponse" />
+  </wsdl:message>
+  <wsdl:message name="IVoucherIntegration_GetHtmlView_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetHtmlView" />
+  </wsdl:message>
+  <wsdl:message name="IVoucherIntegration_GetHtmlView_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetHtmlViewResponse" />
+  </wsdl:message>
+  <wsdl:message name="IVoucherIntegration_QueryVoucherStatus_InputMessage">
+    <wsdl:part name="parameters" element="tns:QueryVoucherStatus" />
+  </wsdl:message>
+  <wsdl:message name="IVoucherIntegration_QueryVoucherStatus_OutputMessage">
+    <wsdl:part name="parameters" element="tns:QueryVoucherStatusResponse" />
+  </wsdl:message>
+  <wsdl:message name="IVoucherIntegration_QueryVoucherList_InputMessage">
+    <wsdl:part name="parameters" element="tns:QueryVoucherList" />
+  </wsdl:message>
+  <wsdl:message name="IVoucherIntegration_QueryVoucherList_OutputMessage">
+    <wsdl:part name="parameters" element="tns:QueryVoucherListResponse" />
+  </wsdl:message>
+  <wsdl:message name="IVoucherIntegration_GetVoucherSource_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetVoucherSource" />
+  </wsdl:message>
+  <wsdl:message name="IVoucherIntegration_GetVoucherSource_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetVoucherSourceResponse" />
+  </wsdl:message>
+  <wsdl:message name="IVoucherIntegration_QueryVoucherStatusWithLogs_InputMessage">
+    <wsdl:part name="parameters" element="tns:QueryVoucherStatusWithLogs" />
+  </wsdl:message>
+  <wsdl:message name="IVoucherIntegration_QueryVoucherStatusWithLogs_OutputMessage">
+    <wsdl:part name="parameters" element="tns:QueryVoucherStatusWithLogsResponse" />
+  </wsdl:message>
+  <wsdl:portType msc:usingSession="false" name="IVoucherIntegration">
+    <wsdl:operation name="GetSystemDate">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICustomerServiceBase/GetSystemDate" message="tns:IVoucherIntegration_GetSystemDate_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICustomerServiceBase/GetSystemDateResponse" message="tns:IVoucherIntegration_GetSystemDate_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetSystemDateWithFormat">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICustomerServiceBase/GetSystemDateWithFormat" message="tns:IVoucherIntegration_GetSystemDateWithFormat_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICustomerServiceBase/GetSystemDateWithFormatResponse" message="tns:IVoucherIntegration_GetSystemDateWithFormat_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SendVoucher">
+      <wsdl:input wsaw:Action="http://tempuri.org/IVoucherIntegration/SendVoucher" message="tns:IVoucherIntegration_SendVoucher_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IVoucherIntegration/SendVoucherResponse" message="tns:IVoucherIntegration_SendVoucher_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SaveAsDraft">
+      <wsdl:input wsaw:Action="http://tempuri.org/IVoucherIntegration/SaveAsDraft" message="tns:IVoucherIntegration_SaveAsDraft_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IVoucherIntegration/SaveAsDraftResponse" message="tns:IVoucherIntegration_SaveAsDraft_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SendDraft">
+      <wsdl:input wsaw:Action="http://tempuri.org/IVoucherIntegration/SendDraft" message="tns:IVoucherIntegration_SendDraft_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IVoucherIntegration/SendDraftResponse" message="tns:IVoucherIntegration_SendDraft_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CancelDraft">
+      <wsdl:input wsaw:Action="http://tempuri.org/IVoucherIntegration/CancelDraft" message="tns:IVoucherIntegration_CancelDraft_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IVoucherIntegration/CancelDraftResponse" message="tns:IVoucherIntegration_CancelDraft_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetSignedPdf">
+      <wsdl:input wsaw:Action="http://tempuri.org/IVoucherIntegration/GetSignedPdf" message="tns:IVoucherIntegration_GetSignedPdf_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IVoucherIntegration/GetSignedPdfResponse" message="tns:IVoucherIntegration_GetSignedPdf_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CancelVoucher">
+      <wsdl:input wsaw:Action="http://tempuri.org/IVoucherIntegration/CancelVoucher" message="tns:IVoucherIntegration_CancelVoucher_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IVoucherIntegration/CancelVoucherResponse" message="tns:IVoucherIntegration_CancelVoucher_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetHtmlView">
+      <wsdl:input wsaw:Action="http://tempuri.org/IVoucherIntegration/GetHtmlView" message="tns:IVoucherIntegration_GetHtmlView_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IVoucherIntegration/GetHtmlViewResponse" message="tns:IVoucherIntegration_GetHtmlView_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="QueryVoucherStatus">
+      <wsdl:input wsaw:Action="http://tempuri.org/IVoucherIntegration/QueryVoucherStatus" message="tns:IVoucherIntegration_QueryVoucherStatus_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IVoucherIntegration/QueryVoucherStatusResponse" message="tns:IVoucherIntegration_QueryVoucherStatus_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="QueryVoucherList">
+      <wsdl:input wsaw:Action="http://tempuri.org/IVoucherIntegration/QueryVoucherList" message="tns:IVoucherIntegration_QueryVoucherList_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IVoucherIntegration/QueryVoucherListResponse" message="tns:IVoucherIntegration_QueryVoucherList_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetVoucherSource">
+      <wsdl:input wsaw:Action="http://tempuri.org/IVoucherIntegration/GetVoucherSource" message="tns:IVoucherIntegration_GetVoucherSource_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IVoucherIntegration/GetVoucherSourceResponse" message="tns:IVoucherIntegration_GetVoucherSource_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="QueryVoucherStatusWithLogs">
+      <wsdl:input wsaw:Action="http://tempuri.org/IVoucherIntegration/QueryVoucherStatusWithLogs" message="tns:IVoucherIntegration_QueryVoucherStatusWithLogs_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IVoucherIntegration/QueryVoucherStatusWithLogsResponse" message="tns:IVoucherIntegration_QueryVoucherStatusWithLogs_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="BasicHttpBinding_IVoucherIntegration" type="tns:IVoucherIntegration">
+    <wsp:PolicyReference URI="#BasicHttpBinding_IVoucherIntegration_policy" />
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetSystemDate">
+      <soap:operation soapAction="http://tempuri.org/ICustomerServiceBase/GetSystemDate" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetSystemDateWithFormat">
+      <soap:operation soapAction="http://tempuri.org/ICustomerServiceBase/GetSystemDateWithFormat" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendVoucher">
+      <soap:operation soapAction="http://tempuri.org/IVoucherIntegration/SendVoucher" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SaveAsDraft">
+      <soap:operation soapAction="http://tempuri.org/IVoucherIntegration/SaveAsDraft" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendDraft">
+      <soap:operation soapAction="http://tempuri.org/IVoucherIntegration/SendDraft" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CancelDraft">
+      <soap:operation soapAction="http://tempuri.org/IVoucherIntegration/CancelDraft" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetSignedPdf">
+      <soap:operation soapAction="http://tempuri.org/IVoucherIntegration/GetSignedPdf" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CancelVoucher">
+      <soap:operation soapAction="http://tempuri.org/IVoucherIntegration/CancelVoucher" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetHtmlView">
+      <soap:operation soapAction="http://tempuri.org/IVoucherIntegration/GetHtmlView" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="QueryVoucherStatus">
+      <soap:operation soapAction="http://tempuri.org/IVoucherIntegration/QueryVoucherStatus" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="QueryVoucherList">
+      <soap:operation soapAction="http://tempuri.org/IVoucherIntegration/QueryVoucherList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetVoucherSource">
+      <soap:operation soapAction="http://tempuri.org/IVoucherIntegration/GetVoucherSource" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="QueryVoucherStatusWithLogs">
+      <soap:operation soapAction="http://tempuri.org/IVoucherIntegration/QueryVoucherStatusWithLogs" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="VoucherIntegration">
+    <wsdl:port name="BasicHttpBinding_IVoucherIntegration" binding="tns:BasicHttpBinding_IVoucherIntegration">
+      <soap:address location="https://efatura-test.uyumsoft.com.tr/Services/VoucherIntegration" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

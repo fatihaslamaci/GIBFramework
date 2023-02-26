@@ -1,0 +1,396 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://tempuri.org/" elementFormDefault="qualified" targetNamespace="http://tempuri.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="https://efatura-test.uyumsoft.com.tr/Services/VoucherIntegration?xsd=xsd1" namespace="urn:names:myinvoice:voucher" />
+  <xs:import schemaLocation="https://efatura-test.uyumsoft.com.tr/Services/VoucherIntegration?xsd=xsd2" namespace="urn:names:myinvoice:domain" />
+  <xs:element name="GetSystemDate">
+    <xs:complexType />
+  </xs:element>
+  <xs:element name="GetSystemDateResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" maxOccurs="1" name="GetSystemDateResult" type="tns:DateResponse" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:complexType name="DateResponse">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:Response">
+        <xs:attribute name="Value" type="xs:dateTime" use="required" />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="Response">
+    <xs:attribute name="IsSucceded" type="xs:boolean" use="required" />
+    <xs:attribute name="Message" type="xs:string" />
+  </xs:complexType>
+  <xs:element name="GetSystemDateWithFormat">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" maxOccurs="1" name="format" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetSystemDateWithFormatResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" maxOccurs="1" name="GetSystemDateWithFormatResult" type="tns:StringResponse" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:complexType name="StringResponse">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:Response">
+        <xs:attribute name="Value" type="xs:string" />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="SendVoucher">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" maxOccurs="1" name="vouchers" type="tns:ArrayOfVoucherSource" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:complexType name="ArrayOfVoucherSource">
+    <xs:sequence>
+      <xs:element xmlns:q1="urn:names:myinvoice:voucher" minOccurs="0" maxOccurs="unbounded" name="VoucherSource" nillable="true" type="q1:VoucherSource" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="SendVoucherResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" maxOccurs="1" name="SendVoucherResult" type="tns:DocumentIdentityResponse" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:complexType name="DocumentIdentityResponse">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:Response">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="Value" type="tns:DocumentIdentity" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="DocumentIdentity">
+    <xs:attribute name="Ettn" type="xs:string" />
+    <xs:attribute name="VoucherNumber" type="xs:string" />
+  </xs:complexType>
+  <xs:element name="SaveAsDraft">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" maxOccurs="1" name="vouchers" type="tns:ArrayOfVoucherSource" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SaveAsDraftResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" maxOccurs="1" name="SaveAsDraftResult" type="tns:DocumentIdentityResponse" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SendDraft">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" maxOccurs="1" name="voucherEttns" type="tns:ArrayOfString" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:complexType name="ArrayOfString">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="string" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="SendDraftResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" maxOccurs="1" name="SendDraftResult" type="tns:FlagResponse" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:complexType name="FlagResponse">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:Response">
+        <xs:attribute name="Value" type="xs:boolean" use="required" />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="CancelDraft">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" maxOccurs="1" name="voucherEttns" type="tns:ArrayOfString" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CancelDraftResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" maxOccurs="1" name="CancelDraftResult" type="tns:FlagResponse" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetSignedPdf">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" maxOccurs="1" name="documentId" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetSignedPdfResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" maxOccurs="1" name="GetSignedPdfResult" type="tns:VoucherDataResponse" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:complexType name="VoucherDataResponse">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:Response">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="1" name="Value" type="tns:VoucherData" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="VoucherData">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:DocumentIdentity">
+        <xs:attribute name="FileData" type="xs:base64Binary" />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="CancelVoucher">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" maxOccurs="1" name="cancellationContext" type="tns:VoucherCancellationContext" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:complexType name="VoucherCancellationContext">
+    <xs:attribute name="VoucherEttn" type="xs:string" />
+    <xs:attribute name="CancelDate" type="xs:dateTime" use="required" />
+  </xs:complexType>
+  <xs:element name="CancelVoucherResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" maxOccurs="1" name="CancelVoucherResult" type="tns:FlagResponse" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetHtmlView">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" maxOccurs="1" name="documentId" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetHtmlViewResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" maxOccurs="1" name="GetHtmlViewResult" type="tns:StringResponse" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="QueryVoucherStatus">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" maxOccurs="1" name="voucherEttns" type="tns:ArrayOfString" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="QueryVoucherStatusResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" maxOccurs="1" name="QueryVoucherStatusResult" type="tns:ResponseOfListOfVoucherStatusInfo" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:complexType name="ResponseOfListOfVoucherStatusInfo">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:Response">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="Value" type="tns:VoucherStatusInfo" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="VoucherStatusInfo">
+    <xs:attribute name="VoucherEttn" type="xs:string" />
+    <xs:attribute name="Status" type="tns:VoucherStatus" use="required" />
+    <xs:attribute name="StatusCode" type="xs:int" use="required" />
+    <xs:attribute name="VoucherNumber" type="xs:string" />
+    <xs:attribute name="LocalDocumentId" type="xs:string" />
+  </xs:complexType>
+  <xs:simpleType name="VoucherStatus">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Draft" />
+      <xs:enumeration value="Canceled" />
+      <xs:enumeration value="Queued" />
+      <xs:enumeration value="Processing" />
+      <xs:enumeration value="Signed" />
+      <xs:enumeration value="EVoucherCanceled" />
+      <xs:enumeration value="Error" />
+      <xs:enumeration value="Deleted" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="QueryVoucherList">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" maxOccurs="1" name="context" type="tns:PagedVoucherFilterContext" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:complexType name="PagedVoucherFilterContext">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:FilterablePagedQueryContext">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="1" name="Identifier" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="VoucherNumber" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="TargetTitle" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="TargetVknTckn" type="xs:string" />
+          <xs:element minOccurs="1" maxOccurs="1" name="CreationSartDate" nillable="true" type="xs:dateTime" />
+          <xs:element minOccurs="1" maxOccurs="1" name="CreationEndDate" nillable="true" type="xs:dateTime" />
+          <xs:element minOccurs="1" maxOccurs="1" name="DocumentStartDate" nillable="true" type="xs:dateTime" />
+          <xs:element minOccurs="1" maxOccurs="1" name="DocumentEndDate" nillable="true" type="xs:dateTime" />
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="Statuses" type="xs:int" />
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="StatusesNot" type="xs:int" />
+          <xs:element minOccurs="1" maxOccurs="1" name="IsArchived" nillable="true" type="xs:boolean" />
+          <xs:element minOccurs="1" maxOccurs="1" name="Ascending" type="xs:boolean" />
+          <xs:element minOccurs="0" maxOccurs="1" name="SortedColumn" type="xs:string" />
+          <xs:element minOccurs="1" maxOccurs="1" name="PayableAmountBegin" nillable="true" type="xs:decimal" />
+          <xs:element minOccurs="1" maxOccurs="1" name="PayableAmountEnd" nillable="true" type="xs:decimal" />
+          <xs:element minOccurs="0" maxOccurs="1" name="Tags" type="tns:ArrayOfInt" />
+          <xs:element minOccurs="1" maxOccurs="1" name="HasNoTag" type="xs:boolean" />
+          <xs:element minOccurs="1" maxOccurs="1" name="HasAnyTag" type="xs:boolean" />
+          <xs:element minOccurs="1" maxOccurs="1" name="SortColumn" nillable="true" type="tns:VoucherListSortingColumn" />
+          <xs:element minOccurs="1" maxOccurs="1" name="SortMode" nillable="true" type="tns:QuerySortMode" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="FilterablePagedQueryContext">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:PagedQueryContext">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="1" name="Filter" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="PagedQueryContext">
+    <xs:attribute name="PageIndex" type="xs:int" use="required" />
+    <xs:attribute name="PageSize" type="xs:int" use="required" />
+  </xs:complexType>
+  <xs:complexType name="ArrayOfInt">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="int" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:simpleType name="VoucherListSortingColumn">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Default" />
+      <xs:enumeration value="Id" />
+      <xs:enumeration value="CreateDate" />
+      <xs:enumeration value="DocumentDate" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="QuerySortMode">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Default" />
+      <xs:enumeration value="Ascending" />
+      <xs:enumeration value="Descending" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="QueryVoucherListResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" maxOccurs="1" name="QueryVoucherListResult" type="tns:ResponseOfPagedResponseOfVoucher" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:complexType name="ResponseOfPagedResponseOfVoucher">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:Response">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="1" name="Value" type="tns:PagedResponseOfVoucher" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="PagedResponseOfVoucher">
+    <xs:sequence>
+      <xs:element xmlns:q2="urn:names:myinvoice:domain" minOccurs="0" maxOccurs="unbounded" name="Items" type="q2:Voucher" />
+    </xs:sequence>
+    <xs:attribute name="PageIndex" type="xs:int" use="required" />
+    <xs:attribute name="PageSize" type="xs:int" use="required" />
+    <xs:attribute name="TotalCount" type="xs:int" use="required" />
+    <xs:attribute name="TotalPages" type="xs:int" use="required" />
+  </xs:complexType>
+  <xs:element name="GetVoucherSource">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" maxOccurs="1" name="documentId" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetVoucherSourceResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" maxOccurs="1" name="GetVoucherSourceResult" type="tns:ResponseOfVoucherSource" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:complexType name="ResponseOfVoucherSource">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:Response">
+        <xs:sequence>
+          <xs:element xmlns:q3="urn:names:myinvoice:voucher" minOccurs="0" maxOccurs="1" name="Value" type="q3:VoucherSource" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="QueryVoucherStatusWithLogs">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" maxOccurs="1" name="receiptIds" type="tns:ArrayOfString" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="QueryVoucherStatusWithLogsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" maxOccurs="1" name="QueryVoucherStatusWithLogsResult" type="tns:ResponseOfListOfVoucherStatusWithLogInfo" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:complexType name="ResponseOfListOfVoucherStatusWithLogInfo">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:Response">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="Value" type="tns:VoucherStatusWithLogInfo" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="VoucherStatusWithLogInfo">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:VoucherStatusInfo">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="Logs" type="tns:LogRecordItem" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="LogRecordItem">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="1" name="Creator" type="xs:string" />
+      <xs:element minOccurs="1" maxOccurs="1" name="CreateDateUtc" type="xs:dateTime" />
+      <xs:element minOccurs="0" maxOccurs="1" name="RemoteIpAddress" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="LocalIpAddress" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="MachineName" type="xs:string" />
+      <xs:element minOccurs="1" maxOccurs="1" name="Type" type="xs:unsignedByte" />
+      <xs:element minOccurs="0" maxOccurs="1" name="Message" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

@@ -66,22 +66,22 @@
       <xs:extension xmlns:q10="urn:un:unece:uncefact:data:specification:CoreComponentTypeSchemaModule:2" base="q10:BinaryObjectType" />
     </xs:simpleContent>
   </xs:complexType>
-  <xs:complexType name="GraphicType">
+  <xs:complexType name="VideoType">
     <xs:simpleContent>
       <xs:extension xmlns:q11="urn:un:unece:uncefact:data:specification:CoreComponentTypeSchemaModule:2" base="q11:BinaryObjectType" />
     </xs:simpleContent>
   </xs:complexType>
-  <xs:complexType name="PictureType">
+  <xs:complexType name="SoundType">
     <xs:simpleContent>
       <xs:extension xmlns:q12="urn:un:unece:uncefact:data:specification:CoreComponentTypeSchemaModule:2" base="q12:BinaryObjectType" />
     </xs:simpleContent>
   </xs:complexType>
-  <xs:complexType name="SoundType">
+  <xs:complexType name="PictureType">
     <xs:simpleContent>
       <xs:extension xmlns:q13="urn:un:unece:uncefact:data:specification:CoreComponentTypeSchemaModule:2" base="q13:BinaryObjectType" />
     </xs:simpleContent>
   </xs:complexType>
-  <xs:complexType name="VideoType">
+  <xs:complexType name="GraphicType">
     <xs:simpleContent>
       <xs:extension xmlns:q14="urn:un:unece:uncefact:data:specification:CoreComponentTypeSchemaModule:2" base="q14:BinaryObjectType" />
     </xs:simpleContent>

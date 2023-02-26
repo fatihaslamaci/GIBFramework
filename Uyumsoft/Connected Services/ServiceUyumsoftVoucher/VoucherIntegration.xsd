@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="urn:names:myinvoice:domain" elementFormDefault="qualified" targetNamespace="urn:names:myinvoice:domain" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="AdditionalData" type="tns:AdditionalData" />
+  <xs:complexType name="AdditionalData">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="1" name="Value" type="xs:string" />
+    </xs:sequence>
+    <xs:attribute name="Name" type="xs:string" />
+    <xs:attribute name="Id" type="xs:string" />
+  </xs:complexType>
+  <xs:complexType name="DocumentNotificationInfo">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Mailing" type="tns:DocumentMailingEntry" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Messaging" type="tns:DocumentSmsEntry" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="DocumentMailingEntry">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="1" name="Subject" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="Attachment" type="tns:DocumentMailingAttachmentInfo" />
+    </xs:sequence>
+    <xs:attribute name="EnableNotification" type="xs:boolean" use="required" />
+    <xs:attribute name="To" type="xs:string" />
+    <xs:attribute name="BodyXsltIdentifier" type="xs:string" />
+    <xs:attribute name="EmailAccountIdentifier" type="xs:string" />
+  </xs:complexType>
+  <xs:complexType name="DocumentMailingAttachmentInfo">
+    <xs:attribute name="Xml" type="xs:boolean" use="required" />
+    <xs:attribute name="Pdf" type="xs:boolean" use="required" />
+    <xs:attribute name="Html" type="xs:boolean" use="required" />
+    <xs:attribute name="AdditionalDocuments" type="xs:boolean" use="required" />
+  </xs:complexType>
+  <xs:complexType name="DocumentSmsEntry">
+    <xs:attribute name="To" type="xs:string" />
+    <xs:attribute name="BodyXsltIdentifier" type="xs:string" />
+    <xs:attribute name="Subject" type="xs:string" />
+    <xs:attribute name="SmsAccountIdentifier" type="xs:string" />
+  </xs:complexType>
+  <xs:complexType name="Voucher">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:EntityUpdatedHistory">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="1" name="Identifier" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="VoucherNumber" type="xs:string" />
+          <xs:element minOccurs="1" maxOccurs="1" name="DeliveryType" type="xs:int" />
+          <xs:element minOccurs="1" maxOccurs="1" name="DeliveryTypeEnum" type="tns:InvoiceDeliveryType" />
+          <xs:element minOccurs="1" maxOccurs="1" name="DocumentDate" nillable="true" type="xs:dateTime" />
+          <xs:element minOccurs="1" maxOccurs="1" name="Status" type="xs:int" />
+          <xs:element minOccurs="1" maxOccurs="1" name="StatusEnum" type="tns:VoucherStatus" />
+          <xs:element minOccurs="0" maxOccurs="1" name="TargetTitle" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="TargetVknTckn" type="xs:string" />
+          <xs:element minOccurs="1" maxOccurs="1" name="PayableAmount" type="xs:decimal" />
+          <xs:element minOccurs="1" maxOccurs="1" name="TotalTaxAmount" type="xs:decimal" />
+          <xs:element minOccurs="1" maxOccurs="1" name="VatTaxableAmount" type="xs:decimal" />
+          <xs:element minOccurs="1" maxOccurs="1" name="VatAmount" type="xs:decimal" />
+          <xs:element minOccurs="1" maxOccurs="1" name="StoppageTaxableAmount" type="xs:decimal" />
+          <xs:element minOccurs="1" maxOccurs="1" name="StoppageAmount" type="xs:decimal" />
+          <xs:element minOccurs="1" maxOccurs="1" name="WitholdingAmount" type="xs:decimal" />
+          <xs:element minOccurs="1" maxOccurs="1" name="GrossTotal" type="xs:decimal" />
+          <xs:element minOccurs="1" maxOccurs="1" name="NetTotal" type="xs:decimal" />
+          <xs:element minOccurs="0" maxOccurs="1" name="CurrencyCode" type="xs:string" />
+          <xs:element minOccurs="1" maxOccurs="1" name="IsArchived" type="xs:boolean" />
+          <xs:element minOccurs="0" maxOccurs="1" name="LocalDocumentId" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="EntityUpdatedHistory" abstract="true">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:EntityCreateHistory" />
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="EntityCreateHistory" abstract="true">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:EntityBaseInt" />
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="EntityBaseInt">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:EntityBase" />
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="EntityBase" />
+  <xs:simpleType name="InvoiceDeliveryType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Paper" />
+      <xs:enumeration value="Electronic" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="VoucherStatus">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Draft" />
+      <xs:enumeration value="Canceled" />
+      <xs:enumeration value="Queued" />
+      <xs:enumeration value="Processing" />
+      <xs:enumeration value="Signed" />
+      <xs:enumeration value="EVoucherCanceled" />
+      <xs:enumeration value="Error" />
+      <xs:enumeration value="Deleted" />
+    </xs:restriction>
+  </xs:simpleType>
+</xs:schema>

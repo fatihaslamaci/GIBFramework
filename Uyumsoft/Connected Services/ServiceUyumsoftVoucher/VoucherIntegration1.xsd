@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="urn:names:myinvoice:voucher" elementFormDefault="qualified" targetNamespace="urn:names:myinvoice:voucher" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="https://efatura-test.uyumsoft.com.tr/Services/VoucherIntegration?xsd=xsd2" namespace="urn:names:myinvoice:domain" />
+  <xs:import schemaLocation="https://efatura-test.uyumsoft.com.tr/Services/VoucherIntegration?xsd=xsd3" namespace="http://earsiv.efatura.gov.tr" />
+  <xs:complexType name="VoucherSource">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:EncapsulatedXmlSource">
+        <xs:sequence>
+          <xs:element xmlns:q1="http://earsiv.efatura.gov.tr" minOccurs="0" maxOccurs="1" ref="q1:Notification" />
+          <xs:element xmlns:q2="http://earsiv.efatura.gov.tr" minOccurs="0" maxOccurs="1" ref="q2:eArsivVeriSerbestMeslekMakbuz" />
+          <xs:element minOccurs="0" maxOccurs="1" name="LocalDocumentId" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="EncapsulatedXmlSource">
+    <xs:sequence>
+      <xs:element xmlns:q3="urn:names:myinvoice:domain" minOccurs="0" maxOccurs="unbounded" ref="q3:AdditionalData" />
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>
