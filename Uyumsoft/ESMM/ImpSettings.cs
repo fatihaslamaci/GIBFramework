@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Uyumsoft.ESMM
 {
-    public partial class ESMM : GIBInterface.ISettings
+    public partial class Sender : GIBInterface.ISettings
     {
         Dictionary<string, string> _Settings;
         public Dictionary<string, string> Settings
@@ -31,11 +31,7 @@ namespace Uyumsoft.ESMM
             {
                {"UserName","Uyumsoft"},
                 {"Password","Uyumsoft"},
-                {"Uri","https://efatura-test.uyumsoft.com.tr/services/Integration" },
-
-                {"VergiNumarasi","Buraya Gönderimi yapan firmanın Vergi numarasını yazınız"},
-
-
+                {"Uri","https://efatura-test.uyumsoft.com.tr/services/VoucherIntegration" },
             };
         }
     }

@@ -54,6 +54,7 @@ namespace GIBFramework.ESMM
         {
             GIBInterface.ESMM.SendResultESMM r = new GIBInterface.ESMM.SendResultESMM();
             Login();
+            r = Provider.Send(SendParameters);
 
 
             return r;

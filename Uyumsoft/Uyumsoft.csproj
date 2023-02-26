@@ -54,9 +54,7 @@
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
     <Compile Include="ESMM\ImpESMM.cs" />
-    <Compile Include="ESMM\ImpServiceUyumsoftVoucher.cs" />
     <Compile Include="ESMM\ImpSettings.cs" />
-    <Compile Include="ESMM\IServiceUyumsoftVoucher.cs" />
     <Compile Include="ESMM\UyumsoftESMM.cs" />
     <Compile Include="ImpEFatura.cs" />
     <Compile Include="ImpFaturaDurumuSorgula.cs" />

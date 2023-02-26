@@ -1,9 +1,11 @@
-﻿using GIBInterface.EFaturaPaketi.eSMM;
+﻿using GIBFramework.SQLiteTools;
+using GIBInterface.EFaturaPaketi.eSMM;
 using GIBInterface.ESMM;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
+using System.ServiceModel;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Linq;
@@ -11,7 +13,7 @@ using Uyumsoft.ServiceUyumsoftVoucher;
 
 namespace Uyumsoft.ESMM
 {
-    public partial class ESMM : IESMM
+    public partial class Sender : IESMM
     {
         public string ProviderId()
         {
@@ -21,16 +23,47 @@ namespace Uyumsoft.ESMM
         public SendResultESMM Send(SendParametersESMM SendParameters)
         {
 
+            SendResultESMM r = new SendResultESMM();
 
             ServiceUyumsoftVoucher.VoucherSource[] vouchers = getVoucher(SendParameters);
 
-            ServiceUyumsoftVoucher.DocumentIdentityResponse r = service.SendVoucher(vouchers);
+
+            try
+            {
 
 
 
-            return null;
+                ServiceUyumsoftVoucher.DocumentIdentityResponse resp = serviceClient.SendVoucher(vouchers);
 
+                r.Basarili = resp.IsSucceded;
+                r.Mesaj = resp.Message;
 
+                if (resp.Value != null)
+                {
+                    r.MakbuzResponseList = new List<MakbuzResponse>();
+                    foreach (var item in resp.Value)
+                    {
+                        MakbuzResponse rr = new MakbuzResponse();
+                        rr.ETTN = Guid.Parse(item.Ettn);
+                        rr.MakbuzNo = item.VoucherNumber;
+                        r.MakbuzResponseList.Add(rr);
+                    }
+                }
+
+            }
+            catch (Exception ex)
+            {
+
+                r.Basarili = false;
+                r.Mesaj = ex.Message;
+
+                if (ex.InnerException!=null)
+                {
+                    r.Mesaj = ex.InnerException.Message;
+                }
+            }
+
+            return r;
         }
 
         private VoucherSource[] getVoucher(SendParametersESMM sendParameters)
@@ -55,6 +88,9 @@ namespace Uyumsoft.ESMM
 
         private ServiceUyumsoftVoucher.eArsivVeriSerbestMeslekMakbuz GeteArsivVeriSerbestMeslekMakbuz(SendParametersESMMitem item)
         {
+            if (item.eArsivVeri.Item == null)
+                return null;
+
             ServiceUyumsoftVoucher.eArsivVeriSerbestMeslekMakbuz r = new ServiceUyumsoftVoucher.eArsivVeriSerbestMeslekMakbuz();
 
             var a = item.eArsivVeri.Item;
