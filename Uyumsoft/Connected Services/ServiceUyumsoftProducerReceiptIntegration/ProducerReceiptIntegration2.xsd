@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="urn:names:myinvoice:domain" elementFormDefault="qualified" targetNamespace="urn:names:myinvoice:domain" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="Notification" type="tns:DocumentNotificationInfo" />
+  <xs:complexType name="DocumentNotificationInfo">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Mailing" type="tns:DocumentMailingEntry" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Messaging" type="tns:DocumentSmsEntry" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="DocumentMailingEntry">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="1" name="Subject" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="Attachment" type="tns:DocumentMailingAttachmentInfo" />
+    </xs:sequence>
+    <xs:attribute name="EnableNotification" type="xs:boolean" use="required" />
+    <xs:attribute name="To" type="xs:string" />
+    <xs:attribute name="BodyXsltIdentifier" type="xs:string" />
+    <xs:attribute name="EmailAccountIdentifier" type="xs:string" />
+  </xs:complexType>
+  <xs:complexType name="DocumentMailingAttachmentInfo">
+    <xs:attribute name="Xml" type="xs:boolean" use="required" />
+    <xs:attribute name="Pdf" type="xs:boolean" use="required" />
+    <xs:attribute name="Html" type="xs:boolean" use="required" />
+    <xs:attribute name="AdditionalDocuments" type="xs:boolean" use="required" />
+  </xs:complexType>
+  <xs:complexType name="DocumentSmsEntry">
+    <xs:attribute name="To" type="xs:string" />
+    <xs:attribute name="BodyXsltIdentifier" type="xs:string" />
+    <xs:attribute name="Subject" type="xs:string" />
+    <xs:attribute name="SmsAccountIdentifier" type="xs:string" />
+  </xs:complexType>
+</xs:schema>

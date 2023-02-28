@@ -43,6 +43,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Connected Services\ServiceUyumsoftProducerReceiptIntegration\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
     <Compile Include="Connected Services\ServiceUyumsoftVoucher\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -53,6 +58,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
+    <Compile Include="EMM\ImpEMM.cs" />
+    <Compile Include="EMM\ImpSettings.cs" />
+    <Compile Include="EMM\UyumsoftEMM.cs" />
     <Compile Include="ESMM\ImpESMM.cs" />
     <Compile Include="ESMM\ImpSettings.cs" />
     <Compile Include="ESMM\UyumsoftESMM.cs" />
@@ -71,6 +79,70 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
+    <None Include="Connected Services\ServiceUyumsoftProducerReceiptIntegration\ProducerReceiptIntegration.wsdl" />
+    <None Include="Connected Services\ServiceUyumsoftProducerReceiptIntegration\ProducerReceiptIntegration.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\ServiceUyumsoftProducerReceiptIntegration\ProducerReceiptIntegration1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\ServiceUyumsoftProducerReceiptIntegration\ProducerReceiptIntegration10.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\ServiceUyumsoftProducerReceiptIntegration\ProducerReceiptIntegration2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\ServiceUyumsoftProducerReceiptIntegration\ProducerReceiptIntegration3.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\ServiceUyumsoftProducerReceiptIntegration\ProducerReceiptIntegration4.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\ServiceUyumsoftProducerReceiptIntegration\ProducerReceiptIntegration5.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\ServiceUyumsoftProducerReceiptIntegration\ProducerReceiptIntegration6.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\ServiceUyumsoftProducerReceiptIntegration\ProducerReceiptIntegration7.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\ServiceUyumsoftProducerReceiptIntegration\ProducerReceiptIntegration8.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\ServiceUyumsoftProducerReceiptIntegration\ProducerReceiptIntegration9.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\ServiceUyumsoftProducerReceiptIntegration\Uyumsoft.ServiceUyumsoftProducerReceiptIntegration.DateResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceUyumsoftProducerReceiptIntegration\Uyumsoft.ServiceUyumsoftProducerReceiptIntegration.FlagResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceUyumsoftProducerReceiptIntegration\Uyumsoft.ServiceUyumsoftProducerReceiptIntegration.ProducerReceiptDataResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceUyumsoftProducerReceiptIntegration\Uyumsoft.ServiceUyumsoftProducerReceiptIntegration.ProducerReceiptIdentityResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceUyumsoftProducerReceiptIntegration\Uyumsoft.ServiceUyumsoftProducerReceiptIntegration.ProducerReceiptInfoResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceUyumsoftProducerReceiptIntegration\Uyumsoft.ServiceUyumsoftProducerReceiptIntegration.ResponseOfHtmlViewResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceUyumsoftProducerReceiptIntegration\Uyumsoft.ServiceUyumsoftProducerReceiptIntegration.ResponseOfListOfProducerReceiptStatusInfo.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceUyumsoftProducerReceiptIntegration\Uyumsoft.ServiceUyumsoftProducerReceiptIntegration.ResponseOfListOfProducerReceiptStatusWithLogInfo.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceUyumsoftProducerReceiptIntegration\Uyumsoft.ServiceUyumsoftProducerReceiptIntegration.ResponseOfPagedResponseOfProducerReceipt.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceUyumsoftProducerReceiptIntegration\Uyumsoft.ServiceUyumsoftProducerReceiptIntegration.StringResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
     <None Include="Connected Services\ServiceUyumsoftVoucher\Uyumsoft.ServiceUyumsoftVoucher.DateResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
@@ -213,6 +285,7 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <WCFMetadataStorage Include="Connected Services\ServiceUyumsoftProducerReceiptIntegration\" />
     <WCFMetadataStorage Include="Connected Services\ServiceUyumsoftVoucher\" />
     <WCFMetadataStorage Include="Connected Services\ServiceUyumsoft\" />
   </ItemGroup>
@@ -250,6 +323,21 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Connected Services\ServiceUyumsoftVoucher\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\ServiceUyumsoftProducerReceiptIntegration\ProducerReceiptIntegration.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\ServiceUyumsoftProducerReceiptIntegration\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\ServiceUyumsoftProducerReceiptIntegration\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\ServiceUyumsoftProducerReceiptIntegration\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>

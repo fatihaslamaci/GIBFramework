@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" ID="1d341c48-032b-48ce-b6ac-488db3e74674" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="https://efatura.uyumsoft.com.tr/Services/ProducerReceiptIntegration" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="ProducerReceiptIntegration.xsd" MetadataType="Schema" ID="25aa851a-35aa-4d55-80c5-5060ec0c37dd" SourceId="1" SourceUrl="https://efatura.uyumsoft.com.tr/Services/ProducerReceiptIntegration?xsd=xsd9" />
+    <MetadataFile FileName="ProducerReceiptIntegration1.xsd" MetadataType="Schema" ID="481bba5e-0524-48cc-845c-69a60c5589d3" SourceId="1" SourceUrl="https://efatura.uyumsoft.com.tr/Services/ProducerReceiptIntegration?xsd=xsd3" />
+    <MetadataFile FileName="ProducerReceiptIntegration2.xsd" MetadataType="Schema" ID="9f821cbb-5535-4f87-9ff2-2bc65fbe5831" SourceId="1" SourceUrl="https://efatura.uyumsoft.com.tr/Services/ProducerReceiptIntegration?xsd=xsd2" />
+    <MetadataFile FileName="ProducerReceiptIntegration3.xsd" MetadataType="Schema" ID="aa6a99b9-b2c0-4f77-baf9-0a569dd408a3" SourceId="1" SourceUrl="https://efatura.uyumsoft.com.tr/Services/ProducerReceiptIntegration?xsd=xsd6" />
+    <MetadataFile FileName="ProducerReceiptIntegration.disco" MetadataType="Disco" ID="92a17507-d984-4446-a5f0-7313549e6f93" SourceId="1" SourceUrl="https://efatura.uyumsoft.com.tr/Services/ProducerReceiptIntegration?disco" />
+    <MetadataFile FileName="ProducerReceiptIntegration4.xsd" MetadataType="Schema" ID="886e5c60-6035-467f-80b7-950fedfda707" SourceId="1" SourceUrl="https://efatura.uyumsoft.com.tr/Services/ProducerReceiptIntegration?xsd=xsd10" />
+    <MetadataFile FileName="ProducerReceiptIntegration.wsdl" MetadataType="Wsdl" ID="8f3874fc-9999-487d-8eac-1a88e702d483" SourceId="1" SourceUrl="https://efatura.uyumsoft.com.tr/Services/ProducerReceiptIntegration?wsdl" />
+    <MetadataFile FileName="ProducerReceiptIntegration5.xsd" MetadataType="Schema" ID="d4773d3c-631e-4cf6-b3eb-4f7684aad746" SourceId="1" SourceUrl="https://efatura.uyumsoft.com.tr/Services/ProducerReceiptIntegration?xsd=xsd1" />
+    <MetadataFile FileName="ProducerReceiptIntegration6.xsd" MetadataType="Schema" ID="1fd97e4f-2cd5-424a-a374-9d15349988a6" SourceId="1" SourceUrl="https://efatura.uyumsoft.com.tr/Services/ProducerReceiptIntegration?xsd=xsd8" />
+    <MetadataFile FileName="ProducerReceiptIntegration7.xsd" MetadataType="Schema" ID="5e369e5a-2a3c-426f-8cef-e21af45e8fcf" SourceId="1" SourceUrl="https://efatura.uyumsoft.com.tr/Services/ProducerReceiptIntegration?xsd=xsd4" />
+    <MetadataFile FileName="ProducerReceiptIntegration8.xsd" MetadataType="Schema" ID="c97cf401-8715-42ba-9869-6765102f5b96" SourceId="1" SourceUrl="https://efatura.uyumsoft.com.tr/Services/ProducerReceiptIntegration?xsd=xsd7" />
+    <MetadataFile FileName="ProducerReceiptIntegration9.xsd" MetadataType="Schema" ID="0ffc0df5-ad91-4335-a57e-b27c95a303b3" SourceId="1" SourceUrl="https://efatura.uyumsoft.com.tr/Services/ProducerReceiptIntegration?xsd=xsd0" />
+    <MetadataFile FileName="ProducerReceiptIntegration10.xsd" MetadataType="Schema" ID="1c968aac-a467-4009-8511-741c188895dc" SourceId="1" SourceUrl="https://efatura.uyumsoft.com.tr/Services/ProducerReceiptIntegration?xsd=xsd5" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

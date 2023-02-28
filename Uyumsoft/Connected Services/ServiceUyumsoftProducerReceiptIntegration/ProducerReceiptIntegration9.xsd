@@ -1,0 +1,440 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://tempuri.org/" elementFormDefault="qualified" targetNamespace="http://tempuri.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="https://efatura.uyumsoft.com.tr/Services/ProducerReceiptIntegration?xsd=xsd1" namespace="urn:names:myinvoice:producerreceipt" />
+  <xs:element name="GetSystemDate">
+    <xs:complexType />
+  </xs:element>
+  <xs:element name="GetSystemDateResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" maxOccurs="1" name="GetSystemDateResult" type="tns:DateResponse" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:complexType name="DateResponse">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:Response">
+        <xs:attribute name="Value" type="xs:dateTime" use="required" />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="Response">
+    <xs:attribute name="IsSucceded" type="xs:boolean" use="required" />
+    <xs:attribute name="Message" type="xs:string" />
+  </xs:complexType>
+  <xs:element name="GetSystemDateWithFormat">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" maxOccurs="1" name="format" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetSystemDateWithFormatResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" maxOccurs="1" name="GetSystemDateWithFormatResult" type="tns:StringResponse" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:complexType name="StringResponse">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:Response">
+        <xs:attribute name="Value" type="xs:string" />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="SendProducerReceipt">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" maxOccurs="1" name="receipts" type="tns:ArrayOfProducerReceiptInfo" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:complexType name="ArrayOfProducerReceiptInfo">
+    <xs:sequence>
+      <xs:element xmlns:q1="urn:names:myinvoice:producerreceipt" minOccurs="0" maxOccurs="unbounded" name="ProducerReceiptInfo" nillable="true" type="q1:ProducerReceiptInfo" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="SendProducerReceiptResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" maxOccurs="1" name="SendProducerReceiptResult" type="tns:ProducerReceiptIdentityResponse" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:complexType name="ProducerReceiptIdentityResponse">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:Response">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="Value" type="tns:ProducerReceiptIdentity" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="ProducerReceiptIdentity">
+    <xs:attribute name="DocumentId" type="xs:string" />
+    <xs:attribute name="ReceiptNumber" type="xs:string" />
+  </xs:complexType>
+  <xs:element name="SaveAsDraft">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" maxOccurs="1" name="receipts" type="tns:ArrayOfProducerReceiptInfo" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SaveAsDraftResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" maxOccurs="1" name="SaveAsDraftResult" type="tns:ProducerReceiptIdentityResponse" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SendDraft">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" maxOccurs="1" name="receiptIdentifiers" type="tns:ArrayOfString" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:complexType name="ArrayOfString">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="string" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="SendDraftResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" maxOccurs="1" name="SendDraftResult" type="tns:FlagResponse" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:complexType name="FlagResponse">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:Response">
+        <xs:attribute name="Value" type="xs:boolean" use="required" />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="CancelDraft">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" maxOccurs="1" name="receiptIdentifiers" type="tns:ArrayOfString" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CancelDraftResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" maxOccurs="1" name="CancelDraftResult" type="tns:FlagResponse" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetHtmlView">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" maxOccurs="1" name="receiptId" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetHtmlViewResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" maxOccurs="1" name="GetHtmlViewResult" type="tns:ResponseOfHtmlViewResult" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:complexType name="ResponseOfHtmlViewResult">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:Response">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="1" name="Value" type="tns:HtmlViewResult" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="HtmlViewResult">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="1" name="Html" type="xs:string" />
+      <xs:element minOccurs="1" maxOccurs="1" name="IsUsingDefaultXslt" type="xs:boolean" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="GetProducerReceipt">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" maxOccurs="1" name="receiptId" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetProducerReceiptResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" maxOccurs="1" name="GetProducerReceiptResult" type="tns:ProducerReceiptInfoResponse" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:complexType name="ProducerReceiptInfoResponse">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:Response">
+        <xs:sequence>
+          <xs:element xmlns:q2="urn:names:myinvoice:producerreceipt" minOccurs="0" maxOccurs="1" name="Value" type="q2:ProducerReceiptInfo" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="GetPdfView">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" maxOccurs="1" name="receiptId" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetPdfViewResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" maxOccurs="1" name="GetPdfViewResult" type="tns:ProducerReceiptDataResponse" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:complexType name="ProducerReceiptDataResponse">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:Response">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="1" name="Value" type="tns:ProducerReceiptData" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="ProducerReceiptData">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:ProducerReceiptIdentity">
+        <xs:attribute name="FileData" type="xs:base64Binary" />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="GetProducerReceiptData">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" maxOccurs="1" name="receiptId" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetProducerReceiptDataResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" maxOccurs="1" name="GetProducerReceiptDataResult" type="tns:ProducerReceiptDataResponse" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CancelProducerReceipt">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" maxOccurs="1" name="cancellationContext" type="tns:ProducerReceiptCancellationContext" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:complexType name="ProducerReceiptCancellationContext">
+    <xs:attribute name="DocumentId" type="xs:string" />
+    <xs:attribute name="CancelDate" type="xs:dateTime" use="required" />
+  </xs:complexType>
+  <xs:element name="CancelProducerReceiptResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" maxOccurs="1" name="CancelProducerReceiptResult" type="tns:FlagResponse" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="QueryProducerReceiptStatus">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" maxOccurs="1" name="receiptIds" type="tns:ArrayOfString" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="QueryProducerReceiptStatusResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" maxOccurs="1" name="QueryProducerReceiptStatusResult" type="tns:ResponseOfListOfProducerReceiptStatusInfo" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:complexType name="ResponseOfListOfProducerReceiptStatusInfo">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:Response">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="Value" type="tns:ProducerReceiptStatusInfo" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="ProducerReceiptStatusInfo">
+    <xs:attribute name="DocumentId" type="xs:string" />
+    <xs:attribute name="ReceiptNumber" type="xs:string" />
+    <xs:attribute name="Status" type="tns:ProducerReceiptStatus" use="required" />
+    <xs:attribute name="StatusCode" type="xs:int" use="required" />
+    <xs:attribute name="LocalDocumentId" type="xs:string" />
+  </xs:complexType>
+  <xs:simpleType name="ProducerReceiptStatus">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Draft" />
+      <xs:enumeration value="Canceled" />
+      <xs:enumeration value="Queued" />
+      <xs:enumeration value="Processing" />
+      <xs:enumeration value="Signed" />
+      <xs:enumeration value="PReceiptCanceled" />
+      <xs:enumeration value="Error" />
+      <xs:enumeration value="Deleted" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="QueryProducerReceiptList">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" maxOccurs="1" name="context" type="tns:PagedProducerReceiptFilterContext" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:complexType name="PagedProducerReceiptFilterContext">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:PagedQueryContext">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="1" name="DocumentId" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="ReceiptNumber" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="TargetTitle" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="TargetVknTckn" type="xs:string" />
+          <xs:element minOccurs="1" maxOccurs="1" name="CreationSartDate" nillable="true" type="xs:dateTime" />
+          <xs:element minOccurs="1" maxOccurs="1" name="CreationEndDate" nillable="true" type="xs:dateTime" />
+          <xs:element minOccurs="1" maxOccurs="1" name="DocumentStartDate" nillable="true" type="xs:dateTime" />
+          <xs:element minOccurs="1" maxOccurs="1" name="DocumentEndDate" nillable="true" type="xs:dateTime" />
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="Statuses" type="xs:int" />
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="StatusesNot" type="xs:int" />
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="IdList" type="xs:string" />
+          <xs:element minOccurs="1" maxOccurs="1" name="IsArchived" nillable="true" type="xs:boolean" />
+          <xs:element minOccurs="0" maxOccurs="1" name="SortedColumn" type="xs:string" />
+          <xs:element minOccurs="1" maxOccurs="1" name="Ascending" type="xs:boolean" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="PagedQueryContext">
+    <xs:attribute name="PageIndex" type="xs:int" use="required" />
+    <xs:attribute name="PageSize" type="xs:int" use="required" />
+  </xs:complexType>
+  <xs:element name="QueryProducerReceiptListResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" maxOccurs="1" name="QueryProducerReceiptListResult" type="tns:ResponseOfPagedResponseOfProducerReceipt" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:complexType name="ResponseOfPagedResponseOfProducerReceipt">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:Response">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="1" name="Value" type="tns:PagedResponseOfProducerReceipt" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="PagedResponseOfProducerReceipt">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Items" type="tns:ProducerReceipt" />
+    </xs:sequence>
+    <xs:attribute name="PageIndex" type="xs:int" use="required" />
+    <xs:attribute name="PageSize" type="xs:int" use="required" />
+    <xs:attribute name="TotalCount" type="xs:int" use="required" />
+    <xs:attribute name="TotalPages" type="xs:int" use="required" />
+  </xs:complexType>
+  <xs:complexType name="ProducerReceipt">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:EntityUpdatedHistory">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="1" name="DocumentId" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="ReceiptNumber" type="xs:string" />
+          <xs:element minOccurs="1" maxOccurs="1" name="IssueDate" nillable="true" type="xs:dateTime" />
+          <xs:element minOccurs="1" maxOccurs="1" name="Status" type="xs:int" />
+          <xs:element minOccurs="1" maxOccurs="1" name="StatusEnum" type="tns:ProducerReceiptStatus" />
+          <xs:element minOccurs="0" maxOccurs="1" name="TargetTitle" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="TargetVknTckn" type="xs:string" />
+          <xs:element minOccurs="1" maxOccurs="1" name="PayableAmount" type="xs:decimal" />
+          <xs:element minOccurs="1" maxOccurs="1" name="TaxTotal" type="xs:decimal" />
+          <xs:element minOccurs="1" maxOccurs="1" name="TaxExclusiveAmount" type="xs:decimal" />
+          <xs:element minOccurs="1" maxOccurs="1" name="TotalDiscountAmount" type="xs:decimal" />
+          <xs:element minOccurs="1" maxOccurs="1" name="SgkPrimTaxTotal" type="xs:decimal" />
+          <xs:element minOccurs="1" maxOccurs="1" name="StoppageTaxTotal" type="xs:decimal" />
+          <xs:element minOccurs="1" maxOccurs="1" name="StockRegisterTotal" type="xs:decimal" />
+          <xs:element minOccurs="1" maxOccurs="1" name="MeraFonuTotal" type="xs:decimal" />
+          <xs:element minOccurs="1" maxOccurs="1" name="SgkPrimTaxableAmount" type="xs:decimal" />
+          <xs:element minOccurs="1" maxOccurs="1" name="StoppageTaxableAmount" type="xs:decimal" />
+          <xs:element minOccurs="1" maxOccurs="1" name="StockRegisterTaxableAmount" type="xs:decimal" />
+          <xs:element minOccurs="1" maxOccurs="1" name="MeraFonuTotalTaxableAmount" type="xs:decimal" />
+          <xs:element minOccurs="0" maxOccurs="1" name="DocumentCurrencyCode" type="xs:string" />
+          <xs:element minOccurs="1" maxOccurs="1" name="ExchangeRate" type="xs:decimal" />
+          <xs:element minOccurs="0" maxOccurs="1" name="OrderDocumentId" type="xs:string" />
+          <xs:element minOccurs="1" maxOccurs="1" name="AdditionalDocumentCount" type="xs:int" />
+          <xs:element minOccurs="0" maxOccurs="1" name="TargetCustomerCountry" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="TargetCustomerCity" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="LocalDocumentId" type="xs:string" />
+          <xs:element minOccurs="1" maxOccurs="1" name="IsArchived" type="xs:boolean" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="EntityUpdatedHistory" abstract="true">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:EntityCreateHistory" />
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="EntityCreateHistory" abstract="true">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:EntityBaseInt" />
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="EntityBaseInt">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:EntityBase" />
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="EntityBase" />
+  <xs:element name="QueryProducerReceiptStatusWithLogs">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" maxOccurs="1" name="receiptIds" type="tns:ArrayOfString" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="QueryProducerReceiptStatusWithLogsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" maxOccurs="1" name="QueryProducerReceiptStatusWithLogsResult" type="tns:ResponseOfListOfProducerReceiptStatusWithLogInfo" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:complexType name="ResponseOfListOfProducerReceiptStatusWithLogInfo">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:Response">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="Value" type="tns:ProducerReceiptStatusWithLogInfo" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="ProducerReceiptStatusWithLogInfo">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:ProducerReceiptStatusInfo">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="Logs" type="tns:LogRecordItem" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="LogRecordItem">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="1" name="Creator" type="xs:string" />
+      <xs:element minOccurs="1" maxOccurs="1" name="CreateDateUtc" type="xs:dateTime" />
+      <xs:element minOccurs="0" maxOccurs="1" name="RemoteIpAddress" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="LocalIpAddress" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="MachineName" type="xs:string" />
+      <xs:element minOccurs="1" maxOccurs="1" name="Type" type="xs:unsignedByte" />
+      <xs:element minOccurs="0" maxOccurs="1" name="Message" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

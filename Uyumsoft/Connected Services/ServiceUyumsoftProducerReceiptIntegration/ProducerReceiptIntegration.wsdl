@@ -1,0 +1,333 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tns="http://tempuri.org/" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" name="ProducerReceiptIntegration" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsp:Policy wsu:Id="BasicHttpBinding_IProducerReceiptIntegration_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:TransportBinding xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <wsp:Policy>
+            <sp:TransportToken>
+              <wsp:Policy>
+                <sp:HttpsToken RequireClientCertificate="false" />
+              </wsp:Policy>
+            </sp:TransportToken>
+            <sp:AlgorithmSuite>
+              <wsp:Policy>
+                <sp:Basic256 />
+              </wsp:Policy>
+            </sp:AlgorithmSuite>
+            <sp:Layout>
+              <wsp:Policy>
+                <sp:Lax />
+              </wsp:Policy>
+            </sp:Layout>
+            <sp:IncludeTimestamp />
+          </wsp:Policy>
+        </sp:TransportBinding>
+        <sp:SignedSupportingTokens xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <wsp:Policy>
+            <sp:UsernameToken sp:IncludeToken="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy/IncludeToken/AlwaysToRecipient">
+              <wsp:Policy>
+                <sp:WssUsernameToken10 />
+              </wsp:Policy>
+            </sp:UsernameToken>
+          </wsp:Policy>
+        </sp:SignedSupportingTokens>
+        <sp:Wss10 xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <wsp:Policy />
+        </sp:Wss10>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://tempuri.org/Imports">
+      <xsd:import schemaLocation="https://efatura.uyumsoft.com.tr/Services/ProducerReceiptIntegration?xsd=xsd0" namespace="http://tempuri.org/" />
+      <xsd:import schemaLocation="https://efatura.uyumsoft.com.tr/Services/ProducerReceiptIntegration?xsd=xsd1" namespace="urn:names:myinvoice:producerreceipt" />
+      <xsd:import schemaLocation="https://efatura.uyumsoft.com.tr/Services/ProducerReceiptIntegration?xsd=xsd2" namespace="urn:names:myinvoice:domain" />
+      <xsd:import schemaLocation="https://efatura.uyumsoft.com.tr/Services/ProducerReceiptIntegration?xsd=xsd3" namespace="urn:oasis:names:specification:ubl:schema:xsd:CreditNote-2" />
+      <xsd:import schemaLocation="https://efatura.uyumsoft.com.tr/Services/ProducerReceiptIntegration?xsd=xsd4" namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonExtensionComponents-2" />
+      <xsd:import schemaLocation="https://efatura.uyumsoft.com.tr/Services/ProducerReceiptIntegration?xsd=xsd5" namespace="http://www.w3.org/2000/09/xmldsig#" />
+      <xsd:import schemaLocation="https://efatura.uyumsoft.com.tr/Services/ProducerReceiptIntegration?xsd=xsd6" namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2" />
+      <xsd:import schemaLocation="https://efatura.uyumsoft.com.tr/Services/ProducerReceiptIntegration?xsd=xsd7" namespace="urn:oasis:names:specification:ubl:schema:xsd:UnqualifiedDataTypes-2" />
+      <xsd:import schemaLocation="https://efatura.uyumsoft.com.tr/Services/ProducerReceiptIntegration?xsd=xsd8" namespace="urn:un:unece:uncefact:data:specification:CoreComponentTypeSchemaModule:2" />
+      <xsd:import schemaLocation="https://efatura.uyumsoft.com.tr/Services/ProducerReceiptIntegration?xsd=xsd9" namespace="urn:oasis:names:specification:ubl:schema:xsd:SignatureBasicComponents-2" />
+      <xsd:import schemaLocation="https://efatura.uyumsoft.com.tr/Services/ProducerReceiptIntegration?xsd=xsd10" namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="IProducerReceiptIntegration_GetSystemDate_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetSystemDate" />
+  </wsdl:message>
+  <wsdl:message name="IProducerReceiptIntegration_GetSystemDate_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetSystemDateResponse" />
+  </wsdl:message>
+  <wsdl:message name="IProducerReceiptIntegration_GetSystemDateWithFormat_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetSystemDateWithFormat" />
+  </wsdl:message>
+  <wsdl:message name="IProducerReceiptIntegration_GetSystemDateWithFormat_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetSystemDateWithFormatResponse" />
+  </wsdl:message>
+  <wsdl:message name="IProducerReceiptIntegration_SendProducerReceipt_InputMessage">
+    <wsdl:part name="parameters" element="tns:SendProducerReceipt" />
+  </wsdl:message>
+  <wsdl:message name="IProducerReceiptIntegration_SendProducerReceipt_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SendProducerReceiptResponse" />
+  </wsdl:message>
+  <wsdl:message name="IProducerReceiptIntegration_SaveAsDraft_InputMessage">
+    <wsdl:part name="parameters" element="tns:SaveAsDraft" />
+  </wsdl:message>
+  <wsdl:message name="IProducerReceiptIntegration_SaveAsDraft_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SaveAsDraftResponse" />
+  </wsdl:message>
+  <wsdl:message name="IProducerReceiptIntegration_SendDraft_InputMessage">
+    <wsdl:part name="parameters" element="tns:SendDraft" />
+  </wsdl:message>
+  <wsdl:message name="IProducerReceiptIntegration_SendDraft_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SendDraftResponse" />
+  </wsdl:message>
+  <wsdl:message name="IProducerReceiptIntegration_CancelDraft_InputMessage">
+    <wsdl:part name="parameters" element="tns:CancelDraft" />
+  </wsdl:message>
+  <wsdl:message name="IProducerReceiptIntegration_CancelDraft_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CancelDraftResponse" />
+  </wsdl:message>
+  <wsdl:message name="IProducerReceiptIntegration_GetHtmlView_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetHtmlView" />
+  </wsdl:message>
+  <wsdl:message name="IProducerReceiptIntegration_GetHtmlView_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetHtmlViewResponse" />
+  </wsdl:message>
+  <wsdl:message name="IProducerReceiptIntegration_GetProducerReceipt_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetProducerReceipt" />
+  </wsdl:message>
+  <wsdl:message name="IProducerReceiptIntegration_GetProducerReceipt_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetProducerReceiptResponse" />
+  </wsdl:message>
+  <wsdl:message name="IProducerReceiptIntegration_GetPdfView_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetPdfView" />
+  </wsdl:message>
+  <wsdl:message name="IProducerReceiptIntegration_GetPdfView_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetPdfViewResponse" />
+  </wsdl:message>
+  <wsdl:message name="IProducerReceiptIntegration_GetProducerReceiptData_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetProducerReceiptData" />
+  </wsdl:message>
+  <wsdl:message name="IProducerReceiptIntegration_GetProducerReceiptData_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetProducerReceiptDataResponse" />
+  </wsdl:message>
+  <wsdl:message name="IProducerReceiptIntegration_CancelProducerReceipt_InputMessage">
+    <wsdl:part name="parameters" element="tns:CancelProducerReceipt" />
+  </wsdl:message>
+  <wsdl:message name="IProducerReceiptIntegration_CancelProducerReceipt_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CancelProducerReceiptResponse" />
+  </wsdl:message>
+  <wsdl:message name="IProducerReceiptIntegration_QueryProducerReceiptStatus_InputMessage">
+    <wsdl:part name="parameters" element="tns:QueryProducerReceiptStatus" />
+  </wsdl:message>
+  <wsdl:message name="IProducerReceiptIntegration_QueryProducerReceiptStatus_OutputMessage">
+    <wsdl:part name="parameters" element="tns:QueryProducerReceiptStatusResponse" />
+  </wsdl:message>
+  <wsdl:message name="IProducerReceiptIntegration_QueryProducerReceiptList_InputMessage">
+    <wsdl:part name="parameters" element="tns:QueryProducerReceiptList" />
+  </wsdl:message>
+  <wsdl:message name="IProducerReceiptIntegration_QueryProducerReceiptList_OutputMessage">
+    <wsdl:part name="parameters" element="tns:QueryProducerReceiptListResponse" />
+  </wsdl:message>
+  <wsdl:message name="IProducerReceiptIntegration_QueryProducerReceiptStatusWithLogs_InputMessage">
+    <wsdl:part name="parameters" element="tns:QueryProducerReceiptStatusWithLogs" />
+  </wsdl:message>
+  <wsdl:message name="IProducerReceiptIntegration_QueryProducerReceiptStatusWithLogs_OutputMessage">
+    <wsdl:part name="parameters" element="tns:QueryProducerReceiptStatusWithLogsResponse" />
+  </wsdl:message>
+  <wsdl:portType msc:usingSession="false" name="IProducerReceiptIntegration">
+    <wsdl:operation name="GetSystemDate">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICustomerServiceBase/GetSystemDate" message="tns:IProducerReceiptIntegration_GetSystemDate_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICustomerServiceBase/GetSystemDateResponse" message="tns:IProducerReceiptIntegration_GetSystemDate_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetSystemDateWithFormat">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICustomerServiceBase/GetSystemDateWithFormat" message="tns:IProducerReceiptIntegration_GetSystemDateWithFormat_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICustomerServiceBase/GetSystemDateWithFormatResponse" message="tns:IProducerReceiptIntegration_GetSystemDateWithFormat_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SendProducerReceipt">
+      <wsdl:input wsaw:Action="http://tempuri.org/IProducerReceiptIntegration/SendProducerReceipt" message="tns:IProducerReceiptIntegration_SendProducerReceipt_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IProducerReceiptIntegration/SendProducerReceiptResponse" message="tns:IProducerReceiptIntegration_SendProducerReceipt_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SaveAsDraft">
+      <wsdl:input wsaw:Action="http://tempuri.org/IProducerReceiptIntegration/SaveAsDraft" message="tns:IProducerReceiptIntegration_SaveAsDraft_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IProducerReceiptIntegration/SaveAsDraftResponse" message="tns:IProducerReceiptIntegration_SaveAsDraft_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SendDraft">
+      <wsdl:input wsaw:Action="http://tempuri.org/IProducerReceiptIntegration/SendDraft" message="tns:IProducerReceiptIntegration_SendDraft_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IProducerReceiptIntegration/SendDraftResponse" message="tns:IProducerReceiptIntegration_SendDraft_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CancelDraft">
+      <wsdl:input wsaw:Action="http://tempuri.org/IProducerReceiptIntegration/CancelDraft" message="tns:IProducerReceiptIntegration_CancelDraft_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IProducerReceiptIntegration/CancelDraftResponse" message="tns:IProducerReceiptIntegration_CancelDraft_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetHtmlView">
+      <wsdl:input wsaw:Action="http://tempuri.org/IProducerReceiptIntegration/GetHtmlView" message="tns:IProducerReceiptIntegration_GetHtmlView_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IProducerReceiptIntegration/GetHtmlViewResponse" message="tns:IProducerReceiptIntegration_GetHtmlView_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetProducerReceipt">
+      <wsdl:input wsaw:Action="http://tempuri.org/IProducerReceiptIntegration/GetProducerReceipt" message="tns:IProducerReceiptIntegration_GetProducerReceipt_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IProducerReceiptIntegration/GetProducerReceiptResponse" message="tns:IProducerReceiptIntegration_GetProducerReceipt_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetPdfView">
+      <wsdl:input wsaw:Action="http://tempuri.org/IProducerReceiptIntegration/GetPdfView" message="tns:IProducerReceiptIntegration_GetPdfView_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IProducerReceiptIntegration/GetPdfViewResponse" message="tns:IProducerReceiptIntegration_GetPdfView_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetProducerReceiptData">
+      <wsdl:input wsaw:Action="http://tempuri.org/IProducerReceiptIntegration/GetProducerReceiptData" message="tns:IProducerReceiptIntegration_GetProducerReceiptData_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IProducerReceiptIntegration/GetProducerReceiptDataResponse" message="tns:IProducerReceiptIntegration_GetProducerReceiptData_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CancelProducerReceipt">
+      <wsdl:input wsaw:Action="http://tempuri.org/IProducerReceiptIntegration/CancelProducerReceipt" message="tns:IProducerReceiptIntegration_CancelProducerReceipt_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IProducerReceiptIntegration/CancelProducerReceiptResponse" message="tns:IProducerReceiptIntegration_CancelProducerReceipt_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="QueryProducerReceiptStatus">
+      <wsdl:input wsaw:Action="http://tempuri.org/IProducerReceiptIntegration/QueryProducerReceiptStatus" message="tns:IProducerReceiptIntegration_QueryProducerReceiptStatus_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IProducerReceiptIntegration/QueryProducerReceiptStatusResponse" message="tns:IProducerReceiptIntegration_QueryProducerReceiptStatus_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="QueryProducerReceiptList">
+      <wsdl:input wsaw:Action="http://tempuri.org/IProducerReceiptIntegration/QueryProducerReceiptList" message="tns:IProducerReceiptIntegration_QueryProducerReceiptList_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IProducerReceiptIntegration/QueryProducerReceiptListResponse" message="tns:IProducerReceiptIntegration_QueryProducerReceiptList_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="QueryProducerReceiptStatusWithLogs">
+      <wsdl:input wsaw:Action="http://tempuri.org/IProducerReceiptIntegration/QueryProducerReceiptStatusWithLogs" message="tns:IProducerReceiptIntegration_QueryProducerReceiptStatusWithLogs_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IProducerReceiptIntegration/QueryProducerReceiptStatusWithLogsResponse" message="tns:IProducerReceiptIntegration_QueryProducerReceiptStatusWithLogs_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="BasicHttpBinding_IProducerReceiptIntegration" type="tns:IProducerReceiptIntegration">
+    <wsp:PolicyReference URI="#BasicHttpBinding_IProducerReceiptIntegration_policy" />
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetSystemDate">
+      <soap:operation soapAction="http://tempuri.org/ICustomerServiceBase/GetSystemDate" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetSystemDateWithFormat">
+      <soap:operation soapAction="http://tempuri.org/ICustomerServiceBase/GetSystemDateWithFormat" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendProducerReceipt">
+      <soap:operation soapAction="http://tempuri.org/IProducerReceiptIntegration/SendProducerReceipt" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SaveAsDraft">
+      <soap:operation soapAction="http://tempuri.org/IProducerReceiptIntegration/SaveAsDraft" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendDraft">
+      <soap:operation soapAction="http://tempuri.org/IProducerReceiptIntegration/SendDraft" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CancelDraft">
+      <soap:operation soapAction="http://tempuri.org/IProducerReceiptIntegration/CancelDraft" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetHtmlView">
+      <soap:operation soapAction="http://tempuri.org/IProducerReceiptIntegration/GetHtmlView" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetProducerReceipt">
+      <soap:operation soapAction="http://tempuri.org/IProducerReceiptIntegration/GetProducerReceipt" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPdfView">
+      <soap:operation soapAction="http://tempuri.org/IProducerReceiptIntegration/GetPdfView" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetProducerReceiptData">
+      <soap:operation soapAction="http://tempuri.org/IProducerReceiptIntegration/GetProducerReceiptData" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CancelProducerReceipt">
+      <soap:operation soapAction="http://tempuri.org/IProducerReceiptIntegration/CancelProducerReceipt" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="QueryProducerReceiptStatus">
+      <soap:operation soapAction="http://tempuri.org/IProducerReceiptIntegration/QueryProducerReceiptStatus" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="QueryProducerReceiptList">
+      <soap:operation soapAction="http://tempuri.org/IProducerReceiptIntegration/QueryProducerReceiptList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="QueryProducerReceiptStatusWithLogs">
+      <soap:operation soapAction="http://tempuri.org/IProducerReceiptIntegration/QueryProducerReceiptStatusWithLogs" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="ProducerReceiptIntegration">
+    <wsdl:port name="BasicHttpBinding_IProducerReceiptIntegration" binding="tns:BasicHttpBinding_IProducerReceiptIntegration">
+      <soap:address location="https://efatura.uyumsoft.com.tr/Services/ProducerReceiptIntegration" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

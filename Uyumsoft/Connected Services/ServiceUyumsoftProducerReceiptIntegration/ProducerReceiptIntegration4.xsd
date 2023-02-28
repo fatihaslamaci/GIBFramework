@@ -1,0 +1,759 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2" elementFormDefault="qualified" targetNamespace="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="https://efatura.uyumsoft.com.tr/Services/ProducerReceiptIntegration?xsd=xsd6" namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2" />
+  <xs:element name="InvoicePeriod" type="tns:PeriodType" />
+  <xs:complexType name="PeriodType">
+    <xs:sequence>
+      <xs:element xmlns:q1="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2" minOccurs="0" maxOccurs="1" ref="q1:StartDate" />
+      <xs:element xmlns:q2="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2" minOccurs="0" maxOccurs="1" ref="q2:StartTime" />
+      <xs:element xmlns:q3="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2" minOccurs="0" maxOccurs="1" ref="q3:EndDate" />
+      <xs:element xmlns:q4="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2" minOccurs="0" maxOccurs="1" ref="q4:EndTime" />
+      <xs:element xmlns:q5="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2" minOccurs="0" maxOccurs="1" ref="q5:DurationMeasure" />
+      <xs:element xmlns:q6="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2" minOccurs="0" maxOccurs="1" ref="q6:Description" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="DiscrepancyResponse" type="tns:ResponseType" />
+  <xs:complexType name="ResponseType">
+    <xs:sequence>
+      <xs:element xmlns:q7="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2" minOccurs="0" maxOccurs="1" ref="q7:ReferenceID" />
+      <xs:element xmlns:q8="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2" minOccurs="0" maxOccurs="1" ref="q8:ResponseCode" />
+      <xs:element xmlns:q9="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2" minOccurs="0" maxOccurs="unbounded" ref="q9:Description" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="OrderReference" type="tns:OrderReferenceType" />
+  <xs:complexType name="OrderReferenceType">
+    <xs:sequence>
+      <xs:element xmlns:q10="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2" minOccurs="0" maxOccurs="1" ref="q10:ID" />
+      <xs:element xmlns:q11="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2" minOccurs="0" maxOccurs="1" ref="q11:SalesOrderID" />
+      <xs:element xmlns:q12="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2" minOccurs="0" maxOccurs="1" ref="q12:IssueDate" />
+      <xs:element xmlns:q13="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2" minOccurs="0" maxOccurs="1" ref="q13:OrderTypeCode" />
+      <xs:element minOccurs="0" maxOccurs="1" name="DocumentReference" type="tns:DocumentReferenceType" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="DocumentReferenceType">
+    <xs:sequence>
+      <xs:element xmlns:q14="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2" minOccurs="0" maxOccurs="1" ref="q14:ID" />
+      <xs:element xmlns:q15="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2" minOccurs="0" maxOccurs="1" ref="q15:IssueDate" />
+      <xs:element xmlns:q16="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2" minOccurs="0" maxOccurs="1" ref="q16:DocumentTypeCode" />
+      <xs:element xmlns:q17="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2" minOccurs="0" maxOccurs="1" ref="q17:DocumentType" />
+      <xs:element xmlns:q18="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2" minOccurs="0" maxOccurs="unbounded" ref="q18:DocumentDescription" />
+      <xs:element minOccurs="0" maxOccurs="1" name="Attachment" type="tns:AttachmentType" />
+      <xs:element minOccurs="0" maxOccurs="1" name="ValidityPeriod" type="tns:PeriodType" />
+      <xs:element minOccurs="0" maxOccurs="1" name="IssuerParty" type="tns:PartyType" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="AttachmentType">
+    <xs:sequence>
+      <xs:element xmlns:q19="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2" minOccurs="0" maxOccurs="1" ref="q19:EmbeddedDocumentBinaryObject" />
+      <xs:element minOccurs="0" maxOccurs="1" name="ExternalReference" type="tns:ExternalReferenceType" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ExternalReferenceType">
+    <xs:sequence>
+      <xs:element xmlns:q20="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2" minOccurs="0" maxOccurs="1" ref="q20:URI" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="PartyType">
+    <xs:sequence>
+      <xs:element xmlns:q21="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2" minOccurs="0" maxOccurs="1" ref="q21:WebsiteURI" />
+      <xs:element xmlns:q22="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2" minOccurs="0" maxOccurs="1" ref="q22:EndpointID" />
+      <xs:element xmlns:q23="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2" minOccurs="0" maxOccurs="1" ref="q23:IndustryClassificationCode" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="PartyIdentification" type="tns:PartyIdentificationType" />
+      <xs:element minOccurs="0" maxOccurs="1" name="PartyName" type="tns:PartyNameType" />
+      <xs:element minOccurs="0" maxOccurs="1" name="PostalAddress" type="tns:AddressType" />
+      <xs:element minOccurs="0" maxOccurs="1" name="PhysicalLocation" type="tns:LocationType" />
+      <xs:element minOccurs="0" maxOccurs="1" name="PartyTaxScheme" type="tns:PartyTaxSchemeType" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="PartyLegalEntity" type="tns:PartyLegalEntityType" />
+      <xs:element minOccurs="0" maxOccurs="1" name="Contact" type="tns:ContactType" />
+      <xs:element minOccurs="0" maxOccurs="1" name="Person" type="tns:PersonType" />
+      <xs:element minOccurs="0" maxOccurs="1" name="AgentParty" type="tns:PartyType" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="PartyIdentificationType">
+    <xs:sequence>
+      <xs:element xmlns:q24="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2" minOccurs="0" maxOccurs="1" ref="q24:ID" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="PartyNameType">
+    <xs:sequence>
+      <xs:element xmlns:q25="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2" minOccurs="0" maxOccurs="1" ref="q25:Name" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="AddressType">
+    <xs:sequence>
+      <xs:element xmlns:q26="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2" minOccurs="0" maxOccurs="1" ref="q26:ID" />
+      <xs:element xmlns:q27="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2" minOccurs="0" maxOccurs="1" ref="q27:Postbox" />
+      <xs:element xmlns:q28="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2" minOccurs="0" maxOccurs="1" ref="q28:Room" />
+      <xs:element xmlns:q29="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2" minOccurs="0" maxOccurs="1" ref="q29:StreetName" />
+      <xs:element xmlns:q30="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2" minOccurs="0" maxOccurs="1" ref="q30:BlockName" />
+      <xs:element xmlns:q31="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2" minOccurs="0" maxOccurs="1" ref="q31:BuildingName" />
+      <xs:element xmlns:q32="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2" minOccurs="0" maxOccurs="1" ref="q32:BuildingNumber" />
+      <xs:element xmlns:q33="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2" minOccurs="0" maxOccurs="1" ref="q33:CitySubdivisionName" />
+      <xs:element xmlns:q34="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2" minOccurs="0" maxOccurs="1" ref="q34:CityName" />
+      <xs:element xmlns:q35="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2" minOccurs="0" maxOccurs="1" ref="q35:PostalZone" />
+      <xs:element xmlns:q36="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2" minOccurs="0" maxOccurs="1" ref="q36:Region" />
+      <xs:element xmlns:q37="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2" minOccurs="0" maxOccurs="1" ref="q37:District" />
+      <xs:element minOccurs="0" maxOccurs="1" name="Country" type="tns:CountryType" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="CountryType">
+    <xs:sequence>
+      <xs:element xmlns:q38="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2" minOccurs="0" maxOccurs="1" ref="q38:IdentificationCode" />
+      <xs:element xmlns:q39="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2" minOccurs="0" maxOccurs="1" ref="q39:Name" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="LocationType">
+    <xs:sequence>
+      <xs:element xmlns:q40="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2" minOccurs="0" maxOccurs="1" ref="q40:ID" />
+      <xs:element minOccurs="0" maxOccurs="1" name="Address" type="tns:AddressType" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="PartyTaxSchemeType">
+    <xs:sequence>
+      <xs:element xmlns:q41="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2" minOccurs="0" maxOccurs="1" ref="q41:RegistrationName" />
+      <xs:element xmlns:q42="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2" minOccurs="0" maxOccurs="1" ref="q42:CompanyID" />
+      <xs:element minOccurs="0" maxOccurs="1" name="TaxScheme" type="tns:TaxSchemeType" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="TaxSchemeType">
+    <xs:sequence>
+      <xs:element xmlns:q43="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2" minOccurs="0" maxOccurs="1" ref="q43:ID" />
+      <xs:element xmlns:q44="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2" minOccurs="0" maxOccurs="1" ref="q44:Name" />
+      <xs:element xmlns:q45="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2" minOccurs="0" maxOccurs="1" ref="q45:TaxTypeCode" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="PartyLegalEntityType">
+    <xs:sequence>
+      <xs:element xmlns:q46="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2" minOccurs="0" maxOccurs="1" ref="q46:RegistrationName" />
+      <xs:element xmlns:q47="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2" minOccurs="0" maxOccurs="1" ref="q47:CompanyID" />
+      <xs:element xmlns:q48="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2" minOccurs="0" maxOccurs="1" ref="q48:RegistrationDate" />
+      <xs:element xmlns:q49="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2" minOccurs="0" maxOccurs="1" ref="q49:SoleProprietorshipIndicator" />
+      <xs:element xmlns:q50="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2" minOccurs="0" maxOccurs="1" ref="q50:CorporateStockAmount" />
+      <xs:element xmlns:q51="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2" minOccurs="0" maxOccurs="1" ref="q51:FullyPaidSharesIndicator" />
+      <xs:element minOccurs="0" maxOccurs="1" name="CorporateRegistrationScheme" type="tns:CorporateRegistrationSchemeType" />
+      <xs:element minOccurs="0" maxOccurs="1" name="HeadOfficeParty" type="tns:PartyType" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="CorporateRegistrationSchemeType">
+    <xs:sequence>
+      <xs:element xmlns:q52="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2" minOccurs="0" maxOccurs="1" ref="q52:ID" />
+      <xs:element xmlns:q53="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2" minOccurs="0" maxOccurs="1" ref="q53:Name" />
+      <xs:element xmlns:q54="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2" minOccurs="0" maxOccurs="1" ref="q54:CorporateRegistrationTypeCode" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="JurisdictionRegionAddress" type="tns:AddressType" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ContactType">
+    <xs:sequence>
+      <xs:element xmlns:q55="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2" minOccurs="0" maxOccurs="1" ref="q55:ID" />
+      <xs:element xmlns:q56="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2" minOccurs="0" maxOccurs="1" ref="q56:Name" />
+      <xs:element xmlns:q57="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2" minOccurs="0" maxOccurs="1" ref="q57:Telephone" />
+      <xs:element xmlns:q58="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2" minOccurs="0" maxOccurs="1" ref="q58:Telefax" />
+      <xs:element xmlns:q59="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2" minOccurs="0" maxOccurs="1" ref="q59:ElectronicMail" />
+      <xs:element xmlns:q60="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2" minOccurs="0" maxOccurs="1" ref="q60:Note" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="OtherCommunication" type="tns:CommunicationType" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="CommunicationType">
+    <xs:sequence>
+      <xs:element xmlns:q61="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2" minOccurs="0" maxOccurs="1" ref="q61:ChannelCode" />
+      <xs:element xmlns:q62="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2" minOccurs="0" maxOccurs="1" ref="q62:Channel" />
+      <xs:element xmlns:q63="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2" minOccurs="0" maxOccurs="1" ref="q63:Value" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="PersonType">
+    <xs:sequence>
+      <xs:element xmlns:q64="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2" minOccurs="0" maxOccurs="1" ref="q64:FirstName" />
+      <xs:element xmlns:q65="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2" minOccurs="0" maxOccurs="1" ref="q65:FamilyName" />
+      <xs:element xmlns:q66="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2" minOccurs="0" maxOccurs="1" ref="q66:Title" />
+      <xs:element xmlns:q67="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2" minOccurs="0" maxOccurs="1" ref="q67:MiddleName" />
+      <xs:element xmlns:q68="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2" minOccurs="0" maxOccurs="1" ref="q68:NameSuffix" />
+      <xs:element xmlns:q69="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2" minOccurs="0" maxOccurs="1" ref="q69:NationalityID" />
+      <xs:element minOccurs="0" maxOccurs="1" name="FinancialAccount" type="tns:FinancialAccountType" />
+      <xs:element minOccurs="0" maxOccurs="1" name="IdentityDocumentReference" type="tns:DocumentReferenceType" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="FinancialAccountType">
+    <xs:sequence>
+      <xs:element xmlns:q70="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2" minOccurs="0" maxOccurs="1" ref="q70:ID" />
+      <xs:element xmlns:q71="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2" minOccurs="0" maxOccurs="1" ref="q71:CurrencyCode" />
+      <xs:element xmlns:q72="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2" minOccurs="0" maxOccurs="1" ref="q72:PaymentNote" />
+      <xs:element minOccurs="0" maxOccurs="1" name="FinancialInstitutionBranch" type="tns:BranchType" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="BranchType">
+    <xs:sequence>
+      <xs:element xmlns:q73="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2" minOccurs="0" maxOccurs="1" ref="q73:Name" />
+      <xs:element minOccurs="0" maxOccurs="1" name="FinancialInstitution" type="tns:FinancialInstitutionType" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="FinancialInstitutionType">
+    <xs:sequence>
+      <xs:element xmlns:q74="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2" minOccurs="0" maxOccurs="1" ref="q74:Name" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="BillingReference" type="tns:BillingReferenceType" />
+  <xs:complexType name="BillingReferenceType">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="1" name="InvoiceDocumentReference" type="tns:DocumentReferenceType" />
+      <xs:element minOccurs="0" maxOccurs="1" name="SelfBilledInvoiceDocumentReference" type="tns:DocumentReferenceType" />
+      <xs:element minOccurs="0" maxOccurs="1" name="CreditNoteDocumentReference" type="tns:DocumentReferenceType" />
+      <xs:element minOccurs="0" maxOccurs="1" name="SelfBilledCreditNoteDocumentReference" type="tns:DocumentReferenceType" />
+      <xs:element minOccurs="0" maxOccurs="1" name="DebitNoteDocumentReference" type="tns:DocumentReferenceType" />
+      <xs:element minOccurs="0" maxOccurs="1" name="ReminderDocumentReference" type="tns:DocumentReferenceType" />
+      <xs:element minOccurs="0" maxOccurs="1" name="AdditionalDocumentReference" type="tns:DocumentReferenceType" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="BillingReferenceLine" type="tns:BillingReferenceLineType" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="BillingReferenceLineType">
+    <xs:sequence>
+      <xs:element xmlns:q75="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2" minOccurs="0" maxOccurs="1" ref="q75:ID" />
+      <xs:element xmlns:q76="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2" minOccurs="0" maxOccurs="1" ref="q76:Amount" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="AllowanceCharge" type="tns:AllowanceChargeType" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="AllowanceChargeType">
+    <xs:sequence>
+      <xs:element xmlns:q77="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2" minOccurs="0" maxOccurs="1" ref="q77:ChargeIndicator" />
+      <xs:element xmlns:q78="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2" minOccurs="0" maxOccurs="1" ref="q78:AllowanceChargeReason" />
+      <xs:element xmlns:q79="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2" minOccurs="0" maxOccurs="1" ref="q79:MultiplierFactorNumeric" />
+      <xs:element xmlns:q80="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2" minOccurs="0" maxOccurs="1" ref="q80:SequenceNumeric" />
+      <xs:element xmlns:q81="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2" minOccurs="0" maxOccurs="1" ref="q81:Amount" />
+      <xs:element xmlns:q82="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2" minOccurs="0" maxOccurs="1" ref="q82:BaseAmount" />
+      <xs:element xmlns:q83="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2" minOccurs="0" maxOccurs="1" ref="q83:PerUnitAmount" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="DespatchDocumentReference" type="tns:DocumentReferenceType" />
+  <xs:element name="ReceiptDocumentReference" type="tns:DocumentReferenceType" />
+  <xs:element name="ContractDocumentReference" type="tns:DocumentReferenceType" />
+  <xs:element name="AdditionalDocumentReference" type="tns:DocumentReferenceType" />
+  <xs:element name="StatementDocumentReference" type="tns:DocumentReferenceType" />
+  <xs:element name="OriginatorDocumentReference" type="tns:DocumentReferenceType" />
+  <xs:element name="Signature" type="tns:SignatureType" />
+  <xs:complexType name="SignatureType">
+    <xs:sequence>
+      <xs:element xmlns:q84="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2" minOccurs="0" maxOccurs="1" ref="q84:ID" />
+      <xs:element minOccurs="0" maxOccurs="1" name="SignatoryParty" type="tns:PartyType" />
+      <xs:element minOccurs="0" maxOccurs="1" name="DigitalSignatureAttachment" type="tns:AttachmentType" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="AccountingSupplierParty" type="tns:SupplierPartyType" />
+  <xs:complexType name="SupplierPartyType">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="1" name="Party" type="tns:PartyType" />
+      <xs:element minOccurs="0" maxOccurs="1" name="DespatchContact" type="tns:ContactType" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="AccountingCustomerParty" type="tns:CustomerPartyType" />
+  <xs:complexType name="CustomerPartyType">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="1" name="Party" type="tns:PartyType" />
+      <xs:element minOccurs="0" maxOccurs="1" name="DeliveryContact" type="tns:ContactType" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="PayeeParty" type="tns:PartyType" />
+  <xs:element name="BuyerCustomerParty" type="tns:CustomerPartyType" />
+  <xs:element name="SellerSupplierParty" type="tns:SupplierPartyType" />
+  <xs:element name="TaxRepresentativeParty" type="tns:PartyType" />
+  <xs:element name="Delivery" type="tns:DeliveryType" />
+  <xs:complexType name="DeliveryType">
+    <xs:sequence>
+      <xs:element xmlns:q85="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2" minOccurs="0" maxOccurs="1" ref="q85:ID" />
+      <xs:element xmlns:q86="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2" minOccurs="0" maxOccurs="1" ref="q86:Quantity" />
+      <xs:element xmlns:q87="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2" minOccurs="0" maxOccurs="1" ref="q87:ActualDeliveryDate" />
+      <xs:element xmlns:q88="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2" minOccurs="0" maxOccurs="1" ref="q88:ActualDeliveryTime" />
+      <xs:element xmlns:q89="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2" minOccurs="0" maxOccurs="1" ref="q89:LatestDeliveryDate" />
+      <xs:element xmlns:q90="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2" minOccurs="0" maxOccurs="1" ref="q90:LatestDeliveryTime" />
+      <xs:element xmlns:q91="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2" minOccurs="0" maxOccurs="1" ref="q91:TrackingID" />
+      <xs:element minOccurs="0" maxOccurs="1" name="DeliveryAddress" type="tns:AddressType" />
+      <xs:element minOccurs="0" maxOccurs="1" name="AlternativeDeliveryLocation" type="tns:LocationType" />
+      <xs:element minOccurs="0" maxOccurs="1" name="EstimatedDeliveryPeriod" type="tns:PeriodType" />
+      <xs:element minOccurs="0" maxOccurs="1" name="CarrierParty" type="tns:PartyType" />
+      <xs:element minOccurs="0" maxOccurs="1" name="DeliveryParty" type="tns:PartyType" />
+      <xs:element minOccurs="0" maxOccurs="1" name="Despatch" type="tns:DespatchType" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="DeliveryTerms" type="tns:DeliveryTermsType" />
+      <xs:element minOccurs="0" maxOccurs="1" name="Shipment" type="tns:ShipmentType" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="DespatchType">
+    <xs:sequence>
+      <xs:element xmlns:q92="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2" minOccurs="0" maxOccurs="1" ref="q92:ID" />
+      <xs:element xmlns:q93="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2" minOccurs="0" maxOccurs="1" ref="q93:ActualDespatchDate" />
+      <xs:element xmlns:q94="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2" minOccurs="0" maxOccurs="1" ref="q94:ActualDespatchTime" />
+      <xs:element xmlns:q95="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2" minOccurs="0" maxOccurs="1" ref="q95:Instructions" />
+      <xs:element minOccurs="0" maxOccurs="1" name="DespatchAddress" type="tns:AddressType" />
+      <xs:element minOccurs="0" maxOccurs="1" name="DespatchParty" type="tns:PartyType" />
+      <xs:element minOccurs="0" maxOccurs="1" name="Contact" type="tns:ContactType" />
+      <xs:element minOccurs="0" maxOccurs="1" name="EstimatedDespatchPeriod" type="tns:PeriodType" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="DeliveryTermsType">
+    <xs:sequence>
+      <xs:element xmlns:q96="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2" minOccurs="0" maxOccurs="1" ref="q96:ID" />
+      <xs:element xmlns:q97="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2" minOccurs="0" maxOccurs="1" ref="q97:SpecialTerms" />
+      <xs:element xmlns:q98="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2" minOccurs="0" maxOccurs="1" ref="q98:Amount" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ShipmentType">
+    <xs:sequence>
+      <xs:element xmlns:q99="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2" minOccurs="0" maxOccurs="1" ref="q99:ID" />
+      <xs:element xmlns:q100="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2" minOccurs="0" maxOccurs="1" ref="q100:HandlingCode" />
+      <xs:element xmlns:q101="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2" minOccurs="0" maxOccurs="1" ref="q101:HandlingInstructions" />
+      <xs:element xmlns:q102="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2" minOccurs="0" maxOccurs="1" ref="q102:GrossWeightMeasure" />
+      <xs:element xmlns:q103="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2" minOccurs="0" maxOccurs="1" ref="q103:NetWeightMeasure" />
+      <xs:element xmlns:q104="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2" minOccurs="0" maxOccurs="1" ref="q104:GrossVolumeMeasure" />
+      <xs:element xmlns:q105="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2" minOccurs="0" maxOccurs="1" ref="q105:NetVolumeMeasure" />
+      <xs:element xmlns:q106="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2" minOccurs="0" maxOccurs="1" ref="q106:TotalGoodsItemQuantity" />
+      <xs:element xmlns:q107="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2" minOccurs="0" maxOccurs="1" ref="q107:TotalTransportHandlingUnitQuantity" />
+      <xs:element xmlns:q108="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2" minOccurs="0" maxOccurs="1" ref="q108:InsuranceValueAmount" />
+      <xs:element xmlns:q109="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2" minOccurs="0" maxOccurs="1" ref="q109:DeclaredCustomsValueAmount" />
+      <xs:element xmlns:q110="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2" minOccurs="0" maxOccurs="1" ref="q110:DeclaredForCarriageValueAmount" />
+      <xs:element xmlns:q111="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2" minOccurs="0" maxOccurs="1" ref="q111:DeclaredStatisticsValueAmount" />
+      <xs:element xmlns:q112="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2" minOccurs="0" maxOccurs="1" ref="q112:FreeOnBoardValueAmount" />
+      <xs:element xmlns:q113="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2" minOccurs="0" maxOccurs="unbounded" ref="q113:SpecialInstructions" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="GoodsItem" type="tns:GoodsItemType" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="ShipmentStage" type="tns:ShipmentStageType" />
+      <xs:element minOccurs="0" maxOccurs="1" name="Delivery" type="tns:DeliveryType" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="TransportHandlingUnit" type="tns:TransportHandlingUnitType" />
+      <xs:element minOccurs="0" maxOccurs="1" name="ReturnAddress" type="tns:AddressType" />
+      <xs:element minOccurs="0" maxOccurs="1" name="FirstArrivalPortLocation" type="tns:LocationType" />
+      <xs:element minOccurs="0" maxOccurs="1" name="LastExitPortLocation" type="tns:LocationType" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="GoodsItemType">
+    <xs:sequence>
+      <xs:element xmlns:q114="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2" minOccurs="0" maxOccurs="1" ref="q114:ID" />
+      <xs:element xmlns:q115="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2" minOccurs="0" maxOccurs="unbounded" ref="q115:Description" />
+      <xs:element xmlns:q116="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2" minOccurs="0" maxOccurs="1" ref="q116:HazardousRiskIndicator" />
+      <xs:element xmlns:q117="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2" minOccurs="0" maxOccurs="1" ref="q117:DeclaredCustomsValueAmount" />
+      <xs:element xmlns:q118="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2" minOccurs="0" maxOccurs="1" ref="q118:DeclaredForCarriageValueAmount" />
+      <xs:element xmlns:q119="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2" minOccurs="0" maxOccurs="1" ref="q119:DeclaredStatisticsValueAmount" />
+      <xs:element xmlns:q120="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2" minOccurs="0" maxOccurs="1" ref="q120:FreeOnBoardValueAmount" />
+      <xs:element xmlns:q121="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2" minOccurs="0" maxOccurs="1" ref="q121:InsuranceValueAmount" />
+      <xs:element xmlns:q122="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2" minOccurs="0" maxOccurs="1" ref="q122:ValueAmount" />
+      <xs:element xmlns:q123="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2" minOccurs="0" maxOccurs="1" ref="q123:GrossWeightMeasure" />
+      <xs:element xmlns:q124="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2" minOccurs="0" maxOccurs="1" ref="q124:NetWeightMeasure" />
+      <xs:element xmlns:q125="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2" minOccurs="0" maxOccurs="1" ref="q125:ChargeableWeightMeasure" />
+      <xs:element xmlns:q126="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2" minOccurs="0" maxOccurs="1" ref="q126:GrossVolumeMeasure" />
+      <xs:element xmlns:q127="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2" minOccurs="0" maxOccurs="1" ref="q127:NetVolumeMeasure" />
+      <xs:element xmlns:q128="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2" minOccurs="0" maxOccurs="1" ref="q128:Quantity" />
+      <xs:element xmlns:q129="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2" minOccurs="0" maxOccurs="1" ref="q129:RequiredCustomsID" />
+      <xs:element xmlns:q130="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2" minOccurs="0" maxOccurs="1" ref="q130:CustomsStatusCode" />
+      <xs:element xmlns:q131="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2" minOccurs="0" maxOccurs="1" ref="q131:CustomsTariffQuantity" />
+      <xs:element xmlns:q132="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2" minOccurs="0" maxOccurs="1" ref="q132:CustomsImportClassifiedIndicator" />
+      <xs:element xmlns:q133="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2" minOccurs="0" maxOccurs="1" ref="q133:ChargeableQuantity" />
+      <xs:element xmlns:q134="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2" minOccurs="0" maxOccurs="1" ref="q134:ReturnableQuantity" />
+      <xs:element xmlns:q135="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2" minOccurs="0" maxOccurs="1" ref="q135:TraceID" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Item" type="tns:ItemType" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="FreightAllowanceCharge" type="tns:AllowanceChargeType" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="InvoiceLine" type="tns:InvoiceLineType" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Temperature" type="tns:TemperatureType" />
+      <xs:element minOccurs="0" maxOccurs="1" name="OriginAddress" type="tns:AddressType" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="MeasurementDimension" type="tns:DimensionType" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ItemType">
+    <xs:sequence>
+      <xs:element xmlns:q136="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2" minOccurs="0" maxOccurs="1" ref="q136:Description" />
+      <xs:element xmlns:q137="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2" minOccurs="0" maxOccurs="1" ref="q137:Name" />
+      <xs:element xmlns:q138="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2" minOccurs="0" maxOccurs="1" ref="q138:Keyword" />
+      <xs:element xmlns:q139="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2" minOccurs="0" maxOccurs="1" ref="q139:BrandName" />
+      <xs:element xmlns:q140="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2" minOccurs="0" maxOccurs="1" ref="q140:ModelName" />
+      <xs:element minOccurs="0" maxOccurs="1" name="BuyersItemIdentification" type="tns:ItemIdentificationType" />
+      <xs:element minOccurs="0" maxOccurs="1" name="SellersItemIdentification" type="tns:ItemIdentificationType" />
+      <xs:element minOccurs="0" maxOccurs="1" name="ManufacturersItemIdentification" type="tns:ItemIdentificationType" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="AdditionalItemIdentification" type="tns:ItemIdentificationType" />
+      <xs:element minOccurs="0" maxOccurs="1" name="OriginCountry" type="tns:CountryType" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="CommodityClassification" type="tns:CommodityClassificationType" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="ItemInstance" type="tns:ItemInstanceType" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ItemIdentificationType">
+    <xs:sequence>
+      <xs:element xmlns:q141="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2" minOccurs="0" maxOccurs="1" ref="q141:ID" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="CommodityClassificationType">
+    <xs:sequence>
+      <xs:element xmlns:q142="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2" minOccurs="0" maxOccurs="1" ref="q142:ItemClassificationCode" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ItemInstanceType">
+    <xs:sequence>
+      <xs:element xmlns:q143="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2" minOccurs="0" maxOccurs="1" ref="q143:ProductTraceID" />
+      <xs:element xmlns:q144="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2" minOccurs="0" maxOccurs="1" ref="q144:ManufactureDate" />
+      <xs:element xmlns:q145="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2" minOccurs="0" maxOccurs="1" ref="q145:ManufactureTime" />
+      <xs:element xmlns:q146="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2" minOccurs="0" maxOccurs="1" ref="q146:BestBeforeDate" />
+      <xs:element xmlns:q147="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2" minOccurs="0" maxOccurs="1" ref="q147:RegistrationID" />
+      <xs:element xmlns:q148="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2" minOccurs="0" maxOccurs="1" ref="q148:SerialID" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="AdditionalItemProperty" type="tns:ItemPropertyType" />
+      <xs:element minOccurs="0" maxOccurs="1" name="LotIdentification" type="tns:LotIdentificationType" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ItemPropertyType">
+    <xs:sequence>
+      <xs:element xmlns:q149="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2" minOccurs="0" maxOccurs="1" ref="q149:ID" />
+      <xs:element xmlns:q150="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2" minOccurs="0" maxOccurs="1" ref="q150:Name" />
+      <xs:element xmlns:q151="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2" minOccurs="0" maxOccurs="1" ref="q151:NameCode" />
+      <xs:element xmlns:q152="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2" minOccurs="0" maxOccurs="1" ref="q152:TestMethod" />
+      <xs:element xmlns:q153="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2" minOccurs="0" maxOccurs="1" ref="q153:Value" />
+      <xs:element xmlns:q154="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2" minOccurs="0" maxOccurs="1" ref="q154:ValueQuantity" />
+      <xs:element xmlns:q155="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2" minOccurs="0" maxOccurs="unbounded" ref="q155:ValueQualifier" />
+      <xs:element xmlns:q156="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2" minOccurs="0" maxOccurs="1" ref="q156:ImportanceCode" />
+      <xs:element xmlns:q157="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2" minOccurs="0" maxOccurs="unbounded" ref="q157:ListValue" />
+      <xs:element minOccurs="0" maxOccurs="1" name="UsabilityPeriod" type="tns:PeriodType" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="ItemPropertyGroup" type="tns:ItemPropertyGroupType" />
+      <xs:element minOccurs="0" maxOccurs="1" name="RangeDimension" type="tns:DimensionType" />
+      <xs:element minOccurs="0" maxOccurs="1" name="ItemPropertyRange" type="tns:ItemPropertyRangeType" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ItemPropertyGroupType">
+    <xs:sequence>
+      <xs:element xmlns:q158="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2" minOccurs="0" maxOccurs="1" ref="q158:ID" />
+      <xs:element xmlns:q159="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2" minOccurs="0" maxOccurs="1" ref="q159:Name" />
+      <xs:element xmlns:q160="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2" minOccurs="0" maxOccurs="1" ref="q160:ImportanceCode" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="DimensionType">
+    <xs:sequence>
+      <xs:element xmlns:q161="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2" minOccurs="0" maxOccurs="1" ref="q161:AttributeID" />
+      <xs:element xmlns:q162="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2" minOccurs="0" maxOccurs="1" ref="q162:Measure" />
+      <xs:element xmlns:q163="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2" minOccurs="0" maxOccurs="unbounded" ref="q163:Description" />
+      <xs:element xmlns:q164="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2" minOccurs="0" maxOccurs="1" ref="q164:MinimumMeasure" />
+      <xs:element xmlns:q165="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2" minOccurs="0" maxOccurs="1" ref="q165:MaximumMeasure" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ItemPropertyRangeType">
+    <xs:sequence>
+      <xs:element xmlns:q166="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2" minOccurs="0" maxOccurs="1" ref="q166:MinimumValue" />
+      <xs:element xmlns:q167="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2" minOccurs="0" maxOccurs="1" ref="q167:MaximumValue" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="LotIdentificationType">
+    <xs:sequence>
+      <xs:element xmlns:q168="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2" minOccurs="0" maxOccurs="1" ref="q168:LotNumberID" />
+      <xs:element xmlns:q169="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2" minOccurs="0" maxOccurs="1" ref="q169:ExpiryDate" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="AdditionalItemProperty" type="tns:ItemPropertyType" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="InvoiceLineType">
+    <xs:sequence>
+      <xs:element xmlns:q170="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2" minOccurs="0" maxOccurs="1" ref="q170:ID" />
+      <xs:element xmlns:q171="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2" minOccurs="0" maxOccurs="unbounded" ref="q171:Note" />
+      <xs:element xmlns:q172="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2" minOccurs="0" maxOccurs="1" ref="q172:InvoicedQuantity" />
+      <xs:element xmlns:q173="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2" minOccurs="0" maxOccurs="1" ref="q173:LineExtensionAmount" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="OrderLineReference" type="tns:OrderLineReferenceType" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="DespatchLineReference" type="tns:LineReferenceType" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="ReceiptLineReference" type="tns:LineReferenceType" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Delivery" type="tns:DeliveryType" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="AllowanceCharge" type="tns:AllowanceChargeType" />
+      <xs:element minOccurs="0" maxOccurs="1" name="TaxTotal" type="tns:TaxTotalType" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="WithholdingTaxTotal" type="tns:TaxTotalType" />
+      <xs:element minOccurs="0" maxOccurs="1" name="Item" type="tns:ItemType" />
+      <xs:element minOccurs="0" maxOccurs="1" name="Price" type="tns:PriceType" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="SubInvoiceLine" type="tns:InvoiceLineType" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="OrderLineReferenceType">
+    <xs:sequence>
+      <xs:element xmlns:q174="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2" minOccurs="0" maxOccurs="1" ref="q174:LineID" />
+      <xs:element xmlns:q175="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2" minOccurs="0" maxOccurs="1" ref="q175:SalesOrderLineID" />
+      <xs:element xmlns:q176="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2" minOccurs="0" maxOccurs="1" ref="q176:UUID" />
+      <xs:element xmlns:q177="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2" minOccurs="0" maxOccurs="1" ref="q177:LineStatusCode" />
+      <xs:element minOccurs="0" maxOccurs="1" name="OrderReference" type="tns:OrderReferenceType" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="LineReferenceType">
+    <xs:sequence>
+      <xs:element xmlns:q178="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2" minOccurs="0" maxOccurs="1" ref="q178:LineID" />
+      <xs:element xmlns:q179="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2" minOccurs="0" maxOccurs="1" ref="q179:LineStatusCode" />
+      <xs:element minOccurs="0" maxOccurs="1" name="DocumentReference" type="tns:DocumentReferenceType" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="TaxTotalType">
+    <xs:sequence>
+      <xs:element xmlns:q180="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2" minOccurs="0" maxOccurs="1" ref="q180:TaxAmount" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="TaxSubtotal" type="tns:TaxSubtotalType" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="TaxSubtotalType">
+    <xs:sequence>
+      <xs:element xmlns:q181="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2" minOccurs="0" maxOccurs="1" ref="q181:TaxableAmount" />
+      <xs:element xmlns:q182="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2" minOccurs="0" maxOccurs="1" ref="q182:TaxAmount" />
+      <xs:element xmlns:q183="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2" minOccurs="0" maxOccurs="1" ref="q183:CalculationSequenceNumeric" />
+      <xs:element xmlns:q184="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2" minOccurs="0" maxOccurs="1" ref="q184:TransactionCurrencyTaxAmount" />
+      <xs:element xmlns:q185="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2" minOccurs="0" maxOccurs="1" ref="q185:Percent" />
+      <xs:element xmlns:q186="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2" minOccurs="0" maxOccurs="1" ref="q186:BaseUnitMeasure" />
+      <xs:element xmlns:q187="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2" minOccurs="0" maxOccurs="1" ref="q187:PerUnitAmount" />
+      <xs:element minOccurs="0" maxOccurs="1" name="TaxCategory" type="tns:TaxCategoryType" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="TaxCategoryType">
+    <xs:sequence>
+      <xs:element xmlns:q188="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2" minOccurs="0" maxOccurs="1" ref="q188:Name" />
+      <xs:element xmlns:q189="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2" minOccurs="0" maxOccurs="1" ref="q189:TaxExemptionReasonCode" />
+      <xs:element xmlns:q190="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2" minOccurs="0" maxOccurs="1" ref="q190:TaxExemptionReason" />
+      <xs:element minOccurs="0" maxOccurs="1" name="TaxScheme" type="tns:TaxSchemeType" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="PriceType">
+    <xs:sequence>
+      <xs:element xmlns:q191="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2" minOccurs="0" maxOccurs="1" ref="q191:PriceAmount" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="TemperatureType">
+    <xs:sequence>
+      <xs:element xmlns:q192="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2" minOccurs="0" maxOccurs="1" ref="q192:AttributeID" />
+      <xs:element xmlns:q193="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2" minOccurs="0" maxOccurs="1" ref="q193:Measure" />
+      <xs:element xmlns:q194="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2" minOccurs="0" maxOccurs="unbounded" ref="q194:Description" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ShipmentStageType">
+    <xs:sequence>
+      <xs:element xmlns:q195="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2" minOccurs="0" maxOccurs="1" ref="q195:ID" />
+      <xs:element xmlns:q196="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2" minOccurs="0" maxOccurs="1" ref="q196:TransportModeCode" />
+      <xs:element xmlns:q197="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2" minOccurs="0" maxOccurs="1" ref="q197:TransportMeansTypeCode" />
+      <xs:element xmlns:q198="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2" minOccurs="0" maxOccurs="1" ref="q198:TransitDirectionCode" />
+      <xs:element xmlns:q199="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2" minOccurs="0" maxOccurs="unbounded" ref="q199:Instructions" />
+      <xs:element minOccurs="0" maxOccurs="1" name="TransitPeriod" type="tns:PeriodType" />
+      <xs:element minOccurs="0" maxOccurs="1" name="TransportMeans" type="tns:TransportMeansType" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="DriverPerson" type="tns:PersonType" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="TransportMeansType">
+    <xs:sequence>
+      <xs:element xmlns:q200="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2" minOccurs="0" maxOccurs="1" ref="q200:JourneyID" />
+      <xs:element xmlns:q201="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2" minOccurs="0" maxOccurs="1" ref="q201:RegistrationNationalityID" />
+      <xs:element xmlns:q202="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2" minOccurs="0" maxOccurs="unbounded" ref="q202:RegistrationNationality" />
+      <xs:element xmlns:q203="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2" minOccurs="0" maxOccurs="1" ref="q203:DirectionCode" />
+      <xs:element xmlns:q204="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2" minOccurs="0" maxOccurs="1" ref="q204:TransportMeansTypeCode" />
+      <xs:element xmlns:q205="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2" minOccurs="0" maxOccurs="1" ref="q205:TradeServiceCode" />
+      <xs:element minOccurs="0" maxOccurs="1" name="Stowage" type="tns:StowageType" />
+      <xs:element minOccurs="0" maxOccurs="1" name="AirTransport" type="tns:AirTransportType" />
+      <xs:element minOccurs="0" maxOccurs="1" name="RoadTransport" type="tns:RoadTransportType" />
+      <xs:element minOccurs="0" maxOccurs="1" name="RailTransport" type="tns:RailTransportType" />
+      <xs:element minOccurs="0" maxOccurs="1" name="MaritimeTransport" type="tns:MaritimeTransportType" />
+      <xs:element minOccurs="0" maxOccurs="1" name="OwnerParty" type="tns:PartyType" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="MeasurementDimension" type="tns:DimensionType" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="StowageType">
+    <xs:sequence>
+      <xs:element xmlns:q206="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2" minOccurs="0" maxOccurs="1" ref="q206:LocationID" />
+      <xs:element xmlns:q207="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2" minOccurs="0" maxOccurs="unbounded" ref="q207:Location" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="MeasurementDimension" type="tns:DimensionType" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="AirTransportType">
+    <xs:sequence>
+      <xs:element xmlns:q208="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2" minOccurs="0" maxOccurs="1" ref="q208:AircraftID" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="RoadTransportType">
+    <xs:sequence>
+      <xs:element xmlns:q209="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2" minOccurs="0" maxOccurs="1" ref="q209:LicensePlateID" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="RailTransportType">
+    <xs:sequence>
+      <xs:element xmlns:q210="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2" minOccurs="0" maxOccurs="1" ref="q210:TrainID" />
+      <xs:element xmlns:q211="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2" minOccurs="0" maxOccurs="1" ref="q211:RailCarID" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="MaritimeTransportType">
+    <xs:sequence>
+      <xs:element xmlns:q212="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2" minOccurs="0" maxOccurs="1" ref="q212:VesselID" />
+      <xs:element xmlns:q213="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2" minOccurs="0" maxOccurs="1" ref="q213:VesselName" />
+      <xs:element xmlns:q214="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2" minOccurs="0" maxOccurs="1" ref="q214:RadioCallSignID" />
+      <xs:element xmlns:q215="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2" minOccurs="0" maxOccurs="unbounded" ref="q215:ShipsRequirements" />
+      <xs:element xmlns:q216="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2" minOccurs="0" maxOccurs="1" ref="q216:GrossTonnageMeasure" />
+      <xs:element xmlns:q217="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2" minOccurs="0" maxOccurs="1" ref="q217:NetTonnageMeasure" />
+      <xs:element minOccurs="0" maxOccurs="1" name="RegistryCertificateDocumentReference" type="tns:DocumentReferenceType" />
+      <xs:element minOccurs="0" maxOccurs="1" name="RegistryPortLocation" type="tns:LocationType" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="TransportHandlingUnitType">
+    <xs:sequence>
+      <xs:element xmlns:q218="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2" minOccurs="0" maxOccurs="1" ref="q218:ID" />
+      <xs:element xmlns:q219="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2" minOccurs="0" maxOccurs="1" ref="q219:TransportHandlingUnitTypeCode" />
+      <xs:element xmlns:q220="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2" minOccurs="0" maxOccurs="1" ref="q220:HandlingCode" />
+      <xs:element xmlns:q221="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2" minOccurs="0" maxOccurs="1" ref="q221:HandlingInstructions" />
+      <xs:element xmlns:q222="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2" minOccurs="0" maxOccurs="1" ref="q222:HazardousRiskIndicator" />
+      <xs:element xmlns:q223="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2" minOccurs="0" maxOccurs="1" ref="q223:TotalGoodsItemQuantity" />
+      <xs:element xmlns:q224="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2" minOccurs="0" maxOccurs="1" ref="q224:TotalPackageQuantity" />
+      <xs:element xmlns:q225="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2" minOccurs="0" maxOccurs="unbounded" ref="q225:DamageRemarks" />
+      <xs:element xmlns:q226="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2" minOccurs="0" maxOccurs="1" ref="q226:TraceID" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="ActualPackage" type="tns:PackageType" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="TransportEquipment" type="tns:TransportEquipmentType" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="TransportMeans" type="tns:TransportMeansType" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="HazardousGoodsTransit" type="tns:HazardousGoodsTransitType" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="MeasurementDimension" type="tns:DimensionType" />
+      <xs:element minOccurs="0" maxOccurs="1" name="MinimumTemperature" type="tns:TemperatureType" />
+      <xs:element minOccurs="0" maxOccurs="1" name="MaximumTemperature" type="tns:TemperatureType" />
+      <xs:element minOccurs="0" maxOccurs="1" name="FloorSpaceMeasurementDimension" type="tns:DimensionType" />
+      <xs:element minOccurs="0" maxOccurs="1" name="PalletSpaceMeasurementDimension" type="tns:DimensionType" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="ShipmentDocumentReference" type="tns:DocumentReferenceType" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="CustomsDeclaration" type="tns:CustomsDeclarationType" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="PackageType">
+    <xs:sequence>
+      <xs:element xmlns:q227="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2" minOccurs="0" maxOccurs="1" ref="q227:ID" />
+      <xs:element xmlns:q228="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2" minOccurs="0" maxOccurs="1" ref="q228:Quantity" />
+      <xs:element xmlns:q229="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2" minOccurs="0" maxOccurs="1" ref="q229:ReturnableMaterialIndicator" />
+      <xs:element xmlns:q230="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2" minOccurs="0" maxOccurs="1" ref="q230:PackageLevelCode" />
+      <xs:element xmlns:q231="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2" minOccurs="0" maxOccurs="1" ref="q231:PackagingTypeCode" />
+      <xs:element xmlns:q232="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2" minOccurs="0" maxOccurs="unbounded" ref="q232:PackingMaterial" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="ContainedPackage" type="tns:PackageType" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="GoodsItem" type="tns:GoodsItemType" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="MeasurementDimension" type="tns:DimensionType" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="TransportEquipmentType">
+    <xs:sequence>
+      <xs:element xmlns:q233="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2" minOccurs="0" maxOccurs="1" ref="q233:ID" />
+      <xs:element xmlns:q234="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2" minOccurs="0" maxOccurs="1" ref="q234:TransportEquipmentTypeCode" />
+      <xs:element xmlns:q235="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2" minOccurs="0" maxOccurs="1" ref="q235:Description" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="HazardousGoodsTransitType">
+    <xs:sequence>
+      <xs:element xmlns:q236="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2" minOccurs="0" maxOccurs="1" ref="q236:TransportEmergencyCardCode" />
+      <xs:element xmlns:q237="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2" minOccurs="0" maxOccurs="1" ref="q237:PackingCriteriaCode" />
+      <xs:element xmlns:q238="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2" minOccurs="0" maxOccurs="1" ref="q238:HazardousRegulationCode" />
+      <xs:element xmlns:q239="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2" minOccurs="0" maxOccurs="1" ref="q239:InhalationToxicityZoneCode" />
+      <xs:element xmlns:q240="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2" minOccurs="0" maxOccurs="1" ref="q240:TransportAuthorizationCode" />
+      <xs:element minOccurs="0" maxOccurs="1" name="MaximumTemperature" type="tns:TemperatureType" />
+      <xs:element minOccurs="0" maxOccurs="1" name="MinimumTemperature" type="tns:TemperatureType" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="CustomsDeclarationType">
+    <xs:sequence>
+      <xs:element xmlns:q241="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2" minOccurs="0" maxOccurs="1" ref="q241:ID" />
+      <xs:element minOccurs="0" maxOccurs="1" name="IssuerParty" type="tns:PartyType" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="DeliveryTerms" type="tns:DeliveryTermsType" />
+  <xs:element name="PaymentMeans" type="tns:PaymentMeansType" />
+  <xs:complexType name="PaymentMeansType">
+    <xs:sequence>
+      <xs:element xmlns:q242="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2" minOccurs="0" maxOccurs="1" ref="q242:PaymentMeansCode" />
+      <xs:element xmlns:q243="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2" minOccurs="0" maxOccurs="1" ref="q243:PaymentDueDate" />
+      <xs:element xmlns:q244="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2" minOccurs="0" maxOccurs="1" ref="q244:PaymentChannelCode" />
+      <xs:element xmlns:q245="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2" minOccurs="0" maxOccurs="1" ref="q245:InstructionNote" />
+      <xs:element minOccurs="0" maxOccurs="1" name="PayerFinancialAccount" type="tns:FinancialAccountType" />
+      <xs:element minOccurs="0" maxOccurs="1" name="PayeeFinancialAccount" type="tns:FinancialAccountType" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="PaymentTerms" type="tns:PaymentTermsType" />
+  <xs:complexType name="PaymentTermsType">
+    <xs:sequence>
+      <xs:element xmlns:q246="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2" minOccurs="0" maxOccurs="1" ref="q246:Note" />
+      <xs:element xmlns:q247="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2" minOccurs="0" maxOccurs="1" ref="q247:PenaltySurchargePercent" />
+      <xs:element xmlns:q248="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2" minOccurs="0" maxOccurs="1" ref="q248:Amount" />
+      <xs:element xmlns:q249="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2" minOccurs="0" maxOccurs="1" ref="q249:PenaltyAmount" />
+      <xs:element xmlns:q250="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2" minOccurs="0" maxOccurs="1" ref="q250:PaymentDueDate" />
+      <xs:element minOccurs="0" maxOccurs="1" name="SettlementPeriod" type="tns:PeriodType" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="TaxExchangeRate" type="tns:ExchangeRateType" />
+  <xs:complexType name="ExchangeRateType">
+    <xs:sequence>
+      <xs:element xmlns:q251="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2" minOccurs="0" maxOccurs="1" ref="q251:SourceCurrencyCode" />
+      <xs:element xmlns:q252="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2" minOccurs="0" maxOccurs="1" ref="q252:TargetCurrencyCode" />
+      <xs:element xmlns:q253="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2" minOccurs="0" maxOccurs="1" ref="q253:CalculationRate" />
+      <xs:element xmlns:q254="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2" minOccurs="0" maxOccurs="1" ref="q254:Date" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="PricingExchangeRate" type="tns:ExchangeRateType" />
+  <xs:element name="PaymentExchangeRate" type="tns:ExchangeRateType" />
+  <xs:element name="PaymentAlternativeExchangeRate" type="tns:ExchangeRateType" />
+  <xs:element name="AllowanceCharge" type="tns:AllowanceChargeType" />
+  <xs:element name="TaxTotal" type="tns:TaxTotalType" />
+  <xs:element name="LegalMonetaryTotal" type="tns:MonetaryTotalType" />
+  <xs:complexType name="MonetaryTotalType">
+    <xs:sequence>
+      <xs:element xmlns:q255="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2" minOccurs="0" maxOccurs="1" ref="q255:LineExtensionAmount" />
+      <xs:element xmlns:q256="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2" minOccurs="0" maxOccurs="1" ref="q256:TaxExclusiveAmount" />
+      <xs:element xmlns:q257="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2" minOccurs="0" maxOccurs="1" ref="q257:TaxInclusiveAmount" />
+      <xs:element xmlns:q258="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2" minOccurs="0" maxOccurs="1" ref="q258:AllowanceTotalAmount" />
+      <xs:element xmlns:q259="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2" minOccurs="0" maxOccurs="1" ref="q259:ChargeTotalAmount" />
+      <xs:element xmlns:q260="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2" minOccurs="0" maxOccurs="1" ref="q260:PayableRoundingAmount" />
+      <xs:element xmlns:q261="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2" minOccurs="0" maxOccurs="1" ref="q261:PayableAmount" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="CreditNoteLine" type="tns:CreditNoteLineType" />
+  <xs:complexType name="CreditNoteLineType">
+    <xs:sequence>
+      <xs:element xmlns:q262="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2" minOccurs="0" maxOccurs="1" ref="q262:ID" />
+      <xs:element xmlns:q263="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2" minOccurs="0" maxOccurs="1" ref="q263:UUID" />
+      <xs:element xmlns:q264="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2" minOccurs="0" maxOccurs="unbounded" ref="q264:Note" />
+      <xs:element xmlns:q265="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2" minOccurs="0" maxOccurs="1" ref="q265:CreditedQuantity" />
+      <xs:element xmlns:q266="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2" minOccurs="0" maxOccurs="1" ref="q266:LineExtensionAmount" />
+      <xs:element xmlns:q267="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2" minOccurs="0" maxOccurs="1" ref="q267:TaxPointDate" />
+      <xs:element xmlns:q268="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2" minOccurs="0" maxOccurs="1" ref="q268:AccountingCostCode" />
+      <xs:element xmlns:q269="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2" minOccurs="0" maxOccurs="1" ref="q269:AccountingCost" />
+      <xs:element xmlns:q270="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2" minOccurs="0" maxOccurs="1" ref="q270:PaymentPurposeCode" />
+      <xs:element xmlns:q271="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2" minOccurs="0" maxOccurs="1" ref="q271:FreeOfChargeIndicator" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="InvoicePeriod" type="tns:PeriodType" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="OrderLineReference" type="tns:OrderLineReferenceType" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="DiscrepancyResponse" type="tns:ResponseType" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="DespatchLineReference" type="tns:LineReferenceType" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="ReceiptLineReference" type="tns:LineReferenceType" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="BillingReference" type="tns:BillingReferenceType" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="DocumentReference" type="tns:DocumentReferenceType" />
+      <xs:element minOccurs="0" maxOccurs="1" name="PricingReference" type="tns:PricingReferenceType" />
+      <xs:element minOccurs="0" maxOccurs="1" name="OriginatorParty" type="tns:PartyType" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Delivery" type="tns:DeliveryType" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="PaymentTerms" type="tns:PaymentTermsType" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="TaxTotal" type="tns:TaxTotalType" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="AllowanceCharge" type="tns:AllowanceChargeType" />
+      <xs:element minOccurs="0" maxOccurs="1" name="Item" type="tns:ItemType" />
+      <xs:element minOccurs="0" maxOccurs="1" name="Price" type="tns:PriceType" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="DeliveryTerms" type="tns:DeliveryTermsType" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="SubCreditNoteLine" type="tns:CreditNoteLineType" />
+      <xs:element minOccurs="0" maxOccurs="1" name="ItemPriceExtension" type="tns:PriceExtensionType" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="PricingReferenceType">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="1" name="OriginalItemLocationQuantity" type="tns:ItemLocationQuantityType" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="AlternativeConditionPrice" type="tns:PriceType" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ItemLocationQuantityType">
+    <xs:sequence>
+      <xs:element xmlns:q272="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2" minOccurs="0" maxOccurs="1" ref="q272:LeadTimeMeasure" />
+      <xs:element xmlns:q273="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2" minOccurs="0" maxOccurs="1" ref="q273:MinimumQuantity" />
+      <xs:element xmlns:q274="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2" minOccurs="0" maxOccurs="1" ref="q274:MaximumQuantity" />
+      <xs:element xmlns:q275="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2" minOccurs="0" maxOccurs="1" ref="q275:HazardousRiskIndicator" />
+      <xs:element xmlns:q276="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2" minOccurs="0" maxOccurs="unbounded" ref="q276:TradingRestrictions" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="ApplicableTerritoryAddress" type="tns:AddressType" />
+      <xs:element minOccurs="0" maxOccurs="1" name="Price" type="tns:PriceType" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="DeliveryUnit" type="tns:DeliveryUnitType" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="ApplicableTaxCategory" type="tns:TaxCategoryType" />
+      <xs:element minOccurs="0" maxOccurs="1" name="Package" type="tns:PackageType" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="AllowanceCharge" type="tns:AllowanceChargeType" />
+      <xs:element minOccurs="0" maxOccurs="1" name="DependentPriceReference" type="tns:DependentPriceReferenceType" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="DeliveryUnitType">
+    <xs:sequence>
+      <xs:element xmlns:q277="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2" minOccurs="0" maxOccurs="1" ref="q277:BatchQuantity" />
+      <xs:element xmlns:q278="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2" minOccurs="0" maxOccurs="1" ref="q278:ConsumerUnitQuantity" />
+      <xs:element xmlns:q279="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2" minOccurs="0" maxOccurs="1" ref="q279:HazardousRiskIndicator" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="DependentPriceReferenceType">
+    <xs:sequence>
+      <xs:element xmlns:q280="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2" minOccurs="0" maxOccurs="1" ref="q280:Percent" />
+      <xs:element minOccurs="0" maxOccurs="1" name="LocationAddress" type="tns:AddressType" />
+      <xs:element minOccurs="0" maxOccurs="1" name="DependentLineReference" type="tns:LineReferenceType" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="PriceExtensionType">
+    <xs:sequence>
+      <xs:element xmlns:q281="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2" minOccurs="0" maxOccurs="1" ref="q281:Amount" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="TaxTotal" type="tns:TaxTotalType" />
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

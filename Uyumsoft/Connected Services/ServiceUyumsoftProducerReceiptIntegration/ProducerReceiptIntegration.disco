@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
+<discovery xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://schemas.xmlsoap.org/disco/">
+  <contractRef ref="https://efatura.uyumsoft.com.tr/Services/ProducerReceiptIntegration?wsdl" docRef="https://efatura.uyumsoft.com.tr/Services/ProducerReceiptIntegration" xmlns="http://schemas.xmlsoap.org/disco/scl/" />
+</discovery>
