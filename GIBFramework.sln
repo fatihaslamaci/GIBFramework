@@ -35,7 +35,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Veriban", "Veriban\Veriban.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Logo", "Logo\Logo.csproj", "{366C4BE5-7B32-46FE-949A-806B324AB382}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SampleConsoleAppESMM", "SampleConsoleAppESMM\SampleConsoleAppESMM.csproj", "{F4B04299-877A-401E-9B47-73112C310C04}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SampleConsoleAppESMM", "SampleConsoleAppESMM\SampleConsoleAppESMM.csproj", "{F4B04299-877A-401E-9B47-73112C310C04}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SampleConsoleAppEMM", "SampleConsoleAppEMM\SampleConsoleAppEMM.csproj", "{06CA2B16-10AF-45B6-8D2B-B65955156AA7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -95,6 +97,10 @@ Global
 		{F4B04299-877A-401E-9B47-73112C310C04}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F4B04299-877A-401E-9B47-73112C310C04}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F4B04299-877A-401E-9B47-73112C310C04}.Release|Any CPU.Build.0 = Release|Any CPU
+		{06CA2B16-10AF-45B6-8D2B-B65955156AA7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{06CA2B16-10AF-45B6-8D2B-B65955156AA7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{06CA2B16-10AF-45B6-8D2B-B65955156AA7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{06CA2B16-10AF-45B6-8D2B-B65955156AA7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

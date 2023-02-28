@@ -10,8 +10,8 @@ namespace Uyumsoft.EMM
     public partial class Sender
     {
 
-        ServiceUyumsoftVoucher.VoucherIntegrationClient _serviceClient = null;
-        private ServiceUyumsoftVoucher.VoucherIntegrationClient serviceClient
+        ServiceUyumsoftProducerReceiptIntegration.ProducerReceiptIntegrationClient  _serviceClient = null;
+        private ServiceUyumsoftProducerReceiptIntegration.ProducerReceiptIntegrationClient serviceClient
         {
             get
             {
@@ -33,7 +33,7 @@ namespace Uyumsoft.EMM
 
                     var endpoint = new EndpointAddress(Uri);
 
-                    _serviceClient = new ServiceUyumsoftVoucher.VoucherIntegrationClient(binding, endpoint);
+                    _serviceClient = new ServiceUyumsoftProducerReceiptIntegration.ProducerReceiptIntegrationClient(binding, endpoint);
                     var UserName = Settings["UserName"];
                     var Password = Settings["Password"];
                     serviceClient.ClientCredentials.UserName.UserName = UserName;
