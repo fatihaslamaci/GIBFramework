@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -34,9 +35,13 @@ namespace SampleConsoleAppESMM
                }".Replace("'", "\"");
 
             //Serbest Meslek Makbuz Gönderim örneği.
-           
-            var  OrnekMakbuz = OrnekMakbuzHazirla();
-            
+
+            var OrnekMakbuz = OrnekMakbuzHazirla();
+
+            //HTML Transform örneği
+            XML_TO_HTML_TRANSFORM(OrnekMakbuz.sendParametersESMMitems[0].eArsivVeri);
+
+
             var response = eSMM.Send(OrnekMakbuz);
 
 
@@ -49,8 +54,40 @@ namespace SampleConsoleAppESMM
                 Console.WriteLine(response.Mesaj);
             }
 
+
             Console.ReadKey();
         }
+
+
+        public static GIBInterface.EFaturaPaketi.eSMM.eArsivVeri XML_TO_eArsivVeri(string fileName)
+        {
+            var xml = File.ReadAllText(fileName, Encoding.UTF8);
+            //xml deserialize işlemi
+            return GIBInterface.EFaturaPaketi.eSMM.eArsivVeri.Create(xml);
+
+        }
+
+        public static void XML_TO_HTML_TRANSFORM(GIBInterface.EFaturaPaketi.eSMM.eArsivVeri eArsivVeri)
+        {
+
+            string TempFolder = "C:\\TempMakbuz";
+            string TempFileName = TempFolder + "\\OrnekMakbuz.html";
+            Directory.CreateDirectory(TempFolder);
+
+            var xslt = File.ReadAllText("tasarim.xslt", Encoding.UTF8);
+
+            // Xml serialize örneği
+            var xml = eArsivVeri.CreateXml();
+
+            var html = GIBFramework.InvoiceTransform.TransformXMLToHTML(xml, xslt);
+
+            
+            File.WriteAllText(TempFileName, html, Encoding.UTF8);
+
+            //Sisteme Tanımlı varsayılan uygulama ile html dosyasını aç
+            Process.Start(new ProcessStartInfo{FileName = TempFileName, UseShellExecute = true});
+        }
+
 
         private static GIBInterface.ESMM.SendParametersESMM OrnekMakbuzHazirla()
         {
@@ -68,57 +105,20 @@ namespace SampleConsoleAppESMM
 
             r.Notes = new List<string>();
             r.Notes.Add("Ödeme süresi 7 gündür");
-            r.Notes.Add("Yalnız:Yüz Türk Lirası");
+            r.Notes.Add("Yalnız:Dokuz Yüz On İki Türk Lirası");
             r.Notes.Add("Bu belgeyi hazırlamak için https://github.com/fatihaslamaci/GIBFramework kütüphanesi kullanılmıştır.");
 
             r.email = new List<string>();
-            r.email.Add("yunus.simsek@uyumsoft.com");
+            r.email.Add("fatihaslamaci@gmail.com");
 
+            //xml deserialize yaparak veri oluşturuldu.
+            r.eArsivVeri = XML_TO_eArsivVeri("SerbestMeslekMakbuzu.xml");
 
-            r.eArsivVeri = new GIBInterface.EFaturaPaketi.eSMM.eArsivVeri();
-            r.eArsivVeri.Item = new GIBInterface.EFaturaPaketi.eSMM.eArsivVeriSerbestMeslekMakbuz();
-
-
-            r.eArsivVeri.Item.aliciBilgileri = new GIBInterface.EFaturaPaketi.eSMM.aliciType();
-            r.eArsivVeri.Item.aliciBilgileri.Item = new GIBInterface.EFaturaPaketi.eSMM.aliciTypeGercekKisi();
-            ((GIBInterface.EFaturaPaketi.eSMM.aliciTypeGercekKisi)r.eArsivVeri.Item.aliciBilgileri.Item).adiSoyadi = "Yunus Şimşek";
-            ((GIBInterface.EFaturaPaketi.eSMM.aliciTypeGercekKisi)r.eArsivVeri.Item.aliciBilgileri.Item).tckn = "12345678901";
-            r.eArsivVeri.Item.paraBirimi = GIBInterface.EFaturaPaketi.eSMM.eArsivVeriSerbestMeslekMakbuzParaBirimi.USD;
-            r.eArsivVeri.Item.kur = 5.51m;
-            r.eArsivVeri.Item.kurSpecified = true;
-            r.eArsivVeri.Item.belgeTarihi = DateTime.Now.Date;
-            //voucherObject.dosyaAdi = "";
-            r.eArsivVeri.Item.belgeZamani = DateTime.Now;
             r.eArsivVeri.Item.ETTN = Guid.NewGuid().ToString();
-            r.eArsivVeri.Item.gonderimSekli = GIBInterface.EFaturaPaketi.eSMM.eArsivVeriSerbestMeslekMakbuzGonderimSekli.ELEKTRONIK;
-            r.eArsivVeri.Item.malHizmetBilgisi = new GIBInterface.EFaturaPaketi.eSMM.eArsivVeriSerbestMeslekMakbuzMalHizmet[]{
-               new  GIBInterface.EFaturaPaketi.eSMM.eArsivVeriSerbestMeslekMakbuzMalHizmet{
-                   ad ="Avukatlık Ücreti",
-                   burutUcret= 119.00m,
-                   vergiBilgisi = new GIBInterface.EFaturaPaketi.eSMM.vergiBilgiType{
-                       vergi= new GIBInterface.EFaturaPaketi.eSMM.vergiBilgiTypeVergi[]{
-                                    new GIBInterface.EFaturaPaketi.eSMM.vergiBilgiTypeVergi {
-                                        matrah=100.00m,
-                                        vergiKodu = GIBInterface.EFaturaPaketi.eSMM.vergiBilgiTypeVergiVergiKodu.Item0015,
-                                        vergiTutari= 18.00m, vergiOrani =18.00m 
-                                    }
-                       }
-                   }
-                   }};
-            r.eArsivVeri.Item.odenecekTutar = 118.00m;
-            r.eArsivVeri.Item.paraBirimi = GIBInterface.EFaturaPaketi.eSMM.eArsivVeriSerbestMeslekMakbuzParaBirimi.USD;
-            r.eArsivVeri.Item.toplamTutar = 118.00m;
-            r.eArsivVeri.Item.vergiBilgisi =
-                new GIBInterface.EFaturaPaketi.eSMM.vergiBilgiType
-                {
-                    vergi = new GIBInterface.EFaturaPaketi.eSMM.vergiBilgiTypeVergi[] {
-                        new GIBInterface.EFaturaPaketi.eSMM.vergiBilgiTypeVergi {
-                            vergiKodu = GIBInterface.EFaturaPaketi.eSMM.vergiBilgiTypeVergiVergiKodu.Item0003,
-                            vergiOrani = 18,
-                            vergiTutari = 18m
-                        }
-                    }
-                };
+            r.eArsivVeri.Item.belgeTarihi = DateTime.Now.Date;
+            r.eArsivVeri.Item.belgeZamani = DateTime.Now;
+            r.eArsivVeri.Item.makbuzNo = "";
+
             return r;
         }
 

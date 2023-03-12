@@ -1,0 +1,86 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<eArsivVeri xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:schemaLocation="http://earsiv.efatura.gov.tr eArsivVeri.xsd" xmlns="http://earsiv.efatura.gov.tr">
+  <baslik>
+    <mukellef>
+      <vkn>9240481875</vkn>
+    </mukellef>
+    <hazirlayan>
+      <vkn>9240481875</vkn>
+    </hazirlayan>
+  </baslik>
+  <serbestMeslekMakbuz>
+    <makbuzNo>GIB2018000000061</makbuzNo>
+    <ETTN>20B1C6A3-7280-4FE0-9CD1-FADE50C8F4A1</ETTN>
+    <gonderimSekli>ELEKTRONIK</gonderimSekli>
+    <dosyaAdi>GIB2018000000061_20B1C6A3-7280-4FE0-9CD1-FADE50C8F4A1_SIGNED.pdf</dosyaAdi>
+    <belgeTarihi>2018-06-19</belgeTarihi>
+    <belgeZamani>13:36:09</belgeZamani>
+    <toplamTutar>1162</toplamTutar>
+    <odenecekTutar>912</odenecekTutar>
+    <paraBirimi>TRY</paraBirimi>
+    <vergiBilgisi>
+      <vergilerToplami>412</vergilerToplami>
+      <vergi>
+        <matrah>1000</matrah>
+        <vergiKodu>0015</vergiKodu>
+        <vergiTutari>180</vergiTutari>
+        <vergiOrani>18</vergiOrani>
+      </vergi>
+      <vergi>
+        <matrah>1000</matrah>
+        <vergiKodu>0003</vergiKodu>
+        <vergiTutari>250</vergiTutari>
+        <vergiOrani>25</vergiOrani>
+      </vergi>
+      <tevkifat>
+        <tevkifatKodu>650</tevkifatKodu>
+        <tevkifatTutari>18</tevkifatTutari>
+        <tevkifatOrani>10</tevkifatOrani>
+      </tevkifat>
+    </vergiBilgisi>
+    <aliciBilgileri>
+      <gercekKisi>
+        <tckn>18197792868</tckn>
+        <adiSoyadi>Hasan ŞAHİN</adiSoyadi>
+      </gercekKisi>
+      <adres>
+        <caddeSokak>Kececi Piri Mh. Cami Sk. No:61</caddeSokak>
+        <binaAd />
+        <binaNo />
+        <kapiNo />
+        <kasabaKoy />
+        <semt>Beyoğlu</semt>
+        <sehir>İstanbul</sehir>
+        <postaKod />
+        <ulke>TR</ulke>
+        <vDaire />
+      </adres>
+    </aliciBilgileri>
+    <malHizmetBilgisi>
+      <malHizmet>
+        <ad>Avukatlık Ücreti</ad>
+        <vergiBilgisi>
+          <vergilerToplami>412</vergilerToplami>
+          <vergi>
+            <matrah>1000</matrah>
+            <vergiKodu>0015</vergiKodu>
+            <vergiTutari>180</vergiTutari>
+            <vergiOrani>18</vergiOrani>
+          </vergi>
+          <vergi>
+            <matrah>1000</matrah>
+            <vergiKodu>0003</vergiKodu>
+            <vergiTutari>250</vergiTutari>
+            <vergiOrani>25</vergiOrani>
+          </vergi>
+          <tevkifat>
+            <tevkifatKodu>650</tevkifatKodu>
+            <tevkifatTutari>18</tevkifatTutari>
+            <tevkifatOrani>10</tevkifatOrani>
+          </tevkifat>
+        </vergiBilgisi>
+        <burutUcret>1000</burutUcret>
+      </malHizmet>
+    </malHizmetBilgisi>
+  </serbestMeslekMakbuz>
+</eArsivVeri>

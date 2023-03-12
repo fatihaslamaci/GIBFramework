@@ -13,7 +13,7 @@ namespace SampleConsoleAppEMM
             GIBInterface.EMM.IEMM Entegrator;
 
 
-            //Müstehsil Makbuzu için Entgeratör seçiyoruz
+            //Müstahsil Makbuzu için Entgeratör seçiyoruz
             Entegrator = new Uyumsoft.EMM.Sender();
             //TODO :Diğer Entegratörler eklenecek. Örnek
             //Entegrator = new Veriban.ESMM.Sender();

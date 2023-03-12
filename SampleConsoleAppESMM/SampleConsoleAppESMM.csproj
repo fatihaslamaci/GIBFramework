@@ -8,6 +8,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="System.Diagnostics.Process" Version="4.3.0" />
     <PackageReference Include="System.ServiceModel.Http" Version="4.10.0" />
     <PackageReference Include="System.ServiceModel.Primitives" Version="4.10.0" />
   </ItemGroup>
@@ -17,6 +18,15 @@
     <ProjectReference Include="..\GIBInterface\GIBInterface.csproj" />
     <ProjectReference Include="..\SahteEntegrator\SahteEntegrator.csproj" />
     <ProjectReference Include="..\Uyumsoft\Uyumsoft.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="SerbestMeslekMakbuzu.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Tasarim.xslt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
 
 </Project>

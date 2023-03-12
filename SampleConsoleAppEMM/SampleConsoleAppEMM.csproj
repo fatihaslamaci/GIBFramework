@@ -8,6 +8,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="System.ServiceModel.Http" Version="4.10.0" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\GIBFramework\GIBFramework.csproj" />
     <ProjectReference Include="..\GIBInterface\GIBInterface.csproj" />
     <ProjectReference Include="..\Uyumsoft\Uyumsoft.csproj" />
