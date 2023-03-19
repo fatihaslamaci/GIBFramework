@@ -17,4 +17,13 @@
     <ProjectReference Include="..\Uyumsoft\Uyumsoft.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Update="MustahsilMakbuzu.XML">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="tasarim.xslt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
 </Project>

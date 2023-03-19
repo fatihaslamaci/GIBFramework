@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -35,7 +36,12 @@ namespace SampleConsoleAppEMM
 
             //Serbest Meslek Makbuz Gönderim örneği.
 
-            var OrnekMakbuz = OrnekMakbuzHazirla();
+            var OrnekMakbuz = OrnekMustahsilMakbuzuHazirla();
+
+            XML_TO_HTML_TRANSFORM(OrnekMakbuz.CreditNotes[0]);
+
+
+
 
             var response = eMM.Send(OrnekMakbuz);
 
@@ -51,13 +57,61 @@ namespace SampleConsoleAppEMM
             Console.ReadKey();
         }
 
-        private static GIBInterface.EMM.SendParametersEMM OrnekMakbuzHazirla()
+        private static GIBInterface.EMM.SendParametersEMM OrnekMustahsilMakbuzuHazirla()
         {
-            throw new NotImplementedException();
-  
+            var r = new GIBInterface.EMM.SendParametersEMM();
+            r.CreditNotes = new List<GIBInterface.UBLTR.CreditNoteType>();
+            var makbuz = CreateVoucher();
+            r.CreditNotes.Add(makbuz);
+            return r;
+
         }
 
-      
+        public static GIBInterface.UBLTR.CreditNoteType XML_TO_MustahsilMakbuzu(string fileName)
+        {
+            var xml = File.ReadAllText(fileName, Encoding.UTF8);
+            //xml deserialize işlemi
+            return GIBInterface.UBLTR.CreditNoteType.Create(xml);
+
+        }
+
+        public static void XML_TO_HTML_TRANSFORM(GIBInterface.UBLTR.CreditNoteType eArsivVeri)
+        {
+
+            string TempFolder = "C:\\TempMakbuz";
+            string TempFileName = TempFolder + "\\OrnekMustahsilMakbuz.html";
+            Directory.CreateDirectory(TempFolder);
+
+            var xslt = File.ReadAllText("tasarim.xslt", Encoding.UTF8);
+
+            // Xml serialize örneği
+            var xml = eArsivVeri.CreateXml();
+
+            var html = GIBFramework.InvoiceTransform.TransformXMLToHTML(xml, xslt);
+
+
+            File.WriteAllText(TempFileName, html, Encoding.UTF8);
+
+            //Sisteme Tanımlı varsayılan uygulama ile html dosyasını aç
+            Process.Start(new ProcessStartInfo { FileName = TempFileName, UseShellExecute = true });
+        }
+
+
+        public static GIBInterface.UBLTR.CreditNoteType CreateVoucher()
+        {
+
+
+            GIBInterface.UBLTR.CreditNoteType r = XML_TO_MustahsilMakbuzu("MustahsilMakbuzu.XML");
+
+            r.UUID.Value = Guid.NewGuid().ToString();
+            r.ID.Value = "";
+            r.IssueDate.Value = DateTime.Now.Date;
+            r.IssueTime.Value = DateTime.Now;
+
+
+            return r;
+        }
+
 
     }
 }

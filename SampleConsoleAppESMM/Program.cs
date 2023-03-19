@@ -48,6 +48,8 @@ namespace SampleConsoleAppESMM
             if (response.Basarili)
             {
                 Console.WriteLine(string.Format("Makbuz gönderildi. Makbuz No:{0}, ETTN: {1}", response.MakbuzResponseList[0].MakbuzNo, response.MakbuzResponseList[0].ETTN));
+                OrnekMakbuz.sendParametersESMMitems[0].eArsivVeri.Item.makbuzNo = response.MakbuzResponseList[0].MakbuzNo;
+                XML_TO_HTML_TRANSFORM(OrnekMakbuz.sendParametersESMMitems[0].eArsivVeri);
             }
             else
             {

@@ -20,7 +20,7 @@ namespace GIBInterface.EMM
 
     public class SendParametersEMM
     {
-        
+        public List<UBLTR.CreditNoteType> CreditNotes { get; set;}
 
     }
 
